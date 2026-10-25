@@ -7,16 +7,15 @@
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
       --bg: #090a0d;
-      --card-bg: rgba(18, 20, 26, 0.7);
+      --card-bg: rgba(18, 20, 26, 0.75);
       --card-border: rgba(255, 255, 255, 0.08);
       --accent: #ccff00;
-      --accent-glow: rgba(204, 255, 0, 0.22);
-      --accent-dark: #a6d200;
+      --accent-glow: rgba(204, 255, 0, 0.25);
       --text: #f5f6f8;
       --text-muted: #8e95a5;
     }
@@ -36,20 +35,21 @@
       position: relative;
     }
 
-    /* Ambient background glow */
+    /* Ambient glow */
     body::before {
       content: "";
       position: fixed;
-      top: -20%;
+      top: -15%;
       left: 50%;
       transform: translateX(-50%);
-      width: 650px;
-      height: 650px;
+      width: 600px;
+      height: 600px;
       background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
       z-index: -1;
       pointer-events: none;
     }
 
+    /* Navbar */
     header {
       position: sticky;
       top: 0;
@@ -69,9 +69,10 @@
     }
 
     .logo {
-      font-size: 1.15rem;
+      font-family: 'Syne', sans-serif;
+      font-size: 1.25rem;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      letter-spacing: 1px;
       color: var(--text);
       text-decoration: none;
       text-transform: uppercase;
@@ -99,7 +100,7 @@
       color: var(--text);
     }
 
-    /* Original Lime Accent Buttons */
+    /* Original Lime Accent Button */
     .btn {
       display: inline-flex;
       align-items: center;
@@ -123,7 +124,7 @@
     .btn-primary:hover {
       background: #d8ff26;
       transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(204, 255, 0, 0.4);
+      box-shadow: 0 8px 28px rgba(204, 255, 0, 0.45);
     }
 
     .btn-secondary {
@@ -138,16 +139,16 @@
       transform: translateY(-2px);
     }
 
+    /* Hero Section */
     section {
       padding: 6rem 2rem;
       max-width: 1240px;
       margin: 0 auto;
     }
 
-    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 8rem 2rem 6rem;
+      padding: 7rem 2rem 5rem;
     }
 
     .badge {
@@ -158,9 +159,9 @@
       border: 1px solid rgba(204, 255, 0, 0.3);
       color: var(--accent);
       font-size: 0.85rem;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 2rem;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
@@ -169,16 +170,19 @@
       font-size: 4.2rem;
       font-weight: 800;
       line-height: 1.1;
-      letter-spacing: -1.5px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
       margin-bottom: 1.75rem;
     }
 
     .highlight-text {
       color: var(--accent);
+      display: block;
+      margin-top: 0.3rem;
     }
 
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       color: var(--text-muted);
       max-width: 720px;
       margin: 0 auto 2.5rem;
@@ -191,6 +195,7 @@
       flex-wrap: wrap;
     }
 
+    /* Section Styling */
     .section-header {
       margin-bottom: 3.5rem;
       text-align: center;
@@ -198,9 +203,10 @@
 
     .section-header h2 {
       font-family: 'Syne', sans-serif;
-      font-size: 2.5rem;
-      font-weight: 700;
-      letter-spacing: -0.5px;
+      font-size: 2.4rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
       margin-bottom: 0.75rem;
     }
 
@@ -209,6 +215,7 @@
       font-size: 1.05rem;
     }
 
+    /* Projects Grid */
     .grid-projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -228,8 +235,8 @@
 
     .card:hover {
       transform: translateY(-6px);
-      border-color: rgba(204, 255, 0, 0.35);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
+      border-color: rgba(204, 255, 0, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
     }
 
     .media-container {
@@ -279,10 +286,11 @@
       padding: 0.35rem 0.8rem;
       border-radius: 6px;
       color: #d1d5db;
-      font-weight: 500;
+      font-weight: 600;
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
+    /* Skills Grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -309,6 +317,7 @@
       font-size: 0.95rem;
     }
 
+    /* Contact Banner */
     .contact-container {
       text-align: center;
       background: linear-gradient(180deg, rgba(18, 20, 26, 0.8) 0%, rgba(9, 10, 13, 0.95) 100%);
@@ -321,6 +330,7 @@
       font-family: 'Syne', sans-serif;
       font-size: 2.8rem;
       font-weight: 800;
+      text-transform: uppercase;
       margin-bottom: 1rem;
     }
 
@@ -346,7 +356,9 @@
       font-size: 0.9rem;
     }
 
-    /* Scroll Reveal Animations */
+    /* ==============================================
+       SCROLL REVEAL ANIMATIONS (Intersection Observer)
+       ============================================== */
     .reveal {
       opacity: 0;
       transform: translateY(35px);
@@ -365,7 +377,7 @@
     .delay-3 { transition-delay: 0.36s; }
 
     @media (max-width: 768px) {
-      .hero h1 { font-size: 2.75rem; }
+      .hero h1 { font-size: 2.6rem; }
       .nav-links { display: none; }
     }
   </style>
@@ -389,7 +401,7 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="badge reveal">Commercial Design &amp; AI Motion</div>
-    <h1 class="reveal delay-1">Graphic Designer <br><span class="highlight-text">× AI Content Creator</span></h1>
+    <h1 class="reveal delay-1">Graphic Designer <span class="highlight-text">× AI Content Creator</span></h1>
     <p class="reveal delay-2">Crafting high-impact commercial advertisements, cinematic 3D visual campaigns, and retention-engineered animations for modern brands.</p>
     <div class="hero-actions reveal delay-3">
       <a href="#projects" class="btn btn-primary">View Featured Campaigns</a>
@@ -503,7 +515,7 @@
     <p>© 2026 Parmeet Singh. All rights reserved. | <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">@thecorporatealoo</a></p>
   </footer>
 
-  <!-- Intersection Observer Scroll Script -->
+  <!-- Intersection Observer Scroll Reveal Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const reveals = document.querySelectorAll('.reveal');
