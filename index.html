@@ -3,523 +3,536 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Parmeet Singh — Graphic Designer × AI Content Creator</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <title>Parmeet Singh | Graphic Designer & AI Content Creator</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
   <style>
     :root {
-      --bg: #0B0B0C;
-      --card-bg: #131415;
+      --bg: #07090e;
+      --card-bg: rgba(18, 24, 38, 0.65);
       --card-border: rgba(255, 255, 255, 0.08);
-      --accent: #CCFF00;
-      --accent-glow: rgba(204, 255, 0, 0.25);
-      --text: #F4F4EF;
-      --text-muted: #8E8E93;
-      --text-sand: #D8CBB9;
+      --accent: #6366f1;
+      --accent-glow: rgba(99, 102, 241, 0.28);
+      --accent-cyan: #06b6d4;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
     }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
     }
+
     body {
       background-color: var(--bg);
       color: var(--text);
-      font-family: 'Space Grotesk', sans-serif;
+      line-height: 1.6;
       overflow-x: hidden;
-      line-height: 1.5;
+      position: relative;
     }
-    header {
+
+    /* Ambient background lighting */
+    body::before {
+      content: "";
       position: fixed;
-      top: 24px;
+      top: -20%;
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100% - 48px);
-      max-width: 1080px;
-      background: rgba(19, 20, 21, 0.75);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    /* Navigation Bar */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
       backdrop-filter: blur(20px);
-      border: 1px solid var(--card-border);
-      border-radius: 9999px;
-      padding: 12px 28px;
+      background: rgba(7, 9, 14, 0.85);
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    .nav-container {
+      max-width: 1240px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index: 100;
+      padding: 1.25rem 2rem;
     }
+
     .logo {
-      font-weight: 700;
-      font-size: 0.95rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
       color: var(--text);
       text-decoration: none;
     }
+
     .logo span {
       color: var(--accent);
     }
-    nav {
+
+    .nav-links {
       display: flex;
-      gap: 28px;
+      gap: 2.2rem;
+      list-style: none;
     }
-    nav a {
+
+    .nav-links a {
       color: var(--text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
       font-weight: 500;
-      transition: color 0.2s;
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
     }
-    nav a:hover {
-      color: var(--accent);
+
+    .nav-links a:hover {
+      color: var(--text);
     }
-    .cta-pill {
-      background: var(--accent);
-      color: #000;
-      padding: 8px 18px;
-      border-radius: 9999px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      transition: transform 0.2s, box-shadow 0.2s;
-      display: inline-block;
-    }
-    .cta-pill:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px var(--accent-glow);
-    }
-    .container {
-      max-width: 1140px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-    .hero {
-      padding-top: 180px;
-      padding-bottom: 90px;
-      text-align: center;
-    }
-    .badge-status {
+
+    /* Unified Button Styling */
+    .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      padding: 6px 16px;
+      gap: 0.5rem;
+      padding: 0.75rem 1.6rem;
       border-radius: 9999px;
-      background: rgba(204, 255, 0, 0.08);
-      border: 1px solid rgba(204, 255, 0, 0.3);
-      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      font-size: 0.92rem;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
+      color: #fff;
+      box-shadow: 0 4px 20px var(--accent-glow);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    /* Layout Sections */
+    section {
+      padding: 6rem 2rem;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      padding: 8rem 2rem 6rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      border-radius: 9999px;
+      background: var(--accent-glow);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      color: #c7d2fe;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 32px;
     }
-    .badge-dot {
-      width: 7px;
-      height: 7px;
-      background: var(--accent);
-      border-radius: 50%;
-      box-shadow: 0 0 10px var(--accent);
-      animation: pulse 1.8s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.85); }
-    }
+
     .hero h1 {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      line-height: 1.05;
+      font-size: 4rem;
       font-weight: 800;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 1.75rem;
     }
-    .hero h1 .highlight {
-      color: var(--accent);
-      font-style: italic;
+
+    .highlight-text {
+      background: linear-gradient(135deg, #a5b4fc 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
+
     .hero p {
-      max-width: 680px;
-      margin: 0 auto 36px;
-      color: var(--text-sand);
-      font-size: 1.15rem;
-      font-weight: 400;
-      line-height: 1.7;
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
     }
+
     .hero-actions {
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 1.25rem;
+      flex-wrap: wrap;
     }
-    .btn-secondary {
-      border: 1px solid var(--card-border);
-      background: rgba(255, 255, 255, 0.03);
-      color: var(--text);
-      padding: 12px 26px;
-      border-radius: 9999px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      font-family: 'Space Grotesk', sans-serif;
-      transition: border-color 0.2s, background 0.2s;
+
+    /* Section Headers */
+    .section-header {
+      margin-bottom: 3.5rem;
+      text-align: center;
     }
-    .btn-secondary:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(255, 255, 255, 0.08);
-    }
-    section {
-      padding: 90px 0;
-    }
-    .section-title-wrap {
-      margin-bottom: 54px;
-      text-align: left;
-    }
-    .section-num {
-      color: var(--accent);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 8px;
-    }
-    .section-title {
+
+    .section-header h2 {
       font-family: 'Syne', sans-serif;
-      font-size: 2.6rem;
+      font-size: 2.5rem;
       font-weight: 700;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
     }
-    .projects-grid {
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+    }
+
+    /* Projects Grid */
+    .grid-projects {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 2.2rem;
     }
-    .project-card {
+
+    .card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 20px;
       overflow: hidden;
+      backdrop-filter: blur(12px);
+      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
       display: flex;
       flex-direction: column;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
     }
-    .project-card:hover {
+
+    .card:hover {
       transform: translateY(-6px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      border-color: rgba(99, 102, 241, 0.4);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     }
-    .video-container {
+
+    .media-container {
       width: 100%;
-      aspect-ratio: 16/9;
-      background: #000;
-      overflow: hidden;
+      height: 240px;
+      background: #0d121f;
       position: relative;
+      overflow: hidden;
     }
-    .video-container video {
+
+    .media-container video {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
-    .project-body {
-      padding: 24px;
+
+    .card-body {
+      padding: 2rem;
       flex: 1;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
-    .project-tag {
-      color: var(--accent);
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-    }
-    .project-title {
+
+    .card-body h3 {
       font-size: 1.35rem;
       font-weight: 700;
-      margin-bottom: 8px;
+      margin-bottom: 0.75rem;
     }
-    .project-desc {
-      color: var(--text-sand);
-      font-size: 0.92rem;
-      line-height: 1.6;
-      margin-bottom: 18px;
+
+    .card-body p {
+      color: var(--text-muted);
+      font-size: 0.96rem;
+      margin-bottom: 1.5rem;
+      flex: 1;
     }
-    .project-foot {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--accent);
+
+    .tag-group {
       display: flex;
-      align-items: center;
-      gap: 6px;
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
-    .services-grid {
+
+    .tag {
+      font-size: 0.75rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.35rem 0.8rem;
+      border-radius: 6px;
+      color: #cbd5e1;
+      font-weight: 500;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    /* Skills Grid */
+    .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
     }
-    .service-card {
+
+    .skill-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 16px;
-      padding: 32px 24px;
-      transition: border-color 0.2s;
+      padding: 2rem;
+      backdrop-filter: blur(10px);
     }
-    .service-card:hover {
-      border-color: rgba(204, 255, 0, 0.4);
+
+    .skill-card h4 {
+      font-size: 1.15rem;
+      margin-bottom: 0.75rem;
+      color: #93c5fd;
+      font-weight: 700;
     }
-    .service-num {
-      font-family: 'Syne', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-    .service-card h3 {
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-    }
-    .service-card p {
+
+    .skill-card p {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.6;
+      font-size: 0.95rem;
     }
-    .metrics {
-      border-top: 1px solid var(--card-border);
-      border-bottom: 1px solid var(--card-border);
-      padding: 60px 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 32px;
+
+    /* Contact Banner */
+    .contact-container {
       text-align: center;
+      background: linear-gradient(180deg, rgba(18, 24, 38, 0.8) 0%, rgba(7, 9, 14, 0.95) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 5rem 2rem;
     }
-    .metric-val {
+
+    .contact-container h2 {
       font-family: 'Syne', sans-serif;
-      font-size: 3.2rem;
+      font-size: 2.8rem;
       font-weight: 800;
-      color: var(--accent);
-      line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 1rem;
     }
-    .metric-lbl {
-      color: var(--text-sand);
-      font-size: 0.85rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-    footer {
-      padding: 100px 0 60px;
-      text-align: center;
-      background: linear-gradient(180deg, var(--bg) 0%, #060607 100%);
-    }
-    .footer-cta h2 {
-      font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.8rem);
-      font-weight: 800;
-      margin-bottom: 16px;
-    }
-    .footer-cta p {
-      color: var(--text-sand);
-      max-width: 520px;
-      margin: 0 auto 36px;
+
+    .contact-container p {
+      color: var(--text-muted);
       font-size: 1.1rem;
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
     }
-    .social-links {
+
+    .contact-btn-group {
       display: flex;
       justify-content: center;
-      gap: 16px;
-      margin: 48px 0;
+      gap: 1.25rem;
       flex-wrap: wrap;
     }
-    .social-links a {
-      color: var(--text);
-      text-decoration: none;
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 12px 24px;
-      border-radius: 9999px;
-      border: 1px solid var(--card-border);
-      background: rgba(255, 255, 255, 0.02);
-      transition: all 0.2s ease;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .social-links a:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(204, 255, 0, 0.05);
-      transform: translateY(-2px);
-    }
-    .copyright {
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 2.5rem 2rem;
+      text-align: center;
       color: var(--text-muted);
-      font-size: 0.8rem;
+      font-size: 0.9rem;
     }
+
+    /* ========================================================
+       SMOOTH SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
+       ======================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(38px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
+                  transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Stagger Delays */
+    .delay-1 { transition-delay: 0.12s; }
+    .delay-2 { transition-delay: 0.24s; }
+    .delay-3 { transition-delay: 0.36s; }
+
     @media (max-width: 768px) {
-      header {
-        padding: 10px 18px;
-      }
-      nav {
-        display: none;
-      }
+      .hero h1 { font-size: 2.75rem; }
+      .nav-links { display: none; }
     }
   </style>
 </head>
 <body>
 
+  <!-- Header -->
   <header>
-    <a href="#" class="logo">PARMEET <span>SINGH</span></a>
-    <nav>
-      <a href="#work">Featured Work</a>
-      <a href="#services">Capabilities</a>
-      <a href="#metrics">Experience</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <a href="mailto:parmeetsagittarius@gmail.com" class="cta-pill">Let's Talk</a>
+    <div class="nav-container">
+      <a href="#" class="logo">PARMEET<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#projects">Work</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener">Instagram ↗</a></li>
+        <li><a href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">Let's Connect</a>
+    </div>
   </header>
 
-  <section class="hero container">
-    <div class="badge-status">
-      <span class="badge-dot"></span> Available for Commercial & AI Projects
-    </div>
-    <h1>Graphic Designer <br><span class="highlight">× AI Content Creator</span></h1>
-    <p>
-      Crafting high-octane generative AI videos, bespoke packaging identities, and kinetic brand systems designed for maximum digital impact.
-    </p>
-    <div class="hero-actions">
-      <a href="#work" class="cta-pill">Explore Works</a>
-      <a href="https://instagram.com/creativaiai" target="_blank" rel="noopener noreferrer" class="btn-secondary">Instagram @creativaiai</a>
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="badge reveal">Commercial Design &amp; AI Motion</div>
+    <h1 class="reveal delay-1">Graphic Designer <br><span class="highlight-text">× AI Content Creator</span></h1>
+    <p class="reveal delay-2">Crafting high-impact commercial advertisements, cinematic 3D visual campaigns, and retention-engineered animations for modern brands.</p>
+    <div class="hero-actions reveal delay-3">
+      <a href="#projects" class="btn btn-primary">View Featured Campaigns</a>
+      <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" class="btn btn-secondary">Instagram (@thecorporatealoo)</a>
+      <a href="https://behance.net/parmeetsingh75" target="_blank" rel="noopener" class="btn btn-secondary">Behance Portfolio ↗</a>
     </div>
   </section>
 
-  <section id="work" class="container">
-    <div class="section-title-wrap">
-      <span class="section-num">// SELECTED WORK</span>
-      <h2 class="section-title">Commercial AI & Design Campaigns</h2>
+  <!-- Projects Section -->
+  <section id="projects">
+    <div class="section-header reveal">
+      <h2>Commercial AI &amp; Design Campaigns</h2>
+      <p>High-conversion video ads, dynamic kinetic sequences, and creative brand identity assets.</p>
     </div>
 
-    <div class="projects-grid">
-      <div class="project-card">
-        <div class="video-container">
-          <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-futuristic-technology-digital-network-lines-41584-large.mp4" type="video/mp4">
+    <div class="grid-projects">
+      <!-- Project 1 -->
+      <div class="card reveal delay-1">
+        <div class="media-container">
+          <video autoplay loop muted playsinline poster="">
+            <source src="" type="video/mp4">
           </video>
         </div>
-        <div class="project-body">
-          <div>
-            <div class="project-tag">AI Video & Motion Direction</div>
-            <h3 class="project-title">TAHLÉ Living Campaign</h3>
-            <p class="project-desc">Hyper-realistic generative AI video commercials showcasing luxury brass decor and curated product aesthetics.</p>
+        <div class="card-body">
+          <h3>Cinematic Product Visuals</h3>
+          <p>Lighting-focused 3D asset showcases, hyper-realistic textures, and dynamic commercial pacing designed for lifestyle &amp; tech brands.</p>
+          <div class="tag-group">
+            <span class="tag">Premiere Pro</span>
+            <span class="tag">After Effects</span>
+            <span class="tag">AI Generation</span>
           </div>
-          <div class="project-foot">VIEW CASE STUDY →</div>
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="video-container">
-          <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=1200&q=80">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-graphic-animation-of-futuristic-lines-and-numbers-41582-large.mp4" type="video/mp4">
+      <!-- Project 2 -->
+      <div class="card reveal delay-2">
+        <div class="media-container">
+          <video autoplay loop muted playsinline poster="">
+            <source src="" type="video/mp4">
           </video>
         </div>
-        <div class="project-body">
-          <div>
-            <div class="project-tag">Packaging & Commercial 3D</div>
-            <h3 class="project-title">Goodrush Snack Adverts</h3>
-            <p class="project-desc">High-energy visual advertising, packaging renders, and social product video series for guilt-free crunch makhana lines.</p>
+        <div class="card-body">
+          <h3>Commercial Social Media Ads</h3>
+          <p>Viral hook optimization, vertical layout typography, and brand-first visual storytelling built for consumer engagement.</p>
+          <div class="tag-group">
+            <span class="tag">Brand Strategy</span>
+            <span class="tag">Photoshop</span>
+            <span class="tag">Shorts &amp; Reels</span>
           </div>
-          <div class="project-foot">VIEW CASE STUDY →</div>
         </div>
       </div>
 
-      <div class="project-card">
-        <div class="video-container">
-          <video autoplay loop muted playsinline poster="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=1200&q=80">
-            <source src="https://assets.mixkit.co/videos/preview/mixkit-tunnel-of-futuristic-neon-lights-41580-large.mp4" type="video/mp4">
+      <!-- Project 3 -->
+      <div class="card reveal delay-3">
+        <div class="media-container">
+          <video autoplay loop muted playsinline poster="">
+            <source src="" type="video/mp4">
           </video>
         </div>
-        <div class="project-body">
-          <div>
-            <div class="project-tag">Kinetic Typography & AI Reel</div>
-            <h3 class="project-title">ROVE Blue Tea Commercial</h3>
-            <p class="project-desc">Dynamic typography motion system synchronized to ambient pacing for Butterfly Pea Flower tea packaging reveal.</p>
+        <div class="card-body">
+          <h3>Kinetic Typography &amp; Motion Assets</h3>
+          <p>High-energy title reveals, beat-synced motion graphics, and clean design systems delivering clear product messaging.</p>
+          <div class="tag-group">
+            <span class="tag">Kinetic Design</span>
+            <span class="tag">Visual Identity</span>
+            <span class="tag">Motion Graphics</span>
           </div>
-          <div class="project-foot">VIEW CASE STUDY →</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="services" class="container">
-    <div class="section-title-wrap">
-      <span class="section-num">// CAPABILITIES</span>
-      <h2 class="section-title">What I Do</h2>
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="section-header reveal">
+      <h2>Creative &amp; Technical Toolset</h2>
+      <p>Production software and generative pipelines used in modern commercial workflows.</p>
     </div>
 
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-num">01</div>
-        <h3>AI Video Creation</h3>
-        <p>Directing hyper-realistic text-to-video, image-to-video, and cinematic storytelling using Kling, Hailuo, and Runway pipelines.</p>
+    <div class="skills-grid">
+      <div class="skill-card reveal delay-1">
+        <h4>Video &amp; Motion</h4>
+        <p>Adobe Premiere Pro, After Effects, kinetic typography, cinematic pacing, sound design, and color grading.</p>
       </div>
-      <div class="service-card">
-        <div class="service-num">02</div>
-        <h3>Graphic Design</h3>
-        <p>Bespoke visual brand systems, retail packaging artwork, and editorial digital assets engineered with Figma & Illustrator.</p>
+      <div class="skill-card reveal delay-2">
+        <h4>Graphic &amp; Brand Systems</h4>
+        <p>Adobe Photoshop, Figma, promotional banners, luxury aesthetic palettes, and visual vector packaging.</p>
       </div>
-      <div class="service-card">
-        <div class="service-num">03</div>
-        <h3>Motion Graphics</h3>
-        <p>Kinetic typography, 3D product animations, and beat-synchronized social video ads built inside Premiere Pro & After Effects.</p>
-      </div>
-      <div class="service-card">
-        <div class="service-num">04</div>
-        <h3>Social Content Direction</h3>
-        <p>Retention-engineered vertical video formats for Instagram Reels & YouTube Shorts tailored for viral organic reach.</p>
+      <div class="skill-card reveal delay-3">
+        <h4>Generative AI Pipelines</h4>
+        <p>Midjourney, Runway, Kling, Leonardo, prompt crafting, and AI-accelerated commercial storyboarding.</p>
       </div>
     </div>
   </section>
 
-  <section id="metrics" class="container">
-    <div class="metrics">
-      <div>
-        <div class="metric-val">50+</div>
-        <div class="metric-lbl">AI Commercial Renders</div>
-      </div>
-      <div>
-        <div class="metric-val">20+</div>
-        <div class="metric-lbl">Brand Design Projects</div>
-      </div>
-      <div>
-        <div class="metric-val">100%</div>
-        <div class="metric-lbl">Tailored Editorial Quality</div>
+  <!-- Contact Section -->
+  <section id="contact">
+    <div class="contact-container reveal">
+      <h2>Let's Build Impactful Visuals</h2>
+      <p>Available for commercial video advertising, AI content creation, and freelance brand collaborations.</p>
+      <div class="contact-btn-group">
+        <a href="mailto:singhparmeett832@gmail.com" class="btn btn-primary">Send an Email</a>
+        <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" class="btn btn-secondary">Message on Instagram</a>
+        <a href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank" rel="noopener" class="btn btn-secondary">Connect on LinkedIn</a>
       </div>
     </div>
   </section>
 
-  <footer id="contact">
-    <div class="container footer-cta">
-      <h2>Let's build something unforgettable.</h2>
-      <p>Available for freelance projects, AI video commercial direction, and visual brand identity commissions.</p>
-      <a href="mailto:parmeetsagittarius@gmail.com" class="cta-pill">parmeetsagittarius@gmail.com</a>
-
-      <div class="social-links">
-        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">Behance</a>
-        <a href="https://instagram.com/creativaiai" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-
-      <p class="copyright">© 2026 Parmeet Singh. All rights reserved.</p>
-    </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Parmeet Singh. All rights reserved. | <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: none;">@thecorporatealoo</a></p>
   </footer>
 
+  <!-- Intersection Observer Scroll Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const reveals = document.querySelectorAll('.reveal');
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: "0px 0px -40px 0px"
+      });
+
+      reveals.forEach(el => observer.observe(el));
+    });
+  </script>
 </body>
 </html>
