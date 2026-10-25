@@ -3,48 +3,121 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autonomous AI Website</title>
+  <title>Autonomous AI & Graphic Design Portfolio</title>
   <style>
+    :root {
+      --bg-dark: #070a13;
+      --card-bg: rgba(15, 23, 42, 0.65);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --card-hover-border: rgba(56, 189, 248, 0.4);
+      --accent-cyan: #38bdf8;
+      --accent-purple: #a855f7;
+      --accent-emerald: #10b981;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --glass-blur: blur(18px);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     body {
-      background-color: #0b0f19;
-      color: #f1f5f9;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    /* Ambient dynamic glow orbs */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+      animation: floatGlow 18s ease-in-out infinite alternate;
+    }
+    .glow-1 {
+      top: -100px;
+      left: 15%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #38bdf8 0%, rgba(56, 189, 248, 0) 70%);
+    }
+    .glow-2 {
+      top: 45%;
+      right: -100px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
+      animation-delay: -6s;
+    }
+    .glow-3 {
+      bottom: -150px;
+      left: 20%;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0) 70%);
+      animation-delay: -12s;
+    }
+
+    @keyframes floatGlow {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, 40px) scale(1.15); }
+      100% { transform: translate(-40px, 80px) scale(0.9); }
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
+    }
+
+    /* Header & Hero */
+    header {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
       text-align: center;
+      margin-bottom: 3.5rem;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.75rem;
-    }
+
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.4rem 1rem;
+      padding: 0.4rem 1.1rem;
       border-radius: 9999px;
       background: rgba(15, 23, 42, 0.7);
       border: 1px solid rgba(56, 189, 248, 0.25);
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      font-size: 0.85rem;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      font-size: 0.825rem;
       font-weight: 500;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.04em;
       color: #94a3b8;
+      margin-bottom: 1.5rem;
     }
+
     .badge-dot {
       position: relative;
       display: inline-flex;
       width: 8px;
       height: 8px;
       border-radius: 50%;
-      background-color: #10b981;
-      box-shadow: 0 0 8px #10b981;
+      background-color: var(--accent-emerald);
+      box-shadow: 0 0 8px var(--accent-emerald);
     }
     .badge-dot::after {
       content: "";
@@ -57,28 +130,941 @@
       background-color: rgba(16, 185, 129, 0.4);
       animation: pulse 2s infinite ease-out;
     }
+
     .badge-text {
       background: linear-gradient(135deg, #e2e8f0 0%, #38bdf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 55%, #64748b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-description {
+      max-width: 650px;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 400;
+      margin-bottom: 2.25rem;
+    }
+
+    /* Category Filter Controls */
+    .filter-wrapper {
+      display: inline-flex;
+      padding: 0.35rem;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 9999px;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      gap: 0.35rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+    }
+
+    .filter-btn {
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 0.55rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #94a3b8;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .filter-btn:hover {
+      color: #f8fafc;
+    }
+
+    .filter-btn.active {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Grid Layout */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 1.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 640px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Glassmorphism Portfolio Card */
+    .glass-card {
+      position: relative;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      overflow: hidden;
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                  opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--card-hover-border);
+      box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    }
+
+    /* Visual Media Container */
+    .card-visual {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      overflow: hidden;
+      background: #020617;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Dynamic CSS Graphic / Canvas Visuals */
+    .visual-art {
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .glass-card:hover .visual-art {
+      transform: scale(1.05);
+    }
+
+    /* Specific Art Visual Designs */
+    .art-ai-fluid {
+      background: linear-gradient(135deg, #090e1a 0%, #17112c 100%);
+      overflow: hidden;
+    }
+    .art-ai-fluid::before, .art-ai-fluid::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(35px);
+    }
+    .art-ai-fluid::before {
+      width: 180px;
+      height: 180px;
+      background: #38bdf8;
+      top: -20px;
+      left: 10%;
+      animation: morphBlob 8s infinite alternate ease-in-out;
+    }
+    .art-ai-fluid::after {
+      width: 200px;
+      height: 200px;
+      background: #ec4899;
+      bottom: -30px;
+      right: 15%;
+      animation: morphBlob 10s infinite alternate-reverse ease-in-out;
+    }
+
+    @keyframes morphBlob {
+      0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(0deg); }
+      100% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; transform: rotate(180deg); }
+    }
+
+    .art-graphic-typo {
+      background: #0a0f1d;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1.5rem;
+      position: relative;
+      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+      background-size: 16px 16px;
+    }
+    .typo-poster-box {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 1.25rem 2rem;
+      text-align: center;
+      transform: rotate(-3deg);
+      transition: transform 0.4s ease;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(8px);
+    }
+    .glass-card:hover .typo-poster-box {
+      transform: rotate(0deg) scale(1.04);
+      border-color: #38bdf8;
+    }
+
+    .art-ai-kinetic {
+      background: radial-gradient(circle at center, #1e1b4b 0%, #030712 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .kinetic-ring {
+      position: absolute;
+      border: 1px dashed rgba(56, 189, 248, 0.5);
+      border-radius: 50%;
+      animation: spinRing 16s linear infinite;
+    }
+    .kinetic-ring:nth-child(1) { width: 90px; height: 90px; border-color: #38bdf8; }
+    .kinetic-ring:nth-child(2) { width: 140px; height: 140px; border-color: #818cf8; animation-direction: reverse; animation-duration: 22s; }
+    .kinetic-ring:nth-child(3) { width: 190px; height: 190px; border-color: #c084fc; animation-duration: 28s; }
+    .kinetic-core {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, #38bdf8, #a855f7);
+      border-radius: 50%;
+      box-shadow: 0 0 25px #38bdf8;
+    }
+
+    @keyframes spinRing {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .art-graphic-brand {
+      background: linear-gradient(145deg, #181024 0%, #080c14 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .brand-cube {
+      width: 80px;
+      height: 80px;
+      border: 2px solid #ec4899;
+      transform: rotate(45deg);
+      box-shadow: 0 0 30px rgba(236, 72, 153, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.5s ease;
+    }
+    .glass-card:hover .brand-cube {
+      transform: rotate(135deg) scale(1.1);
+      border-color: #38bdf8;
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.5);
+    }
+    .brand-cube::after {
+      content: "";
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(4px);
+    }
+
+    .art-ai-particle {
+      background: #020617;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .waveform-bars {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      height: 80px;
+    }
+    .waveform-bar {
+      width: 5px;
+      background: linear-gradient(180deg, #38bdf8 0%, #6366f1 100%);
+      border-radius: 4px;
+      animation: barJump 1.2s infinite ease-in-out;
+    }
+    .waveform-bar:nth-child(2) { animation-delay: 0.15s; }
+    .waveform-bar:nth-child(3) { animation-delay: 0.3s; }
+    .waveform-bar:nth-child(4) { animation-delay: 0.45s; }
+    .waveform-bar:nth-child(5) { animation-delay: 0.6s; }
+    .waveform-bar:nth-child(6) { animation-delay: 0.75s; }
+    .waveform-bar:nth-child(7) { animation-delay: 0.9s; }
+    @keyframes barJump {
+      0%, 100% { height: 16px; opacity: 0.4; }
+      50% { height: 72px; opacity: 1; filter: drop-shadow(0 0 8px #38bdf8); }
+    }
+
+    .art-graphic-editorial {
+      background: linear-gradient(135deg, #09131f 0%, #03080e 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .editorial-grid-mock {
+      display: grid;
+      grid-template-columns: repeat(3, 38px);
+      gap: 8px;
+    }
+    .grid-cell {
+      height: 38px;
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    .glass-card:hover .grid-cell:nth-child(odd) {
+      background: rgba(56, 189, 248, 0.2);
+      border-color: #38bdf8;
+      transform: scale(0.92);
+    }
+    .glass-card:hover .grid-cell:nth-child(even) {
+      background: rgba(168, 85, 247, 0.2);
+      border-color: #a855f7;
+      transform: scale(1.08);
+    }
+
+    /* Badges overlay on visual */
+    .card-type-tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      z-index: 2;
+    }
+    .tag-motion {
+      background: rgba(168, 85, 247, 0.25);
+      border: 1px solid rgba(168, 85, 247, 0.5);
+      color: #e9d5ff;
+    }
+    .tag-graphic {
+      background: rgba(56, 189, 248, 0.2);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #bae6fd;
+    }
+
+    .card-meta-action {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #f1f5f9;
+      backdrop-filter: blur(8px);
+      opacity: 0;
+      transform: translateY(-5px);
+      transition: all 0.3s ease;
+      z-index: 2;
+    }
+    .glass-card:hover .card-meta-action {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Card Content */
+    .card-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #f8fafc;
+      margin-bottom: 0.4rem;
+      transition: color 0.25s ease;
+    }
+
+    .glass-card:hover .card-title {
+      color: #38bdf8;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      color: #94a3b8;
+      line-height: 1.5;
+      margin-bottom: 1.25rem;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: 1rem;
+      margin-top: auto;
+    }
+
+    .tech-stack {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+
+    .tech-pill {
+      font-size: 0.72rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #cbd5e1;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .interactive-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #38bdf8;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+    .glass-card:hover .interactive-link {
+      transform: translateX(3px);
+    }
+
+    /* Interactive Modal */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(2, 6, 23, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      padding: 1.5rem;
+    }
+
+    .modal-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-box {
+      width: 100%;
+      max-width: 680px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: 24px;
+      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.2);
+      overflow: hidden;
+      transform: scale(0.94);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+    }
+
+    .modal-backdrop.open .modal-box {
+      transform: scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: all 0.2s ease;
+    }
+    .modal-close:hover {
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+      border-color: #ef4444;
+    }
+
+    .modal-header-preview {
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .modal-body {
+      padding: 2rem;
+    }
+
+    .modal-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .modal-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      padding: 1rem;
+      background: rgba(0, 0, 0, 0.25);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 1.5rem;
+    }
+
+    .spec-item h4 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #64748b;
+      margin-bottom: 0.25rem;
+    }
+
+    .spec-item p {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #f1f5f9;
+    }
+
     @keyframes pulse {
-      0% {
-        transform: scale(0.6);
-        opacity: 0.9;
-      }
-      100% {
-        transform: scale(2.2);
-        opacity: 0;
-      }
+      0% { transform: scale(0.6); opacity: 0.9; }
+      100% { transform: scale(2.2); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <h1>Autonomous AI Portfolio</h1>
-  <div class="hero-badge">
-    <span class="badge-dot"></span>
-    <span class="badge-text">Autonomous AI Website Active</span>
+
+  <!-- Ambient Light Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <div class="container">
+    <header>
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">Autonomous AI Creative Suite v2.4</span>
+      </div>
+      <h1>Graphic & AI Motion Design</h1>
+      <p class="hero-description">
+        Curated showcase exploring generative diffusion animations, procedural motion systems, and experimental brutalist typography crafted for contemporary digital identities.
+      </p>
+
+      <!-- Category Interactive Filter Pills -->
+      <div class="filter-wrapper" role="tablist">
+        <button class="filter-btn active" data-filter="all">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          All Works
+        </button>
+        <button class="filter-btn" data-filter="motion">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          AI Motion Graphics
+        </button>
+        <button class="filter-btn" data-filter="graphic">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+          Graphic Design
+        </button>
+      </div>
+    </header>
+
+    <!-- Portfolio Glassmorphism Grid -->
+    <main class="portfolio-grid" id="portfolioGrid">
+
+      <!-- Item 1: AI Motion -->
+      <article class="glass-card" data-category="motion" 
+        data-title="Neural Viscosity v3" 
+        data-desc="Real-time multi-latent fluid dynamics rendered through customized Stable Diffusion AnimateDiff pipelines with optical flow stabilization."
+        data-tech="AnimateDiff, TouchDesigner, After Effects"
+        data-meta="60 FPS GenAI Loop | Latent Upscaled 4K">
+        <div class="card-visual">
+          <div class="visual-art art-ai-fluid"></div>
+          <span class="card-type-tag tag-motion">AI Motion</span>
+          <div class="card-meta-action" title="Inspect Project">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Neural Viscosity v3</h2>
+          <p class="card-desc">Diffusion-guided volumetric liquid simulation demonstrating non-Newtonian flow states synced to procedural ambient rhythms.</p>
+          <div class="card-footer">
+            <div class="tech-stack">
+              <span class="tech-pill">AnimateDiff</span>
+              <span class="tech-pill">TouchDesigner</span>
+            </div>
+            <span class="interactive-link">
+              Explore 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 2: Graphic Design -->
+      <article class="glass-card" data-category="graphic" 
+        data-title="Kromatech Kinetic Identity" 
+        data-desc="Modular brand identity system designed around brutalist monospace typography, dynamic grid constraints, and chromatic aberration print finishes."
+        data-tech="Illustrator, Glyphs 3, Print Spec"
+        data-meta="Variable Type System | Risograph Exhibition">
+        <div class="card-visual">
+          <div class="visual-art art-graphic-typo">
+            <div class="typo-poster-box">
+              <span style="font-family: monospace; font-size: 0.75rem; letter-spacing: 0.2em; color: #38bdf8;">KROMATECH</span>
+              <div style="font-size: 1.4rem; font-weight: 900; letter-spacing: -0.05em; line-height: 1; margin: 0.25rem 0;">TYPE 01</div>
+              <span style="font-size: 0.65rem; color: #94a3b8; font-family: monospace;">POST-HUMAN AESTHETIC</span>
+            </div>
+          </div>
+          <span class="card-type-tag tag-graphic">Graphic Design</span>
+          <div class="card-meta-action" title="Inspect Project">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Kromatech Kinetic Identity</h2>
+          <p class="card-desc">Experimental typographic poster ecosystem designed for a next-generation neural interface research collective.</p>
+          <div class="card-footer">
+            <div class="tech-stack">
+              <span class="tech-pill">Brutalism</span>
+              <span class="tech-pill">Typography</span>
+            </div>
+            <span class="interactive-link">
+              Explore 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 3: AI Motion -->
+      <article class="glass-card" data-category="motion" 
+        data-title="Synaptic Orbital Drift" 
+        data-desc="Generative motion loop combining Point-E neural point clouds, dynamic camera trajectory constraints, and GPU spatial particle compute."
+        data-tech="ComfyUI, Blender Cycles, GLSL"
+        data-meta="Point Cloud VFX | 120 FPS Realtime Shader">
+        <div class="card-visual">
+          <div class="visual-art art-ai-kinetic">
+            <div class="kinetic-ring"></div>
+            <div class="kinetic-ring"></div>
+            <div class="kinetic-ring"></div>
+            <div class="kinetic-core"></div>
+          </div>
+          <span class="card-type-tag tag-motion">AI Motion</span>
+          <div class="card-meta-action" title="Inspect Project">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Synaptic Orbital Drift</h2>
+          <p class="card-desc">Particle orbit simulation visualizing neural activation states during deep learning text-to-3D diffusion synthesis.</p>
+          <div class="card-footer">
+            <div class="tech-stack">
+              <span class="tech-pill">ComfyUI</span>
+              <span class="tech-pill">GLSL Shaders</span>
+            </div>
+            <span class="interactive-link">
+              Explore 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 4: Graphic Design -->
+      <article class="glass-card" data-category="graphic" 
+        data-title="Neo-Cyberpunk Festival" 
+        data-desc="Holographic foil packaging and key visual identity suite engineered for an autonomous sound and light exhibition in Shibuya."
+        data-tech="Figma, Cinema 4D, Foil Print"
+        data-meta="Holo-Chromatic Print | Spatial Branding">
+        <div class="card-visual">
+          <div class="visual-art art-graphic-brand">
+            <div class="brand-cube"></div>
+          </div>
+          <span class="card-type-tag tag-graphic">Graphic Design</span>
+          <div class="card-meta-action" title="Inspect Project">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Neo-Cyberpunk Festival</h2>
+          <p class="card-desc">Multi-surface geometric visual language featuring isometric emblems and high-contrast ultraviolet print finishes.</p>
+          <div class="card-footer">
+            <div class="tech-stack">
+              <span class="tech-pill">Brand Identity</span>
+              <span class="tech-pill">3D Vector</span>
+            </div>
+            <span class="interactive-link">
+              Explore 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 5: AI Motion -->
+      <article class="glass-card" data-category="motion" 
+        data-title="Aura Waveform Resonator" 
+        data-desc="Audio-reactive spectrogram motion interpolation generated by custom ControlNet audio-weight tensors mapped to kinetic ribbon geometries."
+        data-tech="ControlNet, AudioReactive AI, Houdini"
+        data-meta="Spatial Audio Sync | 4K Spatial Output">
+        <div class="card-visual">
+          <div class="visual-art art-ai-particle">
+            <div class="waveform-bars">
+              <div class="waveform-bar"></div>
+              <div class="waveform-bar"></div>
+              <div class="waveform-bar"></div>
+              <div class="waveform-bar"></div>
+              <div class="waveform-bar"></div>
+              <div class="waveform-bar"></div>
+              <div class="waveform-bar"></div>
+            </div>
+          </div>
+          <span class="card-type-tag tag-motion">AI Motion</span>
+          <div class="card-meta-action" title="Inspect Project">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Aura Waveform Resonator</h2>
+          <p class="card-desc">Synthesized frequency choreography transforming stems into fluid, iridescent motion sculptures with Zero123 camera tracking.</p>
+          <div class="card-footer">
+            <div class="tech-stack">
+              <span class="tech-pill">Audio Reactive</span>
+              <span class="tech-pill">ControlNet</span>
+            </div>
+            <span class="interactive-link">
+              Explore 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Item 6: Graphic Design -->
+      <article class="glass-card" data-category="graphic" 
+        data-title="Swiss Algorithmics Editorial" 
+        data-desc="Editorial book system synthesizing International Typographic Style (Swiss Style) with modern generative algorithmic layout rules."
+        data-tech="InDesign, Processing, Custom Scripts"
+        data-meta="Hardcover 320pp | CMYK + 2 Spot Colors">
+        <div class="card-visual">
+          <div class="visual-art art-graphic-editorial">
+            <div class="editorial-grid-mock">
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+              <div class="grid-cell"></div>
+            </div>
+          </div>
+          <span class="card-type-tag tag-graphic">Graphic Design</span>
+          <div class="card-meta-action" title="Inspect Project">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+          </div>
+        </div>
+        <div class="card-content">
+          <h2 class="card-title">Swiss Algorithmics Editorial</h2>
+          <p class="card-desc">Rigorous typographic system structured on mathematical modular scales and generative layout automation.</p>
+          <div class="card-footer">
+            <div class="tech-stack">
+              <span class="tech-pill">Editorial</span>
+              <span class="tech-pill">Generative Grid</span>
+            </div>
+            <span class="interactive-link">
+              Explore 
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </span>
+          </div>
+        </div>
+      </article>
+
+    </main>
   </div>
+
+  <!-- Interactive Project Detail Modal -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-box">
+      <button class="modal-close" id="modalCloseBtn" aria-label="Close dialog">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <div class="modal-header-preview" id="modalPreview">
+        <!-- Cloned dynamic visual will render here -->
+      </div>
+      <div class="modal-body">
+        <div class="modal-tags" id="modalTags"></div>
+        <h3 class="modal-title" id="modalTitle">Project Title</h3>
+        <p class="modal-desc" id="modalDesc">Detailed description of the portfolio showcase item.</p>
+        <div class="modal-spec-grid">
+          <div class="spec-item">
+            <h4>Technology & Pipeline</h4>
+            <p id="modalTech">Toolchain</p>
+          </div>
+          <div class="spec-item">
+            <h4>Output Specification</h4>
+            <p id="modalMeta">Specs</p>
+          </div>
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+          <button class="filter-btn active" style="padding: 0.6rem 1.4rem;" onclick="closeModal()">Close Inspector</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Filtering Logic
+    const filterButtons = document.querySelectorAll('.filter-btn[data-filter]');
+    const cards = document.querySelectorAll('.glass-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filterValue = btn.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filterValue === 'all' || category === filterValue) {
+            card.style.display = 'flex';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0) scale(1)';
+            }, 20);
+          } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(15px) scale(0.97)';
+            setTimeout(() => {
+              card.style.display = 'none';
+            }, 300);
+          }
+        });
+      });
+    });
+
+    // 3D Card Tilt Effect on Hover
+    cards.forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -5;
+        const rotateY = ((x - centerX) / centerX) * 5;
+
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = '';
+      });
+    });
+
+    // Modal Details Inspector
+    const modal = document.getElementById('projectModal');
+    const modalCloseBtn = document.getElementById('modalCloseBtn');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalTech = document.getElementById('modalTech');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalTags = document.getElementById('modalTags');
+    const modalPreview = document.getElementById('modalPreview');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const title = card.getAttribute('data-title');
+        const desc = card.getAttribute('data-desc');
+        const tech = card.getAttribute('data-tech');
+        const meta = card.getAttribute('data-meta');
+        const category = card.getAttribute('data-category');
+        const visualNode = card.querySelector('.visual-art').cloneNode(true);
+
+        modalTitle.textContent = title;
+        modalDesc.textContent = desc;
+        modalTech.textContent = tech;
+        modalMeta.textContent = meta;
+
+        // Populate visual preview
+        modalPreview.innerHTML = '';
+        modalPreview.appendChild(visualNode);
+
+        // Populate tag
+        const isMotion = category === 'motion';
+        modalTags.innerHTML = `
+          <span class="card-type-tag ${isMotion ? 'tag-motion' : 'tag-graphic'}" style="position:static;">
+            ${isMotion ? 'AI Motion Graphics' : 'Graphic Design'}
+          </span>
+        `;
+
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+  </script>
 </body>
 </html>
