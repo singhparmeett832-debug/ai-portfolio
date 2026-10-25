@@ -71,7 +71,94 @@
       cursor: pointer;
     }
 
-    /* Accessibility / Reduced Motion */
+    /* ==========================================================================
+       2. EDITORIAL MOUSE CURSOR SYSTEM
+       ========================================================================== */
+    @media (hover: hover) and (pointer: fine) {
+      body {
+        cursor: default;
+      }
+
+      .cursor-dot {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 6px;
+        height: 6px;
+        background-color: var(--color-accent);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: opacity 0.2s ease, transform 0.15s ease;
+      }
+
+      .cursor-follower {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 36px;
+        height: 36px;
+        border: 1px solid rgba(23, 23, 23, 0.35);
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s var(--ease-editorial),
+                    height 0.3s var(--ease-editorial),
+                    border-color 0.3s var(--ease-editorial),
+                    background-color 0.3s var(--ease-editorial),
+                    opacity 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: transparent;
+      }
+
+      body.cursor-hover .cursor-follower {
+        width: 52px;
+        height: 52px;
+        border-color: var(--color-accent);
+        background-color: rgba(217, 93, 57, 0.08);
+      }
+      body.cursor-hover .cursor-dot {
+        transform: translate(-50%, -50%) scale(1.4);
+      }
+
+      body.cursor-view .cursor-follower {
+        width: 74px;
+        height: 74px;
+        background-color: var(--color-dark);
+        border-color: var(--color-dark);
+        color: var(--color-white);
+      }
+      body.cursor-view .cursor-dot {
+        opacity: 0;
+      }
+
+      body.cursor-play .cursor-follower {
+        width: 74px;
+        height: 74px;
+        background-color: var(--color-accent);
+        border-color: var(--color-accent);
+        color: var(--color-white);
+      }
+      body.cursor-play .cursor-dot {
+        opacity: 0;
+      }
+    }
+
+    @media (hover: none) or (pointer: coarse) {
+      .cursor-dot, .cursor-follower {
+        display: none !important;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
@@ -86,10 +173,13 @@
         opacity: 1 !important;
         transform: none !important;
       }
+      .cursor-dot, .cursor-follower {
+        display: none !important;
+      }
     }
 
     /* ==========================================================================
-       2. TYPOGRAPHY & COMMON LAYOUT
+       3. TYPOGRAPHY & COMMON LAYOUT
        ========================================================================== */
     h1, h2, h3, h4 {
       font-family: var(--font-heading);
@@ -189,7 +279,7 @@
     }
 
     /* ==========================================================================
-       3. NAVIGATION
+       4. NAVIGATION
        ========================================================================== */
     .site-header {
       position: sticky;
@@ -254,7 +344,7 @@
     }
 
     /* ==========================================================================
-       4. HERO SECTION
+       5. HERO SECTION
        ========================================================================== */
     .hero-section {
       padding: clamp(6rem, 12vw, 11rem) 0 clamp(5rem, 8vw, 8rem);
@@ -309,7 +399,7 @@
     }
 
     /* ==========================================================================
-       5. SELECTED WORK GALLERY (2-COLUMN GRID)
+       6. SELECTED WORK GALLERY (2-COLUMN GRID)
        ========================================================================== */
     .work-section {
       background-color: var(--color-background);
@@ -420,17 +510,51 @@
     }
 
     /* ==========================================================================
-       6. AI FILMS & MOTION SECTION
+       7. AI FILMS & MOTION (ALL 10 VIDEOS IN 4 FOLDERS)
        ========================================================================== */
     .films-section {
       background-color: var(--color-background-secondary);
       border-top: 1px solid var(--color-border);
     }
 
+    .film-folder-block {
+      margin-bottom: 5rem;
+    }
+
+    .film-folder-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .folder-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .folder-tag {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      background: rgba(217, 93, 57, 0.1);
+      padding: 0.3rem 0.75rem;
+      border-radius: 3px;
+    }
+
+    .folder-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
     .films-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2rem;
+      gap: 2.25rem;
     }
 
     .film-card {
@@ -440,6 +564,11 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      transition: border-color var(--transition-standard);
+    }
+
+    .film-card:hover {
+      border-color: #B5B2A9;
     }
 
     .video-viewport {
@@ -502,22 +631,34 @@
 
     .film-details {
       padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      flex: 1;
     }
 
     .film-details h3 {
       font-size: 1.25rem;
       font-weight: 600;
-      margin-bottom: 0.35rem;
     }
 
-    .film-details p {
+    .film-caption-text {
       font-size: 0.9375rem;
       color: var(--color-text-secondary);
-      line-height: 1.5;
+      line-height: 1.6;
+    }
+
+    .film-role-meta {
+      font-size: 0.8125rem;
+      color: var(--color-accent);
+      margin-top: auto;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--color-border);
+      font-weight: 500;
     }
 
     /* ==========================================================================
-       7. ABOUT SECTION
+       8. ABOUT SECTION
        ========================================================================== */
     .about-section {
       background-color: var(--color-background);
@@ -595,7 +736,7 @@
     }
 
     /* ==========================================================================
-       8. WHAT I DO (SERVICES SECTION)
+       9. WHAT I DO (SERVICES SECTION)
        ========================================================================== */
     .services-section {
       background-color: var(--color-background-secondary);
@@ -637,7 +778,7 @@
     }
 
     /* ==========================================================================
-       9. CONTACT SECTION (DARK CONTRAST BLOCK)
+       10. CONTACT SECTION (DARK CONTRAST BLOCK)
        ========================================================================== */
     .contact-section {
       background-color: var(--color-dark);
@@ -718,7 +859,6 @@
       color: var(--color-accent);
     }
 
-    /* Footer within Dark Section */
     .site-footer {
       margin-top: 5rem;
       padding-top: 2rem;
@@ -741,7 +881,7 @@
     }
 
     /* ==========================================================================
-       10. PROJECT DETAIL MODAL
+       11. PROJECT DETAIL MODAL
        ========================================================================== */
     .modal-backdrop {
       position: fixed;
@@ -835,8 +975,7 @@
       overflow: hidden;
     }
 
-    .modal-media-container img,
-    .modal-media-container video {
+    .modal-media-container img {
       width: 100%;
       max-height: 60vh;
       object-fit: contain;
@@ -857,7 +996,7 @@
     }
 
     /* ==========================================================================
-       11. SCROLL REVEAL STYLES (INTERSECTION OBSERVER)
+       12. SCROLL REVEAL STYLES (INTERSECTION OBSERVER)
        ========================================================================== */
     .reveal {
       opacity: 0;
@@ -876,7 +1015,7 @@
     .delay-3 { transition-delay: 270ms; }
 
     /* ==========================================================================
-       12. RESPONSIVE BREAKPOINTS
+       13. RESPONSIVE BREAKPOINTS
        ========================================================================== */
     @media (max-width: 992px) {
       .project-grid {
@@ -932,6 +1071,10 @@
 </head>
 <body>
 
+  <!-- Custom Cursor Elements -->
+  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+
   <!-- Navigation -->
   <header class="site-header">
     <div class="container nav-wrapper">
@@ -967,7 +1110,7 @@
     </div>
   </section>
 
-  <!-- Selected Work Section -->
+  <!-- Selected Work Section (4:5 Ratio Posters) -->
   <section class="work-section section-spacing" id="work">
     <div class="container">
       <div class="section-header reveal">
@@ -980,11 +1123,7 @@
         <!-- Project 1 -->
         <article class="project-card reveal delay-1" data-project-id="1">
           <div class="project-thumbnail-wrapper">
-            <!-- Replace thumbnail src with actual asset path if available -->
-            <div class="project-placeholder-visual">
-              <strong>Brand Campaign</strong>
-              <span>Visual Showcase (4:5)</span>
-            </div>
+            <img src="assets/images/project-01.jpg" alt="Commercial Identity &amp; Packaging" class="project-thumbnail" onerror="this.src='https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg'" />
           </div>
           <div class="project-info">
             <span class="project-category">Brand Identity &amp; Creative Direction</span>
@@ -998,10 +1137,7 @@
         <!-- Project 2 -->
         <article class="project-card reveal delay-2" data-project-id="2">
           <div class="project-thumbnail-wrapper">
-            <div class="project-placeholder-visual">
-              <strong>Digital Advertising</strong>
-              <span>Campaign System (4:5)</span>
-            </div>
+            <img src="assets/images/project-02.jpg" alt="Unleash Speed — Digital Advertising" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
           </div>
           <div class="project-info">
             <span class="project-category">Advertising Creatives &amp; Design</span>
@@ -1015,10 +1151,7 @@
         <!-- Project 3 -->
         <article class="project-card reveal delay-1" data-project-id="3">
           <div class="project-thumbnail-wrapper">
-            <div class="project-placeholder-visual">
-              <strong>3D &amp; Generative Visuals</strong>
-              <span>Product Renderings (4:5)</span>
-            </div>
+            <img src="assets/images/project-03.jpg" alt="Zero Gravity — Cinematic 3D Product Visuals" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
           </div>
           <div class="project-info">
             <span class="project-category">3D Design &amp; Generative Visuals</span>
@@ -1032,10 +1165,7 @@
         <!-- Project 4 -->
         <article class="project-card reveal delay-2" data-project-id="4">
           <div class="project-thumbnail-wrapper">
-            <div class="project-placeholder-visual">
-              <strong>Visual Storytelling</strong>
-              <span>Digital Narrative (4:5)</span>
-            </div>
+            <img src="assets/images/project-04.jpg" alt="Double Exposure Silhouette — Editorial Visual Narratives" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
           </div>
           <div class="project-info">
             <span class="project-category">Visual Storytelling &amp; Strategy</span>
@@ -1049,7 +1179,9 @@
     </div>
   </section>
 
-  <!-- AI Films & Motion Section -->
+  <!-- ========================================================================
+       AI FILMS & MOTION SECTION (ALL 10 VIDEOS IN 4 FOLDERS)
+       ======================================================================== -->
   <section class="films-section section-spacing" id="films">
     <div class="container">
       <div class="section-header reveal">
@@ -1058,39 +1190,212 @@
         <p class="section-subtitle">Exploring ideas through motion, artificial intelligence and visual storytelling.</p>
       </div>
 
-      <div class="films-grid">
-        <!-- Film Card 1 -->
-        <div class="film-card reveal delay-1">
-          <div class="video-viewport">
-            <video playsinline loop muted preload="metadata">
-              <source src="" type="video/mp4" />
-            </video>
-            <div class="video-overlay" role="button" aria-label="Play AI motion preview" tabindex="0">
-              <div class="play-btn">▶</div>
-            </div>
-          </div>
-          <div class="film-details">
-            <h3>Cinematic AI Worldbuilding</h3>
-            <p>Generative sequence exploration focused on controlled lighting, atmosphere, and cinematic visual tempo.</p>
-          </div>
+      <!-- FOLDER 01 -->
+      <div class="film-folder-block reveal">
+        <div class="folder-header">
+          <span class="folder-tag">Folder 01</span>
+          <h3 class="folder-title">Cinematic Commercial Ad Films (3D VFX &amp; Live Action)</h3>
         </div>
-
-        <!-- Film Card 2 -->
-        <div class="film-card reveal delay-2">
-          <div class="video-viewport">
-            <video playsinline loop muted preload="metadata">
-              <source src="" type="video/mp4" />
-            </video>
-            <div class="video-overlay" role="button" aria-label="Play commercial motion ad preview" tabindex="0">
-              <div class="play-btn">▶</div>
+        <div class="films-grid">
+          <!-- Video 1 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-1-cinematic-ads/peri-peri-rush-city.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Peri Peri Rush Ad" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Peri Peri Rush — City Impact CGI</h3>
+              <p class="film-caption-text">Action-packed FMCG commercial featuring giant pouch crash-landing street destruction CGI, dynamic macro crunch, and high-energy brand pacing.</p>
+              <div class="film-role-meta">Role: Creative Direction, AI Video Synthesis &amp; Sound Architecture</div>
             </div>
           </div>
-          <div class="film-details">
-            <h3>Motion Graphics &amp; Social Ads</h3>
-            <p>Paced commercial cuts, kinetic typography, and retention-engineered motion sequences for vertical screens.</p>
+
+          <!-- Video 2 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-1-cinematic-ads/macro-crunch-landscape.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Macro Crunch Ad" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>There's More to Every Crunch</h3>
+              <p class="film-caption-text">Editorial macro journey into product anatomy, navigating red spice canyons, salt crystal mountain peaks, and sensory ASMR crunch mechanics.</p>
+              <div class="film-role-meta">Role: Generative Worldbuilding, Macro Asset Art Direction &amp; Edit</div>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-1-cinematic-ads/late-night-snack-upgrade.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Late Night Snack Upgrade Ad" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Snack Upgrade — Late Night Hunger</h3>
+              <p class="film-caption-text">Commercial narrative capturing relatable late-night study routines, junk food replacement, and seamless Goodrush Cream &amp; Onion integration.</p>
+              <div class="film-role-meta">Role: Commercial Scripting, Scene Continuity &amp; Color Grade</div>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- FOLDER 02 -->
+      <div class="film-folder-block reveal">
+        <div class="folder-header">
+          <span class="folder-tag">Folder 02</span>
+          <h3 class="folder-title">3D Character Universe &amp; Commercial Animation</h3>
+        </div>
+        <div class="films-grid">
+          <!-- Video 4 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-2-character-animation/chai-date-rushie.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Chai &amp; Bhujia Rushie Animation" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Chai &amp; Bhujia vs. Goodrush Rushie</h3>
+              <p class="film-caption-text">"Every generation has its favourite snack." Character-driven 3D animation exploring comedic brand rivalry between traditional namkeen and Goodrush.</p>
+              <div class="film-role-meta">Role: 3D Character Direction, Narrative Scripting &amp; Sound Sync</div>
+            </div>
+          </div>
+
+          <!-- Video 5 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-2-character-animation/chips-club-party.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Chips Club Animation" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Chips Club — Why Should Chips Have All the Fun?</h3>
+              <p class="film-caption-text">High-energy nightclub party commercial featuring 3D character rigging, neon club lighting, and beat-synced choreography for youth engagement.</p>
+              <div class="film-role-meta">Role: 3D Art Direction, Animation Pacing &amp; Character Worldbuilding</div>
+            </div>
+          </div>
+
+          <!-- Video 6 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-2-character-animation/mini-chef-diy-chaat.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Mini Chef DIY Chaat Ad" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Mini Chef's DIY Snack Chaat</h3>
+              <p class="film-caption-text">Culinary craft in miniature stop-motion aesthetic, showcasing recipe versatility with fresh ingredients and Goodrush Peri Peri Makhana.</p>
+              <div class="film-role-meta">Role: Art Direction, Visual Asset Compositing &amp; Audio Pacing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOLDER 03 -->
+      <div class="film-folder-block reveal">
+        <div class="folder-header">
+          <span class="folder-tag">Folder 03</span>
+          <h3 class="folder-title">Kinetic Motion &amp; Exploding Typography</h3>
+        </div>
+        <div class="films-grid">
+          <!-- Video 7 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-3-kinetic-motion/3-flavours-kinetic-launch.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Kinetic Typography Launch" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Introducing 3 New Flavours — Kinetic Launch</h3>
+              <p class="film-caption-text">High-impact motion graphics reveal combining explosive ingredient particle dynamics, bold kinetic typography, and fast-paced brand messaging.</p>
+              <div class="film-role-meta">Role: Kinetic Typography, Motion Graphics &amp; Visual Pacing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOLDER 04 -->
+      <div class="film-folder-block reveal">
+        <div class="folder-header">
+          <span class="folder-tag">Folder 04</span>
+          <h3 class="folder-title">"The Goodrush Mission" Cinematic Action Series</h3>
+        </div>
+        <div class="films-grid">
+          <!-- Video 8 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-4-goodrush-mission/mission-ep1-the-call.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Episode 1: The Call" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>The Goodrush Mission — Ep 1: The Call</h3>
+              <p class="film-caption-text">Cinematic open-world action series blending high-octane muscle car night sequences, neon rain atmospheres, and episodic suspense hooks.</p>
+              <div class="film-role-meta">Role: Concept Creation, AI Film Directing, Sound Editing &amp; VFX</div>
+            </div>
+          </div>
+
+          <!-- Video 9 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-4-goodrush-mission/mission-ep2-the-store.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Episode 2: The Store" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>The Goodrush Mission — Ep 2: The Store</h3>
+              <p class="film-caption-text">Night supermarket tactical heist featuring diegetic HUD mission navigation, checkout dash, and wet-asphalt combat choreography.</p>
+              <div class="film-role-meta">Role: Action Choreography Prompting, Continuity &amp; Sound Design</div>
+            </div>
+          </div>
+
+          <!-- Video 10 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline loop muted preload="metadata">
+                <source src="assets/videos/folder-4-goodrush-mission/mission-ep3-stolen-pack.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Episode 3: The Stolen Pack" tabindex="0">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>The Goodrush Mission — Ep 3: The Stolen Pack</h3>
+              <p class="film-caption-text">Surveillance room tracking aesthetics, CCTV getaway sequences, and high-speed highway pursuit driving dramatic episodic tension.</p>
+              <div class="film-role-meta">Role: Multi-Camera Direction, Post-Production &amp; Atmospheric Color</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -1099,11 +1404,7 @@
     <div class="container">
       <div class="about-layout">
         <div class="about-portrait-wrapper reveal delay-1">
-          <!-- Real portrait can be placed here -->
-          <div class="portrait-placeholder">
-            <strong>PARMEET SINGH</strong>
-            <span>Portrait / Studio Photo Placeholder (4:5)</span>
-          </div>
+          <img src="assets/images/portrait.jpg" alt="Parmeet Singh — Graphic Designer &amp; AI Content Creator" class="about-portrait" onerror="this.src='https://pps.services.adobe.com/api/profile/9E37289D698C65150A495E86@AdobeID/image/c50c5e43-c102-4735-b9db-4bce191232e4/276'" />
         </div>
         <div class="about-bio reveal delay-2">
           <span class="section-eyebrow">Biography</span>
@@ -1202,9 +1503,7 @@
         <h3 class="modal-title" id="modalTitle">Project Title</h3>
       </div>
       <div class="modal-media-container" id="modalMedia">
-        <div class="project-placeholder-visual" style="height: 380px;">
-          <span>High-Resolution Project Asset View</span>
-        </div>
+        <img id="modalImg" src="" alt="Project detail view" />
       </div>
       <p class="modal-description" id="modalDescription">Detailed project case study information and visual documentation.</p>
       <div class="modal-nav">
@@ -1214,10 +1513,84 @@
     </div>
   </div>
 
-  <!-- JavaScript: Navigation, Scroll Reveals, Click-to-Play, and Modal -->
+  <!-- JavaScript: Cursor, Navigation, Scroll Reveals, Video Player, and Modal -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      // 1. Mobile Menu Toggle
+
+      // 1. Dual-Stage Mouse Cursor
+      const cursorDot = document.getElementById('cursorDot');
+      const cursorFollower = document.getElementById('cursorFollower');
+
+      if (cursorDot && cursorFollower && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let followerX = mouseX;
+        let followerY = mouseY;
+        let isMoving = false;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+
+          cursorDot.style.left = `${mouseX}px`;
+          cursorDot.style.top = `${mouseY}px`;
+
+          if (!isMoving) {
+            isMoving = true;
+            cursorDot.style.opacity = '1';
+            cursorFollower.style.opacity = '1';
+          }
+        });
+
+        const renderCursor = () => {
+          followerX += (mouseX - followerX) * 0.16;
+          followerY += (mouseY - followerY) * 0.16;
+
+          cursorFollower.style.left = `${followerX}px`;
+          cursorFollower.style.top = `${followerY}px`;
+
+          requestAnimationFrame(renderCursor);
+        };
+        requestAnimationFrame(renderCursor);
+
+        document.addEventListener('mouseleave', () => {
+          cursorDot.style.opacity = '0';
+          cursorFollower.style.opacity = '0';
+          isMoving = false;
+        });
+
+        const hoverTargets = document.querySelectorAll('a, button, .service-row, .modal-close-btn');
+        hoverTargets.forEach(el => {
+          el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+          el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            document.body.classList.add('cursor-view');
+            cursorFollower.textContent = 'VIEW';
+          });
+          card.addEventListener('mouseleave', () => {
+            document.body.classList.remove('cursor-view');
+            cursorFollower.textContent = '';
+          });
+        });
+
+        const videoCards = document.querySelectorAll('.film-card');
+        videoCards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            document.body.classList.add('cursor-play');
+            cursorFollower.textContent = 'PLAY';
+          });
+          card.addEventListener('mouseleave', () => {
+            document.body.classList.remove('cursor-play');
+            cursorFollower.textContent = '';
+          });
+        });
+      }
+
+      // 2. Mobile Menu
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
       
@@ -1235,7 +1608,7 @@
         });
       }
 
-      // 2. Intersection Observer for Scroll Reveals
+      // 3. Scroll Reveals
       const reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1255,16 +1628,15 @@
         reveals.forEach(el => el.classList.add('is-revealed'));
       }
 
-      // 3. Click-to-Play Video Controller (No Autoplay Sound)
-      const videoCards = document.querySelectorAll('.film-card');
-      videoCards.forEach(card => {
+      // 4. Click-to-Play Video Controller
+      const filmCards = document.querySelectorAll('.film-card');
+      filmCards.forEach(card => {
         const overlay = card.querySelector('.video-overlay');
         const video = card.querySelector('video');
 
         if (overlay && video) {
           const togglePlay = () => {
             if (video.paused) {
-              // Pause any other playing videos
               document.querySelectorAll('.film-card video').forEach(v => {
                 if (v !== video) {
                   v.pause();
@@ -1273,9 +1645,7 @@
               });
               video.play().then(() => {
                 overlay.classList.add('is-playing');
-              }).catch(() => {
-                // Autoplay/play prevented gracefully
-              });
+              }).catch(() => {});
             } else {
               video.pause();
               overlay.classList.remove('is-playing');
@@ -1293,26 +1663,34 @@
         }
       });
 
-      // 4. Project Modal Interaction System
+      // 5. Project Detail Modal System
       const projectData = {
         '1': {
           title: 'Commercial Identity & Packaging',
           category: 'Brand Identity & Creative Direction',
+          image: 'assets/images/project-01.jpg',
+          fallback: 'https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg',
           description: 'A comprehensive brand system combining clean editorial packaging design, custom typography hierarchies, and structured visual identity guidelines built for lifestyle and commercial consumer goods.'
         },
         '2': {
           title: 'Consumer Brand Digital Campaign',
           category: 'Advertising Creatives & Design',
+          image: 'assets/images/project-02.jpg',
+          fallback: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80',
           description: 'High-converting social advertising assets and static-to-motion variants engineered for brand recall, thumb-stopping digital hooks, and cross-platform campaign deployments.'
         },
         '3': {
           title: 'Cinematic 3D Product Renders',
           category: '3D Design & Generative Visuals',
+          image: 'assets/images/project-03.jpg',
+          fallback: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
           description: 'High-fidelity 3D modeling and generative exploration focusing on surface materiality, studio lighting physics, and high-impact visual presentations.'
         },
         '4': {
           title: 'Editorial Visual Narratives',
           category: 'Visual Storytelling & Strategy',
+          image: 'assets/images/project-04.jpg',
+          fallback: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
           description: 'A cohesive digital publication series exploring visual pacing, contrast, and contemporary typography across modern screen layouts.'
         }
       };
@@ -1322,6 +1700,7 @@
       const modalTitle = document.getElementById('modalTitle');
       const modalCategory = document.getElementById('modalCategory');
       const modalDescription = document.getElementById('modalDescription');
+      const modalImg = document.getElementById('modalImg');
       const modalClose = document.getElementById('modalClose');
       const modalPrev = document.getElementById('modalPrev');
       const modalNext = document.getElementById('modalNext');
@@ -1336,6 +1715,8 @@
         modalTitle.textContent = data.title;
         modalCategory.textContent = data.category;
         modalDescription.textContent = data.description;
+        modalImg.src = data.image;
+        modalImg.onerror = () => { modalImg.src = data.fallback; };
       };
 
       const openModal = (id) => {
@@ -1381,7 +1762,6 @@
         });
       }
 
-      // Keyboard support for accessibility
       document.addEventListener('keydown', (e) => {
         if (!modal.classList.contains('is-active')) return;
         if (e.key === 'Escape') closeModal();
