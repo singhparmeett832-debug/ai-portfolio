@@ -54,7 +54,7 @@
       overflow-x: hidden;
     }
 
-    img, video {
+    img {
       display: block;
       max-width: 100%;
     }
@@ -140,8 +140,8 @@
       }
 
       body.cursor-play .cursor-follower {
-        width: 74px;
-        height: 74px;
+        width: 80px;
+        height: 80px;
         background-color: var(--color-accent);
         border-color: var(--color-accent);
         color: var(--color-white);
@@ -226,18 +226,6 @@
       transform: translateY(-2px);
     }
 
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--color-text-primary);
-      border: 1px solid var(--color-border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--color-text-primary);
-      background-color: rgba(23, 23, 23, 0.03);
-      transform: translateY(-2px);
-    }
-
     .btn-link {
       display: inline-flex;
       align-items: center;
@@ -255,7 +243,7 @@
       border-color: var(--color-accent);
     }
 
-    /* Header */
+    /* Navbar */
     .site-header {
       position: sticky;
       top: 0;
@@ -369,7 +357,7 @@
       flex-wrap: wrap;
     }
 
-    /* Selected Work (4:5 Posters) */
+    /* Selected Work (Posters Grid 4:5) */
     .work-section {
       background-color: var(--color-background);
       border-top: 1px solid var(--color-border);
@@ -456,7 +444,7 @@
       color: var(--color-accent);
     }
 
-    /* Video Showcase (2 Folders) */
+    /* Video Section (Direct Behance Link Cards) */
     .films-section {
       background-color: var(--color-background-secondary);
       border-top: 1px solid var(--color-border);
@@ -509,49 +497,47 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: border-color var(--transition-standard);
+      transition: border-color var(--transition-standard), transform var(--transition-standard);
+      text-decoration: none;
+      color: inherit;
     }
 
     .film-card:hover {
       border-color: #B5B2A9;
+      transform: translateY(-4px);
     }
 
     .video-viewport {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
-      background-color: #000;
+      background-color: #171717;
       overflow: hidden;
     }
 
-    .video-viewport video {
+    .video-viewport img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      background: #000;
-      display: block;
+      transition: transform 400ms var(--ease-editorial);
+    }
+
+    .film-card:hover .video-viewport img {
+      transform: scale(1.04);
     }
 
     .video-overlay {
       position: absolute;
       inset: 0;
-      background-color: rgba(23, 23, 23, 0.45);
+      background-color: rgba(23, 23, 23, 0.4);
       display: flex;
       align-items: center;
       justify-content: center;
-      cursor: pointer;
-      z-index: 5;
-      transition: opacity var(--transition-standard), visibility var(--transition-standard);
+      transition: background-color var(--transition-standard);
     }
 
-    .video-overlay:hover {
-      background-color: rgba(23, 23, 23, 0.25);
-    }
-
-    .video-overlay.is-hidden {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+    .film-card:hover .video-overlay {
+      background-color: rgba(23, 23, 23, 0.2);
     }
 
     .play-btn {
@@ -569,8 +555,8 @@
       transition: transform var(--transition-standard), background-color var(--transition-standard), color var(--transition-standard);
     }
 
-    .video-overlay:hover .play-btn {
-      transform: scale(1.08);
+    .film-card:hover .play-btn {
+      transform: scale(1.1);
       background-color: var(--color-accent);
       color: var(--color-white);
     }
@@ -581,6 +567,13 @@
       flex-direction: column;
       gap: 0.65rem;
       flex: 1;
+    }
+
+    .film-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 0.5rem;
     }
 
     .film-details h3 {
@@ -594,13 +587,16 @@
       line-height: 1.6;
     }
 
-    .film-role-meta {
+    .film-link-action {
       font-size: 0.8125rem;
       color: var(--color-accent);
       margin-top: auto;
       padding-top: 0.75rem;
       border-top: 1px solid var(--color-border);
-      font-weight: 500;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
     }
 
     /* About Section */
@@ -1029,14 +1025,14 @@
   </section>
 
   <!-- ========================================================================
-       AI FILMS & MOTION (EXACTLY 2 FOLDERS)
+       AI FILMS & MOTION (DIRECT BEHANCE INTEGRATION - 2 FOLDERS)
        ======================================================================== -->
   <section class="films-section section-spacing" id="films">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-eyebrow">Motion &amp; AI</span>
         <h2 class="section-title">AI Films &amp; Commercial Motion</h2>
-        <p class="section-subtitle">Exploring ideas through motion, artificial intelligence and cinematic visual storytelling.</p>
+        <p class="section-subtitle">Click on any project to watch the complete video and case study on Behance.</p>
       </div>
 
       <!-- FOLDER 01: THE GOODRUSH MISSION SERIES -->
@@ -1047,67 +1043,58 @@
         </div>
         <div class="films-grid">
           <!-- Video 1 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/the-goodrush-mission/mission-ep1-the-call.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Episode 1: The Call">
+              <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" alt="Episode 1: The Call" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>The Goodrush Mission — Ep 1: The Call</h3>
+              <div class="film-title-row">
+                <h3>The Goodrush Mission — Ep 1: The Call</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">Cinematic open-world action series blending high-octane muscle car night sequences, neon rain atmospheres, and episodic suspense hooks.</p>
-              <div class="film-role-meta">Role: Concept Creation, AI Film Directing, Sound Editing &amp; VFX</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
 
           <!-- Video 2 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/the-goodrush-mission/mission-ep2-the-store.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Episode 2: The Store">
+              <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=800&q=80" alt="Episode 2: The Store" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>The Goodrush Mission — Ep 2: The Store</h3>
+              <div class="film-title-row">
+                <h3>The Goodrush Mission — Ep 2: The Store</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">Night supermarket tactical heist featuring diegetic HUD mission navigation, checkout dash, and wet-asphalt combat choreography.</p>
-              <div class="film-role-meta">Role: Action Choreography Prompting, Continuity &amp; Sound Design</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
 
           <!-- Video 3 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/the-goodrush-mission/mission-ep3-stolen-pack.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Episode 3: The Stolen Pack">
+              <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80" alt="Episode 3: The Stolen Pack" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>The Goodrush Mission — Ep 3: The Stolen Pack</h3>
+              <div class="film-title-row">
+                <h3>The Goodrush Mission — Ep 3: The Stolen Pack</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">Surveillance room tracking aesthetics, CCTV getaway sequences, and high-speed highway pursuit driving dramatic episodic tension.</p>
-              <div class="film-role-meta">Role: Multi-Camera Direction, Post-Production &amp; Atmospheric Color</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -1119,151 +1106,130 @@
         </div>
         <div class="films-grid">
           <!-- Video 4 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/commercial-films/peri-peri-rush-city.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Peri Peri Rush Ad">
+              <img src="https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg" alt="Peri Peri Rush — City Impact CGI" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>Peri Peri Rush — City Impact CGI</h3>
+              <div class="film-title-row">
+                <h3>Peri Peri Rush — City Impact CGI</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">Action-packed FMCG commercial featuring giant pouch crash-landing street destruction CGI, dynamic macro crunch, and high-energy brand pacing.</p>
-              <div class="film-role-meta">Role: Creative Direction, AI Video Synthesis &amp; Sound Architecture</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
 
           <!-- Video 5 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/commercial-films/macro-crunch-landscape.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Macro Crunch Ad">
+              <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="There's More to Every Crunch" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>There's More to Every Crunch</h3>
+              <div class="film-title-row">
+                <h3>There's More to Every Crunch</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">Editorial macro journey into product anatomy, navigating red spice canyons, salt crystal mountain peaks, and sensory ASMR crunch mechanics.</p>
-              <div class="film-role-meta">Role: Generative Worldbuilding, Macro Asset Art Direction &amp; Edit</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
 
           <!-- Video 6 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/commercial-films/late-night-snack-upgrade.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Late Night Snack Upgrade Ad">
+              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Snack Upgrade — Late Night Hunger" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>Snack Upgrade — Late Night Hunger</h3>
+              <div class="film-title-row">
+                <h3>Snack Upgrade — Late Night Hunger</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">Commercial narrative capturing relatable late-night study routines, junk food replacement, and seamless Goodrush Cream &amp; Onion integration.</p>
-              <div class="film-role-meta">Role: Commercial Scripting, Scene Continuity &amp; Color Grade</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
 
           <!-- Video 7 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/commercial-films/chai-date-rushie.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Chai &amp; Bhujia Rushie Animation">
+              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Chai & Bhujia vs. Goodrush Rushie" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>Chai &amp; Bhujia vs. Goodrush Rushie</h3>
+              <div class="film-title-row">
+                <h3>Chai &amp; Bhujia vs. Goodrush Rushie</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">"Every generation has its favourite snack." Character-driven 3D animation exploring comedic brand rivalry between traditional namkeen and Goodrush.</p>
-              <div class="film-role-meta">Role: 3D Character Direction, Narrative Scripting &amp; Sound Sync</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
 
           <!-- Video 8 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/commercial-films/chips-club-party.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Chips Club Animation">
+              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="Chips Club Party" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>Chips Club — Why Should Chips Have All the Fun?</h3>
+              <div class="film-title-row">
+                <h3>Chips Club — Why Should Chips Have All the Fun?</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">High-energy nightclub party commercial featuring 3D character rigging, neon club lighting, and beat-synced choreography for youth engagement.</p>
-              <div class="film-role-meta">Role: 3D Art Direction, Animation Pacing &amp; Character Worldbuilding</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
 
           <!-- Video 9 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/commercial-films/mini-chef-diy-chaat.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Mini Chef DIY Chaat Ad">
+              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Mini Chef DIY Chaat" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>Mini Chef's DIY Snack Chaat</h3>
+              <div class="film-title-row">
+                <h3>Mini Chef's DIY Snack Chaat</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">Culinary craft in miniature stop-motion aesthetic, showcasing recipe versatility with fresh ingredients and Goodrush Peri Peri Makhana.</p>
-              <div class="film-role-meta">Role: Art Direction, Visual Asset Compositing &amp; Audio Pacing</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
 
           <!-- Video 10 -->
-          <div class="film-card">
+          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
-              <video 
-                src="assets/videos/commercial-films/3-flavours-kinetic-launch.mp4" 
-                playsinline 
-                controls 
-                muted
-                preload="auto">
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Kinetic Typography Launch">
+              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="3 Flavours Kinetic Launch" />
+              <div class="video-overlay">
                 <div class="play-btn">▶</div>
               </div>
             </div>
             <div class="film-details">
-              <h3>Introducing 3 New Flavours — Kinetic Launch</h3>
+              <div class="film-title-row">
+                <h3>Introducing 3 New Flavours — Kinetic Launch</h3>
+                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
+              </div>
               <p class="film-caption-text">High-impact motion graphics reveal combining explosive ingredient particle dynamics, bold kinetic typography, and fast-paced brand messaging.</p>
-              <div class="film-role-meta">Role: Kinetic Typography, Motion Graphics &amp; Visual Pacing</div>
+              <div class="film-link-action">Watch on Behance ↗</div>
             </div>
-          </div>
+          </a>
         </div>
       </div>
 
@@ -1446,11 +1412,11 @@
           });
         });
 
-        const videoCards = document.querySelectorAll('.film-card');
-        videoCards.forEach(card => {
+        const filmCards = document.querySelectorAll('.film-card');
+        filmCards.forEach(card => {
           card.addEventListener('mouseenter', () => {
             document.body.classList.add('cursor-play');
-            cursorFollower.textContent = 'PLAY';
+            cursorFollower.textContent = 'WATCH';
           });
           card.addEventListener('mouseleave', () => {
             document.body.classList.remove('cursor-play');
@@ -1491,45 +1457,6 @@
       } else {
         reveals.forEach(el => el.classList.add('is-revealed'));
       }
-
-      // Video Play Engine
-      const filmCards = document.querySelectorAll('.film-card');
-      filmCards.forEach(card => {
-        const overlay = card.querySelector('.video-overlay');
-        const video = card.querySelector('video');
-
-        if (overlay && video) {
-          const playVideoAction = () => {
-            // Pause all other playing videos
-            filmCards.forEach(c => {
-              const otherVid = c.querySelector('video');
-              const otherOverlay = c.querySelector('.video-overlay');
-              if (otherVid && otherVid !== video) {
-                otherVid.pause();
-                if (otherOverlay) otherOverlay.classList.remove('is-hidden');
-              }
-            });
-
-            overlay.classList.add('is-hidden');
-
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.catch(() => {
-                // Autoplay blocked fallback: play muted
-                video.muted = true;
-                video.play();
-              });
-            }
-          };
-
-          overlay.addEventListener('click', playVideoAction);
-          video.addEventListener('play', () => overlay.classList.add('is-hidden'));
-          video.addEventListener('pause', () => {
-            if (!video.seeking) overlay.classList.remove('is-hidden');
-          });
-          video.addEventListener('ended', () => overlay.classList.remove('is-hidden'));
-        }
-      });
 
       // Modal Case Study Data
       const projectData = {
