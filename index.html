@@ -71,99 +71,6 @@
       cursor: pointer;
     }
 
-    /* ==========================================================================
-       2. EDITORIAL MOUSE CURSOR SYSTEM
-       ========================================================================== */
-    /* Only activate custom cursor on devices that support hover (desktops/laptops) */
-    @media (hover: hover) and (pointer: fine) {
-      body {
-        cursor: default;
-      }
-
-      .cursor-dot {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 6px;
-        height: 6px;
-        background-color: var(--color-accent);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: opacity 0.2s ease, transform 0.15s ease;
-      }
-
-      .cursor-follower {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 36px;
-        height: 36px;
-        border: 1px solid rgba(23, 23, 23, 0.35);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        transition: width 0.3s var(--ease-editorial),
-                    height 0.3s var(--ease-editorial),
-                    border-color 0.3s var(--ease-editorial),
-                    background-color 0.3s var(--ease-editorial),
-                    opacity 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-body);
-        font-size: 0.6875rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: transparent;
-      }
-
-      /* Hover state for buttons & links */
-      body.cursor-hover .cursor-follower {
-        width: 52px;
-        height: 52px;
-        border-color: var(--color-accent);
-        background-color: rgba(217, 93, 57, 0.08);
-      }
-      body.cursor-hover .cursor-dot {
-        transform: translate(-50%, -50%) scale(1.4);
-      }
-
-      /* Hover state for project cards ("VIEW") */
-      body.cursor-view .cursor-follower {
-        width: 74px;
-        height: 74px;
-        background-color: var(--color-dark);
-        border-color: var(--color-dark);
-        color: var(--color-white);
-      }
-      body.cursor-view .cursor-dot {
-        opacity: 0;
-      }
-
-      /* Hover state for video cards ("PLAY") */
-      body.cursor-play .cursor-follower {
-        width: 74px;
-        height: 74px;
-        background-color: var(--color-accent);
-        border-color: var(--color-accent);
-        color: var(--color-white);
-      }
-      body.cursor-play .cursor-dot {
-        opacity: 0;
-      }
-    }
-
-    /* Fallback: Hide cursor elements on touch devices */
-    @media (hover: none) or (pointer: coarse) {
-      .cursor-dot, .cursor-follower {
-        display: none !important;
-      }
-    }
-
     /* Accessibility / Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
       html {
@@ -179,13 +86,10 @@
         opacity: 1 !important;
         transform: none !important;
       }
-      .cursor-dot, .cursor-follower {
-        display: none !important;
-      }
     }
 
     /* ==========================================================================
-       3. TYPOGRAPHY & COMMON LAYOUT
+       2. TYPOGRAPHY & COMMON LAYOUT
        ========================================================================== */
     h1, h2, h3, h4 {
       font-family: var(--font-heading);
@@ -285,7 +189,7 @@
     }
 
     /* ==========================================================================
-       4. NAVIGATION
+       3. NAVIGATION
        ========================================================================== */
     .site-header {
       position: sticky;
@@ -350,7 +254,7 @@
     }
 
     /* ==========================================================================
-       5. HERO SECTION
+       4. HERO SECTION
        ========================================================================== */
     .hero-section {
       padding: clamp(6rem, 12vw, 11rem) 0 clamp(5rem, 8vw, 8rem);
@@ -405,7 +309,7 @@
     }
 
     /* ==========================================================================
-       6. SELECTED WORK GALLERY (2-COLUMN GRID)
+       5. SELECTED WORK GALLERY (2-COLUMN GRID)
        ========================================================================== */
     .work-section {
       background-color: var(--color-background);
@@ -516,7 +420,7 @@
     }
 
     /* ==========================================================================
-       7. AI FILMS & MOTION SECTION
+       6. AI FILMS & MOTION SECTION
        ========================================================================== */
     .films-section {
       background-color: var(--color-background-secondary);
@@ -613,7 +517,7 @@
     }
 
     /* ==========================================================================
-       8. ABOUT SECTION
+       7. ABOUT SECTION
        ========================================================================== */
     .about-section {
       background-color: var(--color-background);
@@ -691,7 +595,7 @@
     }
 
     /* ==========================================================================
-       9. WHAT I DO (SERVICES SECTION)
+       8. WHAT I DO (SERVICES SECTION)
        ========================================================================== */
     .services-section {
       background-color: var(--color-background-secondary);
@@ -733,7 +637,7 @@
     }
 
     /* ==========================================================================
-       10. CONTACT SECTION (DARK CONTRAST BLOCK)
+       9. CONTACT SECTION (DARK CONTRAST BLOCK)
        ========================================================================== */
     .contact-section {
       background-color: var(--color-dark);
@@ -814,7 +718,7 @@
       color: var(--color-accent);
     }
 
-    /* Footer */
+    /* Footer within Dark Section */
     .site-footer {
       margin-top: 5rem;
       padding-top: 2rem;
@@ -837,7 +741,7 @@
     }
 
     /* ==========================================================================
-       11. PROJECT DETAIL MODAL
+       10. PROJECT DETAIL MODAL
        ========================================================================== */
     .modal-backdrop {
       position: fixed;
@@ -953,7 +857,7 @@
     }
 
     /* ==========================================================================
-       12. SCROLL REVEAL STYLES (INTERSECTION OBSERVER)
+       11. SCROLL REVEAL STYLES (INTERSECTION OBSERVER)
        ========================================================================== */
     .reveal {
       opacity: 0;
@@ -972,7 +876,7 @@
     .delay-3 { transition-delay: 270ms; }
 
     /* ==========================================================================
-       13. RESPONSIVE BREAKPOINTS
+       12. RESPONSIVE BREAKPOINTS
        ========================================================================== */
     @media (max-width: 992px) {
       .project-grid {
@@ -1028,10 +932,6 @@
 </head>
 <body>
 
-  <!-- Custom Cursor Elements -->
-  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
-
   <!-- Navigation -->
   <header class="site-header">
     <div class="container nav-wrapper">
@@ -1080,6 +980,7 @@
         <!-- Project 1 -->
         <article class="project-card reveal delay-1" data-project-id="1">
           <div class="project-thumbnail-wrapper">
+            <!-- Replace thumbnail src with actual asset path if available -->
             <div class="project-placeholder-visual">
               <strong>Brand Campaign</strong>
               <span>Visual Showcase (4:5)</span>
@@ -1198,6 +1099,7 @@
     <div class="container">
       <div class="about-layout">
         <div class="about-portrait-wrapper reveal delay-1">
+          <!-- Real portrait can be placed here -->
           <div class="portrait-placeholder">
             <strong>PARMEET SINGH</strong>
             <span>Portrait / Studio Photo Placeholder (4:5)</span>
@@ -1312,94 +1214,10 @@
     </div>
   </div>
 
-  <!-- JavaScript: Custom Cursor, Navigation, Scroll Reveals, Click-to-Play, and Modal -->
+  <!-- JavaScript: Navigation, Scroll Reveals, Click-to-Play, and Modal -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-
-      // ========================================================================
-      // 1. DUAL-STAGE EDITORIAL MOUSE ANIMATION
-      // ========================================================================
-      const cursorDot = document.getElementById('cursorDot');
-      const cursorFollower = document.getElementById('cursorFollower');
-
-      if (cursorDot && cursorFollower && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let followerX = mouseX;
-        let followerY = mouseY;
-        let isMoving = false;
-
-        window.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
-
-          // Immediate position for center dot
-          cursorDot.style.left = `${mouseX}px`;
-          cursorDot.style.top = `${mouseY}px`;
-
-          if (!isMoving) {
-            isMoving = true;
-            cursorDot.style.opacity = '1';
-            cursorFollower.style.opacity = '1';
-          }
-        });
-
-        // Smooth Lerp loop (Lag physics for follower ring)
-        const renderCursor = () => {
-          followerX += (mouseX - followerX) * 0.16;
-          followerY += (mouseY - followerY) * 0.16;
-
-          cursorFollower.style.left = `${followerX}px`;
-          cursorFollower.style.top = `${followerY}px`;
-
-          requestAnimationFrame(renderCursor);
-        };
-        requestAnimationFrame(renderCursor);
-
-        // Hide when mouse leaves window
-        document.addEventListener('mouseleave', () => {
-          cursorDot.style.opacity = '0';
-          cursorFollower.style.opacity = '0';
-          isMoving = false;
-        });
-
-        // Hover state triggers: Interactive links & buttons
-        const hoverTargets = document.querySelectorAll('a, button, .service-row, .modal-close-btn');
-        hoverTargets.forEach(el => {
-          el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-          el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-        });
-
-        // Project Cards Hover -> "VIEW"
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            document.body.classList.add('cursor-view');
-            cursorFollower.textContent = 'VIEW';
-          });
-          card.addEventListener('mouseleave', () => {
-            document.body.classList.remove('cursor-view');
-            cursorFollower.textContent = '';
-          });
-        });
-
-        // Video Cards Hover -> "PLAY"
-        const videoCards = document.querySelectorAll('.film-card');
-        videoCards.forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            document.body.classList.add('cursor-play');
-            cursorFollower.textContent = 'PLAY';
-          });
-          card.addEventListener('mouseleave', () => {
-            document.body.classList.remove('cursor-play');
-            cursorFollower.textContent = '';
-          });
-        });
-      }
-
-      // ========================================================================
-      // 2. MOBILE MENU TOGGLE
-      // ========================================================================
+      // 1. Mobile Menu Toggle
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
       
@@ -1417,9 +1235,7 @@
         });
       }
 
-      // ========================================================================
-      // 3. INTERSECTION OBSERVER FOR SCROLL REVEALS
-      // ========================================================================
+      // 2. Intersection Observer for Scroll Reveals
       const reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1439,17 +1255,16 @@
         reveals.forEach(el => el.classList.add('is-revealed'));
       }
 
-      // ========================================================================
-      // 4. CLICK-TO-PLAY VIDEO CONTROLLER
-      // ========================================================================
-      const filmCards = document.querySelectorAll('.film-card');
-      filmCards.forEach(card => {
+      // 3. Click-to-Play Video Controller (No Autoplay Sound)
+      const videoCards = document.querySelectorAll('.film-card');
+      videoCards.forEach(card => {
         const overlay = card.querySelector('.video-overlay');
         const video = card.querySelector('video');
 
         if (overlay && video) {
           const togglePlay = () => {
             if (video.paused) {
+              // Pause any other playing videos
               document.querySelectorAll('.film-card video').forEach(v => {
                 if (v !== video) {
                   v.pause();
@@ -1458,7 +1273,9 @@
               });
               video.play().then(() => {
                 overlay.classList.add('is-playing');
-              }).catch(() => {});
+              }).catch(() => {
+                // Autoplay/play prevented gracefully
+              });
             } else {
               video.pause();
               overlay.classList.remove('is-playing');
@@ -1476,9 +1293,7 @@
         }
       });
 
-      // ========================================================================
-      // 5. PROJECT DETAIL MODAL SYSTEM
-      // ========================================================================
+      // 4. Project Modal Interaction System
       const projectData = {
         '1': {
           title: 'Commercial Identity & Packaging',
@@ -1566,7 +1381,7 @@
         });
       }
 
-      // Keyboard accessibility
+      // Keyboard support for accessibility
       document.addEventListener('keydown', (e) => {
         if (!modal.classList.contains('is-active')) return;
         if (e.key === 'Escape') closeModal();
