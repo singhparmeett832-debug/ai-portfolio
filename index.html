@@ -9,7 +9,7 @@
   <!-- Typography: Manrope & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     /* ==========================================================================
@@ -71,7 +71,9 @@
       cursor: pointer;
     }
 
-    /* Custom Cursor */
+    /* ==========================================================================
+       2. EDITORIAL MOUSE CURSOR SYSTEM
+       ========================================================================== */
     @media (hover: hover) and (pointer: fine) {
       body {
         cursor: default;
@@ -157,7 +159,9 @@
       }
     }
 
-    /* Common Typography & Layout */
+    /* ==========================================================================
+       3. COMMON TYPOGRAPHY & LAYOUT
+       ========================================================================== */
     h1, h2, h3, h4 {
       font-family: var(--font-heading);
       color: var(--color-text-primary);
@@ -180,7 +184,7 @@
 
     .section-eyebrow {
       font-size: 0.8125rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--color-accent);
@@ -226,6 +230,18 @@
       transform: translateY(-2px);
     }
 
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-text-primary);
+      background-color: rgba(23, 23, 23, 0.03);
+      transform: translateY(-2px);
+    }
+
     .btn-link {
       display: inline-flex;
       align-items: center;
@@ -243,7 +259,9 @@
       border-color: var(--color-accent);
     }
 
-    /* Navbar */
+    /* ==========================================================================
+       4. NAVBAR
+       ========================================================================== */
     .site-header {
       position: sticky;
       top: 0;
@@ -304,7 +322,9 @@
       background-color: var(--color-text-primary);
     }
 
-    /* Hero */
+    /* ==========================================================================
+       5. HERO SECTION
+       ========================================================================== */
     .hero-section {
       padding: clamp(6rem, 12vw, 10.5rem) 0 clamp(4.5rem, 8vw, 7.5rem);
       background-color: var(--color-background);
@@ -316,7 +336,7 @@
 
     .hero-eyebrow {
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--color-accent);
@@ -326,7 +346,7 @@
 
     .hero-name {
       font-size: clamp(3.25rem, 8.5vw, 6.75rem);
-      font-weight: 700;
+      font-weight: 800;
       line-height: 1.02;
       letter-spacing: -0.04em;
       margin-bottom: 1.5rem;
@@ -357,7 +377,9 @@
       flex-wrap: wrap;
     }
 
-    /* Selected Work (Posters Grid 4:5) */
+    /* ==========================================================================
+       6. SELECTED WORK (POSTERS 4:5 GRID)
+       ========================================================================== */
     .work-section {
       background-color: var(--color-background);
       border-top: 1px solid var(--color-border);
@@ -413,7 +435,7 @@
 
     .project-category {
       font-size: 0.75rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--color-accent);
@@ -444,7 +466,9 @@
       color: var(--color-accent);
     }
 
-    /* Video Section (Direct Behance Link Cards) */
+    /* ==========================================================================
+       7. AI FILMS & MOTION (DIRECT BEHANCE LINK CARDS - 2 FOLDERS)
+       ========================================================================== */
     .films-section {
       background-color: var(--color-background-secondary);
       border-top: 1px solid var(--color-border);
@@ -599,7 +623,9 @@
       gap: 0.35rem;
     }
 
-    /* About Section */
+    /* ==========================================================================
+       8. ABOUT SECTION
+       ========================================================================== */
     .about-section {
       background-color: var(--color-background);
       border-top: 1px solid var(--color-border);
@@ -642,7 +668,7 @@
 
     .about-bio .role-badge {
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--color-accent);
@@ -654,7 +680,9 @@
       line-height: 1.7;
     }
 
-    /* What I Do */
+    /* ==========================================================================
+       9. WHAT I DO (SERVICES SECTION)
+       ========================================================================== */
     .services-section {
       background-color: var(--color-background-secondary);
       border-top: 1px solid var(--color-border);
@@ -676,7 +704,7 @@
 
     .service-num {
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: 600;
       color: var(--color-accent);
       letter-spacing: 0.04em;
     }
@@ -693,7 +721,9 @@
       line-height: 1.6;
     }
 
-    /* Contact Section */
+    /* ==========================================================================
+       10. CONTACT SECTION (DARK EDITORIAL BLOCK)
+       ========================================================================== */
     .contact-section {
       background-color: var(--color-dark);
       color: var(--color-white);
@@ -707,7 +737,7 @@
 
     .contact-eyebrow {
       font-size: 0.8125rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--color-accent);
@@ -756,7 +786,7 @@
 
     .social-link {
       font-size: 0.875rem;
-      font-weight: 500;
+      font-weight: 600;
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--color-dark-text-muted);
@@ -782,7 +812,9 @@
       color: #777777;
     }
 
-    /* Modal */
+    /* ==========================================================================
+       11. PROJECT DETAIL MODAL
+       ========================================================================== */
     .modal-backdrop {
       position: fixed;
       inset: 0;
@@ -868,7 +900,9 @@
       padding-top: 1.5rem;
     }
 
-    /* Scroll Reveals */
+    /* ==========================================================================
+       12. SCROLL REVEALS
+       ========================================================================== */
     .reveal {
       opacity: 0;
       transform: translateY(26px);
@@ -1032,7 +1066,7 @@
       <div class="section-header reveal">
         <span class="section-eyebrow">Motion &amp; AI</span>
         <h2 class="section-title">AI Films &amp; Commercial Motion</h2>
-        <p class="section-subtitle">Click on any project to watch the complete video and case study on Behance.</p>
+        <p class="section-subtitle">Click on any project to watch the complete video and case study directly on Behance.</p>
       </div>
 
       <!-- FOLDER 01: THE GOODRUSH MISSION SERIES -->
@@ -1043,12 +1077,10 @@
         </div>
         <div class="films-grid">
           <!-- Video 1 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode1" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=800&q=80" alt="Episode 1: The Call" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1061,12 +1093,10 @@
           </a>
 
           <!-- Video 2 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode2" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&fit=crop&w=800&q=80" alt="Episode 2: The Store" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1079,12 +1109,10 @@
           </a>
 
           <!-- Video 3 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode3" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&fit=crop&w=800&q=80" alt="Episode 3: The Stolen Pack" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1106,12 +1134,10 @@
         </div>
         <div class="films-grid">
           <!-- Video 4 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#periperi" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg" alt="Peri Peri Rush — City Impact CGI" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1124,12 +1150,10 @@
           </a>
 
           <!-- Video 5 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#macrocrunch" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&w=800&q=80" alt="There's More to Every Crunch" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1142,12 +1166,10 @@
           </a>
 
           <!-- Video 6 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#latenight" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=800&q=80" alt="Snack Upgrade — Late Night Hunger" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1160,12 +1182,10 @@
           </a>
 
           <!-- Video 7 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#chaidate" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80" alt="Chai & Bhujia vs. Goodrush Rushie" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1178,12 +1198,10 @@
           </a>
 
           <!-- Video 8 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#chipsclub" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="Chips Club Party" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1196,12 +1214,10 @@
           </a>
 
           <!-- Video 9 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#minichef" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" alt="Mini Chef DIY Chaat" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1214,12 +1230,10 @@
           </a>
 
           <!-- Video 10 -->
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="film-card">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#kineticlaunch" target="_blank" rel="noopener" class="film-card">
             <div class="video-viewport">
               <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="3 Flavours Kinetic Launch" />
-              <div class="video-overlay">
-                <div class="play-btn">▶</div>
-              </div>
+              <div class="video-overlay"><div class="play-btn">▶</div></div>
             </div>
             <div class="film-details">
               <div class="film-title-row">
@@ -1350,11 +1364,11 @@
     </div>
   </div>
 
-  <!-- JavaScript -->
+  <!-- JavaScript Engine -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      // Cursor Engine
+      // 1. Dual-Stage Cursor
       const cursorDot = document.getElementById('cursorDot');
       const cursorFollower = document.getElementById('cursorFollower');
 
@@ -1425,7 +1439,7 @@
         });
       }
 
-      // Mobile Menu
+      // 2. Mobile Menu
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
       if (menuToggle && navLinks) {
@@ -1442,7 +1456,7 @@
         });
       }
 
-      // Scroll Reveals
+      // 3. Scroll Reveals
       const reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1458,7 +1472,7 @@
         reveals.forEach(el => el.classList.add('is-revealed'));
       }
 
-      // Modal Case Study Data
+      // 4. Modal Case Study System
       const projectData = {
         '1': {
           title: 'Commercial Identity & Packaging',
