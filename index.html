@@ -82,6 +82,7 @@
       font-weight: 700;
       letter-spacing: 0.02em;
       transition: transform 0.2s, box-shadow 0.2s;
+      display: inline-block;
     }
     .cta-pill:hover {
       transform: translateY(-2px);
@@ -157,12 +158,16 @@
       padding: 12px 26px;
       border-radius: 9999px;
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-family: 'Space Grotesk', sans-serif;
       transition: border-color 0.2s, background 0.2s;
     }
     .btn-secondary:hover {
-      border-color: var(--text-sand);
+      border-color: var(--accent);
+      color: var(--accent);
       background: rgba(255, 255, 255, 0.08);
     }
     section {
@@ -328,22 +333,32 @@
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      gap: 16px;
       margin: 48px 0;
+      flex-wrap: wrap;
     }
     .social-links a {
       color: var(--text);
       text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 600;
-      padding: 10px 22px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 12px 24px;
       border-radius: 9999px;
       border: 1px solid var(--card-border);
-      transition: border-color 0.2s, color 0.2s;
+      background: rgba(255, 255, 255, 0.02);
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
     .social-links a:hover {
       border-color: var(--accent);
       color: var(--accent);
+      background: rgba(204, 255, 0, 0.05);
+      transform: translateY(-2px);
     }
     .copyright {
       color: var(--text-muted);
@@ -382,7 +397,7 @@
     </p>
     <div class="hero-actions">
       <a href="#work" class="cta-pill">Explore Works</a>
-      <a href="https://www.instagram.com/creativaiai/" target="_blank" class="btn-secondary">Instagram @creativaiai</a>
+      <a href="https://instagram.com/creativaiai" target="_blank" rel="noopener noreferrer" class="btn-secondary">Instagram @creativaiai</a>
     </div>
   </section>
 
@@ -497,9 +512,9 @@
       <a href="mailto:parmeetsagittarius@gmail.com" class="cta-pill">parmeetsagittarius@gmail.com</a>
 
       <div class="social-links">
-        <a href="https://www.linkedin.com" target="_blank">LinkedIn</a>
-        <a href="https://www.behance.net" target="_blank">Behance</a>
-        <a href="https://www.instagram.com/creativaiai/" target="_blank">Instagram</a>
+        <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.behance.net" target="_blank" rel="noopener noreferrer">Behance</a>
+        <a href="https://instagram.com/creativaiai" target="_blank" rel="noopener noreferrer">Instagram</a>
       </div>
 
       <p class="copyright">© 2026 Parmeet Singh. All rights reserved.</p>
