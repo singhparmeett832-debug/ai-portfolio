@@ -3,19 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Autonomous AI & Graphic Design Portfolio</title>
+  <title>Bespoke AI & Editorial Motion Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Plus+Jakarta+Sans:wght@300;400;500;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;500;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #070a13;
-      --card-bg: rgba(15, 23, 42, 0.65);
-      --card-border: rgba(255, 255, 255, 0.08);
-      --card-hover-border: rgba(56, 189, 248, 0.4);
-      --accent-cyan: #38bdf8;
-      --accent-purple: #a855f7;
-      --accent-emerald: #10b981;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --glass-blur: blur(18px);
+      --bg-obsidian: #0B0B0C;
+      --bg-card: rgba(16, 16, 18, 0.62);
+      --bg-card-hover: rgba(20, 20, 23, 0.78);
+      --accent-lime: #CCFF00;
+      --accent-lime-muted: rgba(204, 255, 0, 0.12);
+      --accent-lime-glow: rgba(204, 255, 0, 0.35);
+      --sand-main: #D8CBB9;
+      --sand-light: #F4EFEA;
+      --sand-muted: #8E867B;
+      --sand-faint: rgba(216, 203, 185, 0.08);
+      --sand-border: rgba(216, 203, 185, 0.14);
+      --sand-border-hover: rgba(204, 255, 0, 0.45);
+      --glass-blur: blur(28px);
+      --font-display: 'Syne', sans-serif;
+      --font-serif: 'Italiana', serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      --transition-lux: 0.5s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     * {
@@ -25,300 +36,373 @@
     }
 
     body {
-      background-color: var(--bg-dark);
-      color: var(--text-main);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", sans-serif;
+      background-color: var(--bg-obsidian);
+      color: var(--sand-main);
+      font-family: var(--font-body);
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
-      line-height: 1.5;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      background-image: 
+        radial-gradient(circle at 50% 0%, rgba(216, 203, 185, 0.03) 0%, transparent 70%),
+        radial-gradient(rgba(216, 203, 185, 0.04) 1px, transparent 1px);
+      background-size: 100% 100%, 32px 32px;
     }
 
-    /* Ambient dynamic glow orbs */
+    /* Architectural ambient lighting */
     .ambient-glow {
       position: fixed;
       border-radius: 50%;
-      filter: blur(120px);
+      filter: blur(140px);
       pointer-events: none;
       z-index: 0;
-      opacity: 0.35;
-      animation: floatGlow 18s ease-in-out infinite alternate;
+      opacity: 0.18;
     }
     .glow-1 {
-      top: -100px;
-      left: 15%;
-      width: 500px;
-      height: 500px;
-      background: radial-gradient(circle, #38bdf8 0%, rgba(56, 189, 248, 0) 70%);
+      top: -160px;
+      left: 12%;
+      width: 650px;
+      height: 650px;
+      background: radial-gradient(circle, #CCFF00 0%, rgba(204, 255, 0, 0) 70%);
+      animation: floatAura 22s ease-in-out infinite alternate;
     }
     .glow-2 {
-      top: 45%;
-      right: -100px;
-      width: 600px;
-      height: 600px;
-      background: radial-gradient(circle, #8b5cf6 0%, rgba(139, 92, 246, 0) 70%);
-      animation-delay: -6s;
-    }
-    .glow-3 {
-      bottom: -150px;
-      left: 20%;
-      width: 550px;
-      height: 550px;
-      background: radial-gradient(circle, #ec4899 0%, rgba(236, 72, 153, 0) 70%);
-      animation-delay: -12s;
+      top: 40%;
+      right: -180px;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, #D8CBB9 0%, rgba(216, 203, 185, 0) 70%);
+      animation: floatAura 26s ease-in-out infinite alternate-reverse;
+      opacity: 0.09;
     }
 
-    @keyframes floatGlow {
+    @keyframes floatAura {
       0% { transform: translate(0, 0) scale(1); }
-      50% { transform: translate(60px, 40px) scale(1.15); }
-      100% { transform: translate(-40px, 80px) scale(0.9); }
+      50% { transform: translate(45px, 60px) scale(1.12); }
+      100% { transform: translate(-50px, 90px) scale(0.92); }
     }
 
     .container {
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 1320px;
+      max-width: 1360px;
       margin: 0 auto;
-      padding: 3rem 1.5rem 5rem;
+      padding: 4.5rem 2rem 7rem;
     }
 
-    /* Header & Hero */
+    /* Editorial Header */
     header {
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin-bottom: 3.5rem;
+      margin-bottom: 4.5rem;
+    }
+
+    .editorial-meta {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.28em;
+      color: var(--accent-lime);
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .editorial-meta::before, .editorial-meta::after {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--accent-lime);
+      opacity: 0.6;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      padding: 0.4rem 1.1rem;
+      gap: 0.65rem;
+      padding: 0.38rem 1.15rem;
       border-radius: 9999px;
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      box-shadow: 0 0 20px rgba(56, 189, 248, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      font-size: 0.825rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: #94a3b8;
-      margin-bottom: 1.5rem;
+      background: rgba(18, 18, 20, 0.75);
+      border: 1px solid var(--sand-border);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      letter-spacing: 0.08em;
+      color: var(--sand-main);
+      margin-bottom: 1.8rem;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
     .badge-dot {
       position: relative;
       display: inline-flex;
-      width: 8px;
-      height: 8px;
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
-      background-color: var(--accent-emerald);
-      box-shadow: 0 0 8px var(--accent-emerald);
+      background-color: var(--accent-lime);
+      box-shadow: 0 0 12px var(--accent-lime);
     }
     .badge-dot::after {
       content: "";
       position: absolute;
       top: -3px;
       left: -3px;
-      width: 14px;
-      height: 14px;
+      width: 13px;
+      height: 13px;
       border-radius: 50%;
-      background-color: rgba(16, 185, 129, 0.4);
-      animation: pulse 2s infinite ease-out;
+      background-color: rgba(204, 255, 0, 0.35);
+      animation: limePulse 2.4s infinite cubic-bezier(0.19, 1, 0.22, 1);
     }
 
-    .badge-text {
-      background: linear-gradient(135deg, #e2e8f0 0%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    @keyframes limePulse {
+      0% { transform: scale(0.6); opacity: 0.9; }
+      100% { transform: scale(2.4); opacity: 0; }
     }
 
     h1 {
-      font-size: clamp(2.4rem, 5vw, 3.8rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 55%, #64748b 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6.2vw, 5.2rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+      margin-bottom: 1.4rem;
+      color: var(--sand-light);
+      max-width: 980px;
+    }
+
+    h1 em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      color: var(--accent-lime);
+      letter-spacing: -0.01em;
+      padding-right: 0.15em;
     }
 
     .hero-description {
-      max-width: 650px;
-      color: var(--text-muted);
-      font-size: 1.05rem;
-      font-weight: 400;
-      margin-bottom: 2.25rem;
+      max-width: 620px;
+      color: var(--sand-muted);
+      font-size: 1.02rem;
+      font-weight: 300;
+      line-height: 1.7;
+      margin-bottom: 2.75rem;
+      letter-spacing: 0.01em;
     }
 
-    /* Category Filter Controls */
+    /* Bespoke High-End Filter Pill Bar */
     .filter-wrapper {
       display: inline-flex;
       padding: 0.35rem;
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(14, 14, 16, 0.7);
+      border: 1px solid var(--sand-border);
       border-radius: 9999px;
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       gap: 0.35rem;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.04);
     }
 
     .filter-btn {
       background: transparent;
-      border: none;
+      border: 1px solid transparent;
       outline: none;
-      padding: 0.55rem 1.25rem;
+      padding: 0.55rem 1.4rem;
       border-radius: 9999px;
-      font-size: 0.85rem;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
       font-weight: 500;
-      color: #94a3b8;
+      letter-spacing: 0.02em;
+      color: var(--sand-muted);
       cursor: pointer;
-      transition: all 0.25s ease;
+      transition: all var(--transition-lux);
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.55rem;
+    }
+
+    .filter-btn svg {
+      opacity: 0.6;
+      transition: transform var(--transition-lux), stroke var(--transition-lux);
     }
 
     .filter-btn:hover {
-      color: #f8fafc;
+      color: var(--sand-light);
+    }
+    .filter-btn:hover svg {
+      opacity: 1;
     }
 
     .filter-btn.active {
-      background: rgba(56, 189, 248, 0.15);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.35);
-      box-shadow: 0 0 16px rgba(56, 189, 248, 0.2);
+      background: var(--bg-obsidian);
+      color: var(--accent-lime);
+      border: 1px solid var(--accent-lime);
+      box-shadow: 0 0 20px rgba(204, 255, 0, 0.2), inset 0 1px 0 rgba(204, 255, 0, 0.2);
+    }
+    .filter-btn.active svg {
+      opacity: 1;
+      stroke: var(--accent-lime);
     }
 
     /* Grid Layout */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
-      gap: 1.75rem;
-      margin-top: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 680px) {
+      .container {
+        padding: 3rem 1.25rem 5rem;
+      }
       .portfolio-grid {
         grid-template-columns: 1fr;
       }
+      .filter-wrapper {
+        flex-wrap: wrap;
+        border-radius: 16px;
+      }
     }
 
-    /* Glassmorphism Portfolio Card */
+    /* Haute-Couture Glass Card */
     .glass-card {
       position: relative;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: var(--bg-card);
+      border: 1px solid var(--sand-border);
       border-radius: 20px;
       overflow: hidden;
       backdrop-filter: var(--glass-blur);
       -webkit-backdrop-filter: var(--glass-blur);
       display: flex;
       flex-direction: column;
-      box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                  border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-                  opacity 0.3s ease;
+      box-shadow: 0 25px 50px -20px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      transition: transform var(--transition-lux), 
+                  border-color var(--transition-lux), 
+                  box-shadow var(--transition-lux),
+                  background var(--transition-lux),
+                  opacity 0.35s ease;
       cursor: pointer;
     }
 
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(800px circle at var(--mouse-x, 50%) var(--mouse-y, 0%), rgba(204, 255, 0, 0.06), transparent 40%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
     .glass-card:hover {
-      transform: translateY(-6px);
-      border-color: var(--card-hover-border);
-      box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+      background: var(--bg-card-hover);
+      border-color: var(--sand-border-hover);
+      box-shadow: 0 35px 70px -15px rgba(0, 0, 0, 0.9), 0 0 30px rgba(204, 255, 0, 0.08), inset 0 1px 0 rgba(204, 255, 0, 0.4);
+    }
+    .glass-card:hover::before {
+      opacity: 1;
     }
 
     /* Visual Media Container */
     .card-visual {
       position: relative;
       width: 100%;
-      height: 220px;
+      height: 240px;
       overflow: hidden;
-      background: #020617;
+      background: #070708;
       display: flex;
       align-items: center;
       justify-content: center;
+      border-bottom: 1px solid rgba(216, 203, 185, 0.07);
     }
 
-    /* Dynamic CSS Graphic / Canvas Visuals */
     .visual-art {
       width: 100%;
       height: 100%;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);
       position: relative;
     }
 
     .glass-card:hover .visual-art {
-      transform: scale(1.05);
+      transform: scale(1.04);
     }
 
-    /* Specific Art Visual Designs */
+    /* Curated Luxury Visual Aesthetics */
+    /* Art 1: Neural Fluid */
     .art-ai-fluid {
-      background: linear-gradient(135deg, #090e1a 0%, #17112c 100%);
+      background: radial-gradient(circle at 70% 30%, #151512 0%, #080809 100%);
       overflow: hidden;
     }
     .art-ai-fluid::before, .art-ai-fluid::after {
       content: "";
       position: absolute;
       border-radius: 50%;
-      filter: blur(35px);
+      filter: blur(45px);
     }
     .art-ai-fluid::before {
       width: 180px;
       height: 180px;
-      background: #38bdf8;
-      top: -20px;
-      left: 10%;
-      animation: morphBlob 8s infinite alternate ease-in-out;
+      background: var(--accent-lime);
+      top: -30px;
+      right: 15%;
+      opacity: 0.4;
+      animation: morphFluid 10s infinite alternate ease-in-out;
     }
     .art-ai-fluid::after {
-      width: 200px;
-      height: 200px;
-      background: #ec4899;
-      bottom: -30px;
-      right: 15%;
-      animation: morphBlob 10s infinite alternate-reverse ease-in-out;
+      width: 220px;
+      height: 220px;
+      background: #D8CBB9;
+      bottom: -40px;
+      left: 10%;
+      opacity: 0.25;
+      animation: morphFluid 13s infinite alternate-reverse ease-in-out;
     }
 
-    @keyframes morphBlob {
-      0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(0deg); }
-      100% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; transform: rotate(180deg); }
+    @keyframes morphFluid {
+      0% { border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%; transform: rotate(0deg) scale(1); }
+      100% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; transform: rotate(180deg) scale(1.15); }
     }
 
+    /* Art 2: Graphic Typo */
     .art-graphic-typo {
-      background: #0a0f1d;
+      background: #09090A;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       padding: 1.5rem;
       position: relative;
-      background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
-      background-size: 16px 16px;
+      background-image: 
+        linear-gradient(rgba(216, 203, 185, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(216, 203, 185, 0.04) 1px, transparent 1px);
+      background-size: 20px 20px;
     }
     .typo-poster-box {
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 1.25rem 2rem;
+      border: 1px solid var(--sand-border);
+      padding: 1.4rem 2.2rem;
       text-align: center;
-      transform: rotate(-3deg);
-      transition: transform 0.4s ease;
-      background: rgba(15, 23, 42, 0.6);
+      transform: rotate(-1.5deg);
+      transition: all var(--transition-lux);
+      background: rgba(11, 11, 12, 0.85);
       backdrop-filter: blur(8px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
     }
     .glass-card:hover .typo-poster-box {
-      transform: rotate(0deg) scale(1.04);
-      border-color: #38bdf8;
+      transform: rotate(0deg) scale(1.03);
+      border-color: var(--accent-lime);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(204, 255, 0, 0.15);
     }
 
+    /* Art 3: AI Kinetic Rings */
     .art-ai-kinetic {
-      background: radial-gradient(circle at center, #1e1b4b 0%, #030712 100%);
+      background: radial-gradient(circle at center, #141416 0%, #070708 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -326,19 +410,37 @@
     }
     .kinetic-ring {
       position: absolute;
-      border: 1px dashed rgba(56, 189, 248, 0.5);
+      border: 1px solid rgba(216, 203, 185, 0.18);
       border-radius: 50%;
-      animation: spinRing 16s linear infinite;
+      animation: spinRing 20s linear infinite;
     }
-    .kinetic-ring:nth-child(1) { width: 90px; height: 90px; border-color: #38bdf8; }
-    .kinetic-ring:nth-child(2) { width: 140px; height: 140px; border-color: #818cf8; animation-direction: reverse; animation-duration: 22s; }
-    .kinetic-ring:nth-child(3) { width: 190px; height: 190px; border-color: #c084fc; animation-duration: 28s; }
+    .kinetic-ring:nth-child(1) { 
+      width: 86px; 
+      height: 86px; 
+      border-color: var(--accent-lime);
+      border-style: dashed;
+      box-shadow: 0 0 15px rgba(204, 255, 0, 0.2);
+    }
+    .kinetic-ring:nth-child(2) { 
+      width: 140px; 
+      height: 140px; 
+      border-color: rgba(216, 203, 185, 0.3); 
+      animation-direction: reverse; 
+      animation-duration: 28s; 
+    }
+    .kinetic-ring:nth-child(3) { 
+      width: 196px; 
+      height: 196px; 
+      border-color: rgba(216, 203, 185, 0.12); 
+      border-style: dotted;
+      animation-duration: 36s; 
+    }
     .kinetic-core {
-      width: 32px;
-      height: 32px;
-      background: linear-gradient(135deg, #38bdf8, #a855f7);
+      width: 24px;
+      height: 24px;
+      background: var(--sand-light);
       border-radius: 50%;
-      box-shadow: 0 0 25px #38bdf8;
+      box-shadow: 0 0 25px var(--accent-lime);
     }
 
     @keyframes spinRing {
@@ -346,8 +448,9 @@
       100% { transform: rotate(360deg); }
     }
 
+    /* Art 4: Graphic Brand Cube */
     .art-graphic-brand {
-      background: linear-gradient(145deg, #181024 0%, #080c14 100%);
+      background: linear-gradient(145deg, #121214 0%, #080809 100%);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -355,31 +458,33 @@
       overflow: hidden;
     }
     .brand-cube {
-      width: 80px;
-      height: 80px;
-      border: 2px solid #ec4899;
+      width: 76px;
+      height: 76px;
+      border: 1px solid var(--accent-lime);
       transform: rotate(45deg);
-      box-shadow: 0 0 30px rgba(236, 72, 153, 0.35);
+      box-shadow: 0 0 35px rgba(204, 255, 0, 0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.5s ease;
+      transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
     }
     .glass-card:hover .brand-cube {
-      transform: rotate(135deg) scale(1.1);
-      border-color: #38bdf8;
-      box-shadow: 0 0 35px rgba(56, 189, 248, 0.5);
+      transform: rotate(135deg) scale(1.08);
+      border-color: var(--sand-light);
+      box-shadow: 0 0 45px rgba(204, 255, 0, 0.35);
     }
     .brand-cube::after {
       content: "";
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.15);
+      width: 36px;
+      height: 36px;
+      background: rgba(216, 203, 185, 0.15);
+      border: 1px solid var(--sand-main);
       backdrop-filter: blur(4px);
     }
 
+    /* Art 5: AI Waveform */
     .art-ai-particle {
-      background: #020617;
+      background: #070708;
       position: relative;
       display: flex;
       align-items: center;
@@ -388,14 +493,18 @@
     .waveform-bars {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 7px;
       height: 80px;
     }
     .waveform-bar {
-      width: 5px;
-      background: linear-gradient(180deg, #38bdf8 0%, #6366f1 100%);
-      border-radius: 4px;
-      animation: barJump 1.2s infinite ease-in-out;
+      width: 4px;
+      background: var(--sand-main);
+      border-radius: 2px;
+      animation: barJump 1.4s infinite ease-in-out;
+      opacity: 0.5;
+    }
+    .waveform-bar:nth-child(3), .waveform-bar:nth-child(5) {
+      background: var(--accent-lime);
     }
     .waveform-bar:nth-child(2) { animation-delay: 0.15s; }
     .waveform-bar:nth-child(3) { animation-delay: 0.3s; }
@@ -404,12 +513,13 @@
     .waveform-bar:nth-child(6) { animation-delay: 0.75s; }
     .waveform-bar:nth-child(7) { animation-delay: 0.9s; }
     @keyframes barJump {
-      0%, 100% { height: 16px; opacity: 0.4; }
-      50% { height: 72px; opacity: 1; filter: drop-shadow(0 0 8px #38bdf8); }
+      0%, 100% { height: 18px; opacity: 0.3; }
+      50% { height: 74px; opacity: 1; filter: drop-shadow(0 0 8px var(--accent-lime-glow)); }
     }
 
+    /* Art 6: Editorial Grid */
     .art-graphic-editorial {
-      background: linear-gradient(135deg, #09131f 0%, #03080e 100%);
+      background: #09090b;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -417,103 +527,124 @@
     }
     .editorial-grid-mock {
       display: grid;
-      grid-template-columns: repeat(3, 38px);
-      gap: 8px;
+      grid-template-columns: repeat(3, 42px);
+      gap: 10px;
     }
     .grid-cell {
-      height: 38px;
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      background: rgba(255, 255, 255, 0.02);
-      border-radius: 6px;
-      transition: all 0.3s ease;
+      height: 42px;
+      border: 1px solid rgba(216, 203, 185, 0.2);
+      background: rgba(216, 203, 185, 0.02);
+      border-radius: 4px;
+      transition: all var(--transition-lux);
     }
     .glass-card:hover .grid-cell:nth-child(odd) {
-      background: rgba(56, 189, 248, 0.2);
-      border-color: #38bdf8;
-      transform: scale(0.92);
+      background: rgba(204, 255, 0, 0.12);
+      border-color: var(--accent-lime);
+      transform: scale(0.94);
     }
     .glass-card:hover .grid-cell:nth-child(even) {
-      background: rgba(168, 85, 247, 0.2);
-      border-color: #a855f7;
-      transform: scale(1.08);
+      background: rgba(216, 203, 185, 0.15);
+      border-color: var(--sand-light);
+      transform: scale(1.06);
     }
 
-    /* Badges overlay on visual */
+    /* Luxury Tags & Meta Action */
     .card-type-tag {
       position: absolute;
       top: 14px;
       left: 14px;
       padding: 0.25rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.72rem;
-      font-weight: 600;
+      border-radius: 4px;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
+      letter-spacing: 0.14em;
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       z-index: 2;
     }
     .tag-motion {
-      background: rgba(168, 85, 247, 0.25);
-      border: 1px solid rgba(168, 85, 247, 0.5);
-      color: #e9d5ff;
+      background: rgba(11, 11, 12, 0.85);
+      border: 1px solid var(--accent-lime);
+      color: var(--accent-lime);
     }
     .tag-graphic {
-      background: rgba(56, 189, 248, 0.2);
-      border: 1px solid rgba(56, 189, 248, 0.4);
-      color: #bae6fd;
+      background: rgba(11, 11, 12, 0.85);
+      border: 1px solid var(--sand-border);
+      color: var(--sand-light);
     }
 
     .card-meta-action {
       position: absolute;
       top: 14px;
       right: 14px;
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(11, 11, 12, 0.85);
+      border: 1px solid var(--sand-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #f1f5f9;
+      color: var(--sand-main);
       backdrop-filter: blur(8px);
       opacity: 0;
-      transform: translateY(-5px);
-      transition: all 0.3s ease;
+      transform: translateY(-4px) scale(0.9);
+      transition: all var(--transition-lux);
       z-index: 2;
+    }
+    .card-meta-action svg {
+      transition: transform var(--transition-lux), stroke var(--transition-lux);
     }
     .glass-card:hover .card-meta-action {
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
+    }
+    .glass-card:hover .card-meta-action:hover {
+      border-color: var(--accent-lime);
+      color: var(--accent-lime);
+      transform: scale(1.08);
     }
 
-    /* Card Content */
+    /* Card Typography & Content */
     .card-content {
-      padding: 1.5rem;
+      padding: 1.75rem;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.4) 0%, rgba(15, 23, 42, 0.8) 100%);
+      position: relative;
+      z-index: 2;
+    }
+
+    .card-index {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--sand-muted);
+      margin-bottom: 0.5rem;
     }
 
     .card-title {
-      font-size: 1.25rem;
+      font-family: var(--font-display);
+      font-size: 1.35rem;
       font-weight: 700;
-      color: #f8fafc;
-      margin-bottom: 0.4rem;
-      transition: color 0.25s ease;
+      letter-spacing: -0.02em;
+      color: var(--sand-light);
+      margin-bottom: 0.6rem;
+      transition: color var(--transition-lux);
     }
 
     .glass-card:hover .card-title {
-      color: #38bdf8;
+      color: var(--accent-lime);
     }
 
     .card-desc {
       font-size: 0.88rem;
-      color: #94a3b8;
-      line-height: 1.5;
-      margin-bottom: 1.25rem;
+      font-weight: 300;
+      color: var(--sand-muted);
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
       flex-grow: 1;
     }
 
@@ -521,38 +652,51 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      padding-top: 1rem;
+      border-top: 1px solid rgba(216, 203, 185, 0.08);
+      padding-top: 1.15rem;
       margin-top: auto;
     }
 
     .tech-stack {
       display: flex;
-      gap: 0.4rem;
+      gap: 0.45rem;
       flex-wrap: wrap;
     }
 
     .tech-pill {
-      font-size: 0.72rem;
-      padding: 0.2rem 0.55rem;
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.05);
-      color: #cbd5e1;
-      border: 1px solid rgba(255, 255, 255, 0.05);
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 0.22rem 0.55rem;
+      border-radius: 3px;
+      background: rgba(216, 203, 185, 0.05);
+      color: var(--sand-main);
+      border: 1px solid rgba(216, 203, 185, 0.08);
+      letter-spacing: 0.04em;
     }
 
     .interactive-link {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: #38bdf8;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--sand-light);
       text-decoration: none;
-      transition: transform 0.2s ease;
+      transition: all var(--transition-lux);
+    }
+    .interactive-link svg {
+      transition: transform var(--transition-lux);
+      stroke: var(--sand-light);
     }
     .glass-card:hover .interactive-link {
-      transform: translateX(3px);
+      color: var(--accent-lime);
+    }
+    .glass-card:hover .interactive-link svg {
+      transform: translateX(4px);
+      stroke: var(--accent-lime);
     }
 
     /* Interactive Modal */
@@ -562,16 +706,16 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(2, 6, 23, 0.8);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+      background: rgba(7, 7, 8, 0.88);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
       z-index: 100;
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.3s ease;
+      transition: opacity var(--transition-lux);
       padding: 1.5rem;
     }
 
@@ -582,158 +726,183 @@
 
     .modal-box {
       width: 100%;
-      max-width: 680px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(56, 189, 248, 0.3);
+      max-width: 660px;
+      background: #0E0E10;
+      border: 1px solid var(--sand-border);
       border-radius: 24px;
-      box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(56, 189, 248, 0.2);
+      box-shadow: 0 40px 80px -20px rgba(0, 0, 0, 0.95), 0 0 50px rgba(204, 255, 0, 0.1);
       overflow: hidden;
-      transform: scale(0.94);
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: scale(0.96) translateY(12px);
+      transition: transform var(--transition-lux);
       position: relative;
     }
 
     .modal-backdrop.open .modal-box {
-      transform: scale(1);
+      transform: scale(1) translateY(0);
     }
 
     .modal-close {
       position: absolute;
       top: 1.25rem;
       right: 1.25rem;
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: #cbd5e1;
+      background: rgba(216, 203, 185, 0.05);
+      border: 1px solid var(--sand-border);
+      color: var(--sand-main);
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
       z-index: 10;
-      transition: all 0.2s ease;
+      transition: all var(--transition-lux);
     }
     .modal-close:hover {
-      background: rgba(239, 68, 68, 0.2);
-      color: #ef4444;
-      border-color: #ef4444;
+      background: var(--accent-lime);
+      color: var(--bg-obsidian);
+      border-color: var(--accent-lime);
+      transform: rotate(90deg);
     }
 
     .modal-header-preview {
-      height: 220px;
+      height: 240px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
+      border-bottom: 1px solid var(--sand-border);
+      background: #070708;
     }
 
     .modal-body {
-      padding: 2rem;
+      padding: 2.25rem;
     }
 
     .modal-tags {
       display: flex;
       gap: 0.5rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
     }
 
     .modal-title {
-      font-size: 1.8rem;
+      font-family: var(--font-display);
+      font-size: 2rem;
       font-weight: 700;
-      margin-bottom: 0.75rem;
+      letter-spacing: -0.03em;
+      color: var(--sand-light);
+      margin-bottom: 0.85rem;
     }
 
     .modal-desc {
-      color: var(--text-muted);
+      color: var(--sand-muted);
       font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-      line-height: 1.6;
+      font-weight: 300;
+      margin-bottom: 1.75rem;
+      line-height: 1.7;
     }
 
     .modal-spec-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      padding: 1rem;
-      background: rgba(0, 0, 0, 0.25);
+      gap: 1.25rem;
+      padding: 1.25rem;
+      background: rgba(216, 203, 185, 0.03);
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      margin-bottom: 1.5rem;
+      border: 1px solid rgba(216, 203, 185, 0.08);
+      margin-bottom: 1.75rem;
     }
 
     .spec-item h4 {
-      font-size: 0.75rem;
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #64748b;
-      margin-bottom: 0.25rem;
+      letter-spacing: 0.15em;
+      color: var(--accent-lime);
+      margin-bottom: 0.4rem;
     }
 
     .spec-item p {
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: #f1f5f9;
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--sand-light);
     }
 
-    @keyframes pulse {
-      0% { transform: scale(0.6); opacity: 0.9; }
-      100% { transform: scale(2.2); opacity: 0; }
+    .modal-action-btn {
+      background: var(--accent-lime);
+      color: var(--bg-obsidian);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--accent-lime);
+      padding: 0.7rem 1.75rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all var(--transition-lux);
+    }
+    .modal-action-btn:hover {
+      background: transparent;
+      color: var(--accent-lime);
+      box-shadow: 0 0 20px rgba(204, 255, 0, 0.25);
     }
   </style>
 </head>
 <body>
 
-  <!-- Ambient Light Orbs -->
+  <!-- Ambient Obsidian / Lime Lighting Orbs -->
   <div class="ambient-glow glow-1"></div>
   <div class="ambient-glow glow-2"></div>
-  <div class="ambient-glow glow-3"></div>
 
   <div class="container">
     <header>
+      <div class="editorial-meta">Autumn / Winter Edition 2025</div>
       <div class="hero-badge">
         <span class="badge-dot"></span>
-        <span class="badge-text">Autonomous AI Creative Suite v2.4</span>
+        <span>AUTONOMOUS ATELIER — VOL. 04</span>
       </div>
-      <h1>Graphic & AI Motion Design</h1>
+      <h1>Generative Motion <em>&</em> Graphic Disciplines</h1>
       <p class="hero-description">
-        Curated showcase exploring generative diffusion animations, procedural motion systems, and experimental brutalist typography crafted for contemporary digital identities.
+        A bespoke catalog uniting autonomous diffusion mathematics, brutalist typography, and high-frequency kinetic identity systems curated for luxury digital flagships.
       </p>
 
       <!-- Category Interactive Filter Pills -->
       <div class="filter-wrapper" role="tablist">
         <button class="filter-btn active" data-filter="all">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
-          All Works
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Index / All
         </button>
         <button class="filter-btn" data-filter="motion">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-          AI Motion Graphics
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+          Kinetic & AI Motion
         </button>
         <button class="filter-btn" data-filter="graphic">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
-          Graphic Design
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+          Editorial & Brand
         </button>
       </div>
     </header>
 
-    <!-- Portfolio Glassmorphism Grid -->
+    <!-- Bespoke Portfolio Grid -->
     <main class="portfolio-grid" id="portfolioGrid">
 
       <!-- Item 1: AI Motion -->
       <article class="glass-card" data-category="motion" 
+        data-index="№ 01"
         data-title="Neural Viscosity v3" 
         data-desc="Real-time multi-latent fluid dynamics rendered through customized Stable Diffusion AnimateDiff pipelines with optical flow stabilization."
         data-tech="AnimateDiff, TouchDesigner, After Effects"
         data-meta="60 FPS GenAI Loop | Latent Upscaled 4K">
         <div class="card-visual">
           <div class="visual-art art-ai-fluid"></div>
-          <span class="card-type-tag tag-motion">AI Motion</span>
+          <span class="card-type-tag tag-motion">Motion AI</span>
           <div class="card-meta-action" title="Inspect Project">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
           </div>
         </div>
         <div class="card-content">
+          <span class="card-index">FOLIO // 01</span>
           <h2 class="card-title">Neural Viscosity v3</h2>
           <p class="card-desc">Diffusion-guided volumetric liquid simulation demonstrating non-Newtonian flow states synced to procedural ambient rhythms.</p>
           <div class="card-footer">
@@ -742,8 +911,8 @@
               <span class="tech-pill">TouchDesigner</span>
             </div>
             <span class="interactive-link">
-              Explore 
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              View Work
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </span>
           </div>
         </div>
@@ -751,6 +920,7 @@
 
       <!-- Item 2: Graphic Design -->
       <article class="glass-card" data-category="graphic" 
+        data-index="№ 02"
         data-title="Kromatech Kinetic Identity" 
         data-desc="Modular brand identity system designed around brutalist monospace typography, dynamic grid constraints, and chromatic aberration print finishes."
         data-tech="Illustrator, Glyphs 3, Print Spec"
@@ -758,17 +928,18 @@
         <div class="card-visual">
           <div class="visual-art art-graphic-typo">
             <div class="typo-poster-box">
-              <span style="font-family: monospace; font-size: 0.75rem; letter-spacing: 0.2em; color: #38bdf8;">KROMATECH</span>
-              <div style="font-size: 1.4rem; font-weight: 900; letter-spacing: -0.05em; line-height: 1; margin: 0.25rem 0;">TYPE 01</div>
-              <span style="font-size: 0.65rem; color: #94a3b8; font-family: monospace;">POST-HUMAN AESTHETIC</span>
+              <span style="font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.28em; color: var(--accent-lime); font-weight: 700;">KROMATECH</span>
+              <div style="font-family: var(--font-display); font-size: 1.55rem; font-weight: 800; letter-spacing: -0.04em; line-height: 1.1; margin: 0.35rem 0; color: var(--sand-light);">TYPE 01</div>
+              <span style="font-size: 0.62rem; color: var(--sand-muted); font-family: var(--font-mono); letter-spacing: 0.12em;">HAUTE ATELIER SPEC</span>
             </div>
           </div>
-          <span class="card-type-tag tag-graphic">Graphic Design</span>
+          <span class="card-type-tag tag-graphic">Identity</span>
           <div class="card-meta-action" title="Inspect Project">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
           </div>
         </div>
         <div class="card-content">
+          <span class="card-index">FOLIO // 02</span>
           <h2 class="card-title">Kromatech Kinetic Identity</h2>
           <p class="card-desc">Experimental typographic poster ecosystem designed for a next-generation neural interface research collective.</p>
           <div class="card-footer">
@@ -777,8 +948,8 @@
               <span class="tech-pill">Typography</span>
             </div>
             <span class="interactive-link">
-              Explore 
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              View Work
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </span>
           </div>
         </div>
@@ -786,6 +957,7 @@
 
       <!-- Item 3: AI Motion -->
       <article class="glass-card" data-category="motion" 
+        data-index="№ 03"
         data-title="Synaptic Orbital Drift" 
         data-desc="Generative motion loop combining Point-E neural point clouds, dynamic camera trajectory constraints, and GPU spatial particle compute."
         data-tech="ComfyUI, Blender Cycles, GLSL"
@@ -797,12 +969,13 @@
             <div class="kinetic-ring"></div>
             <div class="kinetic-core"></div>
           </div>
-          <span class="card-type-tag tag-motion">AI Motion</span>
+          <span class="card-type-tag tag-motion">Motion AI</span>
           <div class="card-meta-action" title="Inspect Project">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
           </div>
         </div>
         <div class="card-content">
+          <span class="card-index">FOLIO // 03</span>
           <h2 class="card-title">Synaptic Orbital Drift</h2>
           <p class="card-desc">Particle orbit simulation visualizing neural activation states during deep learning text-to-3D diffusion synthesis.</p>
           <div class="card-footer">
@@ -811,8 +984,8 @@
               <span class="tech-pill">GLSL Shaders</span>
             </div>
             <span class="interactive-link">
-              Explore 
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              View Work
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </span>
           </div>
         </div>
@@ -820,6 +993,7 @@
 
       <!-- Item 4: Graphic Design -->
       <article class="glass-card" data-category="graphic" 
+        data-index="№ 04"
         data-title="Neo-Cyberpunk Festival" 
         data-desc="Holographic foil packaging and key visual identity suite engineered for an autonomous sound and light exhibition in Shibuya."
         data-tech="Figma, Cinema 4D, Foil Print"
@@ -828,22 +1002,23 @@
           <div class="visual-art art-graphic-brand">
             <div class="brand-cube"></div>
           </div>
-          <span class="card-type-tag tag-graphic">Graphic Design</span>
+          <span class="card-type-tag tag-graphic">Exhibition</span>
           <div class="card-meta-action" title="Inspect Project">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
           </div>
         </div>
         <div class="card-content">
+          <span class="card-index">FOLIO // 04</span>
           <h2 class="card-title">Neo-Cyberpunk Festival</h2>
           <p class="card-desc">Multi-surface geometric visual language featuring isometric emblems and high-contrast ultraviolet print finishes.</p>
           <div class="card-footer">
             <div class="tech-stack">
-              <span class="tech-pill">Brand Identity</span>
+              <span class="tech-pill">Spatial Identity</span>
               <span class="tech-pill">3D Vector</span>
             </div>
             <span class="interactive-link">
-              Explore 
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              View Work
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </span>
           </div>
         </div>
@@ -851,6 +1026,7 @@
 
       <!-- Item 5: AI Motion -->
       <article class="glass-card" data-category="motion" 
+        data-index="№ 05"
         data-title="Aura Waveform Resonator" 
         data-desc="Audio-reactive spectrogram motion interpolation generated by custom ControlNet audio-weight tensors mapped to kinetic ribbon geometries."
         data-tech="ControlNet, AudioReactive AI, Houdini"
@@ -867,12 +1043,13 @@
               <div class="waveform-bar"></div>
             </div>
           </div>
-          <span class="card-type-tag tag-motion">AI Motion</span>
+          <span class="card-type-tag tag-motion">Audio-Gen</span>
           <div class="card-meta-action" title="Inspect Project">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
           </div>
         </div>
         <div class="card-content">
+          <span class="card-index">FOLIO // 05</span>
           <h2 class="card-title">Aura Waveform Resonator</h2>
           <p class="card-desc">Synthesized frequency choreography transforming stems into fluid, iridescent motion sculptures with Zero123 camera tracking.</p>
           <div class="card-footer">
@@ -881,8 +1058,8 @@
               <span class="tech-pill">ControlNet</span>
             </div>
             <span class="interactive-link">
-              Explore 
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              View Work
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </span>
           </div>
         </div>
@@ -890,6 +1067,7 @@
 
       <!-- Item 6: Graphic Design -->
       <article class="glass-card" data-category="graphic" 
+        data-index="№ 06"
         data-title="Swiss Algorithmics Editorial" 
         data-desc="Editorial book system synthesizing International Typographic Style (Swiss Style) with modern generative algorithmic layout rules."
         data-tech="InDesign, Processing, Custom Scripts"
@@ -905,12 +1083,13 @@
               <div class="grid-cell"></div>
             </div>
           </div>
-          <span class="card-type-tag tag-graphic">Graphic Design</span>
+          <span class="card-type-tag tag-graphic">Editorial</span>
           <div class="card-meta-action" title="Inspect Project">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 3h6v6M10 14L21 3M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4"></path></svg>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"></path></svg>
           </div>
         </div>
         <div class="card-content">
+          <span class="card-index">FOLIO // 06</span>
           <h2 class="card-title">Swiss Algorithmics Editorial</h2>
           <p class="card-desc">Rigorous typographic system structured on mathematical modular scales and generative layout automation.</p>
           <div class="card-footer">
@@ -919,8 +1098,8 @@
               <span class="tech-pill">Generative Grid</span>
             </div>
             <span class="interactive-link">
-              Explore 
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+              View Work
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
             </span>
           </div>
         </div>
@@ -933,11 +1112,9 @@
   <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-box">
       <button class="modal-close" id="modalCloseBtn" aria-label="Close dialog">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </button>
-      <div class="modal-header-preview" id="modalPreview">
-        <!-- Cloned dynamic visual will render here -->
-      </div>
+      <div class="modal-header-preview" id="modalPreview"></div>
       <div class="modal-body">
         <div class="modal-tags" id="modalTags"></div>
         <h3 class="modal-title" id="modalTitle">Project Title</h3>
@@ -953,14 +1130,14 @@
           </div>
         </div>
         <div style="display: flex; justify-content: flex-end;">
-          <button class="filter-btn active" style="padding: 0.6rem 1.4rem;" onclick="closeModal()">Close Inspector</button>
+          <button class="modal-action-btn" onclick="closeModal()">Dismiss Spec</button>
         </div>
       </div>
     </div>
   </div>
 
   <script>
-    // Filtering Logic
+    // Filtering Logic with smooth opacity transitions
     const filterButtons = document.querySelectorAll('.filter-btn[data-filter]');
     const cards = document.querySelectorAll('.glass-card');
 
@@ -978,19 +1155,19 @@
             setTimeout(() => {
               card.style.opacity = '1';
               card.style.transform = 'translateY(0) scale(1)';
-            }, 20);
+            }, 30);
           } else {
             card.style.opacity = '0';
-            card.style.transform = 'translateY(15px) scale(0.97)';
+            card.style.transform = 'translateY(16px) scale(0.97)';
             setTimeout(() => {
               card.style.display = 'none';
-            }, 300);
+            }, 350);
           }
         });
       });
     });
 
-    // 3D Card Tilt Effect on Hover
+    // Luxury 3D Card Tilt with Dynamic Specular Lighting Coordinates
     cards.forEach(card => {
       card.addEventListener('mousemove', e => {
         const rect = card.getBoundingClientRect();
@@ -998,10 +1175,12 @@
         const y = e.clientY - rect.top;
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -5;
-        const rotateY = ((x - centerX) / centerX) * 5;
+        const rotateX = ((y - centerY) / centerY) * -5.5;
+        const rotateY = ((x - centerX) / centerX) * 5.5;
 
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        card.style.setProperty('--mouse-x', `${x}px`);
+        card.style.setProperty('--mouse-y', `${y}px`);
+        card.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
       });
 
       card.addEventListener('mouseleave', () => {
@@ -1033,15 +1212,13 @@
         modalTech.textContent = tech;
         modalMeta.textContent = meta;
 
-        // Populate visual preview
         modalPreview.innerHTML = '';
         modalPreview.appendChild(visualNode);
 
-        // Populate tag
         const isMotion = category === 'motion';
         modalTags.innerHTML = `
           <span class="card-type-tag ${isMotion ? 'tag-motion' : 'tag-graphic'}" style="position:static;">
-            ${isMotion ? 'AI Motion Graphics' : 'Graphic Design'}
+            ${isMotion ? 'Motion AI' : 'Editorial'}
           </span>
         `;
 
