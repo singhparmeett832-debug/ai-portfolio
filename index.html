@@ -5,21 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Parmeet Singh | Graphic Designer & AI Content Creator</title>
   
-  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
-      --bg: #07090e;
-      --card-bg: rgba(18, 24, 38, 0.65);
+      --bg: #090a0d;
+      --card-bg: rgba(18, 20, 26, 0.7);
       --card-border: rgba(255, 255, 255, 0.08);
-      --accent: #6366f1;
-      --accent-glow: rgba(99, 102, 241, 0.28);
-      --accent-cyan: #06b6d4;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
+      --accent: #ccff00;
+      --accent-glow: rgba(204, 255, 0, 0.22);
+      --accent-dark: #a6d200;
+      --text: #f5f6f8;
+      --text-muted: #8e95a5;
     }
 
     * {
@@ -37,27 +36,26 @@
       position: relative;
     }
 
-    /* Ambient background lighting */
+    /* Ambient background glow */
     body::before {
       content: "";
       position: fixed;
       top: -20%;
       left: 50%;
       transform: translateX(-50%);
-      width: 700px;
-      height: 700px;
+      width: 650px;
+      height: 650px;
       background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
       z-index: -1;
       pointer-events: none;
     }
 
-    /* Navigation Bar */
     header {
       position: sticky;
       top: 0;
       z-index: 100;
       backdrop-filter: blur(20px);
-      background: rgba(7, 9, 14, 0.85);
+      background: rgba(9, 10, 13, 0.85);
       border-bottom: 1px solid var(--card-border);
     }
 
@@ -71,11 +69,12 @@
     }
 
     .logo {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 800;
       letter-spacing: -0.5px;
       color: var(--text);
       text-decoration: none;
+      text-transform: uppercase;
     }
 
     .logo span {
@@ -100,14 +99,14 @@
       color: var(--text);
     }
 
-    /* Unified Button Styling */
+    /* Original Lime Accent Buttons */
     .btn {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       padding: 0.75rem 1.6rem;
       border-radius: 9999px;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 0.92rem;
       text-decoration: none;
       cursor: pointer;
@@ -115,15 +114,16 @@
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, var(--accent), var(--accent-cyan));
-      color: #fff;
+      background: var(--accent);
+      color: #090a0d;
       box-shadow: 0 4px 20px var(--accent-glow);
       border: none;
     }
 
     .btn-primary:hover {
+      background: #d8ff26;
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.45);
+      box-shadow: 0 8px 28px rgba(204, 255, 0, 0.4);
     }
 
     .btn-secondary {
@@ -138,7 +138,6 @@
       transform: translateY(-2px);
     }
 
-    /* Layout Sections */
     section {
       padding: 6rem 2rem;
       max-width: 1240px;
@@ -155,9 +154,9 @@
       display: inline-block;
       padding: 0.4rem 1.2rem;
       border-radius: 9999px;
-      background: var(--accent-glow);
-      border: 1px solid rgba(99, 102, 241, 0.4);
-      color: #c7d2fe;
+      background: rgba(204, 255, 0, 0.08);
+      border: 1px solid rgba(204, 255, 0, 0.3);
+      color: var(--accent);
       font-size: 0.85rem;
       font-weight: 600;
       margin-bottom: 2rem;
@@ -167,7 +166,7 @@
 
     .hero h1 {
       font-family: 'Syne', sans-serif;
-      font-size: 4rem;
+      font-size: 4.2rem;
       font-weight: 800;
       line-height: 1.1;
       letter-spacing: -1.5px;
@@ -175,15 +174,13 @@
     }
 
     .highlight-text {
-      background: linear-gradient(135deg, #a5b4fc 0%, #38bdf8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--accent);
     }
 
     .hero p {
       font-size: 1.2rem;
       color: var(--text-muted);
-      max-width: 700px;
+      max-width: 720px;
       margin: 0 auto 2.5rem;
     }
 
@@ -194,7 +191,6 @@
       flex-wrap: wrap;
     }
 
-    /* Section Headers */
     .section-header {
       margin-bottom: 3.5rem;
       text-align: center;
@@ -213,7 +209,6 @@
       font-size: 1.05rem;
     }
 
-    /* Projects Grid */
     .grid-projects {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -233,14 +228,14 @@
 
     .card:hover {
       transform: translateY(-6px);
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+      border-color: rgba(204, 255, 0, 0.35);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
     }
 
     .media-container {
       width: 100%;
       height: 240px;
-      background: #0d121f;
+      background: #14171f;
       position: relative;
       overflow: hidden;
     }
@@ -280,15 +275,14 @@
 
     .tag {
       font-size: 0.75rem;
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.05);
       padding: 0.35rem 0.8rem;
       border-radius: 6px;
-      color: #cbd5e1;
+      color: #d1d5db;
       font-weight: 500;
       border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
-    /* Skills Grid */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -306,7 +300,7 @@
     .skill-card h4 {
       font-size: 1.15rem;
       margin-bottom: 0.75rem;
-      color: #93c5fd;
+      color: var(--accent);
       font-weight: 700;
     }
 
@@ -315,10 +309,9 @@
       font-size: 0.95rem;
     }
 
-    /* Contact Banner */
     .contact-container {
       text-align: center;
-      background: linear-gradient(180deg, rgba(18, 24, 38, 0.8) 0%, rgba(7, 9, 14, 0.95) 100%);
+      background: linear-gradient(180deg, rgba(18, 20, 26, 0.8) 0%, rgba(9, 10, 13, 0.95) 100%);
       border: 1px solid var(--card-border);
       border-radius: 24px;
       padding: 5rem 2rem;
@@ -345,7 +338,6 @@
       flex-wrap: wrap;
     }
 
-    /* Footer */
     footer {
       border-top: 1px solid var(--card-border);
       padding: 2.5rem 2rem;
@@ -354,12 +346,10 @@
       font-size: 0.9rem;
     }
 
-    /* ========================================================
-       SMOOTH SCROLL REVEAL ANIMATIONS (INTERSECTION OBSERVER)
-       ======================================================== */
+    /* Scroll Reveal Animations */
     .reveal {
       opacity: 0;
-      transform: translateY(38px);
+      transform: translateY(35px);
       transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), 
                   transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
       will-change: opacity, transform;
@@ -370,7 +360,6 @@
       transform: translateY(0);
     }
 
-    /* Stagger Delays */
     .delay-1 { transition-delay: 0.12s; }
     .delay-2 { transition-delay: 0.24s; }
     .delay-3 { transition-delay: 0.36s; }
@@ -386,7 +375,7 @@
   <!-- Header -->
   <header>
     <div class="nav-container">
-      <a href="#" class="logo">PARMEET<span>.</span></a>
+      <a href="#" class="logo">PARMEET SINGH<span>.</span></a>
       <ul class="nav-links">
         <li><a href="#projects">Work</a></li>
         <li><a href="#skills">Skills</a></li>
@@ -511,7 +500,7 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 Parmeet Singh. All rights reserved. | <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" style="color: var(--accent-cyan); text-decoration: none;">@thecorporatealoo</a></p>
+    <p>© 2026 Parmeet Singh. All rights reserved. | <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" style="color: var(--accent); text-decoration: none;">@thecorporatealoo</a></p>
   </footer>
 
   <!-- Intersection Observer Scroll Script -->
