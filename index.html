@@ -3,1392 +3,677 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PARMEET SINGH — Graphic Designer &amp; AI Content Creator</title>
-  <meta name="description" content="Portfolio of Parmeet Singh. Graphic design, brand identity, commercial AI advertising, 3D motion, and visual storytelling." />
-
-  <!-- Typography: Manrope (Headings) & Inter (Body/UI) -->
+  <title>PARMEET SINGH — Graphic Designer × AI Content Creator</title>
+  
+  <!-- Typography: Syne / Manrope & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet" />
+
+  <!-- GSAP & ScrollTrigger from Cloudflare CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <style>
-    /* ==========================================================================
-       1. CSS SYSTEM TOKENS & RESET
-       ========================================================================== */
     :root {
-      --color-background: #F7F6F2;
-      --color-background-secondary: #ECEAE4;
-      --color-card: #FFFFFF;
-      --color-text-primary: #171717;
-      --color-text-secondary: #666666;
-      --color-accent: #D95D39;
-      --color-border: #DDDBD4;
-      --color-dark: #171717;
-      --color-dark-text-muted: #D0D0D0;
-      --color-white: #FFFFFF;
-
-      --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
-      --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
-      --transition-standard: 250ms var(--ease-editorial);
+      --bg: #07090b;
+      --surface: #0e1216;
+      --surface-card: #141a20;
+      --border: rgba(255, 255, 255, 0.08);
+      --accent: #39D6C3;
+      --accent-glow: rgba(57, 214, 195, 0.25);
+      --text: #f4f7f6;
+      --text-muted: #8b9997;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Inter', sans-serif;
     }
 
-    *, *::before, *::after {
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--color-background);
-      color: var(--color-text-primary);
       font-family: var(--font-body);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     body {
-      line-height: 1.6;
+      background-color: var(--bg);
+      color: var(--text);
       overflow-x: hidden;
-    }
-
-    img, video {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* Accessibility / Reduced Motion */
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-    }
-
-    /* ==========================================================================
-       2. TYPOGRAPHY & COMMON LAYOUT
-       ========================================================================== */
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      color: var(--color-text-primary);
-      letter-spacing: -0.03em;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .section-spacing {
-      padding: 8rem 0;
-    }
-
-    .section-header {
-      margin-bottom: 4rem;
-    }
-
-    .section-eyebrow {
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-
-    .section-title {
-      font-size: clamp(2.25rem, 5vw, 3.75rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-      font-size: clamp(1rem, 1.5vw, 1.125rem);
-      color: var(--color-text-secondary);
-      max-width: 620px;
-      line-height: 1.65;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 1.8rem;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      border-radius: 4px;
-      transition: background-color var(--transition-standard), color var(--transition-standard), transform var(--transition-standard), border-color var(--transition-standard);
-    }
-
-    .btn-primary {
-      background-color: var(--color-accent);
-      color: var(--color-white);
-      border: 1px solid var(--color-accent);
-    }
-
-    .btn-primary:hover {
-      background-color: #c44f2c;
-      border-color: #c44f2c;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--color-text-primary);
-      border: 1px solid var(--color-border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--color-text-primary);
-      background-color: rgba(23, 23, 23, 0.03);
-      transform: translateY(-2px);
-    }
-
-    .btn-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--color-text-primary);
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 2px;
-      transition: border-color var(--transition-standard), color var(--transition-standard);
-    }
-
-    .btn-link:hover {
-      color: var(--color-accent);
-      border-color: var(--color-accent);
-    }
-
-    /* ==========================================================================
-       3. NAVIGATION
-       ========================================================================== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: rgba(247, 246, 242, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 4.75rem;
-    }
-
-    .nav-logo {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--color-text-primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 2.5rem;
-    }
-
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-text-primary);
-      position: relative;
-      transition: color var(--transition-standard);
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--color-accent);
-    }
-
-    .mobile-menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 0.5rem;
-    }
-
-    .mobile-menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background-color: var(--color-text-primary);
-      transition: transform var(--transition-standard);
-    }
-
-    /* ==========================================================================
-       4. HERO SECTION
-       ========================================================================== */
-    .hero-section {
-      padding: clamp(6rem, 12vw, 11rem) 0 clamp(5rem, 8vw, 8rem);
-      background-color: var(--color-background);
-    }
-
-    .hero-content {
-      max-width: 980px;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 1.5rem;
-      display: inline-block;
-    }
-
-    .hero-name {
-      font-size: clamp(3.25rem, 8.5vw, 6.75rem);
-      font-weight: 700;
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-      margin-bottom: 1.5rem;
-      color: var(--color-text-primary);
-    }
-
-    .hero-title {
-      font-size: clamp(1.5rem, 3.5vw, 2.75rem);
-      font-weight: 600;
-      line-height: 1.2;
-      color: var(--color-text-primary);
-      margin-bottom: 2rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-description {
-      font-size: clamp(1.125rem, 2vw, 1.25rem);
-      color: var(--color-text-secondary);
-      max-width: 640px;
-      line-height: 1.65;
-      margin-bottom: 3rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    /* ==========================================================================
-       5. SELECTED WORK GALLERY (2-COLUMN GRID)
-       ========================================================================== */
-    .work-section {
-      background-color: var(--color-background);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3rem 2.5rem;
-    }
-
-    .project-card {
-      background-color: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      transition: border-color var(--transition-standard), transform var(--transition-standard);
-    }
-
-    .project-card:hover {
-      border-color: #B5B2A9;
-      transform: translateY(-4px);
-    }
-
-    .project-thumbnail-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      background-color: var(--color-background-secondary);
-      overflow: hidden;
-    }
-
-    .project-thumbnail {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 400ms var(--ease-editorial);
-    }
-
-    .project-card:hover .project-thumbnail {
-      transform: scale(1.03);
-    }
-
-    .project-placeholder-visual {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      background: linear-gradient(135deg, #EBE9E2 0%, #DEDCD5 100%);
-      color: var(--color-text-primary);
-      text-align: center;
-      gap: 0.75rem;
-    }
-
-    .project-placeholder-visual span {
-      font-size: 0.8125rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-text-secondary);
-    }
-
-    .project-info {
-      padding: 1.75rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .project-category {
-      font-size: 0.75rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      transition: color var(--transition-standard);
-    }
-
-    .project-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .project-title {
-      font-size: clamp(1.25rem, 1.8vw, 1.5rem);
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    .project-arrow {
-      font-size: 1.25rem;
-      line-height: 1;
-      color: var(--color-text-primary);
-      transition: transform var(--transition-standard), color var(--transition-standard);
-    }
-
-    .project-card:hover .project-arrow {
-      transform: translate(3px, -3px);
-      color: var(--color-accent);
-    }
-
-    /* ==========================================================================
-       6. AI FILMS & MOTION SECTION
-       ========================================================================== */
-    .films-section {
-      background-color: var(--color-background-secondary);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .films-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2rem;
-    }
-
-    .film-card {
-      background-color: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .video-viewport {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background-color: #000;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .video-viewport video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      background-color: rgba(23, 23, 23, 0.45);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: opacity var(--transition-standard), background-color var(--transition-standard);
-    }
-
-    .video-overlay:hover {
-      background-color: rgba(23, 23, 23, 0.3);
-    }
-
-    .video-overlay.is-playing {
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .play-btn {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background-color: var(--color-white);
-      color: var(--color-text-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-left: 3px;
-      font-size: 1.125rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-      transition: transform var(--transition-standard), background-color var(--transition-standard), color var(--transition-standard);
-    }
-
-    .video-overlay:hover .play-btn {
-      transform: scale(1.08);
-      background-color: var(--color-accent);
-      color: var(--color-white);
-    }
-
-    .film-details {
-      padding: 1.5rem;
-    }
-
-    .film-details h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-
-    .film-details p {
-      font-size: 0.9375rem;
-      color: var(--color-text-secondary);
       line-height: 1.5;
     }
 
-    /* ==========================================================================
-       7. ABOUT SECTION
-       ========================================================================== */
-    .about-section {
-      background-color: var(--color-background);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4.5rem;
+    /* =======================================================
+       1. PRELOADER COUNTER (0% -> 100%)
+       ======================================================= */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      background-color: #050709;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      transition: opacity 0.8s ease, visibility 0.8s ease;
     }
 
-    .about-portrait-wrapper {
+    .counter-display {
+      font-family: var(--font-display);
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+
+    .counter-display span {
+      color: var(--accent);
+      font-size: 0.6em;
+      vertical-align: super;
+      margin-left: 4px;
+    }
+
+    .loader-bar-wrap {
+      width: 220px;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.08);
       position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      background-color: var(--color-background-secondary);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
       overflow: hidden;
     }
 
-    .about-portrait {
-      width: 100%;
+    .loader-bar-fill {
+      position: absolute;
+      top: 0;
+      left: 0;
       height: 100%;
-      object-fit: cover;
+      width: 0%;
+      background: var(--accent);
+      box-shadow: 0 0 12px var(--accent);
     }
 
-    .portrait-placeholder {
+    .loader-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* =======================================================
+       2. TOP NAVIGATION
+       ======================================================= */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.75rem 3rem;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+      background: rgba(7, 9, 11, 0.85);
+    }
+
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    .nav-tag {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+    }
+
+    .btn-connect {
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      background: var(--accent);
+      color: #07090b;
+      padding: 0.55rem 1.35rem;
+      border-radius: 999px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .btn-connect:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px var(--accent-glow);
+    }
+
+    /* =======================================================
+       3. CINEMATIC PINNED STAGE (THE CORE VIDEO MECHANIC)
+       ======================================================= */
+    .pinned-viewport {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Radial Spotlight in the Center */
+    .spotlight {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(57, 214, 195, 0.12) 0%, transparent 68%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Left Metadata & Chapter Index */
+    .stage-left-info {
+      position: absolute;
+      top: 50%;
+      left: 4.5rem;
+      transform: translateY(-50%);
+      z-index: 10;
+      max-width: 320px;
+    }
+
+    .chapter-num {
+      font-family: var(--font-display);
+      font-size: 4.2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .chapter-title {
+      font-family: var(--font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .chapter-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .chapter-tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      background: rgba(57, 214, 195, 0.08);
+      border: 1px solid var(--accent-glow);
+      color: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* Central 3D Visual Asset Canvas */
+    .stage-center-visual {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 520px;
+      height: 520px;
+      z-index: 5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .visual-card {
+      position: absolute;
       width: 100%;
       height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s ease;
+    }
+
+    .visual-art-box {
+      width: 440px;
+      height: 440px;
+      border-radius: 20px;
+      background: var(--surface-card);
+      border: 1px solid var(--border);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       padding: 2.5rem;
       text-align: center;
-      background: linear-gradient(180deg, #F3F1EC 0%, #E5E3DD 100%);
-      color: var(--color-text-primary);
-      gap: 1rem;
+      position: relative;
+      overflow: hidden;
     }
 
-    .portrait-placeholder span {
-      font-size: 0.8125rem;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-text-secondary);
+    .visual-art-box::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(57, 214, 195, 0.1) 0%, transparent 60%);
+      pointer-events: none;
     }
 
-    .about-bio {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .about-bio h3 {
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
+    .visual-art-box h4 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
       font-weight: 700;
-      line-height: 1.2;
+      margin-bottom: 0.5rem;
     }
 
-    .about-bio .role-badge {
-      font-size: 0.875rem;
-      font-weight: 500;
+    .visual-art-box p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Huge Bottom Typographic Layer */
+    .stage-bottom-word {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-display);
+      font-size: clamp(4.5rem, 14vw, 12rem);
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-accent);
+      letter-spacing: -2px;
+      color: rgba(255, 255, 255, 0.05);
+      white-space: nowrap;
+      z-index: 2;
+      pointer-events: none;
+      transition: color 0.4s ease;
     }
 
-    .about-bio p {
-      font-size: 1.0625rem;
-      color: var(--color-text-secondary);
-      line-height: 1.7;
+    /* Right Details & Metric Widget */
+    .stage-right-stats {
+      position: absolute;
+      top: 50%;
+      right: 4.5rem;
+      transform: translateY(-50%);
+      z-index: 10;
+      text-align: right;
     }
 
-    /* ==========================================================================
-       8. WHAT I DO (SERVICES SECTION)
-       ========================================================================== */
-    .services-section {
-      background-color: var(--color-background-secondary);
-      border-top: 1px solid var(--color-border);
+    .stat-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 0.25rem;
     }
 
-    .services-list {
-      display: flex;
-      flex-direction: column;
-      border-top: 1px solid var(--color-border);
+    .stat-value {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 1.5rem;
     }
 
-    .service-row {
-      display: grid;
-      grid-template-columns: 80px 1.5fr 2fr;
-      padding: 2.25rem 0;
-      border-bottom: 1px solid var(--color-border);
-      align-items: baseline;
-      transition: background-color var(--transition-standard);
+    /* =======================================================
+       4. CLIENT INQUIRY SECTION (AFTER SCROLL STAGE)
+       ======================================================= */
+    .inquiry-section {
+      padding: 10rem 2rem 6rem;
+      background: #050708;
+      text-align: center;
+      position: relative;
+      border-top: 1px solid var(--border);
     }
 
-    .service-num {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--color-accent);
-      letter-spacing: 0.04em;
+    .inquiry-wrap {
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    .service-title {
-      font-size: clamp(1.25rem, 2vw, 1.75rem);
+    .inquiry-eyebrow {
+      font-size: 0.8rem;
       font-weight: 600;
-      color: var(--color-text-primary);
-    }
-
-    .service-desc {
-      font-size: 0.9688rem;
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ==========================================================================
-       9. CONTACT SECTION (DARK CONTRAST BLOCK)
-       ========================================================================== */
-    .contact-section {
-      background-color: var(--color-dark);
-      color: var(--color-white);
-      padding: 9rem 0 6rem;
-      border-top: 1px solid #292929;
-    }
-
-    .contact-layout {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      max-width: 900px;
-    }
-
-    .contact-eyebrow {
-      font-size: 0.8125rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--color-accent);
+      color: var(--accent);
       margin-bottom: 1.25rem;
       display: block;
     }
 
-    .contact-heading {
-      font-size: clamp(2.5rem, 6vw, 4.75rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      color: var(--color-white);
+    .inquiry-wrap h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.1;
       margin-bottom: 1.5rem;
     }
 
-    .contact-statement {
-      font-size: clamp(1.125rem, 2vw, 1.35rem);
-      color: var(--color-dark-text-muted);
-      line-height: 1.6;
-      margin-bottom: 3.5rem;
-      max-width: 620px;
+    .inquiry-wrap p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
     }
 
-    .contact-actions {
+    .social-row {
       display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 4.5rem;
-    }
-
-    .contact-actions .btn-primary {
-      padding: 1.1rem 2.2rem;
-      font-size: 1rem;
-    }
-
-    .contact-social-grid {
-      display: flex;
+      justify-content: center;
       gap: 2.5rem;
       flex-wrap: wrap;
+      margin-top: 4rem;
       padding-top: 2rem;
-      border-top: 1px solid #2e2e2e;
-      width: 100%;
+      border-top: 1px solid var(--border);
     }
 
-    .social-link {
+    .social-row a {
+      color: var(--text-muted);
       font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
+      font-weight: 600;
       text-transform: uppercase;
-      color: var(--color-dark-text-muted);
-      transition: color var(--transition-standard);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
+      letter-spacing: 0.08em;
+      text-decoration: none;
+      transition: color 0.3s ease;
     }
 
-    .social-link:hover {
-      color: var(--color-accent);
+    .social-row a:hover {
+      color: var(--accent);
     }
 
-    /* Footer within Dark Section */
-    .site-footer {
-      margin-top: 5rem;
-      padding-top: 2rem;
-      border-top: 1px solid #242424;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8125rem;
-      color: #777777;
-    }
-
-    .site-footer a {
-      color: var(--color-dark-text-muted);
-      transition: color var(--transition-standard);
-    }
-
-    .site-footer a:hover {
-      color: var(--color-accent);
-    }
-
-    /* ==========================================================================
-       10. PROJECT DETAIL MODAL
-       ========================================================================== */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background-color: rgba(23, 23, 23, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 300ms var(--ease-editorial);
-    }
-
-    .modal-backdrop.is-active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-dialog {
-      background-color: var(--color-card);
-      border: 1px solid var(--color-border);
-      width: 100%;
-      max-width: 900px;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 3px;
-      position: relative;
-      padding: 2.5rem;
-      transform: translateY(20px);
-      transition: transform 300ms var(--ease-editorial);
-    }
-
-    .modal-backdrop.is-active .modal-dialog {
-      transform: translateY(0);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 40px;
-      height: 40px;
-      font-size: 1.5rem;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-text-primary);
-      border-radius: 50%;
-      border: 1px solid var(--color-border);
-      background-color: var(--color-card);
-      transition: border-color var(--transition-standard), color var(--transition-standard);
-    }
-
-    .modal-close-btn:hover {
-      color: var(--color-accent);
-      border-color: var(--color-accent);
-    }
-
-    .modal-header {
-      margin-bottom: 1.5rem;
-      padding-right: 3rem;
-    }
-
-    .modal-category {
-      font-size: 0.8125rem;
-      font-weight: 500;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--color-accent);
-      display: block;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-title {
-      font-size: clamp(1.75rem, 3vw, 2.25rem);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .modal-media-container {
-      width: 100%;
-      margin: 1.5rem 0 2rem;
-      background-color: var(--color-background-secondary);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .modal-media-container img,
-    .modal-media-container video {
-      width: 100%;
-      max-height: 60vh;
-      object-fit: contain;
-    }
-
-    .modal-description {
-      font-size: 1rem;
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .modal-nav {
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid var(--color-border);
-      padding-top: 1.5rem;
-    }
-
-    /* ==========================================================================
-       11. SCROLL REVEAL STYLES (INTERSECTION OBSERVER)
-       ========================================================================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 700ms var(--ease-editorial), transform 700ms var(--ease-editorial);
-      will-change: opacity, transform;
-    }
-
-    .reveal.is-revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .delay-1 { transition-delay: 90ms; }
-    .delay-2 { transition-delay: 180ms; }
-    .delay-3 { transition-delay: 270ms; }
-
-    /* ==========================================================================
-       12. RESPONSIVE BREAKPOINTS
-       ========================================================================== */
-    @media (max-width: 992px) {
-      .project-grid {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-      }
-      .about-layout {
-        grid-template-columns: 1fr;
-        gap: 3rem;
-      }
-      .service-row {
-        grid-template-columns: 50px 1fr;
-        gap: 0.75rem;
-      }
-      .service-desc {
-        grid-column: 2 / -1;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .section-spacing {
-        padding: 5rem 0;
-      }
-      .container {
-        padding: 0 1.25rem;
-      }
-      .nav-links {
-        display: none;
-      }
-      .nav-links.is-open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 4.75rem;
-        left: 0;
-        right: 0;
-        background-color: var(--color-background);
-        border-bottom: 1px solid var(--color-border);
-        padding: 2rem;
-        gap: 1.5rem;
-      }
-      .mobile-menu-toggle {
-        display: flex;
-      }
-      .films-grid {
-        grid-template-columns: 1fr;
-      }
-      .modal-dialog {
-        padding: 1.5rem;
-      }
+    @media (max-width: 900px) {
+      header { padding: 1.25rem 1.5rem; }
+      .stage-left-info { left: 1.5rem; top: 18%; transform: none; }
+      .stage-right-stats { display: none; }
+      .stage-center-visual { width: 340px; height: 340px; }
+      .visual-art-box { width: 290px; height: 290px; }
+      .chapter-num { font-size: 3rem; }
+      .chapter-title { font-size: 1.35rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <header class="site-header">
-    <div class="container nav-wrapper">
-      <a href="#" class="nav-logo">PARMEET SINGH</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#films">AI Films</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">What I Do</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero-section" id="hero">
-    <div class="container">
-      <div class="hero-content">
-        <span class="hero-eyebrow reveal">Design Studio &amp; AI Directing</span>
-        <h1 class="hero-name reveal delay-1">PARMEET SINGH</h1>
-        <h2 class="hero-title reveal delay-2">Graphic Designer × AI Content Creator</h2>
-        <p class="hero-description reveal delay-2">Creating visual experiences through design, AI and motion.</p>
-        <div class="hero-actions reveal delay-3">
-          <a href="#work" class="btn btn-primary">Explore Selected Work</a>
-          <a href="#contact" class="btn-link">Let's Connect ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Selected Work Section -->
-  <section class="work-section section-spacing" id="work">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">Portfolio</span>
-        <h2 class="section-title">Selected Work</h2>
-        <p class="section-subtitle">Commercial design systems, brand identities, and high-impact visual campaigns.</p>
-      </div>
-
-      <div class="project-grid" id="projectGrid">
-        <!-- Project 1 -->
-        <article class="project-card reveal delay-1" data-project-id="1">
-          <div class="project-thumbnail-wrapper">
-            <!-- Replace thumbnail src with actual asset path if available -->
-            <div class="project-placeholder-visual">
-              <strong>Brand Campaign</strong>
-              <span>Visual Showcase (4:5)</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-category">Brand Identity &amp; Creative Direction</span>
-            <div class="project-title-row">
-              <h3 class="project-title">Commercial Identity &amp; Packaging</h3>
-              <span class="project-arrow" aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2 -->
-        <article class="project-card reveal delay-2" data-project-id="2">
-          <div class="project-thumbnail-wrapper">
-            <div class="project-placeholder-visual">
-              <strong>Digital Advertising</strong>
-              <span>Campaign System (4:5)</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-category">Advertising Creatives &amp; Design</span>
-            <div class="project-title-row">
-              <h3 class="project-title">Consumer Brand Digital Campaign</h3>
-              <span class="project-arrow" aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3 -->
-        <article class="project-card reveal delay-1" data-project-id="3">
-          <div class="project-thumbnail-wrapper">
-            <div class="project-placeholder-visual">
-              <strong>3D &amp; Generative Visuals</strong>
-              <span>Product Renderings (4:5)</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-category">3D Design &amp; Generative Visuals</span>
-            <div class="project-title-row">
-              <h3 class="project-title">Cinematic 3D Product Renders</h3>
-              <span class="project-arrow" aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4 -->
-        <article class="project-card reveal delay-2" data-project-id="4">
-          <div class="project-thumbnail-wrapper">
-            <div class="project-placeholder-visual">
-              <strong>Visual Storytelling</strong>
-              <span>Digital Narrative (4:5)</span>
-            </div>
-          </div>
-          <div class="project-info">
-            <span class="project-category">Visual Storytelling &amp; Strategy</span>
-            <div class="project-title-row">
-              <h3 class="project-title">Editorial Visual Narratives</h3>
-              <span class="project-arrow" aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI Films & Motion Section -->
-  <section class="films-section section-spacing" id="films">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">Motion &amp; AI</span>
-        <h2 class="section-title">AI Films &amp; Motion</h2>
-        <p class="section-subtitle">Exploring ideas through motion, artificial intelligence and visual storytelling.</p>
-      </div>
-
-      <div class="films-grid">
-        <!-- Film Card 1 -->
-        <div class="film-card reveal delay-1">
-          <div class="video-viewport">
-            <video playsinline loop muted preload="metadata">
-              <source src="" type="video/mp4" />
-            </video>
-            <div class="video-overlay" role="button" aria-label="Play AI motion preview" tabindex="0">
-              <div class="play-btn">▶</div>
-            </div>
-          </div>
-          <div class="film-details">
-            <h3>Cinematic AI Worldbuilding</h3>
-            <p>Generative sequence exploration focused on controlled lighting, atmosphere, and cinematic visual tempo.</p>
-          </div>
-        </div>
-
-        <!-- Film Card 2 -->
-        <div class="film-card reveal delay-2">
-          <div class="video-viewport">
-            <video playsinline loop muted preload="metadata">
-              <source src="" type="video/mp4" />
-            </video>
-            <div class="video-overlay" role="button" aria-label="Play commercial motion ad preview" tabindex="0">
-              <div class="play-btn">▶</div>
-            </div>
-          </div>
-          <div class="film-details">
-            <h3>Motion Graphics &amp; Social Ads</h3>
-            <p>Paced commercial cuts, kinetic typography, and retention-engineered motion sequences for vertical screens.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about-section section-spacing" id="about">
-    <div class="container">
-      <div class="about-layout">
-        <div class="about-portrait-wrapper reveal delay-1">
-          <!-- Real portrait can be placed here -->
-          <div class="portrait-placeholder">
-            <strong>PARMEET SINGH</strong>
-            <span>Portrait / Studio Photo Placeholder (4:5)</span>
-          </div>
-        </div>
-        <div class="about-bio reveal delay-2">
-          <span class="section-eyebrow">Biography</span>
-          <span class="role-badge">Graphic Designer &amp; AI Content Creator</span>
-          <h3>A Little About Me</h3>
-          <p>I create visual experiences across graphic design, AI content, motion and digital storytelling.</p>
-          <p>My work combines precision editorial principles with cutting-edge generative workflows, crafting brand identities and commercial campaigns that resonate clearly across modern digital touchpoints.</p>
-          <div>
-            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- What I Do (Services Section) -->
-  <section class="services-section section-spacing" id="services">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">Capabilities</span>
-        <h2 class="section-title">What I Do</h2>
-        <p class="section-subtitle">Disciplines and creative output tailored for brands, agencies, and digital creators.</p>
-      </div>
-
-      <div class="services-list reveal">
-        <div class="service-row">
-          <span class="service-num">01</span>
-          <h3 class="service-title">Graphic Design</h3>
-          <p class="service-desc">Editorial layouts, print systems, presentation typography, and visual assets built with typographic discipline.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">02</span>
-          <h3 class="service-title">Brand Identity</h3>
-          <p class="service-desc">Cohesive logo systems, design guidelines, brand color palettes, and structured visual identity frameworks.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">03</span>
-          <h3 class="service-title">AI Content Creation</h3>
-          <p class="service-desc">Generative image synthesis, hyper-detailed commercial concepts, and art-directed creative pipelines.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">04</span>
-          <h3 class="service-title">AI Video Creation</h3>
-          <p class="service-desc">Prompt-to-video direction, scene continuity, camera motion mapping, and generative film storytelling.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">05</span>
-          <h3 class="service-title">Motion Graphics</h3>
-          <p class="service-desc">Kinetic typography, logo reveals, promotional video editing, and beat-synced motion dynamics.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">06</span>
-          <h3 class="service-title">3D Design</h3>
-          <p class="service-desc">Product visualization, material texturing, studio lighting setups, and abstract spatial compositions.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">07</span>
-          <h3 class="service-title">Advertising Creatives</h3>
-          <p class="service-desc">High-conversion performance advertising, social media hero visuals, and campaign rollout collateral.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section (Dark Contrast Block) -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="contact-layout">
-        <span class="contact-eyebrow reveal">Inquiries</span>
-        <h2 class="contact-heading reveal delay-1">Have a project in mind?</h2>
-        <p class="contact-statement reveal delay-2">Let's create something meaningful.</p>
-        <div class="contact-actions reveal delay-3">
-          <a href="mailto:singhparmeett832@gmail.com" class="btn btn-primary">Let's Talk ↗</a>
-        </div>
-        
-        <div class="contact-social-grid reveal delay-3">
-          <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" class="social-link">Instagram (@thecorporatealoo) ↗</a>
-          <a href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank" rel="noopener" class="social-link">LinkedIn ↗</a>
-          <a href="https://behance.net/parmeetsingh75" target="_blank" rel="noopener" class="social-link">Behance ↗</a>
-        </div>
-
-        <footer class="site-footer">
-          <p>© 2026 PARMEET SINGH. All rights reserved.</p>
-          <p>Premium Minimal Studio Design System</p>
-        </footer>
-      </div>
-    </div>
-  </section>
-
-  <!-- Accessible Project Detail Modal -->
-  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-dialog">
-      <button class="modal-close-btn" id="modalClose" aria-label="Close project view">✕</button>
-      <div class="modal-header">
-        <span class="modal-category" id="modalCategory">Category</span>
-        <h3 class="modal-title" id="modalTitle">Project Title</h3>
-      </div>
-      <div class="modal-media-container" id="modalMedia">
-        <div class="project-placeholder-visual" style="height: 380px;">
-          <span>High-Resolution Project Asset View</span>
-        </div>
-      </div>
-      <p class="modal-description" id="modalDescription">Detailed project case study information and visual documentation.</p>
-      <div class="modal-nav">
-        <button class="btn-link" id="modalPrev">← Previous Project</button>
-        <button class="btn-link" id="modalNext">Next Project →</button>
-      </div>
+  <!-- 1. NUMERIC PRELOADER COUNTER -->
+  <div id="preloader">
+    <div class="loader-tag">Initializing Creative Engine</div>
+    <div class="counter-display"><span id="count">0</span><span>%</span></div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar-fill" id="loaderBar"></div>
     </div>
   </div>
 
-  <!-- JavaScript: Navigation, Scroll Reveals, Click-to-Play, and Modal -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 1. Mobile Menu Toggle
-      const menuToggle = document.getElementById('menuToggle');
-      const navLinks = document.getElementById('navLinks');
+  <!-- 2. NAVIGATION BAR -->
+  <header>
+    <a href="#" class="logo">PARMEET SINGH<span>.</span></a>
+    <span class="nav-tag">Scroll-Driven Portfolio</span>
+    <a href="mailto:singhparmeett832@gmail.com" class="btn-connect">Let's Work Together ↗</a>
+  </header>
+
+  <!-- 3. SCROLL-DRIVEN PINNED STAGE -->
+  <!-- Total height determines the length of scroll -->
+  <div id="scrollContainer" style="height: 500vh;">
+    <div class="pinned-viewport" id="pinnedStage">
       
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-          const isOpen = navLinks.classList.toggle('is-open');
-          menuToggle.setAttribute('aria-expanded', isOpen);
-        });
+      <div class="spotlight"></div>
 
-        navLinks.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            navLinks.classList.remove('is-open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
+      <!-- Left Live Info (Dynamic Chapters) -->
+      <div class="stage-left-info">
+        <div class="chapter-num" id="displayNum">01</div>
+        <h3 class="chapter-title" id="displayTitle">Commercial Brand Campaigns</h3>
+        <p class="chapter-desc" id="displayDesc">High-impact packaging identity, typographic design systems, and comprehensive visual communication for lifestyle goods.</p>
+        <span class="chapter-tag" id="displayTag">Brand &amp; Packaging</span>
+      </div>
 
-      // 2. Intersection Observer for Scroll Reveals
-      const reveals = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-              observer.unobserve(entry.target);
+      <!-- Center 3D Visual Artwork -->
+      <div class="stage-center-visual" id="visualContainer">
+        <!-- Chapter 1 -->
+        <div class="visual-card" id="card1">
+          <div class="visual-art-box">
+            <span style="font-size: 2.8rem; margin-bottom: 1rem;">✦</span>
+            <h4>Brand Identity &amp; System</h4>
+            <p>Packaging &amp; Vector Systems</p>
+          </div>
+        </div>
+
+        <!-- Chapter 2 -->
+        <div class="visual-card" id="card2" style="opacity: 0; transform: scale(0.85);">
+          <div class="visual-art-box">
+            <span style="font-size: 2.8rem; margin-bottom: 1rem;">⚡</span>
+            <h4>Commercial Video Ads</h4>
+            <p>Direct Response &amp; Retention Engineering</p>
+          </div>
+        </div>
+
+        <!-- Chapter 3 -->
+        <div class="visual-card" id="card3" style="opacity: 0; transform: scale(0.85);">
+          <div class="visual-art-box">
+            <span style="font-size: 2.8rem; margin-bottom: 1rem;">◈</span>
+            <h4>Cinematic 3D Renders</h4>
+            <p>Studio Shaders &amp; Material Physics</p>
+          </div>
+        </div>
+
+        <!-- Chapter 4 -->
+        <div class="visual-card" id="card4" style="opacity: 0; transform: scale(0.85);">
+          <div class="visual-art-box">
+            <span style="font-size: 2.8rem; margin-bottom: 1rem;">❖</span>
+            <h4>AI Worldbuilding &amp; Film</h4>
+            <p>Generative Storytelling &amp; Motion</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Deliverable Stats -->
+      <div class="stage-right-stats">
+        <div class="stat-label">Production Tools</div>
+        <div class="stat-value" id="displayTool">Photoshop / Figma</div>
+
+        <div class="stat-label">Deliverable Type</div>
+        <div class="stat-value" id="displayOutput">Visual Identity Pack</div>
+      </div>
+
+      <!-- Giant Bottom Typography -->
+      <div class="stage-bottom-word" id="displayBottomWord">CAMPAIGNS</div>
+
+    </div>
+  </div>
+
+  <!-- 4. INQUIRY / CONTACT SECTION -->
+  <section class="inquiry-section">
+    <div class="inquiry-wrap">
+      <span class="inquiry-eyebrow">Direct Inquiries</span>
+      <h2>Have a project in mind? Let's build something unforgettable.</h2>
+      <p>Available for commercial video advertising, brand identity systems, and generative AI creative direction.</p>
+      
+      <a href="mailto:singhparmeett832@gmail.com" class="btn-connect" style="padding: 1rem 2.5rem; font-size: 1rem;">Let's Work Together ↗</a>
+
+      <div class="social-row">
+        <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener">Instagram (@thecorporatealoo) ↗</a>
+        <a href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="https://behance.net/parmeetsingh75" target="_blank" rel="noopener">Behance ↗</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GSAP SCROLL & PRELOADER SCRIPT -->
+  <script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ==========================================
+    // 1. PRELOADER COUNTER (0% -> 100%)
+    // ==========================================
+    window.addEventListener('load', () => {
+      let countObj = { val: 0 };
+      const countEl = document.getElementById('count');
+      const barEl = document.getElementById('loaderBar');
+      const preloader = document.getElementById('preloader');
+
+      gsap.to(countObj, {
+        val: 100,
+        duration: 1.8,
+        ease: "power2.out",
+        onUpdate: () => {
+          const current = Math.floor(countObj.val);
+          countEl.textContent = current;
+          barEl.style.width = current + "%";
+        },
+        onComplete: () => {
+          gsap.to(preloader, {
+            opacity: 0,
+            duration: 0.6,
+            onComplete: () => {
+              preloader.style.visibility = "hidden";
+              initScrollTrigger();
             }
           });
-        }, {
-          threshold: 0.15,
-          rootMargin: '0px 0px -40px 0px'
-        });
-
-        reveals.forEach(el => revealObserver.observe(el));
-      } else {
-        reveals.forEach(el => el.classList.add('is-revealed'));
-      }
-
-      // 3. Click-to-Play Video Controller (No Autoplay Sound)
-      const videoCards = document.querySelectorAll('.film-card');
-      videoCards.forEach(card => {
-        const overlay = card.querySelector('.video-overlay');
-        const video = card.querySelector('video');
-
-        if (overlay && video) {
-          const togglePlay = () => {
-            if (video.paused) {
-              // Pause any other playing videos
-              document.querySelectorAll('.film-card video').forEach(v => {
-                if (v !== video) {
-                  v.pause();
-                  v.closest('.film-card')?.querySelector('.video-overlay')?.classList.remove('is-playing');
-                }
-              });
-              video.play().then(() => {
-                overlay.classList.add('is-playing');
-              }).catch(() => {
-                // Autoplay/play prevented gracefully
-              });
-            } else {
-              video.pause();
-              overlay.classList.remove('is-playing');
-            }
-          };
-
-          overlay.addEventListener('click', togglePlay);
-          overlay.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              togglePlay();
-            }
-          });
-          video.addEventListener('click', togglePlay);
         }
-      });
-
-      // 4. Project Modal Interaction System
-      const projectData = {
-        '1': {
-          title: 'Commercial Identity & Packaging',
-          category: 'Brand Identity & Creative Direction',
-          description: 'A comprehensive brand system combining clean editorial packaging design, custom typography hierarchies, and structured visual identity guidelines built for lifestyle and commercial consumer goods.'
-        },
-        '2': {
-          title: 'Consumer Brand Digital Campaign',
-          category: 'Advertising Creatives & Design',
-          description: 'High-converting social advertising assets and static-to-motion variants engineered for brand recall, thumb-stopping digital hooks, and cross-platform campaign deployments.'
-        },
-        '3': {
-          title: 'Cinematic 3D Product Renders',
-          category: '3D Design & Generative Visuals',
-          description: 'High-fidelity 3D modeling and generative exploration focusing on surface materiality, studio lighting physics, and high-impact visual presentations.'
-        },
-        '4': {
-          title: 'Editorial Visual Narratives',
-          category: 'Visual Storytelling & Strategy',
-          description: 'A cohesive digital publication series exploring visual pacing, contrast, and contemporary typography across modern screen layouts.'
-        }
-      };
-
-      const projectCards = document.querySelectorAll('.project-card');
-      const modal = document.getElementById('projectModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalCategory = document.getElementById('modalCategory');
-      const modalDescription = document.getElementById('modalDescription');
-      const modalClose = document.getElementById('modalClose');
-      const modalPrev = document.getElementById('modalPrev');
-      const modalNext = document.getElementById('modalNext');
-
-      let currentProjectId = '1';
-      const projectKeys = Object.keys(projectData);
-
-      const renderModal = (id) => {
-        const data = projectData[id];
-        if (!data) return;
-        currentProjectId = id;
-        modalTitle.textContent = data.title;
-        modalCategory.textContent = data.category;
-        modalDescription.textContent = data.description;
-      };
-
-      const openModal = (id) => {
-        renderModal(id);
-        modal.classList.add('is-active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      };
-
-      const closeModal = () => {
-        modal.classList.remove('is-active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      };
-
-      projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-          const id = card.getAttribute('data-project-id');
-          openModal(id);
-        });
-      });
-
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (modal) {
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalPrev) {
-        modalPrev.addEventListener('click', () => {
-          const index = projectKeys.indexOf(currentProjectId);
-          const prevIndex = (index - 1 + projectKeys.length) % projectKeys.length;
-          renderModal(projectKeys[prevIndex]);
-        });
-      }
-
-      if (modalNext) {
-        modalNext.addEventListener('click', () => {
-          const index = projectKeys.indexOf(currentProjectId);
-          const nextIndex = (index + 1) % projectKeys.length;
-          renderModal(projectKeys[nextIndex]);
-        });
-      }
-
-      // Keyboard support for accessibility
-      document.addEventListener('keydown', (e) => {
-        if (!modal.classList.contains('is-active')) return;
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowLeft' && modalPrev) modalPrev.click();
-        if (e.key === 'ArrowRight' && modalNext) modalNext.click();
       });
     });
+
+    // ==========================================
+    // 2. CHAPTER DATA DEFINITION
+    // ==========================================
+    const chapters = [
+      {
+        num: "01",
+        title: "Commercial Brand Campaigns",
+        desc: "High-impact packaging identity, typographic design systems, and comprehensive visual communication for lifestyle goods.",
+        tag: "Brand & Packaging",
+        tool: "Photoshop / Illustrator",
+        output: "Identity System",
+        word: "CAMPAIGNS"
+      },
+      {
+        num: "02",
+        title: "Commercial Video Ads",
+        desc: "Retention-engineered short-form videos, dynamic visual hooks, and kinetic pacing built for consumer engagement.",
+        tag: "Motion & Advertising",
+        tool: "Premiere / After Effects",
+        output: "Direct Response Ads",
+        word: "COMMERCIAL"
+      },
+      {
+        num: "03",
+        title: "Cinematic 3D Product Visuals",
+        desc: "Hyper-realistic material texturing, dynamic studio lighting setups, and macro-level packaging asset visualization.",
+        tag: "3D & Shading",
+        tool: "Blender / Cinema4D",
+        output: "3D Product Renderings",
+        word: "CINEMATIC"
+      },
+      {
+        num: "04",
+        title: "AI Films & Worldbuilding",
+        desc: "Generative sequence direction, scene-to-scene camera continuity, and atmospheric visual storytelling.",
+        tag: "Generative AI",
+        tool: "Runway / Kling / Veo",
+        output: "AI Video Direction",
+        word: "WORLDBUILDING"
+      }
+    ];
+
+    // ==========================================
+    // 3. PINNED SCROLL-TRIGGER CONTROLLER
+    // ==========================================
+    function initScrollTrigger() {
+      // Pin the viewport while scrolling through #scrollContainer
+      ScrollTrigger.create({
+        trigger: "#scrollContainer",
+        start: "top top",
+        end: "bottom bottom",
+        pin: "#pinnedStage",
+        scrub: 0.5,
+        onUpdate: (self) => {
+          // Progress from 0 to 1
+          const progress = self.progress;
+          const totalChapters = chapters.length;
+          
+          // Determine current index (0, 1, 2, 3)
+          let activeIndex = Math.floor(progress * totalChapters);
+          if (activeIndex >= totalChapters) activeIndex = totalChapters - 1;
+
+          updateStage(activeIndex);
+        }
+      });
+
+      let lastIndex = -1;
+      function updateStage(index) {
+        if (index === lastIndex) return;
+        lastIndex = index;
+        const data = chapters[index];
+
+        // Animate Text Elements smoothly
+        gsap.to("#displayNum", { opacity: 0, y: -10, duration: 0.2, onComplete: () => {
+          document.getElementById('displayNum').textContent = data.num;
+          gsap.to("#displayNum", { opacity: 1, y: 0, duration: 0.3 });
+        }});
+
+        gsap.to("#displayTitle", { opacity: 0, y: -10, duration: 0.2, onComplete: () => {
+          document.getElementById('displayTitle').textContent = data.title;
+          gsap.to("#displayTitle", { opacity: 1, y: 0, duration: 0.3 });
+        }});
+
+        gsap.to("#displayDesc", { opacity: 0, duration: 0.2, onComplete: () => {
+          document.getElementById('displayDesc').textContent = data.desc;
+          gsap.to("#displayDesc", { opacity: 1, duration: 0.3 });
+        }});
+
+        document.getElementById('displayTag').textContent = data.tag;
+        document.getElementById('displayTool').textContent = data.tool;
+        document.getElementById('displayOutput').textContent = data.output;
+
+        // Animate Bottom Word
+        gsap.to("#displayBottomWord", { opacity: 0, scale: 0.95, duration: 0.25, onComplete: () => {
+          document.getElementById('displayBottomWord').textContent = data.word;
+          gsap.to("#displayBottomWord", { opacity: 1, scale: 1, duration: 0.35 });
+        }});
+
+        // Crossfade Central Visual Cards
+        [1, 2, 3, 4].forEach((cardNum, i) => {
+          const card = document.getElementById(`card${cardNum}`);
+          if (i === index) {
+            gsap.to(card, { opacity: 1, scale: 1, duration: 0.45, ease: "power2.out" });
+          } else {
+            gsap.to(card, { opacity: 0, scale: 0.85, duration: 0.45, ease: "power2.out" });
+          }
+        });
+      }
+
+      // Pointer Parallax Tilt on Central Visual
+      const stage = document.getElementById('pinnedStage');
+      const visualContainer = document.getElementById('visualContainer');
+      stage.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 30;
+        const y = (e.clientY / window.innerHeight - 0.5) * 30;
+        gsap.to(visualContainer, {
+          x: x,
+          y: y,
+          rotationY: x * 0.5,
+          rotationX: -y * 0.5,
+          duration: 0.8,
+          ease: "power2.out"
+        });
+      });
+    }
   </script>
 </body>
 </html>
