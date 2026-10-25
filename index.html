@@ -12,6 +12,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
+    /* ==========================================================================
+       1. CSS SYSTEM TOKENS & RESET
+       ========================================================================== */
     :root {
       --color-background: #F7F6F2;
       --color-background-secondary: #ECEAE4;
@@ -154,7 +157,7 @@
       }
     }
 
-    /* Common Layout & Typography */
+    /* Common Typography & Layout */
     h1, h2, h3, h4 {
       font-family: var(--font-heading);
       color: var(--color-text-primary);
@@ -223,6 +226,18 @@
       transform: translateY(-2px);
     }
 
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--color-text-primary);
+      border: 1px solid var(--color-border);
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--color-text-primary);
+      background-color: rgba(23, 23, 23, 0.03);
+      transform: translateY(-2px);
+    }
+
     .btn-link {
       display: inline-flex;
       align-items: center;
@@ -240,7 +255,7 @@
       border-color: var(--color-accent);
     }
 
-    /* Navbar */
+    /* Header */
     .site-header {
       position: sticky;
       top: 0;
@@ -354,7 +369,7 @@
       flex-wrap: wrap;
     }
 
-    /* Selected Work Section (Posters 4:5 Grid) */
+    /* Selected Work (4:5 Posters) */
     .work-section {
       background-color: var(--color-background);
       border-top: 1px solid var(--color-border);
@@ -441,7 +456,7 @@
       color: var(--color-accent);
     }
 
-    /* Video Section (2 Folders) */
+    /* Video Showcase (2 Folders) */
     .films-section {
       background-color: var(--color-background-secondary);
       border-top: 1px solid var(--color-border);
@@ -507,9 +522,6 @@
       aspect-ratio: 16 / 9;
       background-color: #000;
       overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     .video-viewport video {
@@ -517,6 +529,7 @@
       height: 100%;
       object-fit: cover;
       background: #000;
+      display: block;
     }
 
     .video-overlay {
@@ -532,10 +545,10 @@
     }
 
     .video-overlay:hover {
-      background-color: rgba(23, 23, 23, 0.3);
+      background-color: rgba(23, 23, 23, 0.25);
     }
 
-    .video-overlay.is-playing {
+    .video-overlay.is-hidden {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
@@ -552,7 +565,7 @@
       justify-content: center;
       padding-left: 3px;
       font-size: 1.125rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
       transition: transform var(--transition-standard), background-color var(--transition-standard), color var(--transition-standard);
     }
 
@@ -590,7 +603,7 @@
       font-weight: 500;
     }
 
-    /* About */
+    /* About Section */
     .about-section {
       background-color: var(--color-background);
       border-top: 1px solid var(--color-border);
@@ -684,7 +697,7 @@
       line-height: 1.6;
     }
 
-    /* Contact */
+    /* Contact Section */
     .contact-section {
       background-color: var(--color-dark);
       color: var(--color-white);
@@ -1036,8 +1049,12 @@
           <!-- Video 1 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/the-goodrush-mission/mission-ep1-the-call.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/the-goodrush-mission/mission-ep1-the-call.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Episode 1: The Call">
                 <div class="play-btn">▶</div>
@@ -1053,8 +1070,12 @@
           <!-- Video 2 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/the-goodrush-mission/mission-ep2-the-store.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/the-goodrush-mission/mission-ep2-the-store.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Episode 2: The Store">
                 <div class="play-btn">▶</div>
@@ -1070,8 +1091,12 @@
           <!-- Video 3 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/the-goodrush-mission/mission-ep3-stolen-pack.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/the-goodrush-mission/mission-ep3-stolen-pack.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Episode 3: The Stolen Pack">
                 <div class="play-btn">▶</div>
@@ -1096,8 +1121,12 @@
           <!-- Video 4 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/commercial-films/peri-peri-rush-city.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/commercial-films/peri-peri-rush-city.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Peri Peri Rush Ad">
                 <div class="play-btn">▶</div>
@@ -1113,8 +1142,12 @@
           <!-- Video 5 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/commercial-films/macro-crunch-landscape.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/commercial-films/macro-crunch-landscape.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Macro Crunch Ad">
                 <div class="play-btn">▶</div>
@@ -1130,8 +1163,12 @@
           <!-- Video 6 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/commercial-films/late-night-snack-upgrade.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/commercial-films/late-night-snack-upgrade.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Late Night Snack Upgrade Ad">
                 <div class="play-btn">▶</div>
@@ -1147,8 +1184,12 @@
           <!-- Video 7 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/commercial-films/chai-date-rushie.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/commercial-films/chai-date-rushie.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Chai &amp; Bhujia Rushie Animation">
                 <div class="play-btn">▶</div>
@@ -1164,8 +1205,12 @@
           <!-- Video 8 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/commercial-films/chips-club-party.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/commercial-films/chips-club-party.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Chips Club Animation">
                 <div class="play-btn">▶</div>
@@ -1181,8 +1226,12 @@
           <!-- Video 9 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/commercial-films/mini-chef-diy-chaat.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/commercial-films/mini-chef-diy-chaat.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Mini Chef DIY Chaat Ad">
                 <div class="play-btn">▶</div>
@@ -1198,8 +1247,12 @@
           <!-- Video 10 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline controls preload="metadata">
-                <source src="assets/videos/commercial-films/3-flavours-kinetic-launch.mp4" type="video/mp4" />
+              <video 
+                src="assets/videos/commercial-films/3-flavours-kinetic-launch.mp4" 
+                playsinline 
+                controls 
+                muted
+                preload="auto">
               </video>
               <div class="video-overlay" role="button" aria-label="Play Kinetic Typography Launch">
                 <div class="play-btn">▶</div>
@@ -1312,7 +1365,7 @@
     </div>
   </section>
 
-  <!-- Project Detail Modal -->
+  <!-- Modal Case Study -->
   <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-dialog">
       <button class="modal-close-btn" id="modalClose" aria-label="Close project view">✕</button>
@@ -1331,11 +1384,11 @@
     </div>
   </div>
 
-  <!-- JavaScript Engine -->
+  <!-- JavaScript -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      // 1. Cursor
+      // Cursor Engine
       const cursorDot = document.getElementById('cursorDot');
       const cursorFollower = document.getElementById('cursorFollower');
 
@@ -1349,6 +1402,7 @@
         window.addEventListener('mousemove', (e) => {
           mouseX = e.clientX;
           mouseY = e.clientY;
+
           cursorDot.style.left = `${mouseX}px`;
           cursorDot.style.top = `${mouseY}px`;
 
@@ -1405,7 +1459,7 @@
         });
       }
 
-      // 2. Mobile Menu
+      // Mobile Menu
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
       if (menuToggle && navLinks) {
@@ -1422,7 +1476,7 @@
         });
       }
 
-      // 3. Scroll Reveals
+      // Scroll Reveals
       const reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -1438,42 +1492,46 @@
         reveals.forEach(el => el.classList.add('is-revealed'));
       }
 
-      // 4. Bulletproof Video Play Engine
+      // Video Play Engine
       const filmCards = document.querySelectorAll('.film-card');
       filmCards.forEach(card => {
         const overlay = card.querySelector('.video-overlay');
         const video = card.querySelector('video');
 
         if (overlay && video) {
-          const playVideo = () => {
-            // Pause all other videos
+          const playVideoAction = () => {
+            // Pause all other playing videos
             filmCards.forEach(c => {
               const otherVid = c.querySelector('video');
               const otherOverlay = c.querySelector('.video-overlay');
               if (otherVid && otherVid !== video) {
                 otherVid.pause();
-                if (otherOverlay) otherOverlay.classList.remove('is-playing');
+                if (otherOverlay) otherOverlay.classList.remove('is-hidden');
               }
             });
 
-            overlay.classList.add('is-playing');
-            video.play().catch(err => {
-              console.log("Audio block fallback: playing muted", err);
-              video.muted = true;
-              video.play();
-            });
+            overlay.classList.add('is-hidden');
+
+            const playPromise = video.play();
+            if (playPromise !== undefined) {
+              playPromise.catch(() => {
+                // Autoplay blocked fallback: play muted
+                video.muted = true;
+                video.play();
+              });
+            }
           };
 
-          overlay.addEventListener('click', playVideo);
-          video.addEventListener('play', () => overlay.classList.add('is-playing'));
+          overlay.addEventListener('click', playVideoAction);
+          video.addEventListener('play', () => overlay.classList.add('is-hidden'));
           video.addEventListener('pause', () => {
-            if (!video.seeking) overlay.classList.remove('is-playing');
+            if (!video.seeking) overlay.classList.remove('is-hidden');
           });
-          video.addEventListener('ended', () => overlay.classList.remove('is-playing'));
+          video.addEventListener('ended', () => overlay.classList.remove('is-hidden'));
         }
       });
 
-      // 5. Modal Case Study System
+      // Modal Case Study Data
       const projectData = {
         '1': {
           title: 'Commercial Identity & Packaging',
