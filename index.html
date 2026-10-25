@@ -6,15 +6,12 @@
   <title>PARMEET SINGH — Graphic Designer &amp; AI Content Creator</title>
   <meta name="description" content="Portfolio of Parmeet Singh. Graphic design, brand identity, commercial AI advertising, 3D motion, and visual storytelling." />
 
-  <!-- Typography: Manrope (Headings) & Inter (Body/UI) -->
+  <!-- Typography: Manrope & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet" />
 
   <style>
-    /* ==========================================================================
-       1. CSS SYSTEM TOKENS & RESET
-       ========================================================================== */
     :root {
       --color-background: #F7F6F2;
       --color-background-secondary: #ECEAE4;
@@ -71,9 +68,7 @@
       cursor: pointer;
     }
 
-    /* ==========================================================================
-       2. EDITORIAL MOUSE CURSOR SYSTEM
-       ========================================================================== */
+    /* Custom Cursor */
     @media (hover: hover) and (pointer: fine) {
       body {
         cursor: default;
@@ -159,28 +154,7 @@
       }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-      }
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-      .cursor-dot, .cursor-follower {
-        display: none !important;
-      }
-    }
-
-    /* ==========================================================================
-       3. TYPOGRAPHY & COMMON LAYOUT
-       ========================================================================== */
+    /* Common Layout & Typography */
     h1, h2, h3, h4 {
       font-family: var(--font-heading);
       color: var(--color-text-primary);
@@ -194,11 +168,11 @@
     }
 
     .section-spacing {
-      padding: 8rem 0;
+      padding: 7.5rem 0;
     }
 
     .section-header {
-      margin-bottom: 4rem;
+      margin-bottom: 3.5rem;
     }
 
     .section-eyebrow {
@@ -221,7 +195,7 @@
     .section-subtitle {
       font-size: clamp(1rem, 1.5vw, 1.125rem);
       color: var(--color-text-secondary);
-      max-width: 620px;
+      max-width: 640px;
       line-height: 1.65;
     }
 
@@ -249,18 +223,6 @@
       transform: translateY(-2px);
     }
 
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--color-text-primary);
-      border: 1px solid var(--color-border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--color-text-primary);
-      background-color: rgba(23, 23, 23, 0.03);
-      transform: translateY(-2px);
-    }
-
     .btn-link {
       display: inline-flex;
       align-items: center;
@@ -278,9 +240,7 @@
       border-color: var(--color-accent);
     }
 
-    /* ==========================================================================
-       4. NAVIGATION
-       ========================================================================== */
+    /* Navbar */
     .site-header {
       position: sticky;
       top: 0;
@@ -339,14 +299,11 @@
       width: 24px;
       height: 2px;
       background-color: var(--color-text-primary);
-      transition: transform var(--transition-standard);
     }
 
-    /* ==========================================================================
-       5. HERO SECTION
-       ========================================================================== */
+    /* Hero */
     .hero-section {
-      padding: clamp(6rem, 12vw, 11rem) 0 clamp(5rem, 8vw, 8rem);
+      padding: clamp(6rem, 12vw, 10.5rem) 0 clamp(4.5rem, 8vw, 7.5rem);
       background-color: var(--color-background);
     }
 
@@ -397,16 +354,101 @@
       flex-wrap: wrap;
     }
 
-    /* ==========================================================================
-       6. AI FILMS & MOTION (ALL 10 COMMERCIAL VIDEOS)
-       ========================================================================== */
+    /* Selected Work Section (Posters 4:5 Grid) */
+    .work-section {
+      background-color: var(--color-background);
+      border-top: 1px solid var(--color-border);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 2.5rem;
+    }
+
+    .project-card {
+      background-color: var(--color-card);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition-standard), transform var(--transition-standard);
+    }
+
+    .project-card:hover {
+      border-color: #B5B2A9;
+      transform: translateY(-4px);
+    }
+
+    .project-thumbnail-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      background-color: var(--color-background-secondary);
+      overflow: hidden;
+    }
+
+    .project-thumbnail {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 400ms var(--ease-editorial);
+    }
+
+    .project-card:hover .project-thumbnail {
+      transform: scale(1.03);
+    }
+
+    .project-info {
+      padding: 1.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .project-category {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .project-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .project-title {
+      font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .project-arrow {
+      font-size: 1.25rem;
+      line-height: 1;
+      color: var(--color-text-primary);
+      transition: transform var(--transition-standard), color var(--transition-standard);
+    }
+
+    .project-card:hover .project-arrow {
+      transform: translate(3px, -3px);
+      color: var(--color-accent);
+    }
+
+    /* Video Section (2 Folders) */
     .films-section {
       background-color: var(--color-background-secondary);
       border-top: 1px solid var(--color-border);
     }
 
     .film-folder-block {
-      margin-bottom: 5rem;
+      margin-bottom: 5.5rem;
     }
 
     .film-folder-block:last-child {
@@ -477,7 +519,6 @@
       background: #000;
     }
 
-    /* Fixed Video Overlay */
     .video-overlay {
       position: absolute;
       inset: 0;
@@ -549,9 +590,7 @@
       font-weight: 500;
     }
 
-    /* ==========================================================================
-       7. ABOUT SECTION
-       ========================================================================== */
+    /* About */
     .about-section {
       background-color: var(--color-background);
       border-top: 1px solid var(--color-border);
@@ -606,9 +645,7 @@
       line-height: 1.7;
     }
 
-    /* ==========================================================================
-       8. WHAT I DO (SERVICES SECTION)
-       ========================================================================== */
+    /* What I Do */
     .services-section {
       background-color: var(--color-background-secondary);
       border-top: 1px solid var(--color-border);
@@ -626,7 +663,6 @@
       padding: 2.25rem 0;
       border-bottom: 1px solid var(--color-border);
       align-items: baseline;
-      transition: background-color var(--transition-standard);
     }
 
     .service-num {
@@ -648,9 +684,7 @@
       line-height: 1.6;
     }
 
-    /* ==========================================================================
-       9. CONTACT SECTION (DARK CONTRAST BLOCK)
-       ========================================================================== */
+    /* Contact */
     .contact-section {
       background-color: var(--color-dark);
       color: var(--color-white);
@@ -659,9 +693,6 @@
     }
 
     .contact-layout {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
       max-width: 900px;
     }
 
@@ -742,6 +773,92 @@
       color: #777777;
     }
 
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(23, 23, 23, 0.7);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms var(--ease-editorial);
+    }
+
+    .modal-backdrop.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-dialog {
+      background-color: var(--color-card);
+      border: 1px solid var(--color-border);
+      width: 100%;
+      max-width: 900px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 3px;
+      position: relative;
+      padding: 2.5rem;
+      transform: translateY(20px);
+      transition: transform 300ms var(--ease-editorial);
+    }
+
+    .modal-backdrop.is-active .modal-dialog {
+      transform: translateY(0);
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-primary);
+      border-radius: 50%;
+      border: 1px solid var(--color-border);
+      background-color: var(--color-card);
+    }
+
+    .modal-media-container {
+      width: 100%;
+      margin: 1.5rem 0 2rem;
+      background-color: var(--color-background-secondary);
+      border: 1px solid var(--color-border);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .modal-media-container img {
+      width: 100%;
+      max-height: 60vh;
+      object-fit: contain;
+    }
+
+    .modal-description {
+      font-size: 1rem;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+
+    .modal-nav {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid var(--color-border);
+      padding-top: 1.5rem;
+    }
+
     /* Scroll Reveals */
     .reveal {
       opacity: 0;
@@ -760,6 +877,7 @@
     .delay-3 { transition-delay: 270ms; }
 
     @media (max-width: 992px) {
+      .project-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .about-layout { grid-template-columns: 1fr; gap: 3rem; }
       .service-row { grid-template-columns: 50px 1fr; gap: 0.75rem; }
       .service-desc { grid-column: 2 / -1; }
@@ -783,20 +901,22 @@
       }
       .mobile-menu-toggle { display: flex; }
       .films-grid { grid-template-columns: 1fr; }
+      .modal-dialog { padding: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Custom Cursor Elements -->
+  <!-- Custom Cursor -->
   <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
   <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
 
-  <!-- Navigation -->
+  <!-- Navbar -->
   <header class="site-header">
     <div class="container nav-wrapper">
       <a href="#" class="nav-logo">PARMEET SINGH</a>
       <ul class="nav-links" id="navLinks">
+        <li><a href="#work">Work</a></li>
         <li><a href="#films">AI Films</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#services">What I Do</a></li>
@@ -819,184 +939,107 @@
         <h2 class="hero-title reveal delay-2">Graphic Designer × AI Content Creator</h2>
         <p class="hero-description reveal delay-2">Creating visual experiences through design, AI and motion.</p>
         <div class="hero-actions reveal delay-3">
-          <a href="#films" class="btn btn-primary">Watch Commercial Films</a>
+          <a href="#work" class="btn btn-primary">Explore Selected Work</a>
           <a href="#contact" class="btn-link">Let's Connect ↗</a>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Selected Work (Posters Grid 4:5) -->
+  <section class="work-section section-spacing" id="work">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Portfolio</span>
+        <h2 class="section-title">Selected Work</h2>
+        <p class="section-subtitle">Commercial design systems, brand identities, and high-impact visual campaigns.</p>
+      </div>
+
+      <div class="project-grid" id="projectGrid">
+        <!-- Project 1: Packaging -->
+        <article class="project-card reveal delay-1" data-project-id="1">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/project-01.jpg" alt="Commercial Identity &amp; Packaging" class="project-thumbnail" onerror="this.src='https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg'" />
+          </div>
+          <div class="project-info">
+            <span class="project-category">Brand Identity &amp; Creative Direction</span>
+            <div class="project-title-row">
+              <h3 class="project-title">Commercial Identity &amp; Packaging</h3>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2: Advertising -->
+        <article class="project-card reveal delay-2" data-project-id="2">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/project-02.jpg" alt="Unleash Speed — Digital Advertising" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
+          </div>
+          <div class="project-info">
+            <span class="project-category">Advertising Creatives &amp; Design</span>
+            <div class="project-title-row">
+              <h3 class="project-title">Consumer Brand Digital Campaign</h3>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3: 3D Render -->
+        <article class="project-card reveal delay-1" data-project-id="3">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/project-03.jpg" alt="Zero Gravity — 3D Visuals" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
+          </div>
+          <div class="project-info">
+            <span class="project-category">3D Design &amp; Generative Visuals</span>
+            <div class="project-title-row">
+              <h3 class="project-title">Cinematic 3D Product Renders</h3>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4: Narrative -->
+        <article class="project-card reveal delay-2" data-project-id="4">
+          <div class="project-thumbnail-wrapper">
+            <img src="assets/images/project-04.jpg" alt="Double Exposure Silhouette" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
+          </div>
+          <div class="project-info">
+            <span class="project-category">Visual Storytelling &amp; Strategy</span>
+            <div class="project-title-row">
+              <h3 class="project-title">Editorial Visual Narratives</h3>
+              <span class="project-arrow" aria-hidden="true">↗</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ========================================================================
-       AI FILMS & MOTION (10 COMMERCIAL VIDEOS IN 4 FOLDERS)
+       AI FILMS & MOTION (EXACTLY 2 FOLDERS)
        ======================================================================== -->
   <section class="films-section section-spacing" id="films">
     <div class="container">
       <div class="section-header reveal">
         <span class="section-eyebrow">Motion &amp; AI</span>
         <h2 class="section-title">AI Films &amp; Commercial Motion</h2>
-        <p class="section-subtitle">A curated portfolio of 10 commercial video ads, 3D character animations, kinetic typography, and generative action series.</p>
+        <p class="section-subtitle">Exploring ideas through motion, artificial intelligence and cinematic visual storytelling.</p>
       </div>
 
-      <!-- FOLDER 01 -->
+      <!-- FOLDER 01: THE GOODRUSH MISSION SERIES -->
       <div class="film-folder-block reveal">
         <div class="folder-header">
           <span class="folder-tag">Folder 01</span>
-          <h3 class="folder-title">Cinematic Commercial Ad Films (3D VFX &amp; Live Action)</h3>
+          <h3 class="folder-title">"The Goodrush Mission" Cinematic Action Series</h3>
         </div>
         <div class="films-grid">
           <!-- Video 1 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-1-cinematic-ads/peri-peri-rush-city.mp4" type="video/mp4" />
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/the-goodrush-mission/mission-ep1-the-call.mp4" type="video/mp4" />
               </video>
-              <div class="video-overlay" role="button" aria-label="Play Peri Peri Rush Ad" tabindex="0">
-                <div class="play-btn">▶</div>
-              </div>
-            </div>
-            <div class="film-details">
-              <h3>Peri Peri Rush — City Impact CGI</h3>
-              <p class="film-caption-text">Action-packed FMCG commercial featuring giant pouch crash-landing street destruction CGI, dynamic macro crunch, and high-energy brand pacing.</p>
-              <div class="film-role-meta">Role: Creative Direction, AI Video Synthesis &amp; Sound Architecture</div>
-            </div>
-          </div>
-
-          <!-- Video 2 -->
-          <div class="film-card">
-            <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-1-cinematic-ads/macro-crunch-landscape.mp4" type="video/mp4" />
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Macro Crunch Ad" tabindex="0">
-                <div class="play-btn">▶</div>
-              </div>
-            </div>
-            <div class="film-details">
-              <h3>There's More to Every Crunch</h3>
-              <p class="film-caption-text">Editorial macro journey into product anatomy, navigating red spice canyons, salt crystal mountain peaks, and sensory ASMR crunch mechanics.</p>
-              <div class="film-role-meta">Role: Generative Worldbuilding, Macro Asset Art Direction &amp; Edit</div>
-            </div>
-          </div>
-
-          <!-- Video 3 -->
-          <div class="film-card">
-            <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-1-cinematic-ads/late-night-snack-upgrade.mp4" type="video/mp4" />
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Late Night Snack Upgrade Ad" tabindex="0">
-                <div class="play-btn">▶</div>
-              </div>
-            </div>
-            <div class="film-details">
-              <h3>Snack Upgrade — Late Night Hunger</h3>
-              <p class="film-caption-text">Commercial narrative capturing relatable late-night study routines, junk food replacement, and seamless Goodrush Cream &amp; Onion integration.</p>
-              <div class="film-role-meta">Role: Commercial Scripting, Scene Continuity &amp; Color Grade</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FOLDER 02 -->
-      <div class="film-folder-block reveal">
-        <div class="folder-header">
-          <span class="folder-tag">Folder 02</span>
-          <h3 class="folder-title">3D Character Universe &amp; Commercial Animation</h3>
-        </div>
-        <div class="films-grid">
-          <!-- Video 4 -->
-          <div class="film-card">
-            <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-2-character-animation/chai-date-rushie.mp4" type="video/mp4" />
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Chai &amp; Bhujia Rushie Animation" tabindex="0">
-                <div class="play-btn">▶</div>
-              </div>
-            </div>
-            <div class="film-details">
-              <h3>Chai &amp; Bhujia vs. Goodrush Rushie</h3>
-              <p class="film-caption-text">"Every generation has its favourite snack." Character-driven 3D animation exploring comedic brand rivalry between traditional namkeen and Goodrush.</p>
-              <div class="film-role-meta">Role: 3D Character Direction, Narrative Scripting &amp; Sound Sync</div>
-            </div>
-          </div>
-
-          <!-- Video 5 -->
-          <div class="film-card">
-            <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-2-character-animation/chips-club-party.mp4" type="video/mp4" />
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Chips Club Animation" tabindex="0">
-                <div class="play-btn">▶</div>
-              </div>
-            </div>
-            <div class="film-details">
-              <h3>Chips Club — Why Should Chips Have All the Fun?</h3>
-              <p class="film-caption-text">High-energy nightclub party commercial featuring 3D character rigging, neon club lighting, and beat-synced choreography for youth engagement.</p>
-              <div class="film-role-meta">Role: 3D Art Direction, Animation Pacing &amp; Character Worldbuilding</div>
-            </div>
-          </div>
-
-          <!-- Video 6 -->
-          <div class="film-card">
-            <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-2-character-animation/mini-chef-diy-chaat.mp4" type="video/mp4" />
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Mini Chef DIY Chaat Ad" tabindex="0">
-                <div class="play-btn">▶</div>
-              </div>
-            </div>
-            <div class="film-details">
-              <h3>Mini Chef's DIY Snack Chaat</h3>
-              <p class="film-caption-text">Culinary craft in miniature stop-motion aesthetic, showcasing recipe versatility with fresh ingredients and Goodrush Peri Peri Makhana.</p>
-              <div class="film-role-meta">Role: Art Direction, Visual Asset Compositing &amp; Audio Pacing</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FOLDER 03 -->
-      <div class="film-folder-block reveal">
-        <div class="folder-header">
-          <span class="folder-tag">Folder 03</span>
-          <h3 class="folder-title">Kinetic Motion &amp; Exploding Typography</h3>
-        </div>
-        <div class="films-grid">
-          <!-- Video 7 -->
-          <div class="film-card">
-            <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-3-kinetic-motion/3-flavours-kinetic-launch.mp4" type="video/mp4" />
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Kinetic Typography Launch" tabindex="0">
-                <div class="play-btn">▶</div>
-              </div>
-            </div>
-            <div class="film-details">
-              <h3>Introducing 3 New Flavours — Kinetic Launch</h3>
-              <p class="film-caption-text">High-impact motion graphics reveal combining explosive ingredient particle dynamics, bold kinetic typography, and fast-paced brand messaging.</p>
-              <div class="film-role-meta">Role: Kinetic Typography, Motion Graphics &amp; Visual Pacing</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- FOLDER 04 -->
-      <div class="film-folder-block reveal">
-        <div class="folder-header">
-          <span class="folder-tag">Folder 04</span>
-          <h3 class="folder-title">"The Goodrush Mission" Cinematic Action Series</h3>
-        </div>
-        <div class="films-grid">
-          <!-- Video 8 -->
-          <div class="film-card">
-            <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-4-goodrush-mission/mission-ep1-the-call.mp4" type="video/mp4" />
-              </video>
-              <div class="video-overlay" role="button" aria-label="Play Episode 1: The Call" tabindex="0">
+              <div class="video-overlay" role="button" aria-label="Play Episode 1: The Call">
                 <div class="play-btn">▶</div>
               </div>
             </div>
@@ -1007,13 +1050,13 @@
             </div>
           </div>
 
-          <!-- Video 9 -->
+          <!-- Video 2 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-4-goodrush-mission/mission-ep2-the-store.mp4" type="video/mp4" />
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/the-goodrush-mission/mission-ep2-the-store.mp4" type="video/mp4" />
               </video>
-              <div class="video-overlay" role="button" aria-label="Play Episode 2: The Store" tabindex="0">
+              <div class="video-overlay" role="button" aria-label="Play Episode 2: The Store">
                 <div class="play-btn">▶</div>
               </div>
             </div>
@@ -1024,13 +1067,13 @@
             </div>
           </div>
 
-          <!-- Video 10 -->
+          <!-- Video 3 -->
           <div class="film-card">
             <div class="video-viewport">
-              <video playsinline preload="metadata">
-                <source src="assets/videos/folder-4-goodrush-mission/mission-ep3-stolen-pack.mp4" type="video/mp4" />
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/the-goodrush-mission/mission-ep3-stolen-pack.mp4" type="video/mp4" />
               </video>
-              <div class="video-overlay" role="button" aria-label="Play Episode 3: The Stolen Pack" tabindex="0">
+              <div class="video-overlay" role="button" aria-label="Play Episode 3: The Stolen Pack">
                 <div class="play-btn">▶</div>
               </div>
             </div>
@@ -1038,6 +1081,134 @@
               <h3>The Goodrush Mission — Ep 3: The Stolen Pack</h3>
               <p class="film-caption-text">Surveillance room tracking aesthetics, CCTV getaway sequences, and high-speed highway pursuit driving dramatic episodic tension.</p>
               <div class="film-role-meta">Role: Multi-Camera Direction, Post-Production &amp; Atmospheric Color</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FOLDER 02: COMMERCIAL AD FILMS & 3D MOTION -->
+      <div class="film-folder-block reveal">
+        <div class="folder-header">
+          <span class="folder-tag">Folder 02</span>
+          <h3 class="folder-title">Commercial Films &amp; 3D Motion</h3>
+        </div>
+        <div class="films-grid">
+          <!-- Video 4 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/commercial-films/peri-peri-rush-city.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Peri Peri Rush Ad">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Peri Peri Rush — City Impact CGI</h3>
+              <p class="film-caption-text">Action-packed FMCG commercial featuring giant pouch crash-landing street destruction CGI, dynamic macro crunch, and high-energy brand pacing.</p>
+              <div class="film-role-meta">Role: Creative Direction, AI Video Synthesis &amp; Sound Architecture</div>
+            </div>
+          </div>
+
+          <!-- Video 5 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/commercial-films/macro-crunch-landscape.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Macro Crunch Ad">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>There's More to Every Crunch</h3>
+              <p class="film-caption-text">Editorial macro journey into product anatomy, navigating red spice canyons, salt crystal mountain peaks, and sensory ASMR crunch mechanics.</p>
+              <div class="film-role-meta">Role: Generative Worldbuilding, Macro Asset Art Direction &amp; Edit</div>
+            </div>
+          </div>
+
+          <!-- Video 6 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/commercial-films/late-night-snack-upgrade.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Late Night Snack Upgrade Ad">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Snack Upgrade — Late Night Hunger</h3>
+              <p class="film-caption-text">Commercial narrative capturing relatable late-night study routines, junk food replacement, and seamless Goodrush Cream &amp; Onion integration.</p>
+              <div class="film-role-meta">Role: Commercial Scripting, Scene Continuity &amp; Color Grade</div>
+            </div>
+          </div>
+
+          <!-- Video 7 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/commercial-films/chai-date-rushie.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Chai &amp; Bhujia Rushie Animation">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Chai &amp; Bhujia vs. Goodrush Rushie</h3>
+              <p class="film-caption-text">"Every generation has its favourite snack." Character-driven 3D animation exploring comedic brand rivalry between traditional namkeen and Goodrush.</p>
+              <div class="film-role-meta">Role: 3D Character Direction, Narrative Scripting &amp; Sound Sync</div>
+            </div>
+          </div>
+
+          <!-- Video 8 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/commercial-films/chips-club-party.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Chips Club Animation">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Chips Club — Why Should Chips Have All the Fun?</h3>
+              <p class="film-caption-text">High-energy nightclub party commercial featuring 3D character rigging, neon club lighting, and beat-synced choreography for youth engagement.</p>
+              <div class="film-role-meta">Role: 3D Art Direction, Animation Pacing &amp; Character Worldbuilding</div>
+            </div>
+          </div>
+
+          <!-- Video 9 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/commercial-films/mini-chef-diy-chaat.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Mini Chef DIY Chaat Ad">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Mini Chef's DIY Snack Chaat</h3>
+              <p class="film-caption-text">Culinary craft in miniature stop-motion aesthetic, showcasing recipe versatility with fresh ingredients and Goodrush Peri Peri Makhana.</p>
+              <div class="film-role-meta">Role: Art Direction, Visual Asset Compositing &amp; Audio Pacing</div>
+            </div>
+          </div>
+
+          <!-- Video 10 -->
+          <div class="film-card">
+            <div class="video-viewport">
+              <video playsinline controls preload="metadata">
+                <source src="assets/videos/commercial-films/3-flavours-kinetic-launch.mp4" type="video/mp4" />
+              </video>
+              <div class="video-overlay" role="button" aria-label="Play Kinetic Typography Launch">
+                <div class="play-btn">▶</div>
+              </div>
+            </div>
+            <div class="film-details">
+              <h3>Introducing 3 New Flavours — Kinetic Launch</h3>
+              <p class="film-caption-text">High-impact motion graphics reveal combining explosive ingredient particle dynamics, bold kinetic typography, and fast-paced brand messaging.</p>
+              <div class="film-role-meta">Role: Kinetic Typography, Motion Graphics &amp; Visual Pacing</div>
             </div>
           </div>
         </div>
@@ -1067,7 +1238,7 @@
     </div>
   </section>
 
-  <!-- What I Do (Services Section) -->
+  <!-- Services Section -->
   <section class="services-section section-spacing" id="services">
     <div class="container">
       <div class="section-header reveal">
@@ -1116,7 +1287,7 @@
     </div>
   </section>
 
-  <!-- Contact Section (Dark Contrast Block) -->
+  <!-- Contact Section -->
   <section class="contact-section" id="contact">
     <div class="container">
       <div class="contact-layout">
@@ -1141,11 +1312,30 @@
     </div>
   </section>
 
-  <!-- JavaScript: Bulletproof Video Controller, Cursor & Reveals -->
+  <!-- Project Detail Modal -->
+  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-dialog">
+      <button class="modal-close-btn" id="modalClose" aria-label="Close project view">✕</button>
+      <div class="modal-header">
+        <span class="modal-category" id="modalCategory">Category</span>
+        <h3 class="modal-title" id="modalTitle">Project Title</h3>
+      </div>
+      <div class="modal-media-container" id="modalMedia">
+        <img id="modalImg" src="" alt="Project detail view" />
+      </div>
+      <p class="modal-description" id="modalDescription">Detailed project case study information and visual documentation.</p>
+      <div class="modal-nav">
+        <button class="btn-link" id="modalPrev">← Previous Project</button>
+        <button class="btn-link" id="modalNext">Next Project →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Engine -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
 
-      // 1. Dual-Stage Mouse Cursor
+      // 1. Cursor
       const cursorDot = document.getElementById('cursorDot');
       const cursorFollower = document.getElementById('cursorFollower');
 
@@ -1159,7 +1349,6 @@
         window.addEventListener('mousemove', (e) => {
           mouseX = e.clientX;
           mouseY = e.clientY;
-
           cursorDot.style.left = `${mouseX}px`;
           cursorDot.style.top = `${mouseY}px`;
 
@@ -1173,10 +1362,8 @@
         const renderCursor = () => {
           followerX += (mouseX - followerX) * 0.16;
           followerY += (mouseY - followerY) * 0.16;
-
           cursorFollower.style.left = `${followerX}px`;
           cursorFollower.style.top = `${followerY}px`;
-
           requestAnimationFrame(renderCursor);
         };
         requestAnimationFrame(renderCursor);
@@ -1187,10 +1374,22 @@
           isMoving = false;
         });
 
-        const hoverTargets = document.querySelectorAll('a, button, .service-row');
+        const hoverTargets = document.querySelectorAll('a, button, .service-row, .modal-close-btn');
         hoverTargets.forEach(el => {
           el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
           el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        const projectCards = document.querySelectorAll('.project-card');
+        projectCards.forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            document.body.classList.add('cursor-view');
+            cursorFollower.textContent = 'VIEW';
+          });
+          card.addEventListener('mouseleave', () => {
+            document.body.classList.remove('cursor-view');
+            cursorFollower.textContent = '';
+          });
         });
 
         const videoCards = document.querySelectorAll('.film-card');
@@ -1209,7 +1408,6 @@
       // 2. Mobile Menu
       const menuToggle = document.getElementById('menuToggle');
       const navLinks = document.getElementById('navLinks');
-      
       if (menuToggle && navLinks) {
         menuToggle.addEventListener('click', () => {
           const isOpen = navLinks.classList.toggle('is-open');
@@ -1234,11 +1432,7 @@
               observer.unobserve(entry.target);
             }
           });
-        }, {
-          threshold: 0.15,
-          rootMargin: '0px 0px -40px 0px'
-        });
-
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
         reveals.forEach(el => revealObserver.observe(el));
       } else {
         reveals.forEach(el => el.classList.add('is-revealed'));
@@ -1251,57 +1445,138 @@
         const video = card.querySelector('video');
 
         if (overlay && video) {
-          const triggerPlay = () => {
-            // Stop and reset all other videos
-            filmCards.forEach(otherCard => {
-              if (otherCard !== card) {
-                const otherVideo = otherCard.querySelector('video');
-                const otherOverlay = otherCard.querySelector('.video-overlay');
-                if (otherVideo && !otherVideo.paused) {
-                  otherVideo.pause();
-                  otherVideo.controls = false;
-                }
+          const playVideo = () => {
+            // Pause all other videos
+            filmCards.forEach(c => {
+              const otherVid = c.querySelector('video');
+              const otherOverlay = c.querySelector('.video-overlay');
+              if (otherVid && otherVid !== video) {
+                otherVid.pause();
                 if (otherOverlay) otherOverlay.classList.remove('is-playing');
               }
             });
 
-            // Enable native playback controls
-            video.controls = true;
             overlay.classList.add('is-playing');
-
-            // Attempt unmute play, fallback to muted if blocked
-            const playPromise = video.play();
-            if (playPromise !== undefined) {
-              playPromise.catch(() => {
-                video.muted = true;
-                video.play();
-              });
-            }
+            video.play().catch(err => {
+              console.log("Audio block fallback: playing muted", err);
+              video.muted = true;
+              video.play();
+            });
           };
 
-          overlay.addEventListener('click', (e) => {
-            e.stopPropagation();
-            triggerPlay();
-          });
-
-          overlay.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              triggerPlay();
-            }
-          });
-
+          overlay.addEventListener('click', playVideo);
+          video.addEventListener('play', () => overlay.classList.add('is-playing'));
           video.addEventListener('pause', () => {
-            if (!video.seeking) {
-              overlay.classList.remove('is-playing');
-            }
+            if (!video.seeking) overlay.classList.remove('is-playing');
           });
-
-          video.addEventListener('ended', () => {
-            overlay.classList.remove('is-playing');
-            video.controls = false;
-          });
+          video.addEventListener('ended', () => overlay.classList.remove('is-playing'));
         }
+      });
+
+      // 5. Modal Case Study System
+      const projectData = {
+        '1': {
+          title: 'Commercial Identity & Packaging',
+          category: 'Brand Identity & Creative Direction',
+          image: 'assets/images/project-01.jpg',
+          fallback: 'https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg',
+          description: 'A comprehensive brand system combining clean editorial packaging design, custom typography hierarchies, and structured visual identity guidelines built for lifestyle and commercial consumer goods.'
+        },
+        '2': {
+          title: 'Consumer Brand Digital Campaign',
+          category: 'Advertising Creatives & Design',
+          image: 'assets/images/project-02.jpg',
+          fallback: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80',
+          description: 'High-converting social advertising assets and static-to-motion variants engineered for brand recall, thumb-stopping digital hooks, and cross-platform campaign deployments.'
+        },
+        '3': {
+          title: 'Cinematic 3D Product Renders',
+          category: '3D Design & Generative Visuals',
+          image: 'assets/images/project-03.jpg',
+          fallback: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
+          description: 'High-fidelity 3D modeling and generative exploration focusing on surface materiality, studio lighting physics, and high-impact visual presentations.'
+        },
+        '4': {
+          title: 'Editorial Visual Narratives',
+          category: 'Visual Storytelling & Strategy',
+          image: 'assets/images/project-04.jpg',
+          fallback: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
+          description: 'A cohesive digital publication series exploring visual pacing, contrast, and contemporary typography across modern screen layouts.'
+        }
+      };
+
+      const projectCards = document.querySelectorAll('.project-card');
+      const modal = document.getElementById('projectModal');
+      const modalTitle = document.getElementById('modalTitle');
+      const modalCategory = document.getElementById('modalCategory');
+      const modalDescription = document.getElementById('modalDescription');
+      const modalImg = document.getElementById('modalImg');
+      const modalClose = document.getElementById('modalClose');
+      const modalPrev = document.getElementById('modalPrev');
+      const modalNext = document.getElementById('modalNext');
+
+      let currentProjectId = '1';
+      const projectKeys = Object.keys(projectData);
+
+      const renderModal = (id) => {
+        const data = projectData[id];
+        if (!data) return;
+        currentProjectId = id;
+        modalTitle.textContent = data.title;
+        modalCategory.textContent = data.category;
+        modalDescription.textContent = data.description;
+        modalImg.src = data.image;
+        modalImg.onerror = () => { modalImg.src = data.fallback; };
+      };
+
+      const openModal = (id) => {
+        renderModal(id);
+        modal.classList.add('is-active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      };
+
+      projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+          const id = card.getAttribute('data-project-id');
+          openModal(id);
+        });
+      });
+
+      if (modalClose) modalClose.addEventListener('click', closeModal);
+      if (modal) {
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) closeModal();
+        });
+      }
+
+      if (modalPrev) {
+        modalPrev.addEventListener('click', () => {
+          const index = projectKeys.indexOf(currentProjectId);
+          const prevIndex = (index - 1 + projectKeys.length) % projectKeys.length;
+          renderModal(projectKeys[prevIndex]);
+        });
+      }
+
+      if (modalNext) {
+        modalNext.addEventListener('click', () => {
+          const index = projectKeys.indexOf(currentProjectId);
+          const nextIndex = (index + 1) % projectKeys.length;
+          renderModal(projectKeys[nextIndex]);
+        });
+      }
+
+      document.addEventListener('keydown', (e) => {
+        if (!modal.classList.contains('is-active')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft' && modalPrev) modalPrev.click();
+        if (e.key === 'ArrowRight' && modalNext) modalNext.click();
       });
     });
   </script>
