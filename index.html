@@ -116,7 +116,7 @@
     </div>
   </section>
 
-  <!-- 3. SELECTED WORK (PROJECT CARDS) -->
+  <!-- 3. SELECTED WORK (PROJECT CARDS WITH FALLBACKS) -->
   <section id="work" class="py-24 px-6 bg-[#0A1011]/60 border-t border-white/10">
     <div class="max-w-7xl mx-auto">
       <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
@@ -133,8 +133,11 @@
         
         <!-- Card 1: Graphic Design -->
         <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="portfolio-card rounded-2xl p-6 flex flex-col justify-between group block">
-          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-1 relative overflow-hidden mb-6 bg-black">
-            <img src="watermarked_img_3545360875975313081.png" alt="Graphic Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-4 relative overflow-hidden mb-6 bg-gradient-to-br from-[#11191B] to-black">
+            <img src="watermarked_img_3545360875975313081.png" alt="Graphic Design" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 flex-col items-center justify-center p-4 text-center hidden bg-[#0A1011]">
+              <span class="font-serif text-xl text-[#D8FF42]">Graphic Design</span>
+            </div>
           </div>
           <div>
             <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Visual Systems</span>
@@ -147,8 +150,11 @@
 
         <!-- Card 2: AI Visuals -->
         <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="portfolio-card rounded-2xl p-6 flex flex-col justify-between group block">
-          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-1 relative overflow-hidden mb-6 bg-black">
-            <img src="watermarked_img_4757491571988393586.png" alt="AI Visuals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-4 relative overflow-hidden mb-6 bg-gradient-to-br from-[#11191B] to-black">
+            <img src="watermarked_img_4757491571988393586.png" alt="AI Visuals" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 flex-col items-center justify-center p-4 text-center hidden bg-[#0A1011]">
+              <span class="font-serif text-xl text-[#65D8F5]">AI Visuals</span>
+            </div>
           </div>
           <div>
             <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Generative Art</span>
@@ -161,8 +167,11 @@
 
         <!-- Card 3: AI Content -->
         <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="portfolio-card rounded-2xl p-6 flex flex-col justify-between group block">
-          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-1 relative overflow-hidden mb-6 bg-black">
-            <img src="watermarked_img_17772014852261900337.png" alt="AI Content" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-4 relative overflow-hidden mb-6 bg-gradient-to-br from-[#11191B] to-black">
+            <img src="watermarked_img_17772014852261900337.png" alt="AI Content" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 flex-col items-center justify-center p-4 text-center hidden bg-[#0A1011]">
+              <span class="font-serif text-xl text-[#D8FF42]">AI Content</span>
+            </div>
           </div>
           <div>
             <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Motion & Video</span>
@@ -175,8 +184,11 @@
 
         <!-- Card 4: The Corporate Aloo -->
         <a href="https://www.instagram.com/thecorporatealoo/" target="_blank" rel="noopener" class="portfolio-card rounded-2xl p-6 flex flex-col justify-between group block">
-          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-1 relative overflow-hidden mb-6 bg-black">
-            <img src="watermarked_img_16985806550954736307.png" alt="The Corporate Aloo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-4 relative overflow-hidden mb-6 bg-gradient-to-br from-[#11191B] to-black">
+            <img src="watermarked_img_16985806550954736307.png" alt="The Corporate Aloo" class="w-full h-full object-cover rounded-lg group-hover:scale-105 transition-transform duration-500" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 flex-col items-center justify-center p-4 text-center hidden bg-[#0A1011]">
+              <span class="font-serif text-xl text-[#65D8F5]">The Corporate Aloo</span>
+            </div>
           </div>
           <div>
             <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Creative Brand</span>
@@ -202,8 +214,11 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         <!-- Poster 1 -->
         <div class="portfolio-card rounded-3xl overflow-hidden p-4 group">
-          <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-black relative">
-            <img src="watermarked_img_4757491571988393586.png" alt="Cinematic AI Concept Poster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-black relative flex items-center justify-center">
+            <img src="watermarked_img_4757491571988393586.png" alt="Cinematic AI Concept Poster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 flex-col items-center justify-center p-6 text-center hidden bg-[#0A1011]">
+              <span class="font-serif text-3xl text-[#65D8F5]">Cinematic AI Concept Poster</span>
+            </div>
           </div>
           <div class="p-4">
             <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Cinematic AI</span>
@@ -213,8 +228,11 @@
 
         <!-- Poster 2 -->
         <div class="portfolio-card rounded-3xl overflow-hidden p-4 group">
-          <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-black relative">
-            <img src="watermarked_img_17772014852261900337.png" alt="AI Content Poster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+          <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-black relative flex items-center justify-center">
+            <img src="watermarked_img_17772014852261900337.png" alt="AI Content Poster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="absolute inset-0 flex-col items-center justify-center p-6 text-center hidden bg-[#0A1011]">
+              <span class="font-serif text-3xl text-[#D8FF42]">AI Content Poster</span>
+            </div>
           </div>
           <div class="p-4">
             <span class="text-xs text-[#D8FF42] uppercase tracking-wider font-semibold">Motion & Flow</span>
