@@ -18,12 +18,16 @@
             serif: ['"Instrument Serif"', 'serif'],
           },
           colors: {
-            midnightBlack: '#060B0F',
-            deepBg: '#081116',
-            secondaryBg: '#0B171C',
-            electricTeal: '#00E5CC',
-            primaryTealGlow: '#00CFC3',
-            deepTeal: '#123B3D',
+            primaryBg: '#090909',
+            secondaryBg: '#141414',
+            elevatedDark: '#1C1C1C',
+            primaryText: '#F5F5F5',
+            secondaryText: '#A0A0A0',
+            mutedText: '#737373',
+            chromeHighlight: '#E5E7EB',
+            chromeMidtone: '#A8ADB4',
+            electricTeal: '#00DCC8',
+            deepTeal: '#063D3A',
           }
         }
       }
@@ -31,15 +35,14 @@
   </script>
   <style>
     :root {
-      --color-bg: #060B0F;
-      --color-bg-secondary: #0B171C;
-      --color-primary: #00E5CC;
-      --color-primary-soft: #00CFC3;
-      --color-text: #F4F7F8;
-      --color-text-secondary: #A7B5BB;
-      --color-text-muted: #74868D;
-      --color-glass: rgba(10, 25, 30, 0.58);
-      --color-glass-border: rgba(0, 229, 204, 0.24);
+      --color-bg: #090909;
+      --color-bg-secondary: #141414;
+      --color-surface: #1C1C1C;
+      --color-primary: #00DCC8;
+      --color-text: #F5F5F5;
+      --color-text-secondary: #A0A0A0;
+      --color-text-muted: #737373;
+      --color-border: rgba(255, 255, 255, 0.12);
     }
 
     body {
@@ -47,160 +50,156 @@
       color: var(--color-text);
     }
 
-    /* Custom Liquid Glass Utilities */
-    .glass-panel {
-      background: var(--color-glass);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid var(--color-glass-border);
-      border-radius: 20px;
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(0, 229, 204, 0.1);
-    }
-    
-    .glass-nav {
-      background: rgba(6, 11, 15, 0.75);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(0, 229, 204, 0.2);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    .solid-card {
+      background-color: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    .glass-card-hover {
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .glass-card-hover:hover {
-      transform: translateY(-6px) scale(1.005);
-      border-color: rgba(0, 229, 204, 0.5);
-      box-shadow: 0 30px 60px -15px rgba(0, 229, 204, 0.15), inset 0 1px 0 rgba(0, 229, 204, 0.3);
+    .solid-card:hover {
+      border-color: rgba(0, 220, 200, 0.4);
+      transform: translateY(-4px);
     }
 
-    /* Animated Ambient Midnight Teal Orbs */
-    @keyframes floatOrb {
-      0% { transform: translate(0px, 0px) scale(1); }
-      33% { transform: translate(40px, -60px) scale(1.15); }
-      66% { transform: translate(-30px, 30px) scale(0.9); }
-      100% { transform: translate(0px, 0px) scale(1); }
+    .nav-bar {
+      background: rgba(9, 9, 9, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    .blob-1 { animation: floatOrb 14s ease-in-out infinite; }
-    .blob-2 { animation: floatOrb 18s ease-in-out infinite reverse; }
+
+    /* Chrome Gradient Text & Effects */
+    .chrome-text {
+      background: linear-gradient(135deg, #F5F5F5 30%, #A8ADB4 70%, #E5E7EB 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    @keyframes floatChrome {
+      0% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(2deg); }
+      100% { transform: translateY(0px) rotate(0deg); }
+    }
+    .chrome-orb {
+      animation: floatChrome 8s ease-in-out infinite;
+    }
   </style>
 </head>
-<body class="font-sans antialiased overflow-x-hidden selection:bg-electricTeal selection:text-midnightBlack">
+<body class="font-sans antialiased overflow-x-hidden selection:bg-electricTeal selection:text-primaryBg">
 
-  <!-- Ambient Animated Background Gradients -->
-  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
-    <div class="blob-1 absolute top-[-10%] left-[15%] w-[550px] h-[550px] bg-[#00E5CC]/10 rounded-full blur-[140px]"></div>
-    <div class="blob-2 absolute bottom-[5%] right-[10%] w-[650px] h-[650px] bg-[#123B3D]/30 rounded-full blur-[160px]"></div>
-  </div>
-
-  <!-- Floating 3D Glass Navbar -->
+  <!-- Navigation Bar -->
   <header class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
-    <nav class="glass-nav rounded-full px-6 py-3 flex items-center justify-between w-full max-w-4xl">
-      <a href="#" class="font-bold tracking-wider text-sm text-[#F4F7F8] hover:text-electricTeal transition-colors">PARMEET SINGH</a>
-      <ul class="hidden md:flex items-center space-x-8 text-xs font-medium text-[#A7B5BB]">
+    <nav class="nav-bar rounded-full px-6 py-3 flex items-center justify-between w-full max-w-4xl shadow-2xl">
+      <a href="#" class="font-bold tracking-wider text-sm text-primaryText hover:text-electricTeal transition-colors">PARMEET SINGH</a>
+      <ul class="hidden md:flex items-center space-x-8 text-xs font-medium text-secondaryText">
         <li><a href="#work" class="hover:text-electricTeal transition-colors">Work</a></li>
         <li><a href="#films" class="hover:text-electricTeal transition-colors">AI Films</a></li>
         <li><a href="#about" class="hover:text-electricTeal transition-colors">About</a></li>
         <li><a href="#services" class="hover:text-electricTeal transition-colors">Services</a></li>
       </ul>
-      <a href="#contact" class="bg-[#00E5CC]/10 hover:bg-[#00E5CC]/20 border border-[#00E5CC]/30 text-electricTeal text-xs font-semibold px-4 py-2 rounded-full transition-all shadow-[0_0_15px_rgba(0,229,204,0.15)]">Let's Talk ↗</a>
+      <a href="#contact" class="bg-electricTeal/10 hover:bg-electricTeal/20 border border-electricTeal/30 text-electricTeal text-xs font-semibold px-4 py-2 rounded-full transition-all">Let's Talk ↗</a>
     </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="relative min-h-screen flex items-center justify-center px-4 pt-32 pb-20 z-10">
-    <div class="max-w-4xl w-full mx-auto text-center">
-      <div class="glass-panel rounded-3xl p-8 md:p-16 relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-b from-[#00E5CC]/5 to-transparent pointer-events-none"></div>
-        
-        <span class="inline-block text-xs uppercase tracking-[0.25em] text-electricTeal font-semibold mb-4 px-4 py-1.5 rounded-full bg-[#00E5CC]/10 border border-[#00E5CC]/30 shadow-[0_0_20px_rgba(0,229,204,0.1)]">
-          Design Studio & AI Directing
+    <div class="max-w-5xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      <div class="lg:col-span-8 text-center lg:text-left">
+        <span class="inline-block text-xs uppercase tracking-[0.25em] text-electricTeal font-semibold mb-4 px-4 py-1.5 rounded-full bg-electricTeal/10 border border-electricTeal/20">
+          Motion-First Creative Studio & AI Directing
         </span>
-        <h1 class="font-serif text-5xl md:text-8xl tracking-tight mb-4 text-[#F4F7F8] font-normal">
-          PARMEET <span class="text-electricTeal drop-shadow-[0_0_25px_rgba(0,229,204,0.4)]">SINGH</span>
+        <h1 class="font-serif text-5xl md:text-8xl tracking-tight mb-6 text-primaryText font-normal leading-none">
+          PARMEET <span class="chrome-text">SINGH</span>
         </h1>
-        <p class="text-xl md:text-2xl font-light text-[#A7B5BB] mb-6 tracking-wide">
+        <p class="text-xl md:text-2xl font-light text-secondaryText mb-6 tracking-wide">
           Graphic Designer <span class="text-electricTeal">×</span> AI Content Creator
         </p>
-        <p class="text-sm md:text-base text-[#74868D] max-w-xl mx-auto mb-10 font-light leading-relaxed">
+        <p class="text-sm md:text-base text-mutedText max-w-xl mb-10 font-light leading-relaxed mx-auto lg:mx-0">
           Crafting immersive visual experiences, commercial identity systems, and cinematic AI storytelling through advanced digital workflows.
         </p>
-        
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a href="#work" class="w-full sm:w-auto bg-gradient-to-r from-electricTeal to-primaryTealGlow text-midnightBlack font-bold text-sm px-8 py-3.5 rounded-full shadow-[0_0_25px_rgba(0,229,204,0.3)] hover:opacity-95 transition-all">
+        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+          <a href="#work" class="w-full sm:w-auto bg-electricTeal text-primaryBg font-bold text-sm px-8 py-4 rounded-full hover:bg-[#00c2af] transition-all shadow-lg shadow-electricTeal/20">
             Explore Selected Work
           </a>
-          <a href="#contact" class="w-full sm:w-auto glass-panel text-[#F4F7F8] text-sm font-semibold px-8 py-3.5 rounded-full hover:bg-[#00E5CC]/10 hover:border-electricTeal/50 transition-all">
+          <a href="#contact" class="w-full sm:w-auto bg-secondaryBg border border-white/15 text-primaryText text-sm font-semibold px-8 py-4 rounded-full hover:bg-elevatedDark transition-all">
             Get in Touch ↗
           </a>
+        </div>
+      </div>
+      <!-- Cinematic Chrome 3D Graphic Visual Element -->
+      <div class="lg:col-span-4 flex justify-center">
+        <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-3xl bg-gradient-to-br from-secondaryBg via-elevatedDark to-[#063D3A] border border-white/10 flex items-center justify-center shadow-2xl chrome-orb overflow-hidden">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,220,200,0.15),transparent_60%)]"></div>
+          <div class="w-36 h-36 rounded-full bg-gradient-to-tr from-chromeMidtone via-chromeHighlight to-secondaryText opacity-90 blur-[1px] shadow-[0_0_40px_rgba(229,231,235,0.3)]"></div>
+          <div class="absolute inset-4 border border-white/10 rounded-2xl pointer-events-none"></div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Selected Work (Bento Grid) -->
-  <section id="work" class="relative py-24 px-4 z-10">
+  <section id="work" class="relative py-24 px-4 z-10 bg-secondaryBg/40">
     <div class="max-w-6xl mx-auto">
       <div class="mb-14 text-center md:text-left">
         <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Portfolio</span>
-        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F4F7F8]">Selected Commercial Work</h2>
-        <p class="text-[#A7B5BB] text-sm mt-2">Commercial design systems, brand packaging, and high-impact visual campaigns.</p>
+        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-primaryText">Selected Commercial Work</h2>
+        <p class="text-secondaryText text-sm mt-2">Commercial design systems, brand packaging, and high-impact visual campaigns.</p>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <!-- Project 1 -->
-        <article class="glass-panel rounded-3xl p-6 glass-card-hover flex flex-col justify-between group cursor-pointer">
-          <div class="overflow-hidden rounded-2xl mb-6 aspect-video bg-[#081116] border border-[#00E5CC]/15">
+        <article class="solid-card p-6 flex flex-col justify-between group cursor-pointer">
+          <div class="overflow-hidden rounded-xl mb-6 aspect-video bg-primaryBg border border-white/5">
             <img src="assets/images/project-01.jpg" alt="Commercial Identity & Packaging" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
           </div>
           <div>
             <span class="text-xs text-electricTeal uppercase tracking-wider font-semibold">Brand Identity & Creative Direction</span>
             <div class="flex items-center justify-between mt-2">
-              <h3 class="text-2xl font-serif text-[#F4F7F8]">Commercial Identity & Packaging</h3>
-              <span class="text-[#74868D] group-hover:text-electricTeal transition-colors">↗</span>
+              <h3 class="text-2xl font-serif text-primaryText">Commercial Identity & Packaging</h3>
+              <span class="text-mutedText group-hover:text-electricTeal transition-colors">↗</span>
             </div>
           </div>
         </article>
 
         <!-- Project 2 -->
-        <article class="glass-panel rounded-3xl p-6 glass-card-hover flex flex-col justify-between group cursor-pointer">
-          <div class="overflow-hidden rounded-2xl mb-6 aspect-video bg-[#081116] border border-[#00E5CC]/15">
+        <article class="solid-card p-6 flex flex-col justify-between group cursor-pointer">
+          <div class="overflow-hidden rounded-xl mb-6 aspect-video bg-primaryBg border border-white/5">
             <img src="assets/images/project-02.jpg" alt="Consumer Brand Digital Campaign" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
           </div>
           <div>
             <span class="text-xs text-electricTeal uppercase tracking-wider font-semibold">Advertising Creatives & Design</span>
             <div class="flex items-center justify-between mt-2">
-              <h3 class="text-2xl font-serif text-[#F4F7F8]">Consumer Brand Digital Campaign</h3>
-              <span class="text-[#74868D] group-hover:text-electricTeal transition-colors">↗</span>
+              <h3 class="text-2xl font-serif text-primaryText">Consumer Brand Digital Campaign</h3>
+              <span class="text-mutedText group-hover:text-electricTeal transition-colors">↗</span>
             </div>
           </div>
         </article>
 
         <!-- Project 3 -->
-        <article class="glass-panel rounded-3xl p-6 glass-card-hover flex flex-col justify-between group cursor-pointer">
-          <div class="overflow-hidden rounded-2xl mb-6 aspect-video bg-[#081116] border border-[#00E5CC]/15">
+        <article class="solid-card p-6 flex flex-col justify-between group cursor-pointer">
+          <div class="overflow-hidden rounded-xl mb-6 aspect-video bg-primaryBg border border-white/5">
             <img src="assets/images/project-03.jpg" alt="Cinematic 3D Product Renders" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
           </div>
           <div>
             <span class="text-xs text-electricTeal uppercase tracking-wider font-semibold">3D Design & Generative Visuals</span>
             <div class="flex items-center justify-between mt-2">
-              <h3 class="text-2xl font-serif text-[#F4F7F8]">Cinematic 3D Product Renders</h3>
-              <span class="text-[#74868D] group-hover:text-electricTeal transition-colors">↗</span>
+              <h3 class="text-2xl font-serif text-primaryText">Cinematic 3D Product Renders</h3>
+              <span class="text-mutedText group-hover:text-electricTeal transition-colors">↗</span>
             </div>
           </div>
         </article>
 
         <!-- Project 4 -->
-        <article class="glass-panel rounded-3xl p-6 glass-card-hover flex flex-col justify-between group cursor-pointer">
-          <div class="overflow-hidden rounded-2xl mb-6 aspect-video bg-[#081116] border border-[#00E5CC]/15">
+        <article class="solid-card p-6 flex flex-col justify-between group cursor-pointer">
+          <div class="overflow-hidden rounded-xl mb-6 aspect-video bg-primaryBg border border-white/5">
             <img src="assets/images/project-04.jpg" alt="Editorial Visual Narratives" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
           </div>
           <div>
             <span class="text-xs text-electricTeal uppercase tracking-wider font-semibold">Visual Storytelling & Strategy</span>
             <div class="flex items-center justify-between mt-2">
-              <h3 class="text-2xl font-serif text-[#F4F7F8]">Editorial Visual Narratives</h3>
-              <span class="text-[#74868D] group-hover:text-electricTeal transition-colors">↗</span>
+              <h3 class="text-2xl font-serif text-primaryText">Editorial Visual Narratives</h3>
+              <span class="text-mutedText group-hover:text-electricTeal transition-colors">↗</span>
             </div>
           </div>
         </article>
@@ -209,33 +208,33 @@
   </section>
 
   <!-- AI Films & Commercial Motion -->
-  <section id="films" class="relative py-24 px-4 z-10 bg-[#081116]/60">
+  <section id="films" class="relative py-24 px-4 z-10">
     <div class="max-w-6xl mx-auto">
       <div class="mb-14 text-center md:text-left">
         <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Motion & AI</span>
-        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F4F7F8]">AI Films & Commercial Motion</h2>
-        <p class="text-[#A7B5BB] text-sm mt-2">Episodic AI action series and high-octane commercial motion work.</p>
+        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-primaryText">AI Films & Commercial Motion</h2>
+        <p class="text-secondaryText text-sm mt-2">Episodic AI action series and high-octane commercial motion work.</p>
       </div>
 
       <!-- Goodrush Cinematic Series Folder -->
-      <div class="glass-panel rounded-3xl p-8 mb-8 border-[#00E5CC]/25">
+      <div class="solid-card p-8 mb-8 bg-secondaryBg">
         <div class="mb-6">
           <span class="text-xs text-electricTeal font-mono font-bold uppercase tracking-widest">Folder 01</span>
-          <h3 class="text-2xl font-serif mt-1 text-[#F4F7F8]">"The Goodrush Mission" Cinematic Action Series</h3>
+          <h3 class="text-2xl font-serif mt-1 text-primaryText">"The Goodrush Mission" Cinematic Action Series</h3>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <!-- Episode 1 -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode1" target="_blank" rel="noopener" class="glass-panel rounded-2xl p-4 glass-card-hover flex flex-col justify-between group">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode1" target="_blank" rel="noopener" class="solid-card p-4 flex flex-col justify-between group bg-primaryBg">
             <div>
-              <div class="relative overflow-hidden rounded-xl aspect-video mb-4 bg-[#081116] border border-[#00E5CC]/20">
+              <div class="relative overflow-hidden rounded-lg aspect-video mb-4 bg-elevatedDark">
                 <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Ep 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute inset-0 bg-[#060B0F]/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div class="w-10 h-10 rounded-full bg-electricTeal text-midnightBlack flex items-center justify-center font-bold shadow-[0_0_15px_rgba(0,229,204,0.6)]">▶</div>
+                <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-10 h-10 rounded-full bg-electricTeal text-primaryBg flex items-center justify-center font-bold">▶</div>
                 </div>
               </div>
-              <h4 class="font-serif text-xl mb-1 text-[#F4F7F8]">The Goodrush Mission — Ep 1</h4>
-              <p class="text-xs text-[#A7B5BB] line-clamp-2">Cinematic open-world action series blending high-octane muscle car night sequences.</p>
+              <h4 class="font-serif text-xl mb-1 text-primaryText">The Goodrush Mission — Ep 1</h4>
+              <p class="text-xs text-secondaryText line-clamp-2">Cinematic open-world action series blending high-octane muscle car night sequences.</p>
             </div>
             <div class="mt-4 text-xs font-semibold text-electricTeal flex items-center justify-between">
               <span>Watch on Behance</span>
@@ -244,16 +243,16 @@
           </a>
 
           <!-- Episode 2 -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode2" target="_blank" rel="noopener" class="glass-panel rounded-2xl p-4 glass-card-hover flex flex-col justify-between group">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode2" target="_blank" rel="noopener" class="solid-card p-4 flex flex-col justify-between group bg-primaryBg">
             <div>
-              <div class="relative overflow-hidden rounded-xl aspect-video mb-4 bg-[#081116] border border-[#00E5CC]/20">
+              <div class="relative overflow-hidden rounded-lg aspect-video mb-4 bg-elevatedDark">
                 <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Ep 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute inset-0 bg-[#060B0F]/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div class="w-10 h-10 rounded-full bg-electricTeal text-midnightBlack flex items-center justify-center font-bold shadow-[0_0_15px_rgba(0,229,204,0.6)]">▶</div>
+                <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-10 h-10 rounded-full bg-electricTeal text-primaryBg flex items-center justify-center font-bold">▶</div>
                 </div>
               </div>
-              <h4 class="font-serif text-xl mb-1 text-[#F4F7F8]">The Goodrush Mission — Ep 2</h4>
-              <p class="text-xs text-[#A7B5BB] line-clamp-2">Night supermarket tactical heist featuring diegetic HUD mission navigation.</p>
+              <h4 class="font-serif text-xl mb-1 text-primaryText">The Goodrush Mission — Ep 2</h4>
+              <p class="text-xs text-secondaryText line-clamp-2">Night supermarket tactical heist featuring diegetic HUD mission navigation.</p>
             </div>
             <div class="mt-4 text-xs font-semibold text-electricTeal flex items-center justify-between">
               <span>Watch on Behance</span>
@@ -262,16 +261,16 @@
           </a>
 
           <!-- Episode 3 -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode3" target="_blank" rel="noopener" class="glass-panel rounded-2xl p-4 glass-card-hover flex flex-col justify-between group">
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode3" target="_blank" rel="noopener" class="solid-card p-4 flex flex-col justify-between group bg-primaryBg">
             <div>
-              <div class="relative overflow-hidden rounded-xl aspect-video mb-4 bg-[#081116] border border-[#00E5CC]/20">
+              <div class="relative overflow-hidden rounded-lg aspect-video mb-4 bg-elevatedDark">
                 <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Ep 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                <div class="absolute inset-0 bg-[#060B0F]/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div class="w-10 h-10 rounded-full bg-electricTeal text-midnightBlack flex items-center justify-center font-bold shadow-[0_0_15px_rgba(0,229,204,0.6)]">▶</div>
+                <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-10 h-10 rounded-full bg-electricTeal text-primaryBg flex items-center justify-center font-bold">▶</div>
                 </div>
               </div>
-              <h4 class="font-serif text-xl mb-1 text-[#F4F7F8]">The Goodrush Mission — Ep 3</h4>
-              <p class="text-xs text-[#A7B5BB] line-clamp-2">Surveillance room tracking aesthetics, CCTV getaway sequences, and highway pursuit.</p>
+              <h4 class="font-serif text-xl mb-1 text-primaryText">The Goodrush Mission — Ep 3</h4>
+              <p class="text-xs text-secondaryText line-clamp-2">Surveillance room tracking aesthetics, CCTV getaway sequences, and highway pursuit.</p>
             </div>
             <div class="mt-4 text-xs font-semibold text-electricTeal flex items-center justify-between">
               <span>Watch on Behance</span>
@@ -283,16 +282,16 @@
     </div>
   </section>
 
-  <!-- About Section (Portrait Image Removed as requested) -->
-  <section id="about" class="relative py-24 px-4 z-10">
+  <!-- About Section -->
+  <section id="about" class="relative py-24 px-4 z-10 bg-secondaryBg/30">
     <div class="max-w-4xl mx-auto">
-      <div class="glass-panel rounded-3xl p-8 md:p-14 text-center md:text-left">
+      <div class="solid-card p-8 md:p-12 text-center md:text-left bg-secondaryBg">
         <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Biography</span>
-        <h3 class="font-serif text-3xl md:text-4xl mt-1 mb-4 text-[#F4F7F8]">A Little About Me</h3>
-        <p class="text-base text-[#F4F7F8] leading-relaxed mb-4 font-light">
+        <h3 class="font-serif text-3xl md:text-4xl mt-1 mb-4 text-primaryText">A Little About Me</h3>
+        <p class="text-base text-primaryText leading-relaxed mb-4 font-light">
           I create visual experiences across graphic design, AI content, motion, and digital storytelling.
         </p>
-        <p class="text-sm text-[#A7B5BB] leading-relaxed font-light">
+        <p class="text-sm text-secondaryText leading-relaxed font-light">
           My work combines precision editorial principles with cutting-edge generative workflows, crafting brand identities and commercial campaigns that resonate clearly across modern digital touchpoints.
         </p>
       </div>
@@ -300,72 +299,72 @@
   </section>
 
   <!-- Services / Capabilities -->
-  <section id="services" class="relative py-24 px-4 z-10 bg-[#081116]/40">
+  <section id="services" class="relative py-24 px-4 z-10">
     <div class="max-w-6xl mx-auto">
       <div class="mb-14 text-center md:text-left">
         <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Capabilities</span>
-        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F4F7F8]">What I Do</h2>
+        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-primaryText">What I Do</h2>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+        <div class="solid-card p-6 bg-secondaryBg">
           <span class="text-xs font-mono text-electricTeal font-bold">01</span>
-          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">Graphic Design</h3>
-          <p class="text-xs text-[#A7B5BB] leading-relaxed">Editorial layouts, print systems, presentation typography, and visual assets built with typographic discipline.</p>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-primaryText">Graphic Design</h3>
+          <p class="text-xs text-secondaryText leading-relaxed">Editorial layouts, print systems, presentation typography, and visual assets built with typographic discipline.</p>
         </div>
-        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+        <div class="solid-card p-6 bg-secondaryBg">
           <span class="text-xs font-mono text-electricTeal font-bold">02</span>
-          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">Brand Identity</h3>
-          <p class="text-xs text-[#A7B5BB] leading-relaxed">Cohesive logo systems, design guidelines, brand color palettes, and structured visual identity frameworks.</p>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-primaryText">Brand Identity</h3>
+          <p class="text-xs text-secondaryText leading-relaxed">Cohesive logo systems, design guidelines, brand color palettes, and structured visual identity frameworks.</p>
         </div>
-        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+        <div class="solid-card p-6 bg-secondaryBg">
           <span class="text-xs font-mono text-electricTeal font-bold">03</span>
-          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">AI Content Creation</h3>
-          <p class="text-xs text-[#A7B5BB] leading-relaxed">Generative image synthesis, hyper-detailed commercial concepts, and art-directed creative pipelines.</p>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-primaryText">AI Content Creation</h3>
+          <p class="text-xs text-secondaryText leading-relaxed">Generative image synthesis, hyper-detailed commercial concepts, and art-directed creative pipelines.</p>
         </div>
-        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+        <div class="solid-card p-6 bg-secondaryBg">
           <span class="text-xs font-mono text-electricTeal font-bold">04</span>
-          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">AI Video Creation</h3>
-          <p class="text-xs text-[#A7B5BB] leading-relaxed">Prompt-to-video direction, scene continuity, camera motion mapping, and generative film storytelling.</p>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-primaryText">AI Video Creation</h3>
+          <p class="text-xs text-secondaryText leading-relaxed">Prompt-to-video direction, scene continuity, camera motion mapping, and generative film storytelling.</p>
         </div>
-        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+        <div class="solid-card p-6 bg-secondaryBg">
           <span class="text-xs font-mono text-electricTeal font-bold">05</span>
-          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">Motion Graphics</h3>
-          <p class="text-xs text-[#A7B5BB] leading-relaxed">Kinetic typography, logo reveals, promotional video editing, and beat-synced motion dynamics.</p>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-primaryText">Motion Graphics</h3>
+          <p class="text-xs text-secondaryText leading-relaxed">Kinetic typography, logo reveals, promotional video editing, and beat-synced motion dynamics.</p>
         </div>
-        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+        <div class="solid-card p-6 bg-secondaryBg">
           <span class="text-xs font-mono text-electricTeal font-bold">06</span>
-          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">3D Design</h3>
-          <p class="text-xs text-[#A7B5BB] leading-relaxed">Product visualization, material texturing, studio lighting setups, and abstract spatial compositions.</p>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-primaryText">3D Design</h3>
+          <p class="text-xs text-secondaryText leading-relaxed">Product visualization, material texturing, studio lighting setups, and abstract spatial compositions.</p>
         </div>
       </div>
     </div>
   </section>
 
   <!-- Contact & Footer -->
-  <section id="contact" class="relative py-24 px-4 z-10">
+  <section id="contact" class="relative py-24 px-4 z-10 bg-secondaryBg/40">
     <div class="max-w-4xl mx-auto text-center">
-      <div class="glass-panel rounded-3xl p-10 md:p-16 border-[#00E5CC]/30 shadow-[0_0_50px_rgba(0,229,204,0.1)]">
+      <div class="solid-card p-10 md:p-16 bg-secondaryBg border-electricTeal/30">
         <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Inquiries</span>
-        <h2 class="font-serif text-4xl md:text-6xl mt-2 mb-4 text-[#F4F7F8]">Have a project in mind?</h2>
-        <p class="text-[#A7B5BB] text-sm mb-8">Let's create something meaningful together.</p>
+        <h2 class="font-serif text-4xl md:text-6xl mt-2 mb-4 text-primaryText">Have a project in mind?</h2>
+        <p class="text-secondaryText text-sm mb-8">Let's create something meaningful together.</p>
         
         <div class="mb-10">
-          <a href="mailto:singhparmeett832@gmail.com" class="inline-block bg-electricTeal text-midnightBlack font-bold text-sm px-8 py-4 rounded-full hover:bg-primaryTealGlow transition-all shadow-[0_0_25px_rgba(0,229,204,0.3)]">
+          <a href="mailto:singhparmeett832@gmail.com" class="inline-block bg-electricTeal text-primaryBg font-bold text-sm px-8 py-4 rounded-full hover:bg-[#00c2af] transition-all shadow-lg">
             Let's Talk ↗
           </a>
         </div>
 
         <div class="flex flex-wrap justify-center gap-4 text-xs font-medium">
-          <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" class="glass-panel px-5 py-2.5 rounded-full hover:bg-[#00E5CC]/10 hover:border-electricTeal/50 transition-colors text-[#F4F7F8]">Instagram (@thecorporatealoo) ↗</a>
-          <a href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank" rel="noopener" class="glass-panel px-5 py-2.5 rounded-full hover:bg-[#00E5CC]/10 hover:border-electricTeal/50 transition-colors text-[#F4F7F8]">LinkedIn ↗</a>
-          <a href="https://behance.net/parmeetsingh75" target="_blank" rel="noopener" class="glass-panel px-5 py-2.5 rounded-full hover:bg-[#00E5CC]/10 hover:border-electricTeal/50 transition-colors text-[#F4F7F8]">Behance ↗</a>
+          <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" class="solid-card px-5 py-2.5 bg-primaryBg hover:border-electricTeal transition-colors text-primaryText">Instagram (@thecorporatealoo) ↗</a>
+          <a href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank" rel="noopener" class="solid-card px-5 py-2.5 bg-primaryBg hover:border-electricTeal transition-colors text-primaryText">LinkedIn ↗</a>
+          <a href="https://behance.net/parmeetsingh75" target="_blank" rel="noopener" class="solid-card px-5 py-2.5 bg-primaryBg hover:border-electricTeal transition-colors text-primaryText">Behance ↗</a>
         </div>
       </div>
 
-      <footer class="mt-12 text-xs text-[#74868D] space-y-1">
+      <footer class="mt-12 text-xs text-mutedText space-y-1">
         <p>© 2026 PARMEET SINGH. All rights reserved.</p>
-        <p>Midnight Teal × Liquid Glass Minimal Studio Design System</p>
+        <p>Black × Silver/Chrome × Electric Teal Motion-First Design System</p>
       </footer>
     </div>
   </section>
