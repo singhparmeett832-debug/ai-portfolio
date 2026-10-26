@@ -67,27 +67,23 @@
   .project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;padding:8px 16px 16px}
   .project-card{border:1px solid rgba(164,205,226,.14);background:#09151d;border-radius:9px;overflow:hidden;cursor:pointer;transition:transform .22s,border-color .22s}
   .project-card:hover{transform:translateY(-4px);border-color:var(--teal)}
-  .project-art{height:140px;display:flex;align-items:center;justify-content:center;padding:14px;position:relative;overflow:hidden;font-weight:900;letter-spacing:-.06em;font-size:clamp(18px,2vw,29px);line-height:.92}
-  .art-one{background:radial-gradient(circle at 65% 30%,#3dd3ff,#0a2855 42%,#07101b 75%);color:#fff;text-shadow:0 3px 15px #00172e}
-  .art-two{background:linear-gradient(135deg,#111a22,#64686a);color:#f4f4ef}
-  .art-three{background:radial-gradient(circle at 50% 45%,#ffbf91,#b83463 38%,#12263a 78%);color:#fff0e8}
-  .art-four{background:linear-gradient(135deg,#222b32,#030609);color:#e8f0f3}
-  .art-five{background:linear-gradient(130deg,#d8ff00,#00b4a6 48%,#092b38);color:#071015}
-  .art-six{background:linear-gradient(135deg,#a6c5be,#d5a67c 48%,#192c36);color:#fff}
+  .project-art{height:140px;display:flex;align-items:center;justify-content:center;padding:14px;position:relative;overflow:hidden;font-weight:900;letter-spacing:-.06em;font-size:clamp(16px,1.8vw,24px);line-height:.92;text-align:center}
+  .art-one{background:radial-gradient(circle at 65% 30%,#b10c17,#0a1218 55%,#07101b 85%);color:#fff;text-shadow:0 3px 15px rgba(177,12,23,.5)}
+  .art-two{background:linear-gradient(135deg,#b8936e,#111a22);color:#f4f4ef}
+  .art-three{background:radial-gradient(circle at 50% 45%,#00e5cc,#0b1922 65%,#03070b 90%);color:#050b10}
+  .art-four{background:linear-gradient(135deg,#222b32,#123b3d);color:#e8f0f3}
+  .art-five{background:linear-gradient(130deg,#b10c17,#b8936e 48%,#092b38);color:#fff}
+  .art-six{background:linear-gradient(135deg,#123b3d,#00e5cc 48%,#07111a);color:#fff}
   .project-info{padding:10px 11px;display:flex;align-items:center;gap:8px;font-size:10px}.project-info small{display:block;color:#8497a3;margin-top:4px}.project-info span{margin-left:auto;color:#b5c7d0}
   .right-stack{grid-column:3;grid-row:2;display:flex;flex-direction:column;gap:18px}
-  .film-image{height:130px;background:radial-gradient(circle at 70% 20%,#d6e7ec,#506977 24%,#1c3745 45%,#07111a 78%);display:grid;place-items:center;position:relative;overflow:hidden}
-  .film-image:before{content:"";position:absolute;width:80px;height:110px;border-radius:45% 45% 10% 10%;background:linear-gradient(90deg,#0b141a,#314753,#070d12);bottom:-20px;left:48%;transform:translateX(-50%);box-shadow:0 0 30px #1d3d4b}
+  .film-image{height:130px;background:radial-gradient(circle at 70% 20%,#00e5cc,#123b3d 24%,#0b1922 45%,#03070b 78%);display:grid;place-items:center;position:relative;overflow:hidden}
   .play{z-index:1;width:42px;height:42px;border-radius:50%;border:1px solid rgba(255,255,255,.7);background:rgba(4,13,19,.68);display:grid;place-items:center}
   .film-info{padding:12px 14px;display:flex;align-items:center;gap:12px}.film-info strong{font-size:12px}.film-info small{display:block;color:var(--muted);margin-top:4px;font-size:10px}.film-info .arrow{margin-left:auto}
   .quick{grid-column:1;grid-row:3}
   .quick-body{padding:4px 14px 14px}.quick-link{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid rgba(164,205,226,.10);font-size:11px;color:#d4e0e7}.quick-link:last-child{border:0}.quick-link span:last-child{margin-left:auto;color:#9cb0bd}
   .quote{font-size:11px;line-height:1.7;color:#c1d0d8;padding:12px 0 2px}
   .featured{grid-column:2;grid-row:3}
-  .feature-art{height:230px;background:radial-gradient(circle at 66% 25%,#e2f6ff,#38728c 20%,#142b44 43%,#030a12 75%);display:grid;place-items:center;position:relative;overflow:hidden}
-  .moon{width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 30% 25%,#fff,#a6d7ef 22%,#24546f 60%,#091726 80%);box-shadow:0 0 60px rgba(112,207,255,.35);position:absolute;right:18%;top:15%}
-  .mountain{position:absolute;bottom:-10px;width:120%;height:65%;background:linear-gradient(145deg,#5e8990,#12232e 58%,#02080d);clip-path:polygon(0 100%,12% 50%,22% 72%,39% 12%,52% 67%,67% 27%,83% 70%,100% 36%,100% 100%)}
-  .person{position:absolute;bottom:16px;left:25%;height:80px;width:27px;background:#e45b25;border-radius:9px 9px 3px 3px;box-shadow:0 0 20px rgba(255,96,35,.2)}
+  .feature-art{height:230px;background:radial-gradient(circle at 66% 25%,#b10c17,#38728c 20%,#142b44 43%,#030a12 75%);display:grid;place-items:center;position:relative;overflow:hidden}
   .feature-controls{display:flex;align-items:center;gap:10px;padding:10px 14px;font-size:10px;color:#9eb0ba}.feature-controls .line{height:2px;background:var(--teal);width:35%}
   .activity{grid-column:3;grid-row:3}
   .activity-row{display:flex;gap:10px;padding:13px 14px;border-bottom:1px solid rgba(164,205,226,.1);font-size:10px}.activity-row:last-child{border:0}.activity-icon{width:25px;height:25px;display:grid;place-items:center;border:1px solid var(--line);border-radius:7px;color:#93d8eb;flex-shrink:0}.activity-row small{display:block;color:#8296a2;margin-top:5px}
@@ -146,23 +142,23 @@
       <section class="window system" id="services">
         <div class="titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>System / Status</span><span class="controls">− □ ×</span></div>
         <div class="system-body">
-          <div class="system-row"><span class="sys-icon">◈</span>Design Tools<span class="state">● Active</span></div>
-          <div class="system-row"><span class="sys-icon">◎</span>AI Models<span class="state">● Connected</span></div>
-          <div class="system-row"><span class="sys-icon">▷</span>Video Editing<span class="state">● Ready</span></div>
-          <div class="system-row"><span class="sys-icon">✳</span>Creative Mind<span class="state">● Always On</span></div>
+          <div class="system-row"><span class="sys-icon">◈</span>Graphic Design<span class="state">● Active</span></div>
+          <div class="system-row"><span class="sys-icon">◎</span>AI Content & Video<span class="state">● Connected</span></div>
+          <div class="system-row"><span class="sys-icon">▷</span>Motion Graphics<span class="state">● Ready</span></div>
+          <div class="system-row"><span class="sys-icon">✳</span>3D & Brand Identity<span class="state">● Always On</span></div>
         </div>
       </section>
 
       <section class="window projects" id="projects">
         <div class="titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>Projects</span><span class="controls">↗</span></div>
-        <div class="section-head"><h2>Selected Work</h2><div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="graphic">Graphic Design</button><button class="filter" data-filter="ai">AI Films</button><button class="filter" data-filter="3d">3D</button><button class="filter" data-filter="motion">Motion</button></div></div>
+        <div class="section-head"><h2>Selected Commercial Work</h2><div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="graphic">Graphic Design</button><button class="filter" data-filter="ai">AI Films</button><button class="filter" data-filter="3d">3D Design</button><button class="filter" data-filter="motion">Motion</button></div></div>
         <div class="project-grid">
-          <article class="project-card" data-category="graphic" data-title="Dream Bigger — Brand Identity" data-description="Replace this sample preview with your real brand identity artwork, project description and deliverables."><div class="project-art art-one">DREAM<br>BIGGER</div><div class="project-info"><div>Brand Identity<small>Graphic Design</small></div><span>→</span></div></article>
-          <article class="project-card" data-category="graphic" data-title="The Next Chapter" data-description="Add your actual campaign visuals and case-study information here."><div class="project-art art-two">THE<br>NEXT<br>CHAPTER</div><div class="project-info"><div>Social Campaign<small>Graphic Design</small></div><span>→</span></div></article>
-          <article class="project-card" data-category="ai" data-title="Digital Bloom" data-description="Use this card for your real AI artwork or AI-generated campaign."><div class="project-art art-three">DIGITAL<br>BLOOM</div><div class="project-info"><div>Digital Art<small>AI Generated</small></div><span>→</span></div></article>
-          <article class="project-card" data-category="3d" data-title="Future Is Electric" data-description="Replace this visual with your real product visualization or 3D render."><div class="project-art art-four">FUTURE<br>IS ELECTRIC</div><div class="project-info"><div>Product Visuals<small>3D Design</small></div><span>→</span></div></article>
-          <article class="project-card" data-category="motion" data-title="Move Create Inspire" data-description="Add a still frame, animation preview or motion-design case study."><div class="project-art art-five">MOVE<br>CREATE<br>INSPIRE</div><div class="project-info"><div>Motion Graphics<small>Motion Design</small></div><span>→</span></div></article>
-          <article class="project-card" data-category="ai" data-title="Beyond the Horizon" data-description="Replace with your real AI film artwork and a link to the full video."><div class="project-art art-six">BEYOND<br>THE<br>HORIZON</div><div class="project-info"><div>AI Film<small>Video Production</small></div><span>→</span></div></article>
+          <article class="project-card" data-category="graphic" data-title="Goodrush Makhana Campaign" data-description="Advertising creatives, packaging design, and brand visual campaigns for Goodrush roasted makhana lines (Guilt free crunch)."><div class="project-art art-one">GOODRUSH<br>MAKHANA</div><div class="project-info"><div>Brand Campaign & Packaging<small>Graphic Design</small></div><span>→</span></div></article>
+          <article class="project-card" data-category="graphic" data-title="TAHLÉ Home Decor" data-description="Commercial assets, product storyboards, and packaging graphics for brass napkin rings, potpourri wax sachets, and gift hampers."><div class="project-art art-two">TAHLÉ<br>DECOR</div><div class="project-info"><div>Packaging & Visual Assets<small>Graphic Design</small></div><span>→</span></div></article>
+          <article class="project-card" data-category="ai" data-title="The Goodrush Mission — Ep 1" data-description="AI-powered cinematic open-world action series blending high-octane muscle car night sequences (Watch on Behance)."><div class="project-art art-three">GOODRUSH<br>MISSION EP 1</div><div class="project-info"><div>AI Cinematic Film<small>AI Video Production</small></div><span>→</span></div></article>
+          <article class="project-card" data-category="3d" data-title="Cinematic 3D Product Renders" data-description="Advanced studio lighting, material texturing, and 3D product visualizations for premium consumer goods."><div class="project-art art-four">3D PRODUCT<br>VISUALS</div><div class="project-info"><div>Studio Renders<small>3D Design</small></div><span>→</span></div></article>
+          <article class="project-card" data-category="motion" data-title="ROVE Blue Butterfly Pea Tea" data-description="Commercial video advertisements and kinetic typography motion graphics for ROVE tea packaging."><div class="project-art art-five">ROVE TEA<br>MOTION</div><div class="project-info"><div>Kinetic Typography<small>Motion Graphics</small></div><span>→</span></div></article>
+          <article class="project-card" data-category="ai" data-title="The Goodrush Mission — Ep 2 & 3" data-description="Night supermarket tactical heist and surveillance room tracking sequences created with advanced generative AI workflows."><div class="project-art art-six">GOODRUSH<br>MISSION EP 2-3</div><div class="project-info"><div>Episodic AI Action<small>AI Video Direction</small></div><span>→</span></div></article>
         </div>
       </section>
 
@@ -170,46 +166,46 @@
         <section class="window" id="films">
           <div class="titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>Media Player</span><span class="controls">×</span></div>
           <div class="film-image"><button class="play" id="filmButton" aria-label="Open AI Films">▶</button></div>
-          <div class="film-info"><div><strong>AI Films</strong><small>Your cinematic AI creations</small></div><a class="arrow" href="#featured-film">→</a></div>
+          <div class="film-info"><div><strong>The Goodrush Mission</strong><small>Cinematic AI Action Series</small></div><a class="arrow" href="#featured-film">→</a></div>
         </section>
         <section class="window">
           <div class="titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>Quick Access</span><span class="controls">×</span></div>
           <div class="quick-body">
-            <a class="quick-link" href="#projects"><span>▰</span>Design Portfolio<span>→</span></a>
-            <a class="quick-link" href="#films"><span>▰</span>AI Films<span>→</span></a>
-            <a class="quick-link" href="#about"><span>▰</span>About Me<span>→</span></a>
-            <a class="quick-link" href="#contact"><span>✉</span>Contact<span>→</span></a>
-            <div class="quote">“Good design isn't just what it looks like. It's how it works.”<br><small>— Parmeet Singh</small></div>
+            <a class="quick-link" href="https://behance.net/parmeetsingh75" target="_blank"><span>▰</span>Behance Portfolio<span>↗</span></a>
+            <a class="quick-link" href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank"><span>▰</span>LinkedIn Profile<span>↗</span></a>
+            <a class="quick-link" href="https://www.instagram.com/thecorporatealoo" target="_blank"><span>▰</span>Instagram (@thecorporatealoo)<span>↗</span></a>
+            <a class="quick-link" href="#contact"><span>✉</span>Contact Me<span>→</span></a>
+            <div class="quote">“Crafting immersive visual experiences and cinematic AI storytelling.”<br><small>— Parmeet Singh</small></div>
           </div>
         </section>
       </div>
 
       <section class="window featured" id="featured-film">
-        <div class="titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>Featured AI Film</span><span class="controls">□ ×</span></div>
-        <div class="feature-art"><div class="moon"></div><div class="mountain"></div><div class="person"></div><button class="play" id="featuredButton" aria-label="View featured AI film">▶</button></div>
-        <div class="feature-controls"><span class="line"></span><span>00:00 / Add your video</span><span style="margin-left:auto">◖)) ⛶</span></div>
+        <div class="titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>Featured AI Film — The Goodrush Mission</span><span class="controls">□ ×</span></div>
+        <div class="feature-art"><button class="play" id="featuredButton" aria-label="View featured AI film">▶</button></div>
+        <div class="feature-controls"><span class="line"></span><span>00:00 / The Goodrush Mission (Behance)</span><span style="margin-left:auto">◖)) ⛶</span></div>
       </section>
 
       <section class="window activity">
         <div class="titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>Recent Activity</span><span class="controls">− ×</span></div>
-        <div class="activity-row"><span class="activity-icon">▣</span><div>New project added<small>Brand identity · Update this activity</small></div></div>
-        <div class="activity-row"><span class="activity-icon">▷</span><div>AI Film updated<small>Featured video · Update this activity</small></div></div>
-        <div class="activity-row"><span class="activity-icon">✦</span><div>New design uploaded<small>Graphic design · Update this activity</small></div></div>
-        <div class="activity-row"><span class="activity-icon">✉</span><div>Available for projects<small>Contact for collaborations</small></div></div>
+        <div class="activity-row"><span class="activity-icon">▣</span><div>Goodrush Campaign Added<small>Packaging & Ad Creatives · Updated</small></div></div>
+        <div class="activity-row"><span class="activity-icon">▷</span><div>The Goodrush Mission Ep 1-3<small>AI Cinematic Series · Live on Behance</small></div></div>
+        <div class="activity-row"><span class="activity-icon">✦</span><div>TAHLÉ Home Decor Assets<small>Brass & Sachet Packaging · Published</small></div></div>
+        <div class="activity-row"><span class="activity-icon">✉</span><div>Open for Brand Collaborations<small>Get in touch via email or LinkedIn</small></div></div>
       </section>
     </div>
 
     <div class="dock" aria-label="Quick launch">
       <div class="dock-inner"><button title="Home" onclick="location.href='#home'">⌂</button><button title="Projects" onclick="location.href='#projects'">▦</button><button title="Portfolio" onclick="location.href='#projects'">PS</button><button title="AI Films" onclick="location.href='#films'">▷</button><button title="About" onclick="location.href='#about'">♙</button><button title="Contact" onclick="location.href='#contact'">✉</button></div>
     </div>
-    <footer class="footer" id="contact"><span class="live">Creative Workspace &nbsp; / &nbsp; v1.0</span><span>Design &nbsp; / &nbsp; Create &nbsp; / &nbsp; Inspire — <a href="mailto:singhparmeett832@gmail.com">Contact</a></span></footer>
+    <footer class="footer" id="contact"><span class="live">Creative Workspace &nbsp; / &nbsp; v1.0</span><span>Design &nbsp; / &nbsp; Create &nbsp; / &nbsp; Inspire — <a href="mailto:singhparmeett832@gmail.com">singhparmeett832@gmail.com</a></span></footer>
   </main>
 </div>
 
 <div class="modal" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-box">
     <div class="titlebar"><div class="window-dots"><i></i><i></i><i></i></div><span>Project Preview</span><button class="close" id="closeModal" aria-label="Close project preview">×</button></div>
-    <div class="modal-content"><div class="modal-title"><h2 id="modalTitle">Project title</h2></div><p id="modalDescription"></p><p><strong>Next step:</strong> Replace the demo artwork with your real project assets and add the actual case-study details.</p></div>
+    <div class="modal-content"><div class="modal-title"><h2 id="modalTitle">Project title</h2></div><p id="modalDescription"></p><p><strong>Status:</strong> Active commercial project by Parmeet Singh. Check Behance and LinkedIn links for full case studies.</p></div>
   </div>
 </div>
 <script>
@@ -235,8 +231,8 @@
   document.getElementById('closeModal').addEventListener('click',closeModal);
   modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
   document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
-  document.getElementById('filmButton').addEventListener('click',()=>document.getElementById('featured-film').scrollIntoView({behavior:'smooth'}));
-  document.getElementById('featuredButton').addEventListener('click',()=>alert('Add your real AI film video URL or embed here.'));
+  document.getElementById('filmButton').addEventListener('click',()=>window.open('https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic', '_blank'));
+  document.getElementById('featuredButton').addEventListener('click',()=>window.open('https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic', '_blank'));
 </script>
 </body>
 </html>
