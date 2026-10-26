@@ -1,1583 +1,374 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PARMEET SINGH — Graphic Designer &amp; AI Content Creator</title>
-  <meta name="description" content="Portfolio of Parmeet Singh. Graphic design, brand identity, commercial AI advertising, 3D motion, and visual storytelling." />
-
-  <!-- Typography: Manrope & Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parmeet Singh — Graphic Designer & AI Content Creator</title>
+  <!-- Google Fonts & Tailwind CSS CDN -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Instrument Serif"', 'serif'],
+          },
+          colors: {
+            midnightBlack: '#060B0F',
+            deepBg: '#081116',
+            secondaryBg: '#0B171C',
+            electricTeal: '#00E5CC',
+            primaryTealGlow: '#00CFC3',
+            deepTeal: '#123B3D',
+          }
+        }
+      }
+    }
+  </script>
   <style>
-    /* ==========================================================================
-       1. CSS SYSTEM TOKENS & RESET
-       ========================================================================== */
     :root {
-      --color-background: #F7F6F2;
-      --color-background-secondary: #ECEAE4;
-      --color-card: #FFFFFF;
-      --color-text-primary: #171717;
-      --color-text-secondary: #666666;
-      --color-accent: #D95D39;
-      --color-border: #DDDBD4;
-      --color-dark: #171717;
-      --color-dark-text-muted: #D0D0D0;
-      --color-white: #FFFFFF;
-
-      --font-heading: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
-      --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-
-      --ease-editorial: cubic-bezier(0.22, 1, 0.36, 1);
-      --transition-standard: 250ms var(--ease-editorial);
-    }
-
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--color-background);
-      color: var(--color-text-primary);
-      font-family: var(--font-body);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+      --color-bg: #060B0F;
+      --color-bg-secondary: #0B171C;
+      --color-primary: #00E5CC;
+      --color-primary-soft: #00CFC3;
+      --color-text: #F4F7F8;
+      --color-text-secondary: #A7B5BB;
+      --color-text-muted: #74868D;
+      --color-glass: rgba(10, 25, 30, 0.58);
+      --color-glass-border: rgba(0, 229, 204, 0.24);
     }
 
     body {
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    /* ==========================================================================
-       2. EDITORIAL MOUSE CURSOR SYSTEM
-       ========================================================================== */
-    @media (hover: hover) and (pointer: fine) {
-      body {
-        cursor: default;
-      }
-
-      .cursor-dot {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 6px;
-        height: 6px;
-        background-color: var(--color-accent);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9999;
-        transform: translate(-50%, -50%);
-        transition: opacity 0.2s ease, transform 0.15s ease;
-      }
-
-      .cursor-follower {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 36px;
-        height: 36px;
-        border: 1px solid rgba(23, 23, 23, 0.35);
-        border-radius: 50%;
-        pointer-events: none;
-        z-index: 9998;
-        transform: translate(-50%, -50%);
-        transition: width 0.3s var(--ease-editorial),
-                    height 0.3s var(--ease-editorial),
-                    border-color 0.3s var(--ease-editorial),
-                    background-color 0.3s var(--ease-editorial),
-                    opacity 0.2s ease;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: var(--font-body);
-        font-size: 0.6875rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: transparent;
-      }
-
-      body.cursor-hover .cursor-follower {
-        width: 52px;
-        height: 52px;
-        border-color: var(--color-accent);
-        background-color: rgba(217, 93, 57, 0.08);
-      }
-      body.cursor-hover .cursor-dot {
-        transform: translate(-50%, -50%) scale(1.4);
-      }
-
-      body.cursor-view .cursor-follower {
-        width: 74px;
-        height: 74px;
-        background-color: var(--color-dark);
-        border-color: var(--color-dark);
-        color: var(--color-white);
-      }
-      body.cursor-view .cursor-dot {
-        opacity: 0;
-      }
-
-      body.cursor-play .cursor-follower {
-        width: 80px;
-        height: 80px;
-        background-color: var(--color-accent);
-        border-color: var(--color-accent);
-        color: var(--color-white);
-      }
-      body.cursor-play .cursor-dot {
-        opacity: 0;
-      }
-    }
-
-    @media (hover: none) or (pointer: coarse) {
-      .cursor-dot, .cursor-follower {
-        display: none !important;
-      }
-    }
-
-    /* ==========================================================================
-       3. COMMON TYPOGRAPHY & LAYOUT
-       ========================================================================== */
-    h1, h2, h3, h4 {
-      font-family: var(--font-heading);
-      color: var(--color-text-primary);
-      letter-spacing: -0.03em;
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 2rem;
-    }
-
-    .section-spacing {
-      padding: 7.5rem 0;
-    }
-
-    .section-header {
-      margin-bottom: 3.5rem;
-    }
-
-    .section-eyebrow {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-
-    .section-title {
-      font-size: clamp(2.25rem, 5vw, 3.75rem);
-      font-weight: 700;
-      line-height: 1.15;
-      margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-      font-size: clamp(1rem, 1.5vw, 1.125rem);
-      color: var(--color-text-secondary);
-      max-width: 640px;
-      line-height: 1.65;
-    }
-
-    /* Buttons */
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.9rem 1.8rem;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      border-radius: 4px;
-      transition: background-color var(--transition-standard), color var(--transition-standard), transform var(--transition-standard), border-color var(--transition-standard);
-    }
-
-    .btn-primary {
-      background-color: var(--color-accent);
-      color: var(--color-white);
-      border: 1px solid var(--color-accent);
-    }
-
-    .btn-primary:hover {
-      background-color: #c44f2c;
-      border-color: #c44f2c;
-      transform: translateY(-2px);
-    }
-
-    .btn-secondary {
-      background-color: transparent;
-      color: var(--color-text-primary);
-      border: 1px solid var(--color-border);
-    }
-
-    .btn-secondary:hover {
-      border-color: var(--color-text-primary);
-      background-color: rgba(23, 23, 23, 0.03);
-      transform: translateY(-2px);
-    }
-
-    .btn-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      font-size: 0.9375rem;
-      font-weight: 500;
-      color: var(--color-text-primary);
-      border-bottom: 1px solid var(--color-border);
-      padding-bottom: 2px;
-      transition: border-color var(--transition-standard), color var(--transition-standard);
-    }
-
-    .btn-link:hover {
-      color: var(--color-accent);
-      border-color: var(--color-accent);
-    }
-
-    /* ==========================================================================
-       4. NAVBAR
-       ========================================================================== */
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background-color: rgba(247, 246, 242, 0.92);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .nav-wrapper {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 4.75rem;
-    }
-
-    .nav-logo {
-      font-family: var(--font-heading);
-      font-size: 1rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      color: var(--color-text-primary);
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      gap: 2.5rem;
-    }
-
-    .nav-links a {
-      font-size: 0.875rem;
-      font-weight: 500;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-text-primary);
-      transition: color var(--transition-standard);
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--color-accent);
-    }
-
-    .mobile-menu-toggle {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      padding: 0.5rem;
-    }
-
-    .mobile-menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background-color: var(--color-text-primary);
-    }
-
-    /* ==========================================================================
-       5. HERO SECTION
-       ========================================================================== */
-    .hero-section {
-      padding: clamp(6rem, 12vw, 10.5rem) 0 clamp(4.5rem, 8vw, 7.5rem);
-      background-color: var(--color-background);
-    }
-
-    .hero-content {
-      max-width: 980px;
-    }
-
-    .hero-eyebrow {
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 1.5rem;
-      display: inline-block;
-    }
-
-    .hero-name {
-      font-size: clamp(3.25rem, 8.5vw, 6.75rem);
-      font-weight: 800;
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-      margin-bottom: 1.5rem;
-      color: var(--color-text-primary);
-    }
-
-    .hero-title {
-      font-size: clamp(1.5rem, 3.5vw, 2.75rem);
-      font-weight: 600;
-      line-height: 1.2;
-      color: var(--color-text-primary);
-      margin-bottom: 2rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-description {
-      font-size: clamp(1.125rem, 2vw, 1.25rem);
-      color: var(--color-text-secondary);
-      max-width: 640px;
-      line-height: 1.65;
-      margin-bottom: 3rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    /* ==========================================================================
-       6. SELECTED WORK (POSTERS 4:5 GRID)
-       ========================================================================== */
-    .work-section {
-      background-color: var(--color-background);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .project-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3rem 2.5rem;
-    }
-
-    .project-card {
-      background-color: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      transition: border-color var(--transition-standard), transform var(--transition-standard);
-    }
-
-    .project-card:hover {
-      border-color: #B5B2A9;
-      transform: translateY(-4px);
-    }
-
-    .project-thumbnail-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      background-color: var(--color-background-secondary);
-      overflow: hidden;
-    }
-
-    .project-thumbnail {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 400ms var(--ease-editorial);
-    }
-
-    .project-card:hover .project-thumbnail {
-      transform: scale(1.03);
-    }
-
-    .project-info {
-      padding: 1.75rem 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-
-    .project-category {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-    }
-
-    .project-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .project-title {
-      font-size: clamp(1.25rem, 1.8vw, 1.5rem);
-      font-weight: 600;
-      line-height: 1.3;
-    }
-
-    .project-arrow {
-      font-size: 1.25rem;
-      line-height: 1;
-      color: var(--color-text-primary);
-      transition: transform var(--transition-standard), color var(--transition-standard);
-    }
-
-    .project-card:hover .project-arrow {
-      transform: translate(3px, -3px);
-      color: var(--color-accent);
-    }
-
-    /* ==========================================================================
-       7. AI FILMS & MOTION (DIRECT BEHANCE LINK CARDS - 2 FOLDERS)
-       ========================================================================== */
-    .films-section {
-      background-color: var(--color-background-secondary);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .film-folder-block {
-      margin-bottom: 5.5rem;
-    }
-
-    .film-folder-block:last-child {
-      margin-bottom: 0;
-    }
-
-    .folder-header {
-      display: flex;
-      align-items: baseline;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .folder-tag {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      background: rgba(217, 93, 57, 0.1);
-      padding: 0.3rem 0.75rem;
-      border-radius: 3px;
-    }
-
-    .folder-title {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--color-text-primary);
-    }
-
-    .films-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 2.25rem;
-    }
-
-    .film-card {
-      background-color: var(--color-card);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      transition: border-color var(--transition-standard), transform var(--transition-standard);
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .film-card:hover {
-      border-color: #B5B2A9;
-      transform: translateY(-4px);
-    }
-
-    .video-viewport {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background-color: #171717;
-      overflow: hidden;
-    }
-
-    .video-viewport img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 400ms var(--ease-editorial);
-    }
-
-    .film-card:hover .video-viewport img {
-      transform: scale(1.04);
-    }
-
-    .video-overlay {
-      position: absolute;
-      inset: 0;
-      background-color: rgba(23, 23, 23, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color var(--transition-standard);
-    }
-
-    .film-card:hover .video-overlay {
-      background-color: rgba(23, 23, 23, 0.15);
-    }
-
-    .play-btn {
-      width: 58px;
-      height: 58px;
-      border-radius: 50%;
-      background-color: var(--color-white);
-      color: var(--color-text-primary);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding-left: 3px;
-      font-size: 1.125rem;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-      transition: transform var(--transition-standard), background-color var(--transition-standard), color var(--transition-standard);
-    }
-
-    .film-card:hover .play-btn {
-      transform: scale(1.1);
-      background-color: var(--color-accent);
-      color: var(--color-white);
-    }
-
-    .film-details {
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-      flex: 1;
-    }
-
-    .film-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 0.5rem;
-    }
-
-    .film-details h3 {
-      font-size: 1.25rem;
-      font-weight: 600;
-    }
-
-    .film-caption-text {
-      font-size: 0.9375rem;
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-    }
-
-    .film-link-action {
-      font-size: 0.8125rem;
-      color: var(--color-accent);
-      margin-top: auto;
-      padding-top: 0.75rem;
-      border-top: 1px solid var(--color-border);
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    /* ==========================================================================
-       8. ABOUT SECTION
-       ========================================================================== */
-    .about-section {
-      background-color: var(--color-background);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .about-layout {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 4.5rem;
-      align-items: center;
-    }
-
-    .about-portrait-wrapper {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 4 / 5;
-      background-color: var(--color-background-secondary);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .about-portrait {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .about-bio {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .about-bio h3 {
-      font-size: clamp(1.75rem, 3vw, 2.5rem);
-      font-weight: 700;
-      line-height: 1.2;
-    }
-
-    .about-bio .role-badge {
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--color-accent);
-    }
-
-    .about-bio p {
-      font-size: 1.0625rem;
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-    }
-
-    /* ==========================================================================
-       9. WHAT I DO (SERVICES SECTION)
-       ========================================================================== */
-    .services-section {
-      background-color: var(--color-background-secondary);
-      border-top: 1px solid var(--color-border);
-    }
-
-    .services-list {
-      display: flex;
-      flex-direction: column;
-      border-top: 1px solid var(--color-border);
-    }
-
-    .service-row {
-      display: grid;
-      grid-template-columns: 80px 1.5fr 2fr;
-      padding: 2.25rem 0;
-      border-bottom: 1px solid var(--color-border);
-      align-items: baseline;
-    }
-
-    .service-num {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: var(--color-accent);
-      letter-spacing: 0.04em;
-    }
-
-    .service-title {
-      font-size: clamp(1.25rem, 2vw, 1.75rem);
-      font-weight: 600;
-      color: var(--color-text-primary);
-    }
-
-    .service-desc {
-      font-size: 0.9688rem;
-      color: var(--color-text-secondary);
-      line-height: 1.6;
-    }
-
-    /* ==========================================================================
-       10. CONTACT SECTION (DARK EDITORIAL BLOCK)
-       ========================================================================== */
-    .contact-section {
-      background-color: var(--color-dark);
-      color: var(--color-white);
-      padding: 9rem 0 6rem;
-      border-top: 1px solid #292929;
-    }
-
-    .contact-layout {
-      max-width: 900px;
-    }
-
-    .contact-eyebrow {
-      font-size: 0.8125rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 1.25rem;
-      display: block;
-    }
-
-    .contact-heading {
-      font-size: clamp(2.5rem, 6vw, 4.75rem);
-      font-weight: 700;
-      line-height: 1.05;
-      letter-spacing: -0.03em;
-      color: var(--color-white);
-      margin-bottom: 1.5rem;
-    }
-
-    .contact-statement {
-      font-size: clamp(1.125rem, 2vw, 1.35rem);
-      color: var(--color-dark-text-muted);
-      line-height: 1.6;
-      margin-bottom: 3.5rem;
-      max-width: 620px;
-    }
-
-    .contact-actions {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      margin-bottom: 4.5rem;
-    }
-
-    .contact-actions .btn-primary {
-      padding: 1.1rem 2.2rem;
-      font-size: 1rem;
-    }
-
-    .contact-social-grid {
-      display: flex;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      padding-top: 2rem;
-      border-top: 1px solid #2e2e2e;
-      width: 100%;
-    }
-
-    .social-link {
-      font-size: 0.875rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: var(--color-dark-text-muted);
-      transition: color var(--transition-standard);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-    }
-
-    .social-link:hover {
-      color: var(--color-accent);
-    }
-
-    .site-footer {
-      margin-top: 5rem;
-      padding-top: 2rem;
-      border-top: 1px solid #242424;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8125rem;
-      color: #777777;
-    }
-
-    /* ==========================================================================
-       11. PROJECT DETAIL MODAL
-       ========================================================================== */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background-color: rgba(23, 23, 23, 0.7);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      z-index: 200;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 2rem;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 300ms var(--ease-editorial);
-    }
-
-    .modal-backdrop.is-active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .modal-dialog {
-      background-color: var(--color-card);
-      border: 1px solid var(--color-border);
-      width: 100%;
-      max-width: 900px;
-      max-height: 90vh;
-      overflow-y: auto;
-      border-radius: 3px;
-      position: relative;
-      padding: 2.5rem;
-      transform: translateY(20px);
-      transition: transform 300ms var(--ease-editorial);
-    }
-
-    .modal-backdrop.is-active .modal-dialog {
-      transform: translateY(0);
-    }
-
-    .modal-close-btn {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 40px;
-      height: 40px;
-      font-size: 1.5rem;
-      line-height: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--color-text-primary);
-      border-radius: 50%;
-      border: 1px solid var(--color-border);
-      background-color: var(--color-card);
-    }
-
-    .modal-media-container {
-      width: 100%;
-      margin: 1.5rem 0 2rem;
-      background-color: var(--color-background-secondary);
-      border: 1px solid var(--color-border);
-      border-radius: 2px;
-      overflow: hidden;
-    }
-
-    .modal-media-container img {
-      width: 100%;
-      max-height: 60vh;
-      object-fit: contain;
-    }
-
-    .modal-description {
-      font-size: 1rem;
-      color: var(--color-text-secondary);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    .modal-nav {
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid var(--color-border);
-      padding-top: 1.5rem;
-    }
-
-    /* ==========================================================================
-       12. SCROLL REVEALS
-       ========================================================================== */
-    .reveal {
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 700ms var(--ease-editorial), transform 700ms var(--ease-editorial);
-      will-change: opacity, transform;
-    }
-
-    .reveal.is-revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .delay-1 { transition-delay: 90ms; }
-    .delay-2 { transition-delay: 180ms; }
-    .delay-3 { transition-delay: 270ms; }
-
-    @media (max-width: 992px) {
-      .project-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .about-layout { grid-template-columns: 1fr; gap: 3rem; }
-      .service-row { grid-template-columns: 50px 1fr; gap: 0.75rem; }
-      .service-desc { grid-column: 2 / -1; }
-    }
-
-    @media (max-width: 768px) {
-      .section-spacing { padding: 5rem 0; }
-      .container { padding: 0 1.25rem; }
-      .nav-links { display: none; }
-      .nav-links.is-open {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 4.75rem;
-        left: 0;
-        right: 0;
-        background-color: var(--color-background);
-        border-bottom: 1px solid var(--color-border);
-        padding: 2rem;
-        gap: 1.5rem;
-      }
-      .mobile-menu-toggle { display: flex; }
-      .films-grid { grid-template-columns: 1fr; }
-      .modal-dialog { padding: 1.5rem; }
-    }
+      background-color: var(--color-bg);
+      color: var(--color-text);
+    }
+
+    /* Custom Liquid Glass Utilities */
+    .glass-panel {
+      background: var(--color-glass);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid var(--color-glass-border);
+      border-radius: 20px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(0, 229, 204, 0.1);
+    }
+    
+    .glass-nav {
+      background: rgba(6, 11, 15, 0.75);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(0, 229, 204, 0.2);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+    }
+
+    .glass-card-hover {
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    
+    .glass-card-hover:hover {
+      transform: translateY(-6px) scale(1.005);
+      border-color: rgba(0, 229, 204, 0.5);
+      box-shadow: 0 30px 60px -15px rgba(0, 229, 204, 0.15), inset 0 1px 0 rgba(0, 229, 204, 0.3);
+    }
+
+    /* Animated Ambient Midnight Teal Orbs */
+    @keyframes floatOrb {
+      0% { transform: translate(0px, 0px) scale(1); }
+      33% { transform: translate(40px, -60px) scale(1.15); }
+      66% { transform: translate(-30px, 30px) scale(0.9); }
+      100% { transform: translate(0px, 0px) scale(1); }
+    }
+    .blob-1 { animation: floatOrb 14s ease-in-out infinite; }
+    .blob-2 { animation: floatOrb 18s ease-in-out infinite reverse; }
   </style>
 </head>
-<body>
+<body class="font-sans antialiased overflow-x-hidden selection:bg-electricTeal selection:text-midnightBlack">
 
-  <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
-  <div class="cursor-follower" id="cursorFollower" aria-hidden="true"></div>
+  <!-- Ambient Animated Background Gradients -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0">
+    <div class="blob-1 absolute top-[-10%] left-[15%] w-[550px] h-[550px] bg-[#00E5CC]/10 rounded-full blur-[140px]"></div>
+    <div class="blob-2 absolute bottom-[5%] right-[10%] w-[650px] h-[650px] bg-[#123B3D]/30 rounded-full blur-[160px]"></div>
+  </div>
 
-  <!-- Navbar -->
-  <header class="site-header">
-    <div class="container nav-wrapper">
-      <a href="#" class="nav-logo">PARMEET SINGH</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#films">AI Films</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">What I Do</a></li>
-        <li><a href="#contact">Contact</a></li>
+  <!-- Floating 3D Glass Navbar -->
+  <header class="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
+    <nav class="glass-nav rounded-full px-6 py-3 flex items-center justify-between w-full max-w-4xl">
+      <a href="#" class="font-bold tracking-wider text-sm text-[#F4F7F8] hover:text-electricTeal transition-colors">PARMEET SINGH</a>
+      <ul class="hidden md:flex items-center space-x-8 text-xs font-medium text-[#A7B5BB]">
+        <li><a href="#work" class="hover:text-electricTeal transition-colors">Work</a></li>
+        <li><a href="#films" class="hover:text-electricTeal transition-colors">AI Films</a></li>
+        <li><a href="#about" class="hover:text-electricTeal transition-colors">About</a></li>
+        <li><a href="#services" class="hover:text-electricTeal transition-colors">Services</a></li>
       </ul>
-      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </div>
+      <a href="#contact" class="bg-[#00E5CC]/10 hover:bg-[#00E5CC]/20 border border-[#00E5CC]/30 text-electricTeal text-xs font-semibold px-4 py-2 rounded-full transition-all shadow-[0_0_15px_rgba(0,229,204,0.15)]">Let's Talk ↗</a>
+    </nav>
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-section" id="hero">
-    <div class="container">
-      <div class="hero-content">
-        <span class="hero-eyebrow reveal">Design Studio &amp; AI Directing</span>
-        <h1 class="hero-name reveal delay-1">PARMEET SINGH</h1>
-        <h2 class="hero-title reveal delay-2">Graphic Designer × AI Content Creator</h2>
-        <p class="hero-description reveal delay-2">Creating visual experiences through design, AI and motion.</p>
-        <div class="hero-actions reveal delay-3">
-          <a href="#work" class="btn btn-primary">Explore Selected Work</a>
-          <a href="#contact" class="btn-link">Let's Connect ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Selected Work (Posters Grid 4:5) -->
-  <section class="work-section section-spacing" id="work">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">Portfolio</span>
-        <h2 class="section-title">Selected Work</h2>
-        <p class="section-subtitle">Commercial design systems, brand identities, and high-impact visual campaigns.</p>
-      </div>
-
-      <div class="project-grid" id="projectGrid">
-        <!-- Project 1: Packaging -->
-        <article class="project-card reveal delay-1" data-project-id="1">
-          <div class="project-thumbnail-wrapper">
-            <img src="assets/images/project-01.jpg" alt="Commercial Identity &amp; Packaging" class="project-thumbnail" onerror="this.src='https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg'" />
-          </div>
-          <div class="project-info">
-            <span class="project-category">Brand Identity &amp; Creative Direction</span>
-            <div class="project-title-row">
-              <h3 class="project-title">Commercial Identity &amp; Packaging</h3>
-              <span class="project-arrow" aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 2: Advertising -->
-        <article class="project-card reveal delay-2" data-project-id="2">
-          <div class="project-thumbnail-wrapper">
-            <img src="assets/images/project-02.jpg" alt="Unleash Speed — Digital Advertising" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
-          </div>
-          <div class="project-info">
-            <span class="project-category">Advertising Creatives &amp; Design</span>
-            <div class="project-title-row">
-              <h3 class="project-title">Consumer Brand Digital Campaign</h3>
-              <span class="project-arrow" aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 3: 3D Render -->
-        <article class="project-card reveal delay-1" data-project-id="3">
-          <div class="project-thumbnail-wrapper">
-            <img src="assets/images/project-03.jpg" alt="Zero Gravity — 3D Visuals" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
-          </div>
-          <div class="project-info">
-            <span class="project-category">3D Design &amp; Generative Visuals</span>
-            <div class="project-title-row">
-              <h3 class="project-title">Cinematic 3D Product Renders</h3>
-              <span class="project-arrow" aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 4: Narrative -->
-        <article class="project-card reveal delay-2" data-project-id="4">
-          <div class="project-thumbnail-wrapper">
-            <img src="assets/images/project-04.jpg" alt="Double Exposure Silhouette" class="project-thumbnail" onerror="this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&amp;fit=crop&amp;w=800&amp;q=80'" />
-          </div>
-          <div class="project-info">
-            <span class="project-category">Visual Storytelling &amp; Strategy</span>
-            <div class="project-title-row">
-              <h3 class="project-title">Editorial Visual Narratives</h3>
-              <span class="project-arrow" aria-hidden="true">↗</span>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========================================================================
-       AI FILMS & MOTION (DIRECT BEHANCE LINK CARDS WITH CINEMATIC COVERS)
-       ======================================================================== -->
-  <section class="films-section section-spacing" id="films">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">Motion &amp; AI</span>
-        <h2 class="section-title">AI Films &amp; Commercial Motion</h2>
-        <p class="section-subtitle">Click on any project to watch the complete video and case study directly on Behance[cite: 3].</p>
-      </div>
-
-      <!-- FOLDER 01: THE GOODRUSH MISSION SERIES -->
-      <div class="film-folder-block reveal">
-        <div class="folder-header">
-          <span class="folder-tag">Folder 01</span>
-          <h3 class="folder-title">"The Goodrush Mission" Cinematic Action Series</h3>
-        </div>
-        <div class="films-grid">
-          <!-- Video 1: Episode 1 -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode1" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Episode 1: The Call" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>The Goodrush Mission — Ep 1: The Call</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">Cinematic open-world action series blending high-octane muscle car night sequences, neon rain atmospheres, and episodic suspense hooks.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-
-          <!-- Video 2: Episode 2 -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode2" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Episode 2: The Store" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>The Goodrush Mission — Ep 2: The Store</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">Night supermarket tactical heist featuring diegetic HUD mission navigation, checkout dash, and wet-asphalt combat choreography.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-
-          <!-- Video 3: Episode 3 -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode3" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Episode 3: The Stolen Pack" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>The Goodrush Mission — Ep 3: The Stolen Pack</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">Surveillance room tracking aesthetics, CCTV getaway sequences, and high-speed highway pursuit driving dramatic episodic tension.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-      <!-- FOLDER 02: COMMERCIAL AD FILMS & 3D MOTION -->
-      <div class="film-folder-block reveal">
-        <div class="folder-header">
-          <span class="folder-tag">Folder 02</span>
-          <h3 class="folder-title">Commercial Films &amp; 3D Motion</h3>
-        </div>
-        <div class="films-grid">
-          <!-- Video 4: Peri Peri Rush -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#periperi" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg" alt="Peri Peri Rush — City Impact CGI" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>Peri Peri Rush — City Impact CGI</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">Action-packed FMCG commercial featuring giant pouch crash-landing street destruction CGI, dynamic macro crunch, and high-energy brand pacing.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-
-          <!-- Video 5: Macro Crunch -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#macrocrunch" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="There's More to Every Crunch" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>There's More to Every Crunch</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">Editorial macro journey into product anatomy, navigating red spice canyons, salt crystal mountain peaks, and sensory ASMR crunch mechanics.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-
-          <!-- Video 6: Late Night Hunger -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#latenight" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Snack Upgrade — Late Night Hunger" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>Snack Upgrade — Late Night Hunger</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">Commercial narrative capturing relatable late-night study routines, junk food replacement, and seamless Goodrush Cream &amp; Onion integration.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-
-          <!-- Video 7: Chai Date -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#chaidate" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Chai & Bhujia vs. Goodrush Rushie" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>Chai &amp; Bhujia vs. Goodrush Rushie</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">"Every generation has its favourite snack." Character-driven 3D animation exploring comedic brand rivalry between traditional namkeen and Goodrush.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-
-          <!-- Video 8: Chips Club -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#chipsclub" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Chips Club Party" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>Chips Club — Why Should Chips Have All the Fun?</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">High-energy nightclub party commercial featuring 3D character rigging, neon club lighting, and beat-synced choreography for youth engagement.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-
-          <!-- Video 9: Mini Chef Chaat -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#minichef" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Mini Chef DIY Chaat" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>Mini Chef's DIY Snack Chaat</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">Culinary craft in miniature stop-motion aesthetic, showcasing recipe versatility with fresh ingredients and Goodrush Peri Peri Makhana.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-
-          <!-- Video 10: Kinetic Launch -->
-          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#kineticlaunch" target="_blank" rel="noopener" class="film-card">
-            <div class="video-viewport">
-              <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="3 Flavours Kinetic Launch" />
-              <div class="video-overlay"><div class="play-btn">▶</div></div>
-            </div>
-            <div class="film-details">
-              <div class="film-title-row">
-                <h3>Introducing 3 New Flavours — Kinetic Launch</h3>
-                <span style="font-size: 1.1rem; color: var(--color-accent);">↗</span>
-              </div>
-              <p class="film-caption-text">High-impact motion graphics reveal combining explosive ingredient particle dynamics, bold kinetic typography, and fast-paced brand messaging.</p>
-              <div class="film-link-action">Watch on Behance ↗</div>
-            </div>
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about-section section-spacing" id="about">
-    <div class="container">
-      <div class="about-layout">
-        <div class="about-portrait-wrapper reveal delay-1">
-          <img src="assets/images/portrait.jpg" alt="Parmeet Singh — Graphic Designer &amp; AI Content Creator" class="about-portrait" onerror="this.src='https://pps.services.adobe.com/api/profile/9E37289D698C65150A495E86@AdobeID/image/c50c5e43-c102-4735-b9db-4bce191232e4/276'" />
-        </div>
-        <div class="about-bio reveal delay-2">
-          <span class="section-eyebrow">Biography</span>
-          <span class="role-badge">Graphic Designer &amp; AI Content Creator</span>
-          <h3>A Little About Me</h3>
-          <p>I create visual experiences across graphic design, AI content, motion and digital storytelling.</p>
-          <p>My work combines precision editorial principles with cutting-edge generative workflows, crafting brand identities and commercial campaigns that resonate clearly across modern digital touchpoints.</p>
-          <div>
-            <a href="#contact" class="btn btn-secondary">Get in Touch</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="services-section section-spacing" id="services">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-eyebrow">Capabilities</span>
-        <h2 class="section-title">What I Do</h2>
-        <p class="section-subtitle">Disciplines and creative output tailored for brands, agencies, and digital creators.</p>
-      </div>
-
-      <div class="services-list reveal">
-        <div class="service-row">
-          <span class="service-num">01</span>
-          <h3 class="service-title">Graphic Design</h3>
-          <p class="service-desc">Editorial layouts, print systems, presentation typography, and visual assets built with typographic discipline.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">02</span>
-          <h3 class="service-title">Brand Identity</h3>
-          <p class="service-desc">Cohesive logo systems, design guidelines, brand color palettes, and structured visual identity frameworks.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">03</span>
-          <h3 class="service-title">AI Content Creation</h3>
-          <p class="service-desc">Generative image synthesis, hyper-detailed commercial concepts, and art-directed creative pipelines.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">04</span>
-          <h3 class="service-title">AI Video Creation</h3>
-          <p class="service-desc">Prompt-to-video direction, scene continuity, camera motion mapping, and generative film storytelling.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">05</span>
-          <h3 class="service-title">Motion Graphics</h3>
-          <p class="service-desc">Kinetic typography, logo reveals, promotional video editing, and beat-synced motion dynamics.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">06</span>
-          <h3 class="service-title">3D Design</h3>
-          <p class="service-desc">Product visualization, material texturing, studio lighting setups, and abstract spatial compositions.</p>
-        </div>
-        <div class="service-row">
-          <span class="service-num">07</span>
-          <h3 class="service-title">Advertising Creatives</h3>
-          <p class="service-desc">High-conversion performance advertising, social media hero visuals, and campaign rollout collateral.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact-section" id="contact">
-    <div class="container">
-      <div class="contact-layout">
-        <span class="contact-eyebrow reveal">Inquiries</span>
-        <h2 class="contact-heading reveal delay-1">Have a project in mind?</h2>
-        <p class="contact-statement reveal delay-2">Let's create something meaningful.</p>
-        <div class="contact-actions reveal delay-3">
-          <a href="mailto:singhparmeett832@gmail.com" class="btn btn-primary">Let's Talk ↗</a>
-        </div>
+  <section class="relative min-h-screen flex items-center justify-center px-4 pt-32 pb-20 z-10">
+    <div class="max-w-4xl w-full mx-auto text-center">
+      <div class="glass-panel rounded-3xl p-8 md:p-16 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-[#00E5CC]/5 to-transparent pointer-events-none"></div>
         
-        <div class="contact-social-grid reveal delay-3">
-          <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" class="social-link">Instagram (@thecorporatealoo) ↗</a>
-          <a href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank" rel="noopener" class="social-link">LinkedIn ↗</a>
-          <a href="https://behance.net/parmeetsingh75" target="_blank" rel="noopener" class="social-link">Behance ↗</a>
+        <span class="inline-block text-xs uppercase tracking-[0.25em] text-electricTeal font-semibold mb-4 px-4 py-1.5 rounded-full bg-[#00E5CC]/10 border border-[#00E5CC]/30 shadow-[0_0_20px_rgba(0,229,204,0.1)]">
+          Design Studio & AI Directing
+        </span>
+        <h1 class="font-serif text-5xl md:text-8xl tracking-tight mb-4 text-[#F4F7F8] font-normal">
+          PARMEET <span class="text-electricTeal drop-shadow-[0_0_25px_rgba(0,229,204,0.4)]">SINGH</span>
+        </h1>
+        <p class="text-xl md:text-2xl font-light text-[#A7B5BB] mb-6 tracking-wide">
+          Graphic Designer <span class="text-electricTeal">×</span> AI Content Creator
+        </p>
+        <p class="text-sm md:text-base text-[#74868D] max-w-xl mx-auto mb-10 font-light leading-relaxed">
+          Crafting immersive visual experiences, commercial identity systems, and cinematic AI storytelling through advanced digital workflows.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#work" class="w-full sm:w-auto bg-gradient-to-r from-electricTeal to-primaryTealGlow text-midnightBlack font-bold text-sm px-8 py-3.5 rounded-full shadow-[0_0_25px_rgba(0,229,204,0.3)] hover:opacity-95 transition-all">
+            Explore Selected Work
+          </a>
+          <a href="#contact" class="w-full sm:w-auto glass-panel text-[#F4F7F8] text-sm font-semibold px-8 py-3.5 rounded-full hover:bg-[#00E5CC]/10 hover:border-electricTeal/50 transition-all">
+            Get in Touch ↗
+          </a>
         </div>
-
-        <footer class="site-footer">
-          <p>© 2026 PARMEET SINGH. All rights reserved.</p>
-          <p>Premium Minimal Studio Design System</p>
-        </footer>
       </div>
     </div>
   </section>
 
-  <!-- Modal Case Study -->
-  <div class="modal-backdrop" id="projectModal" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="modal-dialog">
-      <button class="modal-close-btn" id="modalClose" aria-label="Close project view">✕</button>
-      <div class="modal-header">
-        <span class="modal-category" id="modalCategory">Category</span>
-        <h3 class="modal-title" id="modalTitle">Project Title</h3>
+  <!-- Selected Work (Bento Grid) -->
+  <section id="work" class="relative py-24 px-4 z-10">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-14 text-center md:text-left">
+        <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Portfolio</span>
+        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F4F7F8]">Selected Commercial Work</h2>
+        <p class="text-[#A7B5BB] text-sm mt-2">Commercial design systems, brand packaging, and high-impact visual campaigns.</p>
       </div>
-      <div class="modal-media-container" id="modalMedia">
-        <img id="modalImg" src="" alt="Project detail view" />
-      </div>
-      <p class="modal-description" id="modalDescription">Detailed project case study information and visual documentation.</p>
-      <div class="modal-nav">
-        <button class="btn-link" id="modalPrev">← Previous Project</button>
-        <button class="btn-link" id="modalNext">Next Project →</button>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- Project 1 -->
+        <article class="glass-panel rounded-3xl p-6 glass-card-hover flex flex-col justify-between group cursor-pointer">
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video bg-[#081116] border border-[#00E5CC]/15">
+            <img src="assets/images/project-01.jpg" alt="Commercial Identity & Packaging" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div>
+            <span class="text-xs text-electricTeal uppercase tracking-wider font-semibold">Brand Identity & Creative Direction</span>
+            <div class="flex items-center justify-between mt-2">
+              <h3 class="text-2xl font-serif text-[#F4F7F8]">Commercial Identity & Packaging</h3>
+              <span class="text-[#74868D] group-hover:text-electricTeal transition-colors">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="glass-panel rounded-3xl p-6 glass-card-hover flex flex-col justify-between group cursor-pointer">
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video bg-[#081116] border border-[#00E5CC]/15">
+            <img src="assets/images/project-02.jpg" alt="Consumer Brand Digital Campaign" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div>
+            <span class="text-xs text-electricTeal uppercase tracking-wider font-semibold">Advertising Creatives & Design</span>
+            <div class="flex items-center justify-between mt-2">
+              <h3 class="text-2xl font-serif text-[#F4F7F8]">Consumer Brand Digital Campaign</h3>
+              <span class="text-[#74868D] group-hover:text-electricTeal transition-colors">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="glass-panel rounded-3xl p-6 glass-card-hover flex flex-col justify-between group cursor-pointer">
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video bg-[#081116] border border-[#00E5CC]/15">
+            <img src="assets/images/project-03.jpg" alt="Cinematic 3D Product Renders" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div>
+            <span class="text-xs text-electricTeal uppercase tracking-wider font-semibold">3D Design & Generative Visuals</span>
+            <div class="flex items-center justify-between mt-2">
+              <h3 class="text-2xl font-serif text-[#F4F7F8]">Cinematic 3D Product Renders</h3>
+              <span class="text-[#74868D] group-hover:text-electricTeal transition-colors">↗</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="glass-panel rounded-3xl p-6 glass-card-hover flex flex-col justify-between group cursor-pointer">
+          <div class="overflow-hidden rounded-2xl mb-6 aspect-video bg-[#081116] border border-[#00E5CC]/15">
+            <img src="assets/images/project-04.jpg" alt="Editorial Visual Narratives" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+          </div>
+          <div>
+            <span class="text-xs text-electricTeal uppercase tracking-wider font-semibold">Visual Storytelling & Strategy</span>
+            <div class="flex items-center justify-between mt-2">
+              <h3 class="text-2xl font-serif text-[#F4F7F8]">Editorial Visual Narratives</h3>
+              <span class="text-[#74868D] group-hover:text-electricTeal transition-colors">↗</span>
+            </div>
+          </div>
+        </article>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- JavaScript Engine -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+  <!-- AI Films & Commercial Motion -->
+  <section id="films" class="relative py-24 px-4 z-10 bg-[#081116]/60">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-14 text-center md:text-left">
+        <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Motion & AI</span>
+        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F4F7F8]">AI Films & Commercial Motion</h2>
+        <p class="text-[#A7B5BB] text-sm mt-2">Episodic AI action series and high-octane commercial motion work.</p>
+      </div>
 
-      // 1. Dual-Stage Cursor
-      const cursorDot = document.getElementById('cursorDot');
-      const cursorFollower = document.getElementById('cursorFollower');
+      <!-- Goodrush Cinematic Series Folder -->
+      <div class="glass-panel rounded-3xl p-8 mb-8 border-[#00E5CC]/25">
+        <div class="mb-6">
+          <span class="text-xs text-electricTeal font-mono font-bold uppercase tracking-widest">Folder 01</span>
+          <h3 class="text-2xl font-serif mt-1 text-[#F4F7F8]">"The Goodrush Mission" Cinematic Action Series</h3>
+        </div>
 
-      if (cursorDot && cursorFollower && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let followerX = mouseX;
-        let followerY = mouseY;
-        let isMoving = false;
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <!-- Episode 1 -->
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode1" target="_blank" rel="noopener" class="glass-panel rounded-2xl p-4 glass-card-hover flex flex-col justify-between group">
+            <div>
+              <div class="relative overflow-hidden rounded-xl aspect-video mb-4 bg-[#081116] border border-[#00E5CC]/20">
+                <img src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?auto=format&fit=crop&w=800&q=80" alt="Ep 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-[#060B0F]/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-10 h-10 rounded-full bg-electricTeal text-midnightBlack flex items-center justify-center font-bold shadow-[0_0_15px_rgba(0,229,204,0.6)]">▶</div>
+                </div>
+              </div>
+              <h4 class="font-serif text-xl mb-1 text-[#F4F7F8]">The Goodrush Mission — Ep 1</h4>
+              <p class="text-xs text-[#A7B5BB] line-clamp-2">Cinematic open-world action series blending high-octane muscle car night sequences.</p>
+            </div>
+            <div class="mt-4 text-xs font-semibold text-electricTeal flex items-center justify-between">
+              <span>Watch on Behance</span>
+              <span>↗</span>
+            </div>
+          </a>
 
-        window.addEventListener('mousemove', (e) => {
-          mouseX = e.clientX;
-          mouseY = e.clientY;
+          <!-- Episode 2 -->
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode2" target="_blank" rel="noopener" class="glass-panel rounded-2xl p-4 glass-card-hover flex flex-col justify-between group">
+            <div>
+              <div class="relative overflow-hidden rounded-xl aspect-video mb-4 bg-[#081116] border border-[#00E5CC]/20">
+                <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80" alt="Ep 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-[#060B0F]/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-10 h-10 rounded-full bg-electricTeal text-midnightBlack flex items-center justify-center font-bold shadow-[0_0_15px_rgba(0,229,204,0.6)]">▶</div>
+                </div>
+              </div>
+              <h4 class="font-serif text-xl mb-1 text-[#F4F7F8]">The Goodrush Mission — Ep 2</h4>
+              <p class="text-xs text-[#A7B5BB] line-clamp-2">Night supermarket tactical heist featuring diegetic HUD mission navigation.</p>
+            </div>
+            <div class="mt-4 text-xs font-semibold text-electricTeal flex items-center justify-between">
+              <span>Watch on Behance</span>
+              <span>↗</span>
+            </div>
+          </a>
 
-          cursorDot.style.left = `${mouseX}px`;
-          cursorDot.style.top = `${mouseY}px`;
+          <!-- Episode 3 -->
+          <a href="https://www.behance.net/gallery/257463985/GOODRUSH-MAKHANA-AI-Powered-Cinematic#episode3" target="_blank" rel="noopener" class="glass-panel rounded-2xl p-4 glass-card-hover flex flex-col justify-between group">
+            <div>
+              <div class="relative overflow-hidden rounded-xl aspect-video mb-4 bg-[#081116] border border-[#00E5CC]/20">
+                <img src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80" alt="Ep 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                <div class="absolute inset-0 bg-[#060B0F]/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <div class="w-10 h-10 rounded-full bg-electricTeal text-midnightBlack flex items-center justify-center font-bold shadow-[0_0_15px_rgba(0,229,204,0.6)]">▶</div>
+                </div>
+              </div>
+              <h4 class="font-serif text-xl mb-1 text-[#F4F7F8]">The Goodrush Mission — Ep 3</h4>
+              <p class="text-xs text-[#A7B5BB] line-clamp-2">Surveillance room tracking aesthetics, CCTV getaway sequences, and highway pursuit.</p>
+            </div>
+            <div class="mt-4 text-xs font-semibold text-electricTeal flex items-center justify-between">
+              <span>Watch on Behance</span>
+              <span>↗</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-          if (!isMoving) {
-            isMoving = true;
-            cursorDot.style.opacity = '1';
-            cursorFollower.style.opacity = '1';
-          }
-        });
+  <!-- About Section (Portrait Image Removed as requested) -->
+  <section id="about" class="relative py-24 px-4 z-10">
+    <div class="max-w-4xl mx-auto">
+      <div class="glass-panel rounded-3xl p-8 md:p-14 text-center md:text-left">
+        <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Biography</span>
+        <h3 class="font-serif text-3xl md:text-4xl mt-1 mb-4 text-[#F4F7F8]">A Little About Me</h3>
+        <p class="text-base text-[#F4F7F8] leading-relaxed mb-4 font-light">
+          I create visual experiences across graphic design, AI content, motion, and digital storytelling.
+        </p>
+        <p class="text-sm text-[#A7B5BB] leading-relaxed font-light">
+          My work combines precision editorial principles with cutting-edge generative workflows, crafting brand identities and commercial campaigns that resonate clearly across modern digital touchpoints.
+        </p>
+      </div>
+    </div>
+  </section>
 
-        const renderCursor = () => {
-          followerX += (mouseX - followerX) * 0.16;
-          followerY += (mouseY - followerY) * 0.16;
-          cursorFollower.style.left = `${followerX}px`;
-          cursorFollower.style.top = `${followerY}px`;
-          requestAnimationFrame(renderCursor);
-        };
-        requestAnimationFrame(renderCursor);
+  <!-- Services / Capabilities -->
+  <section id="services" class="relative py-24 px-4 z-10 bg-[#081116]/40">
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-14 text-center md:text-left">
+        <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Capabilities</span>
+        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F4F7F8]">What I Do</h2>
+      </div>
 
-        document.addEventListener('mouseleave', () => {
-          cursorDot.style.opacity = '0';
-          cursorFollower.style.opacity = '0';
-          isMoving = false;
-        });
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+          <span class="text-xs font-mono text-electricTeal font-bold">01</span>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">Graphic Design</h3>
+          <p class="text-xs text-[#A7B5BB] leading-relaxed">Editorial layouts, print systems, presentation typography, and visual assets built with typographic discipline.</p>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+          <span class="text-xs font-mono text-electricTeal font-bold">02</span>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">Brand Identity</h3>
+          <p class="text-xs text-[#A7B5BB] leading-relaxed">Cohesive logo systems, design guidelines, brand color palettes, and structured visual identity frameworks.</p>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+          <span class="text-xs font-mono text-electricTeal font-bold">03</span>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">AI Content Creation</h3>
+          <p class="text-xs text-[#A7B5BB] leading-relaxed">Generative image synthesis, hyper-detailed commercial concepts, and art-directed creative pipelines.</p>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+          <span class="text-xs font-mono text-electricTeal font-bold">04</span>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">AI Video Creation</h3>
+          <p class="text-xs text-[#A7B5BB] leading-relaxed">Prompt-to-video direction, scene continuity, camera motion mapping, and generative film storytelling.</p>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+          <span class="text-xs font-mono text-electricTeal font-bold">05</span>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">Motion Graphics</h3>
+          <p class="text-xs text-[#A7B5BB] leading-relaxed">Kinetic typography, logo reveals, promotional video editing, and beat-synced motion dynamics.</p>
+        </div>
+        <div class="glass-panel rounded-2xl p-6 glass-card-hover">
+          <span class="text-xs font-mono text-electricTeal font-bold">06</span>
+          <h3 class="font-serif text-2xl mt-2 mb-2 text-[#F4F7F8]">3D Design</h3>
+          <p class="text-xs text-[#A7B5BB] leading-relaxed">Product visualization, material texturing, studio lighting setups, and abstract spatial compositions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        const hoverTargets = document.querySelectorAll('a, button, .service-row, .modal-close-btn');
-        hoverTargets.forEach(el => {
-          el.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-          el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-        });
+  <!-- Contact & Footer -->
+  <section id="contact" class="relative py-24 px-4 z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <div class="glass-panel rounded-3xl p-10 md:p-16 border-[#00E5CC]/30 shadow-[0_0_50px_rgba(0,229,204,0.1)]">
+        <span class="text-xs uppercase tracking-widest text-electricTeal font-semibold">Inquiries</span>
+        <h2 class="font-serif text-4xl md:text-6xl mt-2 mb-4 text-[#F4F7F8]">Have a project in mind?</h2>
+        <p class="text-[#A7B5BB] text-sm mb-8">Let's create something meaningful together.</p>
+        
+        <div class="mb-10">
+          <a href="mailto:singhparmeett832@gmail.com" class="inline-block bg-electricTeal text-midnightBlack font-bold text-sm px-8 py-4 rounded-full hover:bg-primaryTealGlow transition-all shadow-[0_0_25px_rgba(0,229,204,0.3)]">
+            Let's Talk ↗
+          </a>
+        </div>
 
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            document.body.classList.add('cursor-view');
-            cursorFollower.textContent = 'VIEW';
-          });
-          card.addEventListener('mouseleave', () => {
-            document.body.classList.remove('cursor-view');
-            cursorFollower.textContent = '';
-          });
-        });
+        <div class="flex flex-wrap justify-center gap-4 text-xs font-medium">
+          <a href="https://www.instagram.com/thecorporatealoo" target="_blank" rel="noopener" class="glass-panel px-5 py-2.5 rounded-full hover:bg-[#00E5CC]/10 hover:border-electricTeal/50 transition-colors text-[#F4F7F8]">Instagram (@thecorporatealoo) ↗</a>
+          <a href="https://linkedin.com/in/parmeet-singh-4096b83b7" target="_blank" rel="noopener" class="glass-panel px-5 py-2.5 rounded-full hover:bg-[#00E5CC]/10 hover:border-electricTeal/50 transition-colors text-[#F4F7F8]">LinkedIn ↗</a>
+          <a href="https://behance.net/parmeetsingh75" target="_blank" rel="noopener" class="glass-panel px-5 py-2.5 rounded-full hover:bg-[#00E5CC]/10 hover:border-electricTeal/50 transition-colors text-[#F4F7F8]">Behance ↗</a>
+        </div>
+      </div>
 
-        const filmCards = document.querySelectorAll('.film-card');
-        filmCards.forEach(card => {
-          card.addEventListener('mouseenter', () => {
-            document.body.classList.add('cursor-play');
-            cursorFollower.textContent = 'WATCH';
-          });
-          card.addEventListener('mouseleave', () => {
-            document.body.classList.remove('cursor-play');
-            cursorFollower.textContent = '';
-          });
-        });
-      }
+      <footer class="mt-12 text-xs text-[#74868D] space-y-1">
+        <p>© 2026 PARMEET SINGH. All rights reserved.</p>
+        <p>Midnight Teal × Liquid Glass Minimal Studio Design System</p>
+      </footer>
+    </div>
+  </section>
 
-      // 2. Mobile Menu
-      const menuToggle = document.getElementById('menuToggle');
-      const navLinks = document.getElementById('navLinks');
-      if (menuToggle && navLinks) {
-        menuToggle.addEventListener('click', () => {
-          const isOpen = navLinks.classList.toggle('is-open');
-          menuToggle.setAttribute('aria-expanded', isOpen);
-        });
-
-        navLinks.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            navLinks.classList.remove('is-open');
-            menuToggle.setAttribute('aria-expanded', 'false');
-          });
-        });
-      }
-
-      // 3. Scroll Reveals
-      const reveals = document.querySelectorAll('.reveal');
-      if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('is-revealed');
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-        reveals.forEach(el => revealObserver.observe(el));
-      } else {
-        reveals.forEach(el => el.classList.add('is-revealed'));
-      }
-
-      // 4. Modal Case Study System
-      const projectData = {
-        '1': {
-          title: 'Commercial Identity & Packaging',
-          category: 'Brand Identity & Creative Direction',
-          image: 'assets/images/project-01.jpg',
-          fallback: 'https://mir-s3-cdn-cf.behance.net/projects/404/79449c257463985.Y3JvcCwxMTUwLDkwMCwwLDA.jpg',
-          description: 'A comprehensive brand system combining clean editorial packaging design, custom typography hierarchies, and structured visual identity guidelines built for lifestyle and commercial consumer goods.'
-        },
-        '2': {
-          title: 'Consumer Brand Digital Campaign',
-          category: 'Advertising Creatives & Design',
-          image: 'assets/images/project-02.jpg',
-          fallback: 'https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=800&q=80',
-          description: 'High-converting social advertising assets and static-to-motion variants engineered for brand recall, thumb-stopping digital hooks, and cross-platform campaign deployments.'
-        },
-        '3': {
-          title: 'Cinematic 3D Product Renders',
-          category: '3D Design & Generative Visuals',
-          image: 'assets/images/project-03.jpg',
-          fallback: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80',
-          description: 'High-fidelity 3D modeling and generative exploration focusing on surface materiality, studio lighting physics, and high-impact visual presentations.'
-        },
-        '4': {
-          title: 'Editorial Visual Narratives',
-          category: 'Visual Storytelling & Strategy',
-          image: 'assets/images/project-04.jpg',
-          fallback: 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80',
-          description: 'A cohesive digital publication series exploring visual pacing, contrast, and contemporary typography across modern screen layouts.'
-        }
-      };
-
-      const projectCards = document.querySelectorAll('.project-card');
-      const modal = document.getElementById('projectModal');
-      const modalTitle = document.getElementById('modalTitle');
-      const modalCategory = document.getElementById('modalCategory');
-      const modalDescription = document.getElementById('modalDescription');
-      const modalImg = document.getElementById('modalImg');
-      const modalClose = document.getElementById('modalClose');
-      const modalPrev = document.getElementById('modalPrev');
-      const modalNext = document.getElementById('modalNext');
-
-      let currentProjectId = '1';
-      const projectKeys = Object.keys(projectData);
-
-      const renderModal = (id) => {
-        const data = projectData[id];
-        if (!data) return;
-        currentProjectId = id;
-        modalTitle.textContent = data.title;
-        modalCategory.textContent = data.category;
-        modalDescription.textContent = data.description;
-        modalImg.src = data.image;
-        modalImg.onerror = () => { modalImg.src = data.fallback; };
-      };
-
-      const openModal = (id) => {
-        renderModal(id);
-        modal.classList.add('is-active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      };
-
-      const closeModal = () => {
-        modal.classList.remove('is-active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      };
-
-      projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-          const id = card.getAttribute('data-project-id');
-          openModal(id);
-        });
-      });
-
-      if (modalClose) modalClose.addEventListener('click', closeModal);
-      if (modal) {
-        modal.addEventListener('click', (e) => {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalPrev) {
-        modalPrev.addEventListener('click', () => {
-          const index = projectKeys.indexOf(currentProjectId);
-          const prevIndex = (index - 1 + projectKeys.length) % projectKeys.length;
-          renderModal(projectKeys[prevIndex]);
-        });
-      }
-
-      if (modalNext) {
-        modalNext.addEventListener('click', () => {
-          const index = projectKeys.indexOf(currentProjectId);
-          const nextIndex = (index + 1) % projectKeys.length;
-          renderModal(projectKeys[nextIndex]);
-        });
-      }
-
-      document.addEventListener('keydown', (e) => {
-        if (!modal.classList.contains('is-active')) return;
-        if (e.key === 'Escape') closeModal();
-        if (e.key === 'ArrowLeft' && modalPrev) modalPrev.click();
-        if (e.key === 'ArrowRight' && modalNext) modalNext.click();
-      });
-    });
-  </script>
 </body>
 </html>
