@@ -1,342 +1,350 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Parmeet Singh — Graphic Designer & AI Content Creator</title>
-  <meta name="description" content="Explore Parmeet Singh's portfolio of graphic design, AI-generated videos, visual storytelling, and brand visuals.">
-  
-  <!-- Google Fonts & Tailwind CSS CDN -->
+  <meta name="theme-color" content="#101010">
+  <meta name="description" content="Parmeet Singh — Graphic Designer and AI Content Creator. Explore graphic design, AI visuals, and original AI video series.">
+  <title>Parmeet Singh — Graphic Designer × AI Content Creator</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            serif: ['"Instrument Serif"', 'serif'],
-          },
-          colors: {
-            charcoalBg: '#050909',
-            cardSurface: '#0A1011',
-            cardElevated: '#11191B',
-            electricGreen: '#D8FF42',
-            accentCyan: '#65D8F5',
-            mutedGray: '#A8B0B0',
-          }
-        }
-      }
-    }
-  </script>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      background-color: #050909;
-      color: #F5F5F2;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+    :root {
+      --bg:#101010; --panel:#181818; --paper:#f4f1e9; --muted:#a7a49d;
+      --line:rgba(244,241,233,.15); --lime:#d8ff3e; --orange:#ff6a3d;
+      --purple:#b69cff; --blue:#6573ff; --radius:24px;
+      --head:"Space Grotesk",sans-serif; --body:"DM Sans",sans-serif;
     }
-    .portfolio-card {
-      background: #0A1011;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:90px}
+    body{background:var(--bg);color:var(--paper);font-family:var(--body);overflow-x:hidden}
+    body::selection{background:var(--lime);color:var(--bg)}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    img,video{display:block;max-width:100%}
+    .wrap{width:min(1200px,88%);margin:auto}
+    .progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--lime);z-index:2000}
+    .nav{position:sticky;top:0;z-index:1000;background:rgba(16,16,16,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+    .nav-inner{width:min(1320px,90%);margin:auto;min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;font:700 16px var(--head);letter-spacing:-.5px}
+    .brand-mark{width:38px;height:38px;border-radius:12px;background:var(--lime);color:#101010;display:grid;place-items:center;transform:rotate(-6deg);font-weight:700}
+    .links{display:flex;align-items:center;gap:28px}
+    .links a{font-size:12px;color:#d8d5ce;transition:color .2s}
+    .links a:hover{color:var(--lime)}
+    .nav-cta,.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 19px;border-radius:100px;background:var(--lime);color:#101010;font-weight:700;font-size:12px;border:1px solid var(--lime);transition:transform .25s,background .25s}
+    .nav-cta:hover,.btn:hover{transform:translateY(-3px);background:#e7ff8a}
+    .btn-ghost{background:transparent;color:var(--paper);border-color:var(--line)}
+    .btn-ghost:hover{background:var(--paper);color:var(--bg)}
+    .menu{display:none;background:none;color:var(--paper);border:0;font-size:26px}
+    .hero{min-height:680px;display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 0 90px}
+    .hero:before{content:"";position:absolute;width:390px;height:390px;right:-110px;top:10px;background:var(--purple);filter:blur(130px);opacity:.2;border-radius:50%}
+    .hero:after{content:"";position:absolute;width:300px;height:300px;left:-180px;bottom:-130px;background:var(--orange);filter:blur(110px);opacity:.15;border-radius:50%}
+    .hero-content{position:relative;z-index:1}
+    .eyebrow{display:flex;align-items:center;gap:10px;text-transform:uppercase;letter-spacing:2px;font-size:10px;font-weight:700;color:#c5c2ba}
+    .dot{width:8px;height:8px;background:var(--lime);border-radius:50%;box-shadow:0 0 0 5px rgba(216,255,62,.1)}
+    .hero h1{font:600 clamp(58px,10.4vw,136px)/.88 var(--head);letter-spacing:-.095em;margin:32px 0 30px;max-width:1100px}
+    .hero h1 .lime{color:var(--lime)} .hero h1 .stroke{color:transparent;-webkit-text-stroke:1px var(--paper)}
+    .hero-bottom{display:flex;justify-content:space-between;align-items:end;gap:32px}
+    .hero-copy{max-width:430px;color:#b7b4ad;font-size:15px;line-height:1.9}
+    .hero-copy strong{color:var(--paper)}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .orb{position:absolute;right:12%;top:20%;width:88px;height:88px;border-radius:50%;background:var(--orange);display:grid;place-items:center;color:#111;font:700 10px var(--head);text-align:center;transform:rotate(12deg);animation:float 5s ease-in-out infinite}
+    .ticker{background:var(--lime);color:#111;overflow:hidden;transform:rotate(-1deg) scale(1.02);padding:17px 0}
+    .ticker-track{display:flex;width:max-content;animation:marquee 26s linear infinite}
+    .ticker span{font:700 clamp(20px,3vw,32px) var(--head);letter-spacing:-1px;white-space:nowrap;padding:0 22px}
+    .ticker b{color:var(--orange)}
+    section{padding:110px 0}
+    .section-top{display:flex;justify-content:space-between;align-items:end;gap:28px;margin-bottom:44px}
+    .section-label{font-size:10px;text-transform:uppercase;letter-spacing:2px;color:var(--lime);font-weight:700;margin-bottom:18px}
+    h2{font:600 clamp(38px,6vw,72px)/.98 var(--head);letter-spacing:-.075em}
+    h2 em{font-style:normal;color:var(--lime)}
+    .section-note{max-width:340px;font-size:13px;line-height:1.8;color:var(--muted)}
+    .design-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}
+    .design-card{min-width:0}
+    .art-frame{aspect-ratio:1/1;position:relative;border-radius:var(--radius);overflow:hidden;background:linear-gradient(135deg,#272727,#3b3b3b);border:1px solid var(--line);display:grid;place-items:center}
+    .art-frame img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+    .design-card:hover .art-frame img{transform:scale(1.04)}
+    .placeholder-art{width:100%;height:100%;padding:30px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 80% 20%,rgba(182,156,255,.5),transparent 35%),linear-gradient(135deg,#292929,#141414)}
+    .placeholder-art.orange{background:radial-gradient(circle at 80% 20%,rgba(255,106,61,.65),transparent 35%),linear-gradient(135deg,#292929,#141414)}
+    .placeholder-art.lime{background:radial-gradient(circle at 80% 20%,rgba(216,255,62,.45),transparent 35%),linear-gradient(135deg,#292929,#141414)}
+    .placeholder-art .mini{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:#c8c5bd}
+    .placeholder-art strong{font:700 clamp(36px,6vw,76px)/.9 var(--head);letter-spacing:-.08em;max-width:400px}
+    .placeholder-art small{font-size:11px;color:#c8c5bd;line-height:1.6}
+    .card-meta{display:flex;justify-content:space-between;gap:16px;padding:17px 3px 0}
+    .card-meta h3{font:600 22px var(--head);letter-spacing:-.7px}
+    .card-meta p{font-size:11px;color:var(--muted);margin-top:6px}
+    .number{font-size:11px;color:var(--muted)}
+    .note-box{margin-top:32px;border:1px dashed rgba(244,241,233,.28);border-radius:16px;padding:18px 20px;color:var(--muted);font-size:12px;line-height:1.7}
+    .video-section{background:#171717;position:relative;overflow:hidden}
+    .video-section:before{content:"";position:absolute;width:450px;height:450px;right:-220px;top:0;background:var(--blue);filter:blur(140px);opacity:.25;border-radius:50%}
+    .video-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;position:relative}
+    .video-tile{min-height:360px;border:1px solid var(--line);border-radius:var(--radius);padding:30px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+    .video-tile:hover{transform:translateY(-6px);border-color:rgba(244,241,233,.5)}
+    .video-tile:first-child{background:linear-gradient(135deg,#29274a,#171717 70%)}
+    .video-tile:last-child{background:linear-gradient(135deg,#433022,#171717 70%)}
+    .tile-icon{width:58px;height:58px;display:grid;place-items:center;border-radius:18px;background:var(--lime);color:#111;font-size:24px}
+    .video-tile:last-child .tile-icon{background:var(--orange)}
+    .tile-top{display:flex;justify-content:space-between;align-items:center;gap:15px}
+    .tile-tag{font-size:9px;text-transform:uppercase;letter-spacing:1.6px;border:1px solid var(--line);padding:9px 12px;border-radius:50px;color:#d6d3cc}
+    .video-tile h3{font:600 clamp(30px,4vw,48px)/.98 var(--head);letter-spacing:-.06em;max-width:420px;margin-bottom:13px}
+    .video-tile p{font-size:13px;line-height:1.8;color:#b5b2ab;max-width:430px}
+    .tile-bottom{display:flex;justify-content:space-between;align-items:end;gap:20px}
+    .circle-arrow{width:48px;height:48px;flex:0 0 48px;border-radius:50%;display:grid;place-items:center;background:var(--paper);color:#111;font-size:21px}
+    .video-help{margin-top:25px;color:var(--muted);font-size:12px;line-height:1.7;position:relative}
+    .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:70px;align-items:center}
+    .about-photo-wrap{position:relative;min-height:500px;border-radius:28px;overflow:hidden;background:linear-gradient(135deg,var(--purple),var(--orange));isolation:isolate}
+    .about-photo-wrap:before{content:"";position:absolute;width:190px;height:190px;border-radius:50%;background:var(--lime);top:-75px;right:-45px;z-index:-1}
+    .about-photo-wrap:after{content:"";position:absolute;width:170px;height:170px;border-radius:50%;background:var(--blue);bottom:-70px;left:-55px;z-index:-1}
+    .profile-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 35%;z-index:0}
+    .photo-fallback{position:absolute;inset:0;display:grid;place-items:center;font:700 100px var(--head);color:#111;z-index:-2}
+    .photo-sticker{position:absolute;right:18px;bottom:20px;z-index:2;padding:14px 17px;background:var(--paper);color:#111;border-radius:13px;font-size:10px;font-weight:700;line-height:1.7;transform:rotate(3deg)}
+    .about-copy h2{margin:20px 0 24px}
+    .about-copy>p{color:#b7b4ad;font-size:14px;line-height:1.95;margin-bottom:15px}
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+    .fact{border:1px solid var(--line);border-radius:15px;padding:17px}
+    .fact strong{display:block;font:600 20px var(--head);margin-bottom:5px}
+    .fact span{font-size:10px;color:var(--muted)}
+    .services{background:var(--paper);color:#111}
+    .services .section-label{color:#5144e8}
+    .services h2 em{color:#5144e8}
+    .services .section-note{color:#69665f}
+    .service-list{border-top:1px solid rgba(0,0,0,.18)}
+    .service-row{display:grid;grid-template-columns:70px 1fr 1.1fr 30px;gap:20px;align-items:center;padding:25px 0;border-bottom:1px solid rgba(0,0,0,.18);transition:padding .2s}
+    .service-row:hover{padding-inline:10px}
+    .service-num{font:700 12px var(--head);color:#5144e8}
+    .service-row h3{font:600 clamp(21px,3vw,30px) var(--head);letter-spacing:-1px}
+    .service-row p{font-size:12px;line-height:1.7;color:#6a665f}
+    .service-arrow{font-size:22px}
+    .contact{padding:120px 0 55px;position:relative;overflow:hidden}
+    .contact h2{font-size:clamp(55px,10vw,120px);margin:25px 0;line-height:.9}
+    .contact h2 em{color:var(--lime)}
+    .contact-copy{max-width:450px;color:var(--muted);font-size:14px;line-height:1.8;margin-bottom:28px}
+    .contact-links{display:flex;flex-wrap:wrap;gap:12px}
+    footer{border-top:1px solid var(--line);padding:22px 0;margin-top:85px;color:var(--muted);font-size:11px}
+    .footer-inner{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+    .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:3000;display:none;align-items:center;justify-content:center;padding:22px}
+    .modal.open{display:flex}
+    .modal-box{width:min(900px,100%);max-height:90vh;overflow:auto;background:#181818;border:1px solid var(--line);border-radius:22px;padding:28px}
+    .modal-head{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:20px}
+    .modal-head h3{font:600 28px var(--head);letter-spacing:-1px}
+    .close-modal{width:40px;height:40px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--paper);font-size:23px;cursor:pointer}
+    .modal-content{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+    .modal-item{border:1px solid var(--line);border-radius:15px;padding:18px;min-height:130px;display:flex;flex-direction:column;justify-content:space-between;background:#202020}
+    .modal-item strong{font:600 18px var(--head);margin-bottom:8px}
+    .modal-item p{font-size:12px;color:var(--muted);line-height:1.7}
+    .modal-item span{font-size:10px;color:var(--lime);margin-top:15px}
+    @keyframes marquee{to{transform:translateX(-50%)}}
+    @keyframes float{0%,100%{transform:translateY(0) rotate(12deg)}50%{transform:translateY(-14px) rotate(4deg)}}
+    @media(max-width:800px){
+      .links{gap:16px}.links a:not(.nav-cta){display:none}
+      .hero{min-height:620px;padding:80px 0}.hero-bottom{align-items:start;flex-direction:column}.orb{right:7%;top:16%;width:70px;height:70px}
+      .section-top{align-items:start;flex-direction:column}.design-grid{gap:20px}.about-grid{grid-template-columns:1fr;gap:38px}.about-photo-wrap{min-height:430px}
+      .service-row{grid-template-columns:45px 1fr 25px}.service-row p{grid-column:2 / 3}.service-arrow{grid-column:3;grid-row:1}
     }
-    .portfolio-card:hover {
-      border-color: rgba(216, 255, 66, 0.4);
-      transform: translateY(-6px);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
+    @media(max-width:560px){
+      .wrap{width:90%}.nav-inner{width:90%;min-height:68px}.brand{font-size:13px}.brand-mark{width:34px;height:34px}
+      .nav-cta{padding:11px 13px;font-size:10px}.hero h1{font-size:clamp(52px,15vw,82px);letter-spacing:-.09em}.hero-copy{font-size:13px}
+      section{padding:78px 0}.design-grid,.video-grid{grid-template-columns:1fr}.art-frame{aspect-ratio:1/1}
+      .video-tile{min-height:310px;padding:23px}.about-photo-wrap{min-height:380px}.facts{gap:9px}.fact{padding:13px}
+      .service-row{gap:12px;padding:21px 0}.service-num{font-size:10px}.service-row h3{font-size:21px}
+      .modal-content{grid-template-columns:1fr}.modal-box{padding:20px}.contact h2{font-size:58px}
     }
-    .exact-photo {
-      object-fit: cover;
-      object-position: center 38%;
-    }
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
   </style>
 </head>
-<body class="antialiased overflow-x-hidden selection:bg-[#D8FF42] selection:text-black">
-
-  <!-- 1. NAVIGATION -->
-  <header class="fixed top-0 left-0 right-0 z-50 bg-[#050909]/85 backdrop-blur-md border-b border-white/10 px-6 py-4">
-    <div class="max-w-7xl mx-auto flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-2 font-bold tracking-wider text-base text-[#F5F5F2] hover:text-[#D8FF42] transition-colors">
-        <span class="w-8 h-8 rounded-lg bg-[#D8FF42] text-black flex items-center justify-center font-extrabold text-sm shadow-[0_0_15px_rgba(216,255,66,0.3)]">PS</span>
-        PARMEET SINGH
-      </a>
-      <nav class="hidden md:flex items-center space-x-6 text-xs font-medium text-[#A8B0B0]">
-        <a href="#home" class="hover:text-[#F5F5F2] transition-colors">Home</a>
-        <a href="#work" class="hover:text-[#F5F5F2] transition-colors">Work</a>
-        <a href="#posters" class="hover:text-[#F5F5F2] transition-colors">Posters & Gallery</a>
-        <a href="#about" class="hover:text-[#F5F5F2] transition-colors">About</a>
-        <a href="#services" class="hover:text-[#F5F5F2] transition-colors">Services</a>
-        <a href="#contact" class="hover:text-[#F5F5F2] transition-colors">Contact</a>
-        <a href="resume.pdf" download class="text-[#D8FF42] hover:underline font-semibold">
-          Resume
-        </a>
+<body>
+  <div class="progress" id="progress"></div>
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="#home" aria-label="Parmeet Singh home"><span class="brand-mark">PS</span><span>PARMEET SINGH<span style="color:var(--lime)">.</span></span></a>
+      <nav class="links" aria-label="Main navigation">
+        <a href="#work">Design Work</a><a href="#ai">AI Videos</a><a href="#about">About</a><a href="#services">Services</a>
+        <a class="nav-cta" href="#contact">LET'S TALK ↗</a>
       </nav>
-      <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="bg-[#D8FF42] text-black text-xs font-bold px-5 py-2.5 rounded-full hover:bg-[#c4eb30] transition-all shadow-[0_0_20px_rgba(216,255,66,0.25)]">
-        Behance ↗
-      </a>
+      <button class="menu" aria-label="Open navigation" onclick="document.querySelector('.links').classList.toggle('mobile-open')">☰</button>
     </div>
   </header>
 
-  <!-- 2. HERO SECTION -->
-  <section id="home" class="relative min-h-screen flex items-center justify-center px-6 pt-32 pb-20">
-    <div class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-7">
-        <span class="inline-block text-xs uppercase tracking-[0.25em] text-[#D8FF42] font-semibold mb-4 px-3.5 py-1.5 rounded-full bg-[#D8FF42]/10 border border-[#D8FF42]/20">
-          Graphic Designer × AI Content Creator
-        </span>
-        <h1 class="font-serif text-6xl md:text-8xl tracking-tight mb-4 text-[#F5F5F2] font-normal leading-none">
-          PARMEET<br><span class="text-[#65D8F5]">SINGH</span>
-        </h1>
-        <p class="text-xl md:text-2xl text-[#F5F5F2] font-light mb-4 tracking-wide">
-          "Ideas into visual impact."
-        </p>
-        <p class="text-sm md:text-base text-[#A8B0B0] max-w-xl mb-10 font-light leading-relaxed">
-          Crafting high-converting commercial designs, advanced AI-generated visual stories, and striking brand identities through cutting-edge digital workflows.
-        </p>
-        <div class="flex flex-col sm:flex-row items-center gap-4">
-          <a href="#work" class="w-full sm:w-auto bg-[#D8FF42] text-black font-bold text-sm px-8 py-4 rounded-full hover:bg-[#c4eb30] transition-all text-center shadow-lg shadow-[#D8FF42]/20">
-            Explore My Work
-          </a>
-          <a href="resume.pdf" download class="w-full sm:w-auto bg-[#0A1011] border border-[#D8FF42]/30 text-[#D8FF42] text-sm font-semibold px-8 py-4 rounded-full hover:bg-[#11191B] transition-all text-center flex items-center justify-center gap-2">
-            Resume
-          </a>
+  <main>
+    <section class="hero" id="home">
+      <div class="orb">IDEAS<br>INTO<br>IMPACT ↗</div>
+      <div class="hero-content wrap">
+        <div class="eyebrow"><span class="dot"></span> Graphic Designer × AI Content Creator</div>
+        <h1>DESIGN THAT<br><span class="lime">MAKES</span> YOU <span class="stroke">LOOK.</span></h1>
+        <div class="hero-bottom">
+          <p class="hero-copy">I create <strong>bold visual designs and AI-powered content</strong> for brands, products and digital stories — combining strong creative direction with emerging AI tools.</p>
+          <div class="hero-actions"><a class="btn" href="#work">EXPLORE MY WORK ↘</a><a class="btn btn-ghost" href="#contact">CONTACT ME ↗</a></div>
         </div>
       </div>
-      
-      <!-- HERO SECTION PHOTOGRAPH -->
-      <div class="lg:col-span-5 flex justify-center">
-        <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0A1011]">
-          <img src="WhatsApp Image 2026-10-26 at 20.13.33.jpeg" alt="Parmeet Singh" class="w-full h-full exact-photo">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#050909] via-transparent to-transparent opacity-80"></div>
-          <div class="absolute bottom-6 left-6 right-6">
-            <span class="text-xs text-[#D8FF42] uppercase tracking-wider font-semibold">Creator & Designer</span>
-            <h3 class="font-serif text-2xl text-white mt-1">Parmeet Singh</h3>
-          </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track">
+      <span>GRAPHIC DESIGN <b>✳</b></span><span>AI VISUALS <b>✳</b></span><span>AI VIDEO CREATION <b>✳</b></span><span>CREATIVE CONCEPTS <b>✳</b></span>
+      <span>GRAPHIC DESIGN <b>✳</b></span><span>AI VISUALS <b>✳</b></span><span>AI VIDEO CREATION <b>✳</b></span><span>CREATIVE CONCEPTS <b>✳</b></span>
+    </div></div>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-top reveal">
+          <div><div class="section-label">01 / Selected work</div><h2>DESIGN WITH<br><em>PERSONALITY.</em></h2></div>
+          <p class="section-note">A growing collection of poster designs, product creatives and visual experiments. Your original artwork will be added here in the next step.</p>
+        </div>
+        <div class="design-grid">
+          <article class="design-card reveal"><div class="art-frame"><div class="placeholder-art orange"><span class="mini">Poster Design / 01</span><strong>MAKE<br>IT <span style="color:var(--orange)">BOLD.</span></strong><small>YOUR ORIGINAL POSTER WILL APPEAR HERE<br>AFTER YOU UPLOAD IT</small></div></div><div class="card-meta"><div><h3>Poster Design</h3><p>Campaign creative · Visual direction</p></div><span class="number">01</span></div></article>
+          <article class="design-card reveal"><div class="art-frame"><div class="placeholder-art"><span class="mini">Product Creative / 02</span><strong>BUILT TO<br><span style="color:var(--purple)">STAND OUT.</span></strong><small>YOUR ORIGINAL PRODUCT CREATIVE WILL APPEAR HERE</small></div></div><div class="card-meta"><div><h3>Product Advertising</h3><p>Product visual · Digital campaign</p></div><span class="number">02</span></div></article>
+          <article class="design-card reveal"><div class="art-frame"><div class="placeholder-art lime"><span class="mini">Social Media / 03</span><strong>SCROLL.<br>STOP.</strong><small>YOUR SOCIAL MEDIA DESIGN WILL APPEAR HERE</small></div></div><div class="card-meta"><div><h3>Social Media Creatives</h3><p>Social campaign · Digital design</p></div><span class="number">03</span></div></article>
+          <article class="design-card reveal"><div class="art-frame"><div class="placeholder-art orange"><span class="mini">AI Visuals / 04</span><strong>IMAGINE<br><span style="color:var(--lime)">MORE.</span></strong><small>YOUR AI VISUAL POSTER WILL APPEAR HERE</small></div></div><div class="card-meta"><div><h3>AI Visual Concepts</h3><p>AI-assisted art direction · Visual storytelling</p></div><span class="number">04</span></div></article>
+        </div>
+        <div class="note-box reveal">These are temporary design placeholders, not claimed client projects. We’ll replace them with your real posters and images when you upload them.</div>
+      </div>
+    </section>
+
+    <section class="video-section" id="ai">
+      <div class="wrap">
+        <div class="section-top reveal">
+          <div><div class="section-label">02 / AI video studio</div><h2>STORIES MADE<br><em>WITH AI.</em></h2></div>
+          <p class="section-note">Two separate galleries for your AI video portfolio and your original AI series. Click a card to open its gallery.</p>
+        </div>
+        <div class="video-grid">
+          <button class="video-tile reveal" type="button" onclick="openGallery('aiVideos')" style="text-align:left;color:inherit;cursor:pointer">
+            <div class="tile-top"><span class="tile-icon">▶</span><span class="tile-tag">AI video portfolio</span></div>
+            <div class="tile-bottom"><div><h3>AI VIDEO<br>CREATIONS</h3><p>Product films, cinematic concepts, visual experiments and AI-powered brand storytelling.</p></div><span class="circle-arrow">↗</span></div>
+          </button>
+          <button class="video-tile reveal" type="button" onclick="openGallery('corporateAloo')" style="text-align:left;color:inherit;cursor:pointer">
+            <div class="tile-top"><span class="tile-icon">✳</span><span class="tile-tag">Original AI series</span></div>
+            <div class="tile-bottom"><div><h3>THE CORPORATE<br>ALOO UNIVERSE</h3><p>Short-form 3D AI workplace comedy featuring Aloo and the office characters.</p></div><span class="circle-arrow">↗</span></div>
+          </button>
+        </div>
+        <p class="video-help">Gallery entries are placeholders for now. In the next step, we’ll add your actual video files or links and make them playable/clickable.</p>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="about-photo-wrap reveal">
+          <div class="photo-fallback">PS.</div>
+          <img class="profile-photo" src="images/parmeet-photo.jpg" alt="Parmeet Singh" onerror="this.style.display='none'">
+          <div class="photo-sticker">PARMEET SINGH<br>DESIGNER × AI CREATOR</div>
+        </div>
+        <div class="about-copy reveal">
+          <div class="section-label">03 / A little about me</div>
+          <h2>CREATIVE THINKING.<br><em>AI-POWERED.</em></h2>
+          <p>I’m a graphic designer and AI content creator interested in creating distinctive visual work that gets attention and communicates clearly.</p>
+          <p>From social media creatives and product posters to AI-generated visual stories, I enjoy exploring new ideas, experimenting with tools and turning concepts into engaging content.</p>
+          <div class="facts"><div class="fact"><strong>Design</strong><span>Posters · Social creatives · Product ads</span></div><div class="fact"><strong>AI Content</strong><span>AI visuals · Short-form AI videos</span></div></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 3. SELECTED WORK (PROJECT CARDS) -->
-  <section id="work" class="py-24 px-6 bg-[#0A1011]/60 border-t border-white/10">
-    <div class="max-w-7xl mx-auto">
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16">
-        <div>
-          <span class="text-xs uppercase tracking-widest text-[#D8FF42] font-semibold">01 / Portfolio</span>
-          <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F5F5F2]">Selected Commercial Work</h2>
-        </div>
-        <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="text-xs text-[#A8B0B0] hover:text-[#D8FF42] transition-colors mt-4 md:mt-0 flex items-center gap-1">
-          View All Projects on Behance ↗
-        </a>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        
-        <!-- Card 1: Graphic Design -->
-        <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="portfolio-card rounded-2xl p-6 flex flex-col justify-between group block">
-          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-1 relative overflow-hidden mb-6 bg-black">
-            <img src="5734ad6f-e682-40e3-9fb4-93f53cc8a142-clean.png" alt="Graphic Design" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div>
-            <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Visual Systems</span>
-            <div class="flex items-center justify-between mt-2">
-              <h3 class="text-xl font-serif text-[#F5F5F2] group-hover:text-[#D8FF42] transition-colors">Brand Identity & Print</h3>
-              <span class="text-[#A8B0B0] group-hover:text-white">↗</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 2: AI Visuals -->
-        <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="portfolio-card rounded-2xl p-6 flex flex-col justify-between group block">
-          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-1 relative overflow-hidden mb-6 bg-black">
-            <img src="578b8b92-d97a-4de1-92a6-72b9be99c5e8-clean.png" alt="AI Visuals" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div>
-            <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Generative Art</span>
-            <div class="flex items-center justify-between mt-2">
-              <h3 class="text-xl font-serif text-[#F5F5F2] group-hover:text-[#D8FF42] transition-colors">Cinematic AI Concepts</h3>
-              <span class="text-[#A8B0B0] group-hover:text-white">↗</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 3: AI Content -->
-        <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="portfolio-card rounded-2xl p-6 flex flex-col justify-between group block">
-          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-1 relative overflow-hidden mb-6 bg-black">
-            <img src="805d6db6-3631-411c-b333-7146490e2ee8-clean.png" alt="AI Content" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div>
-            <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Motion & Video</span>
-            <div class="flex items-center justify-between mt-2">
-              <h3 class="text-xl font-serif text-[#F5F5F2] group-hover:text-[#D8FF42] transition-colors">AI Content Creation</h3>
-              <span class="text-[#A8B0B0] group-hover:text-white">↗</span>
-            </div>
-          </div>
-        </a>
-
-        <!-- Card 4: The Corporate Aloo (Links to Instagram) -->
-        <a href="https://www.instagram.com/thecorporatealoo/" target="_blank" rel="noopener" class="portfolio-card rounded-2xl p-6 flex flex-col justify-between group block">
-          <div class="aspect-video rounded-xl border border-white/10 flex items-center justify-center p-1 relative overflow-hidden mb-6 bg-black">
-            <img src="Corporate Aloo.jpg" alt="The Corporate Aloo" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-          </div>
-          <div>
-            <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Creative Brand</span>
-            <div class="flex items-center justify-between mt-2">
-              <h3 class="text-xl font-serif text-[#F5F5F2] group-hover:text-[#D8FF42] transition-colors">Digital Storytelling</h3>
-              <span class="text-[#A8B0B0] group-hover:text-white">↗</span>
-            </div>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- 4. DEDICATED POSTERS & CREATIVE GALLERY SECTION -->
-  <section id="posters" class="py-24 px-6 border-t border-white/10">
-    <div class="max-w-7xl mx-auto">
-      <div class="mb-16 text-center md:text-left">
-        <span class="text-xs uppercase tracking-widest text-[#D8FF42] font-semibold">02 / Featured Showcase</span>
-        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F5F5F2]">Posters & Visual Gallery</h2>
-        <p class="text-sm text-[#A8B0B0] mt-2">High-resolution commercial posters, cinematic concepts, and digital artwork.</p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- Poster 1 -->
-        <div class="portfolio-card rounded-3xl overflow-hidden p-4 group">
-          <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-black relative">
-            <img src="578b8b92-d97a-4de1-92a6-72b9be99c5e8-clean.png" alt="Cinematic AI Concept Poster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          </div>
-          <div class="p-4">
-            <span class="text-xs text-[#65D8F5] uppercase tracking-wider font-semibold">Cinematic AI</span>
-            <h3 class="text-2xl font-serif text-[#F5F5F2] mt-1">Futuristic Neon Metropolis Concept</h3>
-          </div>
-        </div>
-
-        <!-- Poster 2 -->
-        <div class="portfolio-card rounded-3xl overflow-hidden p-4 group">
-          <div class="aspect-[16/10] rounded-2xl overflow-hidden bg-black relative">
-            <img src="805d6db6-3631-411c-b333-7146490e2ee8-clean.png" alt="AI Content Poster" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
-          </div>
-          <div class="p-4">
-            <span class="text-xs text-[#D8FF42] uppercase tracking-wider font-semibold">Motion & Flow</span>
-            <h3 class="text-2xl font-serif text-[#F5F5F2] mt-1">Abstract Digital Particle Dynamics</h3>
-          </div>
+    <section class="services" id="services">
+      <div class="wrap">
+        <div class="section-top reveal"><div><div class="section-label">04 / What I do</div><h2>CREATIVE SKILLS.<br><em>REAL PURPOSE.</em></h2></div><p class="section-note">Creative support for brands, businesses and digital-first teams looking for original content.</p></div>
+        <div class="service-list">
+          <div class="service-row reveal"><span class="service-num">01</span><h3>Graphic Design</h3><p>Posters, product creatives, campaign visuals and social media design.</p><span class="service-arrow">↗</span></div>
+          <div class="service-row reveal"><span class="service-num">02</span><h3>AI Visual Creation</h3><p>Concept-led AI imagery, visual experiments and product-focused creative concepts.</p><span class="service-arrow">↗</span></div>
+          <div class="service-row reveal"><span class="service-num">03</span><h3>AI Video Creation</h3><p>Short-form AI videos, character-based storytelling and cinematic brand concepts.</p><span class="service-arrow">↗</span></div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 5. ABOUT ME (Updated with images/parmeet-photo.jpg) -->
-  <section id="about" class="py-24 px-6 border-t border-white/10 bg-[#0A1011]/60">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-      
-      <!-- ABOUT SECTION PHOTOGRAPH -->
-      <div class="lg:col-span-5 flex justify-center">
-        <div class="relative w-full max-w-md aspect-[4/5] rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-[#0A1011]">
-          <img src="images/parmeet-photo.jpg" alt="Parmeet Singh" class="w-full h-full exact-photo">
-          <div class="absolute inset-0 bg-gradient-to-t from-[#050909] via-transparent to-transparent opacity-60"></div>
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="section-label">05 / Let's work together</div>
+        <h2>HAVE AN IDEA?<br><em>LET'S CREATE.</em></h2>
+        <p class="contact-copy">Have a project, a role or a creative collaboration in mind? Get in touch and let’s make something memorable.</p>
+        <div class="contact-links">
+          <a class="btn" href="mailto:singhparmeett832@gmail.com">EMAIL ME ↗</a>
+          <a class="btn btn-ghost" href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener">BEHANCE PORTFOLIO ↗</a>
+          <a class="btn btn-ghost" href="https://www.instagram.com/thecorporatealoo/" target="_blank" rel="noopener">THE CORPORATE ALOO ↗</a>
         </div>
       </div>
+      <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Parmeet Singh. All creative rights reserved.</span><span>DESIGNED WITH INTENTION · BUILT FOR WHAT'S NEXT ↗</span></div></footer>
+    </section>
+  </main>
 
-      <div class="lg:col-span-7">
-        <span class="text-xs uppercase tracking-widest text-[#D8FF42] font-semibold">03 / About Me</span>
-        <h2 class="font-serif text-4xl md:text-5xl mt-2 mb-6 text-[#F5F5F2]">Parmeet Singh</h2>
-        <p class="text-base text-[#F5F5F2] leading-relaxed mb-4 font-light">
-          I am Parmeet Singh, a passionate graphic designer and AI content creator dedicated to exploring the intersection of modern digital aesthetics and generative intelligence.
-        </p>
-        <p class="text-sm text-[#A8B0B0] leading-relaxed font-light mb-8">
-          My creative journey focuses on visual storytelling, creative advertising, precision graphic design, and AI-powered content production. I transform bold concepts into memorable brand experiences that resonate across modern digital platforms.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <div class="bg-[#0A1011] border border-white/10 px-5 py-3 rounded-xl text-xs font-semibold text-[#D8FF42]">Graphic Design</div>
-          <div class="bg-[#0A1011] border border-white/10 px-5 py-3 rounded-xl text-xs font-semibold text-[#65D8F5]">AI Content Creation</div>
-          <div class="bg-[#0A1011] border border-white/10 px-5 py-3 rounded-xl text-xs font-semibold text-[#F5F5F2]">Visual Storytelling</div>
-          <div class="bg-[#0A1011] border border-white/10 px-5 py-3 rounded-xl text-xs font-semibold text-[#D8FF42]">Creative Advertising</div>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div class="modal" id="galleryModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" onclick="if(event.target===this)closeGallery()">
+    <div class="modal-box"><div class="modal-head"><h3 id="modalTitle">Gallery</h3><button class="close-modal" onclick="closeGallery()" aria-label="Close gallery">×</button></div><div class="modal-content" id="modalContent"></div></div>
+  </div>
 
-  <!-- 6. SERVICES -->
-  <section id="services" class="py-24 px-6 border-t border-white/10">
-    <div class="max-w-7xl mx-auto">
-      <div class="mb-16">
-        <span class="text-xs uppercase tracking-widest text-[#D8FF42] font-semibold">04 / Capabilities</span>
-        <h2 class="font-serif text-4xl md:text-5xl mt-2 text-[#F5F5F2]">Creative Services</h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="portfolio-card p-8 rounded-2xl">
-          <span class="text-xs font-mono text-[#D8FF42] font-bold">01</span>
-          <h3 class="font-serif text-2xl mt-3 mb-2 text-[#F5F5F2]">Graphic Design</h3>
-          <p class="text-xs text-[#A8B0B0] leading-relaxed">Editorial layouts, print systems, typography, and visual assets built with strong design discipline.</p>
-        </div>
-        <div class="portfolio-card p-8 rounded-2xl">
-          <span class="text-xs font-mono text-[#65D8F5] font-bold">02</span>
-          <h3 class="font-serif text-2xl mt-3 mb-2 text-[#F5F5F2]">AI Visual Creation</h3>
-          <p class="text-xs text-[#A8B0B0] leading-relaxed">Generative image synthesis, detailed commercial concepts, and art-directed creative pipelines.</p>
-        </div>
-        <div class="portfolio-card p-8 rounded-2xl">
-          <span class="text-xs font-mono text-[#D8FF42] font-bold">03</span>
-          <h3 class="font-serif text-2xl mt-3 mb-2 text-[#F5F5F2]">AI Content Creation</h3>
-          <p class="text-xs text-[#A8B0B0] leading-relaxed">Prompt-to-video direction, scene continuity, camera motion mapping, and generative storytelling.</p>
-        </div>
-        <div class="portfolio-card p-8 rounded-2xl">
-          <span class="text-xs font-mono text-[#65D8F5] font-bold">04</span>
-          <h3 class="font-serif text-2xl mt-3 mb-2 text-[#F5F5F2]">Advertising Creatives</h3>
-          <p class="text-xs text-[#A8B0B0] leading-relaxed">High-engagement promotional ads and visual assets engineered for audience retention.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 7. CONTACT -->
-  <section id="contact" class="py-24 px-6 border-t border-white/10 bg-[#0A1011]/60">
-    <div class="max-w-4xl mx-auto text-center">
-      <div class="portfolio-card rounded-3xl p-10 md:p-16 border-[#D8FF42]/30">
-        <span class="text-xs uppercase tracking-widest text-[#D8FF42] font-semibold">05 / Let's Connect</span>
-        <h2 class="font-serif text-4xl md:text-6xl mt-2 mb-4 text-[#F5F5F2]">Have a Creative Project in Mind?</h2>
-        <p class="text-[#A8B0B0] text-sm mb-8">Have a project, idea, or just want to say hi? Get in touch.</p>
-        
-        <div class="mb-10">
-          <a href="mailto:singhparmeett832@gmail.com" class="inline-block bg-[#D8FF42] text-black font-bold text-sm px-8 py-4 rounded-full hover:bg-[#c4eb30] transition-all shadow-xl">
-            singhparmeett832@gmail.com ↗
-          </a>
-        </div>
-
-        <div class="flex flex-wrap justify-center gap-4 text-xs font-medium">
-          <a href="https://www.instagram.com/thecorporatealoo/" target="_blank" rel="noopener" class="portfolio-card px-6 py-3 rounded-full hover:border-[#D8FF42] transition-colors text-[#F5F5F2]">Instagram (The Corporate Aloo) ↗</a>
-          <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="portfolio-card px-6 py-3 rounded-full hover:border-[#D8FF42] transition-colors text-[#F5F5F2]">Behance ↗</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- 8. FOOTER -->
-  <footer class="py-12 px-6 border-t border-white/10 bg-[#0A1011]">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <div>
-        <h4 class="font-bold text-sm text-[#F5F5F2]">PARMEET SINGH</h4>
-        <p class="text-xs text-[#A8B0B0] mt-1">Graphic Designer × AI Content Creator</p>
-      </div>
-      <div class="flex items-center space-x-6 text-xs text-[#A8B0B0]">
-        <a href="https://www.behance.net/parmeetsingh75" target="_blank" rel="noopener" class="hover:text-[#D8FF42] transition-colors">Behance</a>
-        <a href="https://www.instagram.com/thecorporatealoo/" target="_blank" rel="noopener" class="hover:text-[#D8FF42] transition-colors">Instagram</a>
-        <a href="mailto:singhparmeett832@gmail.com" class="hover:text-[#D8FF42] transition-colors">Email</a>
-      </div>
-      <div>
-        <a href="#home" class="text-xs text-[#D8FF42] hover:underline flex items-center gap-1">
-          Back to top ↑
-        </a>
-      </div>
-    </div>
-    <div class="max-w-7xl mx-auto mt-8 pt-6 border-t border-white/5 text-center text-xs text-[#A8B0B0]">
-      © 2026 Parmeet Singh. All rights reserved.
-    </div>
-  </footer>
-
+  <script>
+    // Add your video URLs or file paths here in the next step.
+    // Example video item: { title: "Product Film", description: "AI product concept", url: "videos/product-film.mp4" }
+    const galleries = {
+      aiVideos: {
+        title: "AI Video Creations",
+        items: [
+          { title: "AI Video Project 01", description: "Add your video file or public video link here.", url: "" },
+          { title: "AI Video Project 02", description: "Add your video file or public video link here.", url: "" },
+          { title: "AI Video Project 03", description: "Add your video file or public video link here.", url: "" },
+          { title: "AI Video Project 04", description: "Add your video file or public video link here.", url: "" }
+        ]
+      },
+      corporateAloo: {
+        title: "The Corporate Aloo Universe",
+        items: [
+          { title: "Corporate Aloo — Episode 01", description: "Add your episode video or Instagram Reel link here.", url: "" },
+          { title: "Corporate Aloo — Episode 02", description: "Add your episode video or Instagram Reel link here.", url: "" },
+          { title: "Corporate Aloo — Episode 03", description: "Add your episode video or Instagram Reel link here.", url: "" },
+          { title: "Corporate Aloo — Episode 04", description: "Add your episode video or Instagram Reel link here.", url: "" }
+        ]
+      }
+    };
+    function openGallery(key) {
+      const gallery = galleries[key];
+      document.getElementById("modalTitle").textContent = gallery.title;
+      const content = document.getElementById("modalContent");
+      content.innerHTML = "";
+      gallery.items.forEach(item => {
+        const card = document.createElement("div");
+        card.className = "modal-item";
+        const title = document.createElement("strong");
+        title.textContent = item.title;
+        const desc = document.createElement("p");
+        desc.textContent = item.description;
+        card.append(title, desc);
+        if (item.url) {
+          const link = document.createElement("a");
+          link.href = item.url;
+          link.target = "_blank";
+          link.rel = "noopener";
+          link.textContent = "WATCH / OPEN ↗";
+          link.style.cssText = "font-size:10px;color:var(--lime);margin-top:15px;font-weight:700";
+          card.append(link);
+        } else {
+          const status = document.createElement("span");
+          status.textContent = "VIDEO TO BE ADDED";
+          card.append(status);
+        }
+        content.append(card);
+      });
+      document.getElementById("galleryModal").classList.add("open");
+      document.body.style.overflow = "hidden";
+    }
+    function closeGallery() {
+      document.getElementById("galleryModal").classList.remove("open");
+      document.body.style.overflow = "";
+    }
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeGallery(); });
+    document.getElementById("year").textContent = new Date().getFullYear();
+    window.addEventListener("scroll", () => {
+      const max = document.documentElement.scrollHeight - window.innerHeight;
+      document.getElementById("progress").style.width = (max > 0 ? window.scrollY / max * 100 : 0) + "%";
+    });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    const style = document.createElement("style");
+    style.textContent = "@media(max-width:800px){.links.mobile-open{position:absolute;top:76px;left:0;right:0;padding:22px 5%;background:#101010;border-bottom:1px solid rgba(244,241,233,.15);display:flex;flex-direction:column;align-items:flex-start}.links.mobile-open a:not(.nav-cta){display:block}}";
+    document.head.appendChild(style);
+  </script>
 </body>
 </html>
