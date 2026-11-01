@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#f5f0e8" />
-  <meta name="google-site-verification" content="YbG9OVQOe4ghHcTZ-4tmxVH6iFHzbjNPOVVWzuGV1nc" />
+   <meta name="google-site-verification" content="YbG9OVQOe4ghHcTZ-4tmxVH6iFHzbjNPOVVWzuGV1nc" />
   <title>Parmeet Singh — Graphic Designer & AI Content Creator</title>
 
   <meta
@@ -52,7 +52,6 @@
       font-family: var(--font-body);
       overflow-x: hidden;
       cursor: none;
-      transition: background 0.35s ease, color 0.35s ease;
     }
 
     body.menu-open {
@@ -90,7 +89,7 @@
       background: var(--blue);
       border-radius: 50%;
       pointer-events: none;
-      z-index: 999999;
+      z-index: 9999;
       transform: translate(-50%, -50%);
       transition:
         width 0.2s ease,
@@ -127,7 +126,6 @@
       background: rgba(245, 240, 232, 0.9);
       backdrop-filter: blur(18px);
       border-bottom: 1px solid var(--border);
-      transition: background 0.35s ease, border-color 0.35s ease;
     }
 
     .nav-inner {
@@ -159,7 +157,7 @@
       border-radius: 12px;
       font-size: 16px;
       transform: rotate(-5deg);
-      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+      transition: transform 0.3s ease;
     }
 
     .brand:hover .brand-mark {
@@ -198,7 +196,7 @@
       border-radius: 100px;
       color: white;
       background: var(--ink);
-      transition: background 0.25s ease, transform 0.25s ease, color 0.25s ease;
+      transition: background 0.25s ease, transform 0.25s ease;
     }
 
     .nav-cta:hover {
@@ -223,7 +221,6 @@
 
     .section {
       padding: 115px 0;
-      transition: background 0.35s ease;
     }
 
     .eyebrow {
@@ -253,7 +250,6 @@
 
     .section-heading .highlight {
       color: var(--blue);
-      transition: color 0.3s ease;
     }
 
     .section-top {
@@ -328,7 +324,6 @@
       font-weight: 600;
       position: relative;
       z-index: 2;
-      transition: transform 0.35s ease;
     }
 
     .hero-title .line {
@@ -348,7 +343,6 @@
 
     .hero-title .blue-text {
       color: var(--blue);
-      transition: color 0.3s ease;
     }
 
     .hero-title .outline-text {
@@ -493,7 +487,6 @@
       overflow: hidden;
       transform: rotate(-1.2deg) scale(1.02);
       margin: 0 0 30px;
-      transition: background 0.35s ease, color 0.35s ease;
     }
 
     .marquee-track {
@@ -530,12 +523,10 @@
       grid-template-columns: 1.05fr 0.95fr;
       gap: 65px 30px;
       align-items: start;
-      transition: all 0.35s ease;
     }
 
     .project-card {
       min-width: 0;
-      transition: all 0.35s ease;
     }
 
     .project-card:nth-child(even) {
@@ -549,7 +540,6 @@
       aspect-ratio: 1.15 / 1;
       background: #e2dcd2;
       isolation: isolate;
-      transition: all 0.35s ease;
     }
 
     .project-card:nth-child(2) .project-visual {
@@ -586,7 +576,6 @@
       font-weight: 700;
       letter-spacing: 0.6px;
       text-transform: uppercase;
-      color: #171717;
     }
 
     .project-arrow {
@@ -597,7 +586,6 @@
       height: 48px;
       border-radius: 50%;
       background: white;
-      color: #171717;
       display: grid;
       place-items: center;
       font-size: 22px;
@@ -795,7 +783,6 @@
       padding: 18px;
       border: 1px solid var(--border);
       border-radius: 15px;
-      transition: all 0.3s ease;
     }
 
     .fact strong {
@@ -906,7 +893,6 @@
       background: var(--lime);
       border-radius: 50%;
       animation: float 5s ease-in-out infinite;
-      color: #171717;
     }
 
     .contact-decoration::after {
@@ -1933,119 +1919,6 @@
         closeMenu();
       }
     });
-
-    /* ==========================================
-       PURE BACKGROUND VOICE JARVIS ENGINE
-       ========================================== */
-    (function() {
-      let historyStack = [];
-      let liveStyle = document.createElement("style");
-      liveStyle.id = "jarvis-pure-voice-css";
-      document.head.appendChild(liveStyle);
-
-      // Load saved state if any
-      const savedCSS = localStorage.getItem("parmeet_jarvis_css");
-      if (savedCSS) liveStyle.innerHTML = savedCSS;
-
-      function saveSnapshot() {
-        historyStack.push({
-          css: liveStyle.innerHTML
-        });
-      }
-
-      function speak(text) {
-        if ("speechSynthesis" in window) {
-          window.speechSynthesis.cancel();
-          const u = new SpeechSynthesisUtterance(text);
-          u.lang = "en-IN";
-          u.rate = 1.05;
-          window.speechSynthesis.speak(u);
-        }
-      }
-
-      function processVoiceCommand(transcript) {
-        const cmd = transcript.toLowerCase();
-        saveSnapshot();
-
-        if (cmd.includes("dark") || cmd.includes("डार्क")) {
-          liveStyle.innerHTML += `
-            :root { --cream: #0c0d0b !important; --paper: #151713 !important; --ink: #f4f4ef !important; --muted: #9e9b95 !important; --border: rgba(255,255,255,0.14) !important; }
-            .nav { background: rgba(12, 13, 11, 0.88) !important; }
-            .hero-copy, .about-content > p, .availability { color: #c7c4be !important; }
-            .process { background: #121410 !important; }
-            .button-primary, .nav-cta { background: #d7f36b !important; color: #0c0d0b !important; border-color: #d7f36b !important; }
-          `;
-          speak("Dark mode applied.");
-          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-        }
-        else if (cmd.includes("lime") || cmd.includes("green") || cmd.includes("लाइम")) {
-          liveStyle.innerHTML += `
-            :root { --blue: #d7f36b !important; }
-            .hero-title .blue-text, .section-heading .highlight, .contact-heading .blue-text { color: #d7f36b !important; text-shadow: 0 0 25px rgba(215,243,107,0.3); }
-            .marquee { background: #d7f36b !important; color: #171717 !important; }
-            .marquee-item span { color: #171717 !important; }
-            .brand-mark { background: #d7f36b !important; color: #171717 !important; }
-          `;
-          speak("Electric lime theme activated.");
-          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-        }
-        else if (cmd.includes("glass") || cmd.includes("card") || cmd.includes("ग्लास")) {
-          liveStyle.innerHTML += `
-            .project-card, .fact, .lab-card {
-              background: rgba(255, 255, 255, 0.06) !important;
-              backdrop-filter: blur(18px) !important;
-              -webkit-backdrop-filter: blur(18px) !important;
-              border: 1px solid rgba(215, 243, 107, 0.4) !important;
-              padding: 18px !important;
-              border-radius: 26px !important;
-              box-shadow: 0 18px 40px rgba(0,0,0,0.22) !important;
-            }
-          `;
-          speak("Glass cards enabled.");
-          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-        }
-        else if (cmd.includes("undo") || cmd.includes("back") || cmd.includes("वापस")) {
-          if (historyStack.length > 0) {
-            const prev = historyStack.pop();
-            liveStyle.innerHTML = prev.css;
-            localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-            speak("Reverted changes.");
-          }
-        }
-      }
-
-      // Continuous Background Speech Recognition
-      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SR) {
-        const recognition = new SR();
-        recognition.lang = "en-IN";
-        recognition.continuous = true;
-        recognition.interimResults = false;
-
-        recognition.onresult = (event) => {
-          const last = event.results.length - 1;
-          const text = event.results[last][0].transcript.toLowerCase();
-          console.log("Heard:", text);
-          if (text.includes("jarvis") || text.includes("जार्विस")) {
-            processVoiceCommand(text);
-          }
-        };
-
-        recognition.onerror = (event) => {
-          console.log("Speech recognition error", event.error);
-        };
-
-        recognition.onend = () => {
-          // Auto-restart to keep listening continuously in the background
-          try { recognition.start(); } catch(e) {}
-        };
-
-        // Start listening when user interacts with the page (browser policy requires user gesture)
-        window.addEventListener("click", () => {
-          try { recognition.start(); } catch(e) {}
-        }, { once: true });
-      }
-    })();
   </script>
 </body>
 </html>
