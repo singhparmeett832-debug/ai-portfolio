@@ -1325,174 +1325,6 @@
         transform: none;
       }
     }
-
-    /* ==========================================
-       JARVIS ON-SCREEN LIVE EDITOR HUD STYLES
-       ========================================== */
-    #jarvis-fab {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      z-index: 999990;
-      width: 56px;
-      height: 56px;
-      border-radius: 50%;
-      background: #171717;
-      color: #d7f36b;
-      border: 2px solid #d7f36b;
-      font-family: var(--font-heading);
-      font-size: 22px;
-      font-weight: 700;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35), 0 0 20px rgba(215, 243, 107, 0.35);
-      cursor: pointer;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-    #jarvis-fab:hover {
-      transform: scale(1.08);
-      box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), 0 0 28px rgba(215, 243, 107, 0.6);
-    }
-    #jarvis-hud {
-      position: fixed;
-      bottom: 92px;
-      right: 24px;
-      width: min(380px, calc(100vw - 32px));
-      z-index: 999990;
-      background: rgba(18, 19, 17, 0.92);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(215, 243, 107, 0.45);
-      border-radius: 22px;
-      padding: 16px;
-      color: #fffdf8;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55);
-      display: none;
-      font-family: var(--font-body);
-    }
-    #jarvis-hud.open {
-      display: block;
-      animation: jarvisSlideUp 0.25s ease;
-    }
-    @keyframes jarvisSlideUp {
-      from { opacity: 0; transform: translateY(14px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .j-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-bottom: 12px;
-    }
-    .j-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-heading);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      color: #d7f36b;
-      text-transform: uppercase;
-    }
-    .j-dot {
-      width: 9px;
-      height: 9px;
-      background: #d7f36b;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #d7f36b;
-      animation: pulse 1.4s infinite;
-    }
-    .j-tools {
-      display: flex;
-      gap: 6px;
-    }
-    .j-chip {
-      background: rgba(255, 255, 255, 0.08);
-      color: #fffdf8;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 99px;
-      padding: 5px 10px;
-      font-size: 11px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: 0.2s;
-      white-space: nowrap;
-    }
-    .j-chip:hover, .j-chip.active {
-      background: #d7f36b;
-      color: #171717;
-      border-color: #d7f36b;
-    }
-    .j-quick-bar {
-      display: flex;
-      gap: 6px;
-      overflow-x: auto;
-      padding-bottom: 8px;
-      margin-bottom: 10px;
-      scrollbar-width: none;
-    }
-    .j-quick-bar::-webkit-scrollbar { display: none; }
-    .j-input-row {
-      display: flex;
-      gap: 7px;
-    }
-    #j-cmd {
-      flex: 1;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.18);
-      border-radius: 12px;
-      padding: 10px 12px;
-      color: #fff;
-      font-size: 13px;
-      outline: none;
-    }
-    #j-cmd:focus {
-      border-color: #d7f36b;
-    }
-    .j-btn {
-      background: #d7f36b;
-      color: #171717;
-      border: none;
-      border-radius: 12px;
-      padding: 10px 14px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: 0.2s;
-    }
-    .j-btn:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-    .j-btn.undo {
-      background: rgba(255, 99, 56, 0.2);
-      color: #ff6338;
-      border: 1px solid rgba(255, 99, 56, 0.45);
-    }
-    #j-log {
-      font-size: 12px;
-      line-height: 1.5;
-      color: #d1cfc9;
-      margin-top: 10px;
-      background: rgba(255, 255, 255, 0.04);
-      padding: 9px 11px;
-      border-radius: 10px;
-    }
-    #j-decision {
-      display: none;
-      margin-top: 12px;
-      padding-top: 11px;
-      border-top: 1px solid rgba(255, 255, 255, 0.12);
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    [contenteditable="true"] {
-      outline: 2px dashed #465cff !important;
-      outline-offset: 4px;
-      border-radius: 6px;
-    }
   </style>
 </head>
 
@@ -1997,50 +1829,6 @@
     </div>
   </footer>
 
-  <!-- ==========================================
-       JARVIS ON-SCREEN LIVE EDITOR UI
-       ========================================== -->
-  <button id="jarvis-fab" title="Open Jarvis AI Editor">⚡</button>
-
-  <div id="jarvis-hud">
-    <div class="j-header">
-      <div class="j-badge">
-        <span class="j-dot"></span>
-        <span id="j-status">JARVIS ONLINE</span>
-      </div>
-      <div class="j-tools">
-        <button class="j-chip" id="j-edit-toggle" title="Click any text on page to edit">✏️ Edit Text</button>
-        <button class="j-chip" id="j-export-btn" title="Download updated index.html">💾 Code</button>
-        <button class="j-chip" id="j-mic-btn" title="Voice Command">🎙️</button>
-      </div>
-    </div>
-
-    <div class="j-quick-bar">
-      <button class="j-chip" data-cmd="dark mode">🌙 Dark Brutalist</button>
-      <button class="j-chip" data-cmd="electric lime">⚡ Electric Lime</button>
-      <button class="j-chip" data-cmd="glass cards">🧊 3D Liquid Glass</button>
-      <button class="j-chip" data-cmd="align grid">📐 Align Grid</button>
-      <button class="j-chip" data-cmd="analyze site">🔍 Analyze Site</button>
-    </div>
-
-    <div class="j-input-row">
-      <input type="text" id="j-cmd" placeholder="Say or type: 'Jarvis dark mode'..." />
-      <button class="j-btn" id="j-run-btn">Run</button>
-    </div>
-
-    <div id="j-log">
-      Say "Jarvis" or pick an instant live modification above.
-    </div>
-
-    <div id="j-decision">
-      <span style="font-size: 11px; color: #d7f36b; font-weight: 700;">Keep this live change?</span>
-      <div style="display: flex; gap: 6px;">
-        <button class="j-btn" id="j-keep-btn">✓ Keep</button>
-        <button class="j-btn undo" id="j-undo-btn">↺ Undo</button>
-      </div>
-    </div>
-  </div>
-
   <script>
     // Current year
     document.getElementById("year").textContent = new Date().getFullYear();
@@ -2147,36 +1935,23 @@
     });
 
     /* ==========================================
-       JARVIS LIVE DOM ENGINE LOGIC
+       PURE BACKGROUND VOICE JARVIS ENGINE
        ========================================== */
     (function() {
-      const fab = document.getElementById("jarvis-fab");
-      const hud = document.getElementById("jarvis-hud");
-      const statusEl = document.getElementById("j-status");
-      const cmdInput = document.getElementById("j-cmd");
-      const runBtn = document.getElementById("j-run-btn");
-      const micBtn = document.getElementById("j-mic-btn");
-      const logEl = document.getElementById("j-log");
-      const decisionBar = document.getElementById("j-decision");
-      const keepBtn = document.getElementById("j-keep-btn");
-      const undoBtn = document.getElementById("j-undo-btn");
-      const editToggle = document.getElementById("j-edit-toggle");
-      const exportBtn = document.getElementById("j-export-btn");
-
       let historyStack = [];
-      let isEditingText = false;
-
       let liveStyle = document.createElement("style");
-      liveStyle.id = "jarvis-injected-css";
+      liveStyle.id = "jarvis-pure-voice-css";
       document.head.appendChild(liveStyle);
 
-      // Restore saved styles if previously Kept
+      // Load saved state if any
       const savedCSS = localStorage.getItem("parmeet_jarvis_css");
       if (savedCSS) liveStyle.innerHTML = savedCSS;
 
-      fab.addEventListener("click", () => {
-        hud.classList.toggle("open");
-      });
+      function saveSnapshot() {
+        historyStack.push({
+          css: liveStyle.innerHTML
+        });
+      }
 
       function speak(text) {
         if ("speechSynthesis" in window) {
@@ -2188,17 +1963,9 @@
         }
       }
 
-      function saveSnapshot() {
-        historyStack.push({
-          css: liveStyle.innerHTML,
-          mainHTML: document.querySelector("main").innerHTML
-        });
-      }
-
-      function runJarvisCommand(rawText) {
-        const cmd = rawText.toLowerCase();
+      function processVoiceCommand(transcript) {
+        const cmd = transcript.toLowerCase();
         saveSnapshot();
-        statusEl.textContent = "JARVIS ACTIVE";
 
         if (cmd.includes("dark") || cmd.includes("डार्क")) {
           liveStyle.innerHTML += `
@@ -2208,8 +1975,8 @@
             .process { background: #121410 !important; }
             .button-primary, .nav-cta { background: #d7f36b !important; color: #0c0d0b !important; border-color: #d7f36b !important; }
           `;
-          logEl.textContent = "On-Screen Update: Switched site to Ultra-Dark Editorial theme.";
-          speak("Switched the website to Dark Brutalist mode.");
+          speak("Dark mode applied.");
+          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
         }
         else if (cmd.includes("lime") || cmd.includes("green") || cmd.includes("लाइम")) {
           liveStyle.innerHTML += `
@@ -2219,8 +1986,8 @@
             .marquee-item span { color: #171717 !important; }
             .brand-mark { background: #d7f36b !important; color: #171717 !important; }
           `;
-          logEl.textContent = "On-Screen Update: Applied Electric Lime highlights across headings and marquee.";
-          speak("Applied the Electric Lime highlight theme.");
+          speak("Electric lime theme activated.");
+          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
         }
         else if (cmd.includes("glass") || cmd.includes("card") || cmd.includes("ग्लास")) {
           liveStyle.innerHTML += `
@@ -2234,136 +2001,49 @@
               box-shadow: 0 18px 40px rgba(0,0,0,0.22) !important;
             }
           `;
-          logEl.textContent = "On-Screen Update: Applied 3D Liquid Glass styling to project and service cards.";
-          speak("Applied 3D Liquid Glass effect to all cards.");
+          speak("Glass cards enabled.");
+          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
         }
-        else if (cmd.includes("grid") || cmd.includes("align") || cmd.includes("ग्रिड")) {
-          liveStyle.innerHTML += `
-            .project-card:nth-child(even) { margin-top: 0 !important; }
-            .project-visual { aspect-ratio: 4 / 3 !important; }
-          `;
-          logEl.textContent = "On-Screen Update: Aligned all 4 project cards into a symmetrical 4:3 grid.";
-          speak("Aligned the project grid symmetrically.");
+        else if (cmd.includes("undo") || cmd.includes("back") || cmd.includes("वापस")) {
+          if (historyStack.length > 0) {
+            const prev = historyStack.pop();
+            liveStyle.innerHTML = prev.css;
+            localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
+            speak("Reverted changes.");
+          }
         }
-        else if (cmd.includes("big") || cmd.includes("title") || cmd.includes("बड़ा")) {
-          liveStyle.innerHTML += `
-            .hero-title { transform: scale(1.07); transform-origin: left center; }
-          `;
-          logEl.textContent = "On-Screen Update: Scaled up the Hero Title for stronger visual impact.";
-          speak("Scaled up the hero title.");
-        }
-        else if (cmd.includes("analyze") || cmd.includes("audit") || cmd.includes("एनालाइज")) {
-          historyStack.pop();
-          const projectsCount = document.querySelectorAll(".project-card").length;
-          logEl.innerHTML = `<strong>🔍 Jarvis Audit:</strong><br>• ${projectsCount} project cards detected (using Unsplash placeholder images).<br>• About section references <code>images/parmeet-photo.jpg</code>.<br>• Suggestion: Try combining <strong>🌙 Dark Brutalist</strong> + <strong>🧊 3D Liquid Glass</strong>!`;
-          speak("Site analysis complete. You have four project cards active. Try combining Dark Brutalist mode with 3D Liquid Glass cards.");
-          return;
-        }
-        else {
-          logEl.textContent = `Command processed: "${rawText}" — Custom live preview applied.`;
-        }
-
-        decisionBar.style.display = "flex";
       }
 
-      // Quick chips
-      document.querySelectorAll(".j-quick-bar .j-chip").forEach((chip) => {
-        chip.addEventListener("click", () => {
-          runJarvisCommand(chip.getAttribute("data-cmd"));
-        });
-      });
-
-      // Run button & Enter key
-      runBtn.addEventListener("click", () => {
-        if (cmdInput.value.trim()) {
-          runJarvisCommand(cmdInput.value.trim());
-          cmdInput.value = "";
-        }
-      });
-      cmdInput.addEventListener("keydown", (e) => {
-        if (e.key === "Enter" && cmdInput.value.trim()) {
-          runJarvisCommand(cmdInput.value.trim());
-          cmdInput.value = "";
-        }
-      });
-
-      // Keep (Apply) button
-      keepBtn.addEventListener("click", () => {
-        localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-        decisionBar.style.display = "none";
-        logEl.textContent = "✓ Changes saved! Click '💾 Code' anytime to download your updated index.html.";
-        speak("Changes saved.");
-      });
-
-      // Undo (Revert) button
-      undoBtn.addEventListener("click", () => {
-        if (historyStack.length > 0) {
-          const prev = historyStack.pop();
-          liveStyle.innerHTML = prev.css;
-          document.querySelector("main").innerHTML = prev.mainHTML;
-          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-          decisionBar.style.display = "none";
-          logEl.textContent = "↺ Reverted to the previous design state.";
-          speak("Reverted to the previous design.");
-        }
-      });
-
-      // Direct Text Edit Mode
-      editToggle.addEventListener("click", () => {
-        isEditingText = !isEditingText;
-        editToggle.classList.toggle("active", isEditingText);
-        const editableNodes = document.querySelectorAll("h1, h2, h3, p, .project-label, .availability");
-        if (isEditingText) {
-          saveSnapshot();
-          editableNodes.forEach(el => el.setAttribute("contenteditable", "true"));
-          logEl.textContent = "✏️ Direct Edit ON: Click any text on the page to rewrite it live.";
-          decisionBar.style.display = "flex";
-        } else {
-          editableNodes.forEach(el => el.removeAttribute("contenteditable"));
-          logEl.textContent = "✏️ Direct Edit turned OFF.";
-        }
-      });
-
-      // Export Updated HTML File
-      exportBtn.addEventListener("click", () => {
-        const clone = document.documentElement.cloneNode(true);
-        clone.querySelectorAll("[contenteditable]").forEach(el => el.removeAttribute("contenteditable"));
-        const htmlContent = "<!DOCTYPE html>\n" + clone.outerHTML;
-        const blob = new Blob([htmlContent], { type: "text/html" });
-        const a = document.createElement("a");
-        a.href = URL.createObjectURL(blob);
-        a.download = "index.html";
-        a.click();
-        logEl.textContent = "💾 Downloaded updated index.html!";
-      });
-
-      // Voice Recognition ("Jarvis")
+      // Continuous Background Speech Recognition
       const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
       if (SR) {
-        const rec = new SR();
-        rec.lang = "en-IN";
-        rec.continuous = false;
+        const recognition = new SR();
+        recognition.lang = "en-IN";
+        recognition.continuous = true;
+        recognition.interimResults = false;
 
-        micBtn.addEventListener("click", () => {
-          rec.start();
-          statusEl.textContent = "LISTENING...";
-          logEl.textContent = "🎙️ Listening... Say 'Jarvis dark mode', 'Glass cards', or 'Undo'";
-        });
-
-        rec.onresult = (e) => {
-          const speech = e.results[0][0].transcript;
-          cmdInput.value = speech;
-          statusEl.textContent = "JARVIS ONLINE";
-
-          const lower = speech.toLowerCase();
-          if (lower.includes("undo") || lower.includes("revert") || lower.includes("back") || lower.includes("वापस")) {
-            undoBtn.click();
-          } else if (lower.includes("keep") || lower.includes("save") || lower.includes("continue") || lower.includes("ठीक है")) {
-            keepBtn.click();
-          } else {
-            runJarvisCommand(speech);
+        recognition.onresult = (event) => {
+          const last = event.results.length - 1;
+          const text = event.results[last][0].transcript.toLowerCase();
+          console.log("Heard:", text);
+          if (text.includes("jarvis") || text.includes("जार्विस")) {
+            processVoiceCommand(text);
           }
         };
+
+        recognition.onerror = (event) => {
+          console.log("Speech recognition error", event.error);
+        };
+
+        recognition.onend = () => {
+          // Auto-restart to keep listening continuously in the background
+          try { recognition.start(); } catch(e) {}
+        };
+
+        // Start listening when user interacts with the page (browser policy requires user gesture)
+        window.addEventListener("click", () => {
+          try { recognition.start(); } catch(e) {}
+        }, { once: true });
       }
     })();
   </script>
