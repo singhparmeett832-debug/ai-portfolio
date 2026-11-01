@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="theme-color" content="#f5f0e8" />
-  <meta name="google-site-verification" content="YbG9OVQOe4ghHcTZ-4tmxVH6iFHzbjNPOVVWzuGV1nc" />
+   <meta name="google-site-verification" content="YbG9OVQOe4ghHcTZ-4tmxVH6iFHzbjNPOVVWzuGV1nc" />
   <title>Parmeet Singh — Graphic Designer & AI Content Creator</title>
 
   <meta
@@ -52,7 +52,6 @@
       font-family: var(--font-body);
       overflow-x: hidden;
       cursor: none;
-      transition: background 0.35s ease, color 0.35s ease;
     }
 
     body.menu-open {
@@ -1920,110 +1919,6 @@
         closeMenu();
       }
     });
-
-    /* ==========================================
-       PROFESSIONAL BACKGROUND VOICE JARVIS ENGINE
-       ========================================== */
-    (function() {
-      let historyStack = [];
-      let liveStyle = document.createElement("style");
-      liveStyle.id = "jarvis-professional-engine";
-      document.head.appendChild(liveStyle);
-
-      // Restore saved styles if any
-      const savedCSS = localStorage.getItem("parmeet_jarvis_css");
-      if (savedCSS) liveStyle.innerHTML = savedCSS;
-
-      function saveSnapshot() {
-        historyStack.push({ css: liveStyle.innerHTML });
-      }
-
-      function speak(text) {
-        if ("speechSynthesis" in window) {
-          window.speechSynthesis.cancel();
-          const u = new SpeechSynthesisUtterance(text);
-          u.lang = "en-IN";
-          u.rate = 1.05;
-          window.speechSynthesis.speak(u);
-        }
-      }
-
-      function processVoiceCommand(transcript) {
-        const cmd = transcript.toLowerCase();
-        saveSnapshot();
-
-        if (cmd.includes("dark") || cmd.includes("डार्क")) {
-          liveStyle.innerHTML += `
-            :root { --cream: #0c0d0b !important; --paper: #151713 !important; --ink: #f4f4ef !important; --muted: #9e9b95 !important; --border: rgba(255,255,255,0.14) !important; }
-            .nav { background: rgba(12, 13, 11, 0.88) !important; }
-            .hero-copy, .about-content > p, .availability { color: #c7c4be !important; }
-            .process { background: #121410 !important; }
-            .button-primary, .nav-cta { background: #d7f36b !important; color: #0c0d0b !important; border-color: #d7f36b !important; }
-          `;
-          speak("Dark mode applied.");
-          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-        }
-        else if (cmd.includes("lime") || cmd.includes("green") || cmd.includes("लाइम")) {
-          liveStyle.innerHTML += `
-            :root { --blue: #d7f36b !important; }
-            .hero-title .blue-text, .section-heading .highlight, .contact-heading .blue-text { color: #d7f36b !important; text-shadow: 0 0 25px rgba(215,243,107,0.3); }
-            .marquee { background: #d7f36b !important; color: #171717 !important; }
-            .marquee-item span { color: #171717 !important; }
-            .brand-mark { background: #d7f36b !important; color: #171717 !important; }
-          `;
-          speak("Electric lime theme activated.");
-          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-        }
-        else if (cmd.includes("glass") || cmd.includes("card") || cmd.includes("ग्लास")) {
-          liveStyle.innerHTML += `
-            .project-card, .fact, .lab-card {
-              background: rgba(255, 255, 255, 0.06) !important;
-              backdrop-filter: blur(18px) !important;
-              -webkit-backdrop-filter: blur(18px) !important;
-              border: 1px solid rgba(215, 243, 107, 0.4) !important;
-              padding: 18px !important;
-              border-radius: 26px !important;
-              box-shadow: 0 18px 40px rgba(0,0,0,0.22) !important;
-            }
-          `;
-          speak("Glass cards enabled.");
-          localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-        }
-        else if (cmd.includes("undo") || cmd.includes("back") || cmd.includes("वापस")) {
-          if (historyStack.length > 0) {
-            const prev = historyStack.pop();
-            liveStyle.innerHTML = prev.css;
-            localStorage.setItem("parmeet_jarvis_css", liveStyle.innerHTML);
-            speak("Reverted changes.");
-          }
-        }
-      }
-
-      // Continuous background voice recognition
-      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SR) {
-        const recognition = new SR();
-        recognition.lang = "en-IN";
-        recognition.continuous = true;
-        recognition.interimResults = false;
-
-        recognition.onresult = (event) => {
-          const last = event.results.length - 1;
-          const text = event.results[last][0].transcript.toLowerCase();
-          if (text.includes("jarvis") || text.includes("जार्विस")) {
-            processVoiceCommand(text);
-          }
-        };
-
-        recognition.onend = () => {
-          try { recognition.start(); } catch(e) {}
-        };
-
-        window.addEventListener("click", () => {
-          try { recognition.start(); } catch(e) {}
-        }, { once: true });
-      }
-    })();
   </script>
 </body>
 </html>
